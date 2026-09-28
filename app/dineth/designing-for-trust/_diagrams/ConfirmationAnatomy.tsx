@@ -1,4 +1,4 @@
-import { Bar, Pin, step } from "./shared";
+import { Bar, Pin, step } from "../../_components/diagram-kit";
 
 const callouts = [
   {

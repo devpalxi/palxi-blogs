@@ -5,7 +5,7 @@ import {
   LockIcon,
   PhoneIcon,
 } from "../../_components/icons";
-import { StepFlow, step, type FlowStep } from "./shared";
+import { StepFlow, step, type FlowStep } from "../../_components/diagram-kit";
 
 const lanes: { title: string; subtitle: string; startAt: number; steps: FlowStep[] }[] = [
   {

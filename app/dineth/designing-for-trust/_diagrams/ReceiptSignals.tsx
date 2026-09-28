@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { CheckIcon } from "../../_components/icons";
-import { Bar, Pin, step } from "./shared";
+import { Bar, Pin, step } from "../../_components/diagram-kit";
 
 const signals = [
   {

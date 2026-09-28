@@ -5,6 +5,7 @@ colors:
   harbour-green: "#00635f"
   harbour-green-deep: "#004b48"
   harbour-green-tint: "#dff4f2"
+  harbour-green-chart: "#009087"
   still-water: "#f7fbfb"
   paper-white: "#ffffff"
   shallows: "#edf4f4"
@@ -126,6 +127,7 @@ A calm, cool, low-chroma palette anchored on one deep sea-green, with three sema
 - **Harbour Green** (#00635f): the only accent. Links, primary buttons, the active step in a diagram, the path money travels. Never a large background fill.
 - **Harbour Green Deep** (#004b48): hover and pressed states for Harbour Green; text on Harbour Green Tint.
 - **Harbour Green Tint** (#dff4f2): background of "In plain words" notes and tags. The only tinted panel colour for prose.
+- **Harbour Green Chart** (#009087): fills for chart marks (bars) only. Harbour Green itself is too low in chroma to read as a colour at bar size; this step passes the chart palette checks (chroma ≥ 0.10, ≥ 3:1 against Shallows). Never used for text; values and labels stay in ink colours.
 
 ### Neutral
 - **Still Water** (#f7fbfb): the page canvas. A true near-white with a hint of the harbour hue, not cream.

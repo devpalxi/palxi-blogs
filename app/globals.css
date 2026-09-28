@@ -14,6 +14,8 @@
   --harbour-green: #00635f;
   --harbour-green-deep: #004b48;
   --harbour-green-tint: #dff4f2;
+  /* Chart marks only: Harbour Green is too grey (chroma < 0.10) as a fill. */
+  --harbour-green-chart: #009087;
 
   --settled-green: #22683b;
   --settled-green-tint: #e2f6e6;
@@ -38,6 +40,7 @@
   --color-harbour: var(--harbour-green);
   --color-harbour-deep: var(--harbour-green-deep);
   --color-harbour-tint: var(--harbour-green-tint);
+  --color-harbour-chart: var(--harbour-green-chart);
   --color-settled: var(--settled-green);
   --color-settled-tint: var(--settled-green-tint);
   --color-stop: var(--stop-red);
@@ -195,6 +198,17 @@
   }
   .diagram [data-anim="grow-y"] {
     transform-origin: center top;
+  }
+  .diagram [data-anim="grow-up"] {
+    transform-origin: center bottom;
+  }
+  .diagram[data-state="armed"] [data-anim="grow-up"] {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+  .diagram[data-state="play"] [data-anim="grow-up"] {
+    animation-name: d-grow-y;
+    animation-duration: 800ms;
   }
   .diagram[data-state="armed"] [data-anim] {
     opacity: 0;

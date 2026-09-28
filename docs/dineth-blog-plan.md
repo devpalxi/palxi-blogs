@@ -19,6 +19,8 @@ Editorial plan for Palxi blog posts. Each entry lists the angle, what to cover, 
 
 ## 2. From Sketch to Clickable Prototype: Our Prototyping Workflow
 
+**Status:** Live at `/dineth/sketch-to-prototype` (`app/dineth/sketch-to-prototype/page.tsx`), published 28 September 2026. Generalised per the no-examples rule: the marina-manager example was dropped, and the before/after "screenshots" are a generic side-by-side wireframe vs tested design of a "choose how to pay" screen, framed as typical changes rather than a real study. Uses a display-home analogy for Australian readers; facts from NN/g (5 users, paper prototyping, think-aloud), Design Council (Double Diamond) and Figma's help centre.
+
 **Angle:** Take readers behind the scenes of how an idea becomes a real feature.
 
 **What to cover:**

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { CheckIcon, CrossIcon, QuestionIcon } from "../../_components/icons";
-import { step } from "./shared";
+import { step } from "../../_components/diagram-kit";
 
 const worries = [
   "Has my money gone?",

@@ -11,6 +11,16 @@ export type Post = {
 // Newest first. Add each post here when its page is built.
 export const posts: Post[] = [
   {
+    slug: "sketch-to-prototype",
+    title: "From sketch to clickable prototype: our prototyping workflow",
+    summary:
+      "Before we write a single line of code, we sketch ideas, build a pretend version you can tap through, and watch real people try it. Here is how an idea becomes a feature, and why testing first leads to better products.",
+    tag: "Design process",
+    author: "Dineth Nimsara",
+    publishedOn: "2026-09-28",
+    readingMinutes: 8,
+  },
+  {
     slug: "designing-for-trust",
     title: "Designing for trust: how we approach UI/UX in fintech",
     summary:

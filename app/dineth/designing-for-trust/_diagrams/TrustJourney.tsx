@@ -4,7 +4,7 @@ import {
   QuestionIcon,
   ReceiptIcon,
 } from "../../_components/icons";
-import { StepFlow, type FlowStep } from "./shared";
+import { StepFlow, type FlowStep } from "../../_components/diagram-kit";
 
 const moments: FlowStep[] = [
   {
