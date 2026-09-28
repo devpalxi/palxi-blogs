@@ -1,8 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Diagram } from "../../dineth/_components/Diagram";
 import { ArrowLeftIcon } from "../../dineth/_components/icons";
 import { articles, formatDate, getArticle } from "../_data/articles";
+import { diagrams, type Placement } from "../_diagrams";
+
+const headingText = (html: string) =>
+  html
+    .replace(/<[^>]+>/g, "")
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, "&");
+
+// Cuts the article HTML above each placement's heading and puts the diagram in the gap.
+function splitBody(html: string, placements: Placement[]) {
+  const headings = [...html.matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/g)];
+  const parts: (string | Placement)[] = [];
+  let cursor = 0;
+  for (const placement of placements) {
+    const match = headings.find(
+      (h) => h.index >= cursor && headingText(h[1]) === placement.before,
+    );
+    if (!match) throw new Error(`No heading "${placement.before}" for diagram`);
+    parts.push(html.slice(cursor, match.index), placement);
+    cursor = match.index;
+  }
+  parts.push(html.slice(cursor));
+  return parts;
+}
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -73,10 +99,19 @@ export default async function ArticlePage({
         </header>
 
         <div className="mt-16 px-5 sm:px-8 lg:mt-24">
-          <div
-            className="prose-harbour prose-article mx-auto"
-            dangerouslySetInnerHTML={{ __html: article.body }}
-          />
+          {splitBody(article.body, diagrams[article.slug] ?? []).map((part, i) =>
+            typeof part === "string" ? (
+              <div
+                key={i}
+                className="prose-harbour prose-article mx-auto"
+                dangerouslySetInnerHTML={{ __html: part }}
+              />
+            ) : (
+              <Diagram key={i} caption={part.caption}>
+                {part.node}
+              </Diagram>
+            ),
+          )}
         </div>
       </article>
     </main>
