@@ -12,4 +12,9 @@ export const links: ProfileLink[] = [
     description: "Stories on building money tools you can trust",
     href: "/dineth",
   },
+  {
+    label: "Ashinthya",
+    description: "Guides for Australian financial services teams",
+    href: "/ashinthya",
+  },
 ];
