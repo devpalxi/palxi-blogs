@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ProfileLink } from "../_data/links";
 
-export function LinkPill({ label, href, external }: ProfileLink) {
+export function LinkPill({ label, description, href, external }: ProfileLink) {
   const anchorProps = external
     ? { target: "_blank", rel: "noopener noreferrer" }
     : {};
@@ -10,45 +10,32 @@ export function LinkPill({ label, href, external }: ProfileLink) {
     <Link
       href={href}
       {...anchorProps}
-      className="group relative block rounded-[1.75rem] bg-hairline/60 p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+      className="group flex min-h-16 items-center justify-between gap-4 rounded-md border border-hairline-strong bg-surface px-6 py-4 text-left transition-[background-color,border-color,transform] duration-200 ease-out-quart hover:border-harbour hover:bg-harbour-tint active:scale-[0.98]"
     >
-      <span
-        className="
-          flex items-center justify-between gap-4 rounded-[calc(1.75rem-0.375rem)]
-          bg-surface px-6 py-4
-          shadow-[0_1px_2px_rgba(22,21,19,0.04),0_12px_28px_-16px_rgba(22,21,19,0.18)]
-          ring-1 ring-hairline
-          transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
-          group-hover:shadow-[0_1px_2px_rgba(22,21,19,0.05),0_20px_40px_-16px_rgba(22,21,19,0.24)]
-          group-hover:-translate-y-0.5
-        "
-      >
-        <span className="text-lg font-medium tracking-tight text-ink">
+      <span>
+        <span className="block text-[1.25rem] font-semibold text-ink">
           {label}
         </span>
-        <span
-          className="
-            flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink/5
-            text-ink transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
-            group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:bg-ink/10
-          "
-        >
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 13 13"
-            fill="none"
-            className="stroke-current"
-          >
-            <path
-              d="M3 10L10 3M10 3H4.5M10 3V8.5"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
+        {description && (
+          <span className="mt-0.5 block text-label text-muted">
+            {description}
+          </span>
+        )}
       </span>
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        className="shrink-0 text-harbour transition-transform duration-200 ease-out-quart group-hover:translate-x-1"
+      >
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
     </Link>
   );
 }

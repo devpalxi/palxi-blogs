@@ -33,10 +33,14 @@ Palxi is an Australian fintech company. Every blog post is written for Australia
 - Avoid jargon; when a technical term is unavoidable, define it in plain words the first time it's used.
 - When a post needs an image, find a relevant one from an open-source/free-to-use source (e.g. Unsplash, Pexels, Openverse, Wikimedia Commons) rather than inventing or describing one — check the license allows reuse before adding it.
 
+## Design context
+
+Read `PRODUCT.md` (audience, voice, anti-references, accessibility bar) and `DESIGN.md` (tokens, type, components, do's and don'ts) before any UI or blog work. Tokens in `app/globals.css` mirror the DESIGN.md frontmatter; change both together. Build new posts from the shared pieces in `app/dineth/_components/` (`Prose`, `PlainWords`, `Photo`, `Diagram`, `Takeaways`, `Sources`) and use `app/dineth/designing-for-trust/` as the reference post. Diagrams are HTML/SVG components that use `data-anim` + `--step` for scroll-triggered motion (see the `.diagram` rules in `globals.css`); content must stay visible without JavaScript and under reduced motion. No text below 16px anywhere. Credit every open-licence photo (author, licence, source link) and list every fact's source at the end of the post.
+
 ## Architecture
 
 - `app/page.tsx` — the home page. It renders `app/_data/links.ts` through `app/_components/LinkPill.tsx`; add a new link by adding an entry to that data file, not by editing the page directly.
 - `app/_data/links.ts` — single source of truth for links shown on the home page.
 - `app/_components/LinkPill.tsx` — the shared pill/button used for every link entry (hover/press motion, double-bezel styling).
 - `app/globals.css` — theme is light-only (no dark-mode branching). Colors are Tailwind v4 `@theme inline` tokens (`--color-ink`, `--color-muted`, `--color-surface`, `--color-hairline`), plus a fixed noise-texture overlay and a shared `animate-fade-up` entrance animation used across pages.
-- Blog post pages live under `app/blog/<slug>/page.tsx` (hardcoded TSX per post, per an explicit decision — do not switch to MDX/CMS without checking with the user first).
+- Blog pages live under the dineth route: `app/dineth/page.tsx` is the post list (`/dineth`) and each post is `app/dineth/<slug>/page.tsx` (`/dineth/<slug>`). Posts are listed from `app/dineth/_data/posts.ts`. Each post is hardcoded TSX, per an explicit decision — do not switch to MDX/CMS without checking with the user first.

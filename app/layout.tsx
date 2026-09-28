@@ -1,27 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Atkinson_Hyperlegible_Next, Literata } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const atkinson = Atkinson_Hyperlegible_Next({
+  variable: "--font-atkinson",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const literata = Literata({
+  variable: "--font-literata",
   subsets: ["latin"],
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
-  title: "Dineth",
-  description: "Personal links hub.",
+  title: {
+    default: "Palxi",
+    template: "%s · Palxi",
+  },
+  description:
+    "Plain-English explanations of how Palxi designs and builds trustworthy fintech for Australians.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="en-AU"
+      className={`${atkinson.variable} ${literata.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

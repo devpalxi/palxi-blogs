@@ -4,6 +4,8 @@ Editorial plan for Palxi blog posts. Each entry lists the angle, what to cover, 
 
 ## 1. Designing for Trust: How We Approach UI/UX in Fintech
 
+**Status:** Live at `/dineth/designing-for-trust` (`app/dineth/designing-for-trust/page.tsx`), published 28 September 2026. Uses the template for later posts: header with hero photo, prose sections, `Diagram` frames, "In plain words" notes, takeaways, sources.
+
 **Angle:** Money products need to feel safe as well as work correctly. This post explains how design decisions build user confidence.
 
 **What to cover:**
@@ -70,4 +72,3 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 4. Evolving the system based on user feedback
 
 **Summary:** This post shows Palxi is organised, scalable, and detail-focused.
-</content>
