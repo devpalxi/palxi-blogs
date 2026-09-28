@@ -129,14 +129,14 @@ A calm, cool, low-chroma palette anchored on one deep sea-green, with three sema
 
 ### Neutral
 - **Still Water** (#f7fbfb): the page canvas. A true near-white with a hint of the harbour hue, not cream.
-- **Paper White** (#ffffff): raised surfaces: example phone screens inside diagrams, receipts, the secondary button.
+- **Paper White** (#ffffff): raised surfaces: generic wireframe screens and receipts inside diagrams, the secondary button.
 - **Shallows** (#edf4f4): diagram frames and sunken panels.
 - **Deep Ink** (#122026): headings and the strongest text (15.9:1 on Still Water).
 - **Body Ink** (#263338): paragraph text (12.5:1 on Still Water).
 - **Slate Muted** (#4f5d63): captions, bylines, credits (6.5:1 on Still Water). Nothing lighter is ever used for text.
 - **Hairline** (#1220261f): 1px dividers and frame outlines.
 
-### Tertiary (semantic, diagrams and example screens only)
+### Tertiary (semantic, diagrams and wireframes only)
 - **Settled Green** (#22683b) on **Settled Green Tint** (#e2f6e6): success, "money arrived", "done".
 - **Stop Red** (#a83630) on **Stop Red Tint** (#ffebe8): failure, "nothing happened". Always paired with an icon and words, never colour alone.
 - **Wattle Amber** (#845922) on **Wattle Amber Tint** (#fff2d6): caution, "check this before you continue".
@@ -170,10 +170,10 @@ A calm, cool, low-chroma palette anchored on one deep sea-green, with three sema
 
 ## 4. Elevation
 
-Flat by default. Depth comes from three tonal layers (Still Water canvas, Shallows frames, Paper White raised surfaces) separated by 1px hairlines. The only shadow in the system belongs to example screens inside diagrams, so they read as a physical phone or receipt sitting on the frame.
+Flat by default. Depth comes from three tonal layers (Still Water canvas, Shallows frames, Paper White raised surfaces) separated by 1px hairlines. The only shadow in the system belongs to wireframe screens inside diagrams, so they read as a physical phone or receipt sitting on the frame.
 
 ### Shadow Vocabulary
-- **Resting device** (`box-shadow: 0 1px 2px rgba(18,32,38,0.06), 0 4px 8px rgba(18,32,38,0.06)`): example phone screens and receipts inside a diagram frame. Never combined with a border.
+- **Resting device** (`box-shadow: 0 1px 2px rgba(18,32,38,0.06), 0 4px 8px rgba(18,32,38,0.06)`): wireframe phone screens and receipts inside a diagram frame. Never combined with a border.
 
 ### Named Rules
 **The Flat-By-Default Rule.** Surfaces are flat at rest. A border or a shadow, never both. If a card looks like it's floating, the shadow is too big.
@@ -192,7 +192,7 @@ Quiet and certain: rectangular with gently rounded corners, big enough to hit fi
 
 ### Diagram Frame (signature component)
 The heart of every post. A Shallows panel (10px radius, no border, no shadow) holding an inline SVG diagram, followed by a caption in Slate Muted and a secondary "Replay" button.
-- **Drawing style:** 2px Deep Ink strokes, rounded caps and joins; example screens drawn as Paper White devices with the Resting device shadow; Harbour Green marks the path or the active step; semantic colours only for outcomes.
+- **Drawing style:** 2px Deep Ink strokes, rounded caps and joins; wireframe screens drawn as Paper White devices with the Resting device shadow, using grey placeholder bars (Hairline Strong, full pill) instead of real content; Harbour Green marks the path or the active step; semantic colours only for outcomes.
 - **Labels:** Atkinson Hyperlegible Next, 16px minimum at the rendered size, Body Ink. Every coloured element also has a text label.
 - **Motion:** when scrolled into view, strokes draw in and steps appear in sequence (400-700ms each, ease-out-expo), a moving marker travels along payment paths, then everything rests. Content is fully visible without JavaScript; motion only enhances. With `prefers-reduced-motion: reduce`, the finished diagram shows immediately and the Replay button is hidden.
 
@@ -233,3 +233,4 @@ The heart of every post. A Shallows panel (10px radius, no border, no shadow) ho
 - **Don't** use red, green or amber without a matching word and icon.
 - **Don't** auto-play looping animation. Motion plays once when seen, then rests.
 - **Don't** invent statistics or product claims. Cite a real source or leave it out.
+- **Don't** put product branding, business names, amounts, card digits or reference numbers into diagrams. Wireframes use grey placeholder bars; posts stay company-wide.

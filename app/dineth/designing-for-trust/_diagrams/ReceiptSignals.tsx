@@ -1,27 +1,27 @@
 import type { ReactNode } from "react";
-import { CheckIcon, LockIcon } from "../../_components/icons";
-import { Pin, step } from "./shared";
+import { CheckIcon } from "../../_components/icons";
+import { Bar, Pin, step } from "./shared";
 
 const signals = [
   {
-    title: "The same name and colours",
-    body: "The receipt looks like the screen you paid on. If it suddenly looks different, that's worth a second look.",
+    title: "The same name and look",
+    body: "It matches the screen you paid on. If a receipt suddenly looks different, that's worth a second look.",
   },
   {
     title: "A reference number",
-    body: "Something you can quote if you ever ring for help, so nobody has to guess which payment you mean.",
+    body: "Something you can quote if you ever need help, so nobody has to guess which payment you mean.",
   },
   {
     title: "Date and time, in your time zone",
-    body: "Shown in Darwin time for a Darwin marina, not a confusing overseas clock.",
+    body: "Local time, not a confusing overseas clock.",
   },
   {
     title: "Every charge, itemised",
-    body: "The same amounts you agreed to on the confirmation screen. No surprises.",
+    body: "The same amounts you agreed to before you paid. No surprises.",
   },
   {
     title: "Only the last four digits",
-    body: "Enough to know which card you used. Your full card number never appears.",
+    body: "Enough to know which card or account you used. The full number never appears.",
   },
 ];
 
@@ -42,9 +42,18 @@ function Line({
   );
 }
 
+function Field({ label, bar }: { label: string; bar: string }) {
+  return (
+    <div className="flex items-center justify-between gap-3 py-1">
+      <span className="text-muted">{label}</span>
+      <Bar className={bar} />
+    </div>
+  );
+}
+
 export function ReceiptSignals() {
   return (
-    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,360px)] md:gap-14">
+    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,340px)] md:gap-14">
       <ol className="order-2 space-y-6 md:order-1">
         {signals.map((s, i) => (
           <li
@@ -67,53 +76,47 @@ export function ReceiptSignals() {
       <div
         data-anim="rise"
         style={step(0)}
-        className="order-1 mx-auto w-full max-w-[360px] rounded-md bg-surface px-6 pt-6 pb-7 text-label shadow-device md:order-2"
+        aria-hidden="true"
+        className="order-1 mx-auto w-full max-w-[340px] rounded-md bg-surface px-6 pt-6 pb-7 text-label shadow-device md:order-2"
       >
         <Line pin={1}>
-          <p className="font-semibold text-harbour">harbr</p>
-          <p className="font-serif text-[1.25rem] font-semibold text-ink">
-            Harbourside Marina
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="size-9 shrink-0 rounded-sm bg-harbour-tint" />
+            <Bar className="w-32" strong />
+          </div>
         </Line>
 
-        <p className="mt-4 flex items-center gap-2 rounded-sm bg-settled-tint px-3 py-2 font-semibold text-settled">
+        <p className="mt-5 flex items-center gap-2 rounded-sm bg-settled-tint px-3 py-2 font-semibold text-settled">
           <CheckIcon size={20} />
           Payment received
         </p>
 
-        <div className="mt-5 space-y-3 border-t border-dashed border-hairline-strong pt-5">
+        <div className="mt-5 space-y-2 border-t border-dashed border-hairline-strong pt-4">
           <Line pin={2}>
-            <p className="text-muted">Receipt number</p>
-            <p className="font-semibold text-ink">HB-20481</p>
+            <Field label="Reference" bar="w-24" />
           </Line>
           <Line pin={3}>
-            <p className="text-muted">Paid</p>
-            <p className="text-ink">12 October 2026, 2:14 pm (Darwin time)</p>
+            <Field label="Date and time" bar="w-16" />
           </Line>
         </div>
 
-        <Line pin={4} className="mt-5 border-t border-dashed border-hairline-strong pt-5">
-          <div className="space-y-1.5">
-            <p className="flex justify-between gap-3 text-ink">
-              <span>Berth C14, 3 nights</span>
-              <span>$186.00</span>
-            </p>
-            <p className="flex justify-between gap-3 text-ink">
-              <span>Card fee</span>
-              <span>$0.00</span>
-            </p>
-            <p className="flex justify-between gap-3 pt-1.5 font-bold text-ink">
-              <span>Total paid</span>
-              <span>$186.00</span>
-            </p>
+        <Line
+          pin={4}
+          className="mt-4 border-t border-dashed border-hairline-strong pt-4"
+        >
+          <Field label="Item" bar="w-16" />
+          <Field label="Fees" bar="w-12" />
+          <div className="mt-1 flex items-center justify-between gap-3 py-1">
+            <span className="font-semibold text-ink">Total paid</span>
+            <Bar className="w-16" strong />
           </div>
         </Line>
 
-        <Line pin={5} className="mt-5 border-t border-dashed border-hairline-strong pt-5">
-          <p className="flex items-center gap-2 text-ink">
-            <LockIcon size={20} className="text-harbour" />
-            Visa ending 4821
-          </p>
+        <Line
+          pin={5}
+          className="mt-4 border-t border-dashed border-hairline-strong pt-4"
+        >
+          <p className="text-ink">Paid with card ending •••• </p>
         </Line>
       </div>
     </div>

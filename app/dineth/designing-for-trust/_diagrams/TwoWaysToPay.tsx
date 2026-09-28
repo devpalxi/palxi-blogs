@@ -1,4 +1,3 @@
-import type { ComponentType, CSSProperties, SVGProps } from "react";
 import {
   BankIcon,
   CardIcon,
@@ -6,32 +5,23 @@ import {
   LockIcon,
   PhoneIcon,
 } from "../../_components/icons";
-import { step } from "./shared";
+import { StepFlow, step, type FlowStep } from "./shared";
 
-type Step = {
-  icon: ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
-  title: string;
-  detail: string;
-  done?: boolean;
-};
-
-type Lane = { title: string; subtitle: string; startAt: number; steps: Step[] };
-
-const lanes: Lane[] = [
+const lanes: { title: string; subtitle: string; startAt: number; steps: FlowStep[] }[] = [
   {
     title: "Paying by card",
-    subtitle: "Handled by Stripe",
-    startAt: 0,
+    subtitle: "Card details go to a certified payments specialist",
+    startAt: 1,
     steps: [
       {
         icon: CardIcon,
         title: "You enter your card",
-        detail: "Into the payment box on the harbr screen.",
+        detail: "In a secure payment box on the screen.",
       },
       {
         icon: LockIcon,
-        title: "It goes straight to Stripe",
-        detail: "Locked and sent directly to Stripe, not through our computers.",
+        title: "It's locked and sent on",
+        detail: "Encrypted and passed straight to the payments specialist.",
       },
       {
         icon: BankIcon,
@@ -40,20 +30,20 @@ const lanes: Lane[] = [
       },
       {
         icon: CheckIcon,
-        title: "The marina is paid",
+        title: "Payment complete",
         detail: "You get a receipt straight away.",
-        done: true,
+        tone: "done",
       },
     ],
   },
   {
     title: "Paying from your bank account",
-    subtitle: "PayTo, handled by Zepto",
-    startAt: 5,
+    subtitle: "Using PayTo, part of Australia's fast payments system",
+    startAt: 6,
     steps: [
       {
         icon: PhoneIcon,
-        title: "You approve it in your bank app",
+        title: "You approve it in your banking",
         detail: "You see who is asking and how much, then say yes.",
       },
       {
@@ -63,85 +53,26 @@ const lanes: Lane[] = [
       },
       {
         icon: CheckIcon,
-        title: "The marina is paid",
-        detail: "Within seconds, any time of day or night.",
-        done: true,
+        title: "Payment complete",
+        detail: "You stay in control: pause or cancel in your banking.",
+        tone: "done",
       },
     ],
   },
 ];
-
-function LaneSteps({ lane }: { lane: Lane }) {
-  return (
-    <ol
-      style={{ "--cols": lane.steps.length } as CSSProperties}
-      className="mt-6 flex flex-col md:grid md:grid-cols-[repeat(var(--cols),minmax(0,1fr))] md:gap-4"
-    >
-      {lane.steps.map((s, i) => {
-        const Icon = s.icon;
-        const at = lane.startAt + 1 + i;
-        const last = i === lane.steps.length - 1;
-        return (
-          <li
-            key={s.title}
-            className="relative flex gap-4 pb-8 last:pb-0 md:block md:pb-0"
-          >
-            {!last && (
-              <>
-                <span
-                  aria-hidden="true"
-                  data-anim="grow-x"
-                  style={step(at + 0.6)}
-                  className="absolute top-[22.5px] left-14 hidden h-[3px] w-[calc(100%-3rem)] rounded-full bg-harbour md:block"
-                />
-                <span
-                  aria-hidden="true"
-                  data-anim="grow-y"
-                  style={step(at + 0.6)}
-                  className="absolute top-14 left-[22.5px] h-[calc(100%-4rem)] w-[3px] rounded-full bg-harbour md:hidden"
-                />
-              </>
-            )}
-            <span
-              data-anim="pop"
-              style={step(at)}
-              className={`relative flex size-12 shrink-0 items-center justify-center rounded-full ${
-                s.done
-                  ? "bg-settled text-surface"
-                  : "bg-surface text-harbour shadow-device"
-              }`}
-            >
-              <Icon size={24} />
-            </span>
-            <div data-anim="rise" style={step(at)} className="pt-1 md:mt-4 md:pt-0 md:pr-3">
-              <p
-                className={`text-[1.125rem] leading-snug font-semibold ${
-                  s.done ? "text-settled" : "text-ink"
-                }`}
-              >
-                {s.title}
-              </p>
-              <p className="mt-1 text-label text-copy">{s.detail}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
 
 export function TwoWaysToPay() {
   return (
     <div className="divide-y divide-hairline">
       {lanes.map((lane) => (
         <section key={lane.title} className="py-8 first:pt-0 last:pb-0">
-          <div data-anim="fade" style={step(lane.startAt)}>
+          <div data-anim="fade" style={step(lane.startAt - 1)} className="mb-6">
             <h3 className="font-serif text-title font-semibold text-ink">
               {lane.title}
             </h3>
             <p className="text-label text-muted">{lane.subtitle}</p>
           </div>
-          <LaneSteps lane={lane} />
+          <StepFlow steps={lane.steps} startAt={lane.startAt} />
         </section>
       ))}
     </div>

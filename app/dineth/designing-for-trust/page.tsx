@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import marinaPhoto from "@/public/images/blog/designing-for-trust/cullen-bay-marina-darwin.jpg";
 import heroPhoto from "@/public/images/blog/designing-for-trust/reading-phone-by-window.jpg";
 import {
   Photo,
@@ -15,6 +14,7 @@ import { formatDate, getPost } from "../_data/posts";
 import { ConfirmationAnatomy } from "./_diagrams/ConfirmationAnatomy";
 import { ErrorComparison } from "./_diagrams/ErrorComparison";
 import { ReceiptSignals } from "./_diagrams/ReceiptSignals";
+import { TrustJourney } from "./_diagrams/TrustJourney";
 import { TwoWaysToPay } from "./_diagrams/TwoWaysToPay";
 
 const post = getPost("designing-for-trust");
@@ -47,8 +47,9 @@ export default function DesigningForTrust() {
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
               Money apps have to feel safe as well as work properly. Here is
-              how small design decisions help you feel sure about every
-              payment, from the screen before you pay to the receipt after.
+              how we design every Palxi product so you can feel sure about each
+              payment, from the moment before you pay to the record you keep
+              afterwards.
             </p>
             <p className="mt-6 text-label text-muted">
               By {post.author} · {formatDate(post.publishedOn)} ·{" "}
@@ -89,13 +90,19 @@ export default function DesigningForTrust() {
               being old-fashioned. It&apos;s being sensible.
             </p>
             <p>
-              At Palxi we build harbr, which marinas use for berth bookings and
-              payments, and Cruz, which is used by pub owners, as well as
-              systems for the Northern Territory Government. In every one of
-              them, we treat trust the way we treat a working Pay button:
-              something the product must have, not a nice extra. Here are the
-              habits that guide us.
+              At Palxi, we treat trust the way we treat a working Pay button:
+              as something every product must have, not a nice extra. The same
+              principles guide everything we build, from harbr and Cruz to our
+              systems for the Northern Territory Government. They centre on
+              four moments that every payment passes through.
             </p>
+          </Prose>
+
+          <Diagram caption="The four moments of trust. Every Palxi product is designed to get each one right.">
+            <TrustJourney />
+          </Diagram>
+
+          <Prose>
             <PlainWords term="UI/UX">
               stands for user interface and user experience. The interface is
               what you see on the screen: the words, buttons and pictures. The
@@ -103,25 +110,27 @@ export default function DesigningForTrust() {
               and stressful.
             </PlainWords>
 
-            <h2>Clear words beat clever ones</h2>
+            <h2>Before you pay: clear words beat clever ones</h2>
             <p>
               A clever design can impress people. A clear design helps them.
               When money is involved, we choose clear every time.
             </p>
             <p>
-              That starts with the words. Our buttons say &ldquo;Pay
-              $186.00&rdquo;, not &ldquo;Proceed&rdquo;. They say &ldquo;Go
+              That starts with the words. A button should say exactly what it
+              will do, such as &ldquo;Pay&rdquo; followed by the amount, rather
+              than a vague &ldquo;Proceed&rdquo;. It should say &ldquo;Go
               back&rdquo;, not &ldquo;Abort transaction&rdquo;. If a sentence
               needs reading twice, we rewrite it.
             </p>
             <p>
-              It also means no hidden fees. You&apos;ve probably booked
-              something online, only to find an extra charge on the very last
-              screen. The Australian Government has noticed too: draft laws
-              released in February 2026 would require transaction fees to be
-              shown prominently, so shoppers aren&apos;t &ldquo;ambushed by
+              It also means no hidden fees. Most of us have booked something
+              online, only to find an extra charge on the very last screen. The
+              Australian Government has noticed too: draft laws released in
+              February 2026 would require transaction fees to be shown
+              prominently, so shoppers aren&apos;t &ldquo;ambushed by
               unexpected costs at checkout&rdquo;. We don&apos;t wait for the
-              law. Every fee appears before you pay, even when it&apos;s zero.
+              law. In our products, every fee appears before you pay, even when
+              it&apos;s zero.
             </p>
             <p>
               The most important screen of all is the one just before you pay.
@@ -130,46 +139,27 @@ export default function DesigningForTrust() {
             </p>
           </Prose>
 
-          <Diagram caption="An example harbr confirmation screen. Each number marks something you should be able to check before you press Pay.">
+          <Diagram caption="What a clear confirmation screen shows. The grey bars stand in for the details of your own payment.">
             <ConfirmationAnatomy />
           </Diagram>
 
           <Prose>
-            <h2>Two ways to pay, both kept simple</h2>
+            <h2>While you pay: simple, whichever way you choose</h2>
             <p>
-              Marina customers using harbr can pay in two ways: by card, or
-              straight from their bank account. Behind the scenes, the two
-              work quite differently. On the screen, we make both feel just as
-              simple, with the same layout, the same words and the same kind of
-              receipt at the end.
+              People like to pay in different ways, so our products support
+              the two most common: by card, or straight from a bank account.
+              Behind the scenes these work quite differently. On the screen, we
+              make both feel equally simple, with the same layout, the same
+              plain words and the same kind of receipt at the end.
             </p>
-          </Prose>
 
-          <Photo
-            src={marinaPhoto}
-            alt="Yachts and motor boats moored along the pontoons of Cullen Bay Marina in Darwin, with waterfront apartments and palm trees in late-afternoon sun."
-            caption="Cullen Bay Marina, Darwin."
-            sizes="(min-width: 1064px) 1000px, 100vw"
-            className="mx-auto my-14 w-full max-w-[1000px]"
-            frameClassName="aspect-[3/2]"
-            credit={{
-              author: "happinesswithin",
-              licence: "CC BY 3.0",
-              licenceUrl: "https://creativecommons.org/licenses/by/3.0/",
-              sourceUrl:
-                "https://commons.wikimedia.org/wiki/File:View_over_Cullen_Bay_marina_-_panoramio.jpg",
-            }}
-          />
-
-          <Prose>
             <h3>Paying by card</h3>
             <p>
-              For card payments we use Stripe, a large and long-established
-              payments company used by businesses around the world. When you
-              type your card number into harbr, it goes directly to Stripe in
-              an encrypted form. Stripe&apos;s own security guide describes
-              exactly this kind of setup, where card details travel straight to
-              Stripe rather than through the business&apos;s own systems.
+              Card details are handled by specialist payment providers, whose
+              whole job is keeping card numbers safe. They are independently
+              checked against the card industry&apos;s own security standard,
+              known as PCI DSS. When you type in your card number, it is
+              encrypted and passed straight to them.
             </p>
             <PlainWords term="Encrypted">
               means scrambled into a code that only the right computer can
@@ -180,12 +170,11 @@ export default function DesigningForTrust() {
             <h3>Paying from your bank account</h3>
             <p>
               The second option uses <strong>PayTo</strong>, part of
-              Australia&apos;s fast payments system. Our partner Zepto connects
-              harbr to it. Instead of typing in card details, you approve the
-              payment inside your own banking app, the one you already know. You
-              see who is asking and how much before you say yes, and you can
-              pause or cancel a PayTo agreement from your banking app whenever
-              you like. The money arrives within seconds, day or night.
+              Australia&apos;s fast payments system. Instead of typing in card
+              details, you approve the payment in your own online banking, the
+              one you already know. You see who is asking and how much before
+              you say yes, and you can pause, restart or cancel a PayTo
+              agreement in your banking whenever you like.
             </p>
             <PlainWords term="Account-to-account (A2A)">
               payments move money directly from your bank account to the
@@ -194,7 +183,7 @@ export default function DesigningForTrust() {
             </PlainWords>
           </Prose>
 
-          <Diagram caption="The same result, two different journeys. Whichever way you choose, the marina is paid and you get a receipt straight away.">
+          <Diagram caption="Two different journeys, one simple experience. Either way, the payment is confirmed and you get a receipt straight away.">
             <TwoWaysToPay />
           </Diagram>
 
@@ -204,11 +193,11 @@ export default function DesigningForTrust() {
               Australian banks have been rolling out{" "}
               <strong>Confirmation of Payee</strong>, which checks that the name
               on an account matches the BSB and account number before you pay
-              someone new. It&apos;s exactly the right idea: show people who
-              they&apos;re paying before any money moves.
+              someone new. It&apos;s exactly the right idea, and one we share:
+              show people who they&apos;re paying before any money moves.
             </p>
 
-            <h2>Error messages that calm, not alarm</h2>
+            <h2>If something goes wrong: calm, not alarm</h2>
             <p>
               Now and then, a payment doesn&apos;t work. A bank might decline a
               card, or a phone might lose signal at the wrong moment. What
@@ -223,7 +212,7 @@ export default function DesigningForTrust() {
             <p>
               So we answer that first. Our messages say, in plain words, what
               happened, what it means for your money, and what you can do next.
-              For example: &ldquo;Your payment hasn&apos;t gone through, and no
+              For instance: &ldquo;Your payment hasn&apos;t gone through, and no
               money has left your account.&rdquo;
             </p>
             <p>
@@ -239,7 +228,7 @@ export default function DesigningForTrust() {
           </Diagram>
 
           <Prose>
-            <h2>Small signs that add up to trust</h2>
+            <h2>After you pay: small signs that add up to trust</h2>
             <p>
               Trust also grows from many small, consistent details. Most are so
               ordinary you may never notice them, and that&apos;s the point.
@@ -266,19 +255,24 @@ export default function DesigningForTrust() {
             </ul>
           </Prose>
 
-          <Diagram caption="An example harbr receipt. Each number marks a detail that helps you confirm the payment is genuine and correct.">
+          <Diagram caption="What a trustworthy receipt includes. The grey bars stand in for the details of your own payment.">
             <ReceiptSignals />
           </Diagram>
 
           <Prose>
-            <h2>Why this matters to us</h2>
+            <h2>One standard, in every product</h2>
             <p>
               Trust isn&apos;t a coat of paint added at the end. It&apos;s
               decided in hundreds of small choices: the words on a button, the
-              order of a screen, the first line of an error message. We test
-              those choices with real people, including people who don&apos;t
-              think of themselves as good with technology. When they feel sure,
-              we know we&apos;ve got it right.
+              order of a screen, the first line of an error message. We hold
+              every Palxi product to the same standard for each of the four
+              moments, so wherever you meet us, it should feel just as clear
+              and just as safe.
+            </p>
+            <p>
+              We also test those choices with real people, including people who
+              don&apos;t think of themselves as good with technology. When they
+              feel sure, we know we&apos;ve got it right.
             </p>
           </Prose>
 
@@ -286,7 +280,7 @@ export default function DesigningForTrust() {
             title="Four things to look for before you pay, in any app"
             items={[
               "You can see exactly who you're paying, and what for.",
-              "Every fee is shown before you confirm, even if it's $0.00.",
+              "Every fee is shown before you confirm, even if it's zero.",
               "If something goes wrong, you're told plainly whether your money has moved.",
               "You get a receipt with a reference number, straight away.",
             ]}
@@ -317,12 +311,12 @@ export default function DesigningForTrust() {
                 href: "https://ministers.treasury.gov.au/ministers/andrew-leigh-2025/media-releases/government-targets-hidden-fees-and-subscription-traps",
               },
               {
-                label: "Stripe, Integration security guide",
-                href: "https://docs.stripe.com/security/guide",
+                label: "PCI Security Standards Council, PCI DSS",
+                href: "https://www.pcisecuritystandards.org/standards/pci-dss/",
               },
               {
-                label: "Zepto, PayTo",
-                href: "https://zepto.com.au/solutions/payto",
+                label: "Australian Payments Plus, PayTo for consumers",
+                href: "https://www.auspayplus.com.au/solutions/payto-for-consumers",
               },
               {
                 label: "Australian Payments Plus, Confirmation of Payee",

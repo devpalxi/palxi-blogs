@@ -70,10 +70,10 @@ export const PhoneIcon = (p: IconProps) => (
   </Icon>
 );
 
-export const MarinaIcon = (p: IconProps) => (
+export const ReceiptIcon = (p: IconProps) => (
   <Icon {...p}>
-    <path d="M12 3.5v12M12 3.5l6 9.5h-6" />
-    <path d="M4.5 16h15l-2 3.5h-11z" />
+    <path d="M6 3.5h12v17l-2.4-1.5-2.4 1.5-2.4-1.5-2.4 1.5L6 20.5z" />
+    <path d="M9 8.5h6M9 12h6M9 15.5h3.5" />
   </Icon>
 );
 

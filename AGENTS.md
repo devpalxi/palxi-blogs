@@ -31,6 +31,7 @@ Palxi is an Australian fintech company. Every blog post is written for Australia
 
 - Explain technical concepts in plain language first, then use a diagram or simple animation to reinforce it — don't rely on text alone for anything conceptual (e.g. how a payment flow works, what a feature branch is, how a design system fits together). Favor a labelled diagram over a wall of prose.
 - Avoid jargon; when a technical term is unavoidable, define it in plain words the first time it's used.
+- Write every post as a general, company-wide piece about how Palxi works across all its products. Do not use product-specific examples or scenarios (e.g. a marina booking in harbr), invented businesses, names, amounts, card digits or reference numbers — in the copy, the diagrams or the photos. Products may be named once in passing, never as the story. Diagrams showing screens use generic wireframes with grey placeholder bars. Payment partners (e.g. Stripe, Zepto) are not named; describe payment types instead (card, bank-to-bank/PayTo). Where `docs/` plan entries mention a product, generalise them.
 - When a post needs an image, find a relevant one from an open-source/free-to-use source (e.g. Unsplash, Pexels, Openverse, Wikimedia Commons) rather than inventing or describing one — check the license allows reuse before adding it.
 
 ## Design context

@@ -4,7 +4,7 @@ Editorial plan for Palxi blog posts. Each entry lists the angle, what to cover, 
 
 ## 1. Designing for Trust: How We Approach UI/UX in Fintech
 
-**Status:** Live at `/dineth/designing-for-trust` (`app/dineth/designing-for-trust/page.tsx`), published 28 September 2026. Uses the template for later posts: header with hero photo, prose sections, `Diagram` frames, "In plain words" notes, takeaways, sources.
+**Status:** Live at `/dineth/designing-for-trust` (`app/dineth/designing-for-trust/page.tsx`), published 28 September 2026. Written as a company-wide piece structured around four moments of trust (before, while, if something goes wrong, after you pay); the harbr/Stripe/Zepto specifics below were deliberately generalised. Uses the template for later posts: header with hero photo, prose sections, `Diagram` frames with generic wireframes, "In plain words" notes, takeaways, sources.
 
 **Angle:** Money products need to feel safe as well as work correctly. This post explains how design decisions build user confidence.
 

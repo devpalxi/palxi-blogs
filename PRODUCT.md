@@ -25,11 +25,12 @@ Calm, clear, dependable. The voice of a trusted local bank manager explaining so
 
 ## Design Principles
 
-1. **Show, then tell.** Every technical idea gets a picture: a labelled diagram, an example screen, or an animation that walks through it. Text supports the picture, not the other way round.
+1. **Show, then tell.** Every technical idea gets a picture: a labelled diagram, a generic wireframe, or an animation that walks through it. Text supports the picture, not the other way round.
 2. **Plain words first.** Define any unavoidable term the first time it appears. If a sentence needs a second read, rewrite it.
 3. **Practise what we preach.** A post about trustworthy design must itself be calm, honest, and easy to read. No tricks, no clutter, no hidden anything.
 4. **Respect the reader's pace.** Nothing moves unless it helps understanding, nothing auto-plays past the reader, and every animation can be replayed or switched off.
-5. **Specific over impressive.** Real Australian context (PayTo, Confirmation of Payee, Scamwatch, NT projects) and honest examples beat generic claims and invented statistics.
+5. **Company-wide, never product-specific.** Posts explain how Palxi works across all its products. No worked examples from a single product, no invented businesses, names, amounts or reference numbers. Products may be named once in passing, never used as the story.
+6. **Specific over impressive.** Real Australian context (PayTo, Confirmation of Payee, Scamwatch) and cited facts beat vague claims and invented statistics.
 
 ## Accessibility & Inclusion
 
