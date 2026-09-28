@@ -11,6 +11,16 @@ export type Post = {
 // Newest first. Add each post here when its page is built.
 export const posts: Post[] = [
   {
+    slug: "shipping-safely",
+    title: "How we ship safely: feature branching explained",
+    summary:
+      "Every software update carries a small risk. Here is how we build new features on a safe copy, check them several times over and switch them on gradually, so the service you rely on keeps working.",
+    tag: "Engineering",
+    author: "Dineth Nimsara",
+    publishedOn: "2026-09-28",
+    readingMinutes: 9,
+  },
+  {
     slug: "sketch-to-prototype",
     title: "From sketch to clickable prototype: our prototyping workflow",
     summary:

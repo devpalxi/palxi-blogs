@@ -37,6 +37,8 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 
 ## 3. How We Ship Safely: Feature Branching Explained
 
+**Status:** Live at `/dineth/shipping-safely` (`app/dineth/shipping-safely/page.tsx`), published 28 September 2026. Opens with two verified Australian outages caused by updates (Optus, Nov 2023; CrowdStrike, Jul 2024), then uses a railway branch-line metaphor throughout (hero photo: Wolli junction, Sydney). Zero-downtime is explained as "one common way" (blue-green) rather than a claim about Palxi's exact setup. APRA CPS 230 was deliberately left for post 4 (compliance).
+
 **Angle:** Explain, in non-technical terms, how Palxi releases new features without breaking payments or live services.
 
 **What to cover:**

@@ -112,6 +112,60 @@ export const HandoverIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const BranchIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="6.5" cy="5.5" r="2" />
+    <circle cx="6.5" cy="18.5" r="2" />
+    <circle cx="17.5" cy="8.5" r="2" />
+    <path d="M6.5 7.5v9M17.5 10.5c0 4-11 2.5-11 6" />
+  </Icon>
+);
+
+export const CodeIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5M13.5 5l-3 14" />
+  </Icon>
+);
+
+export const BeakerIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M9 3.5h6M10 3.5v6l-5 8.5a1.7 1.7 0 001.5 2.5h11a1.7 1.7 0 001.5-2.5l-5-8.5v-6" />
+    <path d="M7.5 15h9" />
+  </Icon>
+);
+
+export const ClipboardIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="5" y="4.5" width="14" height="16" rx="2" />
+    <path d="M9 4.5V3.5h6v1M8.5 12l2 2 4.5-4.5M8.5 17h7" />
+  </Icon>
+);
+
+export const LayersIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 4l8.5 4.5L12 13 3.5 8.5z" />
+    <path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5" />
+  </Icon>
+);
+
+export const UsersIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="9" cy="8" r="3" />
+    <path d="M3.5 19.5a5.5 5.5 0 0111 0" />
+    <circle cx="17" cy="9" r="2.5" />
+    <path d="M16 14.2a4.5 4.5 0 015 4.3" />
+  </Icon>
+);
+
+export const MergeIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="6.5" cy="5.5" r="2" />
+    <circle cx="6.5" cy="18.5" r="2" />
+    <circle cx="17.5" cy="15.5" r="2" />
+    <path d="M6.5 7.5v9M6.5 7.5c0 5 11 3 11 6" />
+  </Icon>
+);
+
 export const ArrowLeftIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M19 12H5M11 6l-6 6 6 6" />

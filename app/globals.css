@@ -202,6 +202,18 @@
   .diagram [data-anim="grow-up"] {
     transform-origin: center bottom;
   }
+  /* SVG strokes that draw themselves in; the path needs pathLength="1". */
+  .diagram [data-anim="draw"] {
+    stroke-dasharray: 1;
+  }
+  .diagram[data-state="armed"] [data-anim="draw"] {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+  .diagram[data-state="play"] [data-anim="draw"] {
+    animation-name: d-draw;
+    animation-duration: 700ms;
+  }
   .diagram[data-state="armed"] [data-anim="grow-up"] {
     opacity: 1;
     transform: scaleY(0);
@@ -263,6 +275,10 @@
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
+  @keyframes d-draw {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
   @keyframes d-grow-y {
     from { transform: scaleY(0); }
     to { transform: scaleY(1); }
@@ -285,5 +301,6 @@
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+    stroke-dashoffset: 0 !important;
   }
 }
