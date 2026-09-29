@@ -53,6 +53,8 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 
 ## 4. Compliance by Design: Building UX Around AML, SOC 2 & ISO 27001
 
+**Status:** Live at `/dineth/compliance-by-design` (`app/dineth/compliance-by-design/page.tsx`), published 29 September 2026. Framed around tactile ground indicators (AS/NZS 1428.4; hero photo: Corinda station, Brisbane) as "compliance built in, not bolted on". Generalised per the no-examples rule: the Cruz/pub-owner KYC flow became a generic identity-check wireframe for "busy people running a business", and the NT camping/caravan-park systems became "services the whole community relies on, including NT Government systems". Wording decisions: Palxi designs "around the principles" of SOC 2 and ISO 27001 (no certification claim); Palxi's products "help businesses meet" AML rules (no claim about Palxi's own AUSTRAC status). APRA CPS 230 included as one line of industry context. No cross-links to the Ashinthya articles (by request). Note: AUSTRAC, OAIC-adjacent gov sites were unreachable during research, so AML dates are cited via MinterEllison and AUSTRAC's role via Wikipedia.
+
 **Angle:** Compliance is usually seen as friction. Show how Palxi makes it smooth.
 
 **What to cover:**
@@ -65,6 +67,8 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 **Summary:** This post highlights Palxi's serious approach to security and regulation, a strong differentiator in Australian fintech.
 
 ## 5. One Design System, Many Products: How We Keep Palxi Consistent
+
+**Status:** Live at `/dineth/one-design-system` (`app/dineth/one-design-system/page.tsx`), published 29 September 2026. Framed around Australian road signs (AS 1742; hero photo: camel, wombat and kangaroo warning signs on the Nullarbor) as a national "design system". harbr, Cruz and NT Government systems are named once in the intro only; diagrams use generic "booking / payments / community service" wireframes. Includes a short aside that this blog runs on its own small design system (true of the blog; no claim about Palxi's product system beyond the plan). No end-of-series links, by request. This completes the five-post plan.
 
 **Angle:** Explain how a shared design system keeps harbr, Cruz, and government projects feeling like one reliable family.
 

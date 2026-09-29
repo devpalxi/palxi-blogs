@@ -166,6 +166,35 @@ export const MergeIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const IdCardIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <circle cx="8.5" cy="11" r="2" />
+    <path d="M5.5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h4M14 13.5h3" />
+  </Icon>
+);
+
+export const KeyIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="8" cy="15" r="4" />
+    <path d="M11 12l8.5-8.5M16 7l2.5 2.5M14 9l2 2" />
+  </Icon>
+);
+
+export const ShieldIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 3.5l7.5 3v5.5c0 4.5-3.2 7.8-7.5 9-4.3-1.2-7.5-4.5-7.5-9V6.5z" />
+    <path d="M8.8 12.2l2.2 2.2 4.2-4.4" />
+  </Icon>
+);
+
+export const PersonIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="12" cy="5" r="2" />
+    <path d="M5 8.5l7 1.5 7-1.5M12 10v5M9 21l3-6 3 6" />
+  </Icon>
+);
+
 export const ArrowLeftIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M19 12H5M11 6l-6 6 6 6" />

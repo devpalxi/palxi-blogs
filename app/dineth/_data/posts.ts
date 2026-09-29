@@ -11,6 +11,26 @@ export type Post = {
 // Newest first. Add each post here when its page is built.
 export const posts: Post[] = [
   {
+    slug: "one-design-system",
+    title: "One design system, many products: how we keep Palxi consistent",
+    summary:
+      "Drive anywhere in Australia and the road signs speak the same language. Here is how one shared design system does the same for every Palxi product, so you learn once and feel at home everywhere.",
+    tag: "Design system",
+    author: "Dineth Nimsara",
+    publishedOn: "2026-09-29",
+    readingMinutes: 8,
+  },
+  {
+    slug: "compliance-by-design",
+    title: "Compliance by design: building UX around AML, SOC 2 and ISO 27001",
+    summary:
+      "Rules that protect your money and information don't have to feel like red tape. Here is how we build them into our products from the start, so staying safe feels simple.",
+    tag: "Security & compliance",
+    author: "Dineth Nimsara",
+    publishedOn: "2026-09-29",
+    readingMinutes: 9,
+  },
+  {
     slug: "shipping-safely",
     title: "How we ship safely: feature branching explained",
     summary:
