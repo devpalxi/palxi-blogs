@@ -23,14 +23,6 @@ The letter went to the chair, not the security team. That is how APRA CPS 234 is
 
 If you advise a bank, insurer or super trustee, a director will one day ask you what they should be asking. Here are the questions, what a good answer sounds like, and the evidence behind it.
 
-> **The short version**
->
-> - CPS 234 binds APRA-regulated entities, and their boards are ultimately responsible. Vendors are reached through the entity's contracts, assessments and audits.
-> - APRA has found board reporting on information security often "not fit-for-purpose", with little sign of boards challenging it.
-> - Useful board questions follow the standard: assets, third parties, testing, recovery, access and incidents.
-> - Material incidents must reach APRA within 72 hours. Material control weaknesses that can't be fixed in time must reach it within 10 business days.
-> - APRA's 2026-27 plan asks for better board oversight of technology and cyber risk, and signals deeper supervision of cyber and AI risks.
-
 ## What APRA CPS 234 puts on the board
 
 CPS 234 has been in force since 1 July 2019. It applies to ADIs, general and life insurers, friendly societies, private health insurers and super trustees. For a super trustee, "the Board" can mean a group of individual trustees. For a foreign ADI, it means the senior officer outside Australia.

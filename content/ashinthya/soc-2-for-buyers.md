@@ -23,14 +23,6 @@ That matters if you advise a bank or super fund on a vendor. Somewhere in the pr
 
 Below: what the report is, how to read one, what it costs a vendor, and what to ask before your client relies on it.
 
-> **The short version**
->
-> - A SOC 2 report is an attestation report from a CPA firm against the AICPA's Trust Services Criteria. It is not a certificate, and there is no pass mark.
-> - A Type 2 report tests whether controls worked over a period. A Type 1 only looks at their design on one date.
-> - The value sits in the detail: scope, period, exceptions, carved-out subservice providers and the controls left to the customer.
-> - APRA's CPS 234 requires a regulated entity that relies on a third party's control testing to assess whether that testing is commensurate with the standard's own testing factors. A SOC 2 report is evidence for that assessment.
-> - Report quality varies. In 2026 the AICPA told peer reviewers to look for SOC 2 reports that are near-identical from one client to the next.
-
 ## What is SOC 2, in plain terms
 
 SOC 2 is a report on a service organisation's controls, prepared by an independent CPA under AICPA attestation standards. The AICPA describes the need it meets: customers and business partners "usually need information about the design, operation, and effectiveness of controls within the service organization's system" ([AICPA & CIMA, SOC 2 guide](https://www.aicpa-cima.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy), October 2022).

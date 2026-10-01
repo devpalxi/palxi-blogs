@@ -1,22 +1,38 @@
 import type { ReactNode } from "react";
 import {
-  CheckIcon,
+  BankIcon,
+  BeakerIcon,
   ChatIcon,
+  CheckIcon,
   ClipboardIcon,
+  CodeIcon,
   EyeIcon,
-  ReceiptIcon,
+  LayersIcon,
+  UsersIcon,
 } from "../../dineth/_components/icons";
-import { StepFlow } from "../../dineth/_components/diagram-kit";
+import { at } from "../../dineth/_components/diagram-kit";
+import { CountUp } from "../../dineth/_components/CountUp";
+import { Checklist, Columns, Compare, Pairs } from "./Cards";
+import { CoreEdges } from "./CoreEdges";
 import {
-  BarRows,
-  Checklist,
-  Columns,
-  Layers,
-  Numbered,
-  Outcomes,
-  RangeBars,
-  SnapshotVsPeriod,
-} from "./kit";
+  BellIcon,
+  CalendarIcon,
+  ClockIcon,
+  DocumentIcon,
+  RefreshIcon,
+  ScaleIcon,
+  SearchIcon,
+  SendIcon,
+  WarningIcon,
+} from "./icons";
+import { Journey } from "./Journey";
+import { Lanes } from "./Lanes";
+import { LayersFlow } from "./LayersFlow";
+import { MoneyMoves } from "./MoneyMoves";
+import { PeriodsOfTime } from "./PeriodsOfTime";
+import { Ranges } from "./Ranges";
+import { stopTime } from "./shared";
+import { Ticker } from "./Ticker";
 
 export type Placement = {
   // Text of the h2 the diagram sits directly above.
@@ -25,6 +41,8 @@ export type Placement = {
   node: ReactNode;
 };
 
+const gap = { text: "Gap found", icon: WarningIcon } as const;
+
 export const diagrams: Record<string, Placement[]> = {
   "apra-cps-234-board-questions": [
     {
@@ -32,28 +50,58 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "The five gaps APRA found in the first round of independent CPS 234 assessments (July 2023).",
       node: (
-        <Numbered
-          items={[
+        <Journey
+          header={
+            <div
+              data-anim="rise"
+              style={at(0, 700)}
+              className="mb-9 flex flex-wrap items-baseline gap-x-5 gap-y-1"
+            >
+              <span className="font-serif text-headline font-semibold text-ink">
+                <CountUp to={300} suffix="+" delay={300} duration={1400} />
+              </span>
+              <span className="max-w-[34rem] text-copy">
+                banks, insurers and super trustees were due to be assessed by
+                the end of 2023. These five gaps came up in the first round.
+              </span>
+            </div>
+          }
+          stops={[
             {
+              icon: LayersIcon,
               title: "Assets not fully identified",
               detail: "Critical and sensitive assets were not all classified.",
+              tone: "caution",
+              badge: gap,
             },
             {
+              icon: UsersIcon,
               title: "Third parties barely checked",
               detail: "Limited checks on vendors' security capability.",
+              tone: "caution",
+              badge: gap,
             },
             {
+              icon: BeakerIcon,
               title: "Testing poorly run",
               detail: "Testing programs were poorly defined or poorly run.",
+              tone: "caution",
+              badge: gap,
             },
             {
+              icon: EyeIcon,
               title: "Little internal audit",
               detail: "Limited internal audit review of security controls.",
+              tone: "caution",
+              badge: gap,
             },
             {
+              icon: BellIcon,
               title: "Late reporting to APRA",
               detail:
                 "Material incidents and weaknesses reported late or inconsistently.",
+              tone: "caution",
+              badge: gap,
             },
           ]}
         />
@@ -62,31 +110,45 @@ export const diagrams: Record<string, Placement[]> = {
     {
       before: "The board's question list, with evidence",
       caption:
-        "One incident can start several clocks at once. Bar lengths show the order of the deadlines, not their exact size, and business days run longer than calendar hours.",
+        "One incident can start several clocks at once. Lane lengths show the order of the deadlines, not their exact size, and business days run longer than calendar hours.",
       node: (
-        <BarRows
+        <Lanes
+          startLabel="An incident happens"
+          clock={{
+            heading: "Time since the incident",
+            steps: [
+              { untilLane: 0, from: 0, to: 24, suffix: " hours", singular: " hour" },
+              { untilLane: 1, from: 24, to: 72, suffix: " hours" },
+            ],
+            after: [{ lane: 3, text: "10 business days" }],
+            rest: "10 business days",
+          }}
           rows={[
             {
-              label:
-                "CPS 230: a critical operation is disrupted beyond tolerance",
+              label: "CPS 230: a critical operation is disrupted beyond tolerance",
               chip: "24 hours",
-              pct: 12,
+              len: 22,
+              tone: "stop",
+              train: "ink",
             },
             {
               label: "CPS 234: a material information security incident",
               chip: "72 hours",
-              pct: 36,
+              len: 52,
+              tone: "caution",
             },
             {
               label: "CPS 230: an operational risk incident with material impact",
               chip: "72 hours",
-              pct: 36,
+              len: 52,
+              tone: "caution",
+              train: "ink",
             },
             {
               label:
                 "CPS 234: a material control weakness that can't be fixed in time",
               chip: "10 business days",
-              pct: 100,
+              len: 100,
             },
           ]}
           note="Not to scale. Privacy Act and ransomware payment reporting add further clocks."
@@ -101,35 +163,45 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Seven components, each one owning specific obligations. Write this map before choosing a loan management system.",
       node: (
-        <Numbered
-          items={[
+        <Journey
+          flow="column"
+          stops={[
             {
+              icon: ClipboardIcon,
               title: "Origination",
               detail: "Application, identity checks and documents.",
             },
             {
+              icon: ScaleIcon,
               title: "Decisioning",
               detail: "Rules and scorecards that approve, decline or refer.",
             },
             {
+              icon: SearchIcon,
               title: "Credit reporting",
               detail: "Enquiries and reports in, repayment history out.",
             },
             {
+              icon: RefreshIcon,
               title: "Servicing",
               detail: "Schedules, repayments, fees, variations, statements.",
             },
             {
+              icon: BellIcon,
               title: "Hardship and collections",
               detail: "Cases, arrangements, notices and clocks.",
             },
             {
+              icon: BankIcon,
               title: "Ledger and reconciliation",
               detail: "The record of who owes what.",
+              tone: "done",
             },
             {
+              icon: SendIcon,
               title: "Reporting",
               detail: "To regulators, funders, auditors and the board.",
+              tone: "done",
             },
           ]}
         />
@@ -140,8 +212,32 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "A hardship request has 21 days to be decided under the National Credit Code. Every channel should lead into the same case.",
       node: (
-        <StepFlow
-          steps={[
+        <Journey
+          header={
+            <p
+              data-anim="fade"
+              style={at(300, 600)}
+              className="mb-8 flex flex-wrap items-baseline gap-x-4"
+            >
+              <span className="text-label text-muted">Time left to decide</span>
+              <Ticker
+                phases={[
+                  {
+                    at: stopTime(2),
+                    dur: stopTime(3) - stopTime(2) - 150,
+                    from: 21,
+                    to: 3,
+                    suffix: " days left",
+                    singular: " day left",
+                  },
+                  { at: stopTime(4), dur: 0, from: 0, to: 0, text: "Decided within 21 days" },
+                ]}
+                rest="21 days to decide"
+                className="font-serif text-headline font-semibold text-ink"
+              />
+            </p>
+          }
+          stops={[
             {
               icon: ChatIcon,
               title: "Request arrives",
@@ -153,13 +249,13 @@ export const diagrams: Record<string, Placement[]> = {
               detail: "Created automatically with the date received.",
             },
             {
-              icon: EyeIcon,
+              icon: ClockIcon,
               title: "Clock runs",
               detail: "A visible countdown, with alerts before day 21.",
               tone: "caution",
             },
             {
-              icon: ReceiptIcon,
+              icon: DocumentIcon,
               title: "Notice sent",
               detail: "No case closes without a stored customer notice.",
             },
@@ -182,6 +278,7 @@ export const diagrams: Record<string, Placement[]> = {
         "The three CPS 230 ideas that turn into engineering work for a technology vendor.",
       node: (
         <Columns
+          link
           columns={[
             {
               title: "Critical operations",
@@ -218,7 +315,7 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Fourth parties and offshoring",
       caption: "When APRA must hear about a change or an incident under CPS 230.",
       node: (
-        <Outcomes
+        <Pairs
           rows={[
             {
               result: "Before it happens",
@@ -259,31 +356,27 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Most regulated firms buy the systems of record and build what surrounds them. This is one hypothetical mid-sized lender.",
       node: (
-        <Columns
-          columns={[
-            {
-              title: "Buy the core",
-              tone: "default",
-              subtitle: "Systems of record and specialist services",
-              items: [
-                "Loan management ledger",
-                "General ledger",
-                "Identity verification",
-                "Sanctions screening",
-              ],
-            },
-            {
-              title: "Build the edges",
-              tone: "done",
-              subtitle: "What customers and brokers touch",
-              items: [
-                "Broker and customer apps",
-                "Credit decisioning rules",
-                "The integration layer",
-                "Reporting",
-              ],
-            },
-          ]}
+        <CoreEdges
+          core={{
+            title: "Buy the core",
+            subtitle: "Systems of record and specialist services",
+            items: [
+              "Loan management ledger",
+              "General ledger",
+              "Identity verification",
+              "Sanctions screening",
+            ],
+          }}
+          edges={{
+            title: "Build the edges",
+            subtitle: "What customers and brokers touch",
+            items: [
+              "Broker and customer apps",
+              "Credit decisioning rules",
+              "The integration layer",
+              "Reporting",
+            ],
+          }}
         />
       ),
     },
@@ -292,31 +385,46 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Put both options on the same five-year view. A licence price and a build quote are not comparable on their own.",
       node: (
-        <Numbered
-          items={[
+        <Compare
+          leftTitle="Off the shelf"
+          rightTitle="Custom build"
+          leftIcon={LayersIcon}
+          rightIcon={CodeIcon}
+          rows={[
             {
-              title: "Upfront",
-              detail: "Licence and setup, or discovery, design and build.",
+              label: "Upfront",
+              left: "Licence or setup fees, implementation partner, configuration",
+              right: "Discovery, design, build, testing",
             },
             {
-              title: "Integration",
-              detail: "Connectors are often priced separately when you buy.",
+              label: "Integration",
+              left: "Connectors to your systems, often priced separately",
+              right: "Built as part of the product",
             },
             {
-              title: "Running",
-              detail: "Subscriptions that grow with volume, or hosting and support.",
+              label: "Running",
+              left: "Subscription, often tied to volume or accounts",
+              right: "Hosting, monitoring, on-call support",
             },
             {
-              title: "Change",
-              detail: "Waiting on the vendor's roadmap, or your own team's time.",
+              label: "Change",
+              left: "Vendor change requests, or waiting for their roadmap",
+              right: "Your own team's time",
             },
             {
-              title: "Compliance evidence",
-              detail: "Vendor reports plus your own controls, or all your own.",
+              label: "Compliance evidence",
+              left: "Vendor reports plus your own controls and testing",
+              right: "Your own controls, testing and audits",
             },
             {
-              title: "Upgrades and exit",
-              detail: "Forced upgrades and migration costs apply to both.",
+              label: "Upgrades",
+              left: "Forced upgrades, retesting your customisations",
+              right: "Framework and dependency upgrades",
+            },
+            {
+              label: "Exit",
+              left: "Data extraction, parallel running, migration",
+              right: "Handover and documentation, if the team changes",
             },
           ]}
         />
@@ -331,6 +439,8 @@ export const diagrams: Record<string, Placement[]> = {
         "The licence decides which rules apply to the stack, so settle it before the vendor list.",
       node: (
         <Columns
+          link
+          stairs
           columns={[
             {
               title: "Non-bank lender",
@@ -345,8 +455,13 @@ export const diagrams: Record<string, Placement[]> = {
               title: "Restricted ADI",
               tone: "caution",
               subtitle: "APRA licence, up to two years",
+              stat: {
+                prefix: "$",
+                to: 2,
+                suffix: " million",
+                caption: "Cap on total deposits",
+              },
               items: [
-                "Deposits capped at $2 million in total",
                 "CPS 230 applies",
                 "Must reach full ADI standards or exit",
               ],
@@ -370,6 +485,7 @@ export const diagrams: Record<string, Placement[]> = {
       caption: "The default build or buy call for most lenders.",
       node: (
         <Columns
+          sort
           columns={[
             {
               title: "Buy",
@@ -395,10 +511,7 @@ export const diagrams: Record<string, Placement[]> = {
               title: "It depends",
               tone: "caution",
               subtitle: "Check before signing",
-              items: [
-                "Credit decisioning engine",
-                "CDR data holder APIs",
-              ],
+              items: ["Credit decisioning engine", "CDR data holder APIs"],
             },
           ]}
         />
@@ -412,7 +525,7 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "The customer sees one app. Behind it, the account can sit on a partner's licence.",
       node: (
-        <Layers
+        <LayersFlow
           layers={[
             {
               title: "Your client's product",
@@ -437,6 +550,7 @@ export const diagrams: Record<string, Placement[]> = {
         "A common split of who owns what. The contract decides the details.",
       node: (
         <Columns
+          sort
           columns={[
             {
               title: "Usually the partner",
@@ -471,7 +585,8 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Each AUSTRAC obligation ends up as a feature, a data field or a log.",
       node: (
-        <Outcomes
+        <Pairs
+          gap={760}
           rows={[
             {
               result: "Initial CDD",
@@ -525,24 +640,27 @@ export const diagrams: Record<string, Placement[]> = {
     {
       before: "Records that last seven years",
       caption:
-        "AUSTRAC reporting deadlines. Bar lengths show the order, not an exact scale.",
+        "AUSTRAC reporting deadlines. Lane lengths show the order, not an exact scale.",
       node: (
-        <BarRows
+        <Lanes
+          startLabel="The clock starts"
           rows={[
             {
               label: "Suspicious matter report: terrorism financing",
               chip: "24 hours",
-              pct: 10,
+              len: 14,
+              tone: "stop",
             },
             {
               label: "Suspicious matter report: other suspicions",
               chip: "3 business days",
-              pct: 35,
+              len: 42,
+              tone: "caution",
             },
             {
               label: "Threshold and international funds transfer reports",
               chip: "10 business days",
-              pct: 100,
+              len: 100,
             },
           ]}
           note="The suspicious matter clock runs from the moment suspicion forms, so your case tool needs a distinct 'suspicion formed' field."
@@ -555,48 +673,14 @@ export const diagrams: Record<string, Placement[]> = {
     {
       before: "Confirmation of Payee in a payout flow",
       caption: "Three ways to move money account to account in Australia.",
-      node: (
-        <Columns
-          columns={[
-            {
-              title: "NPP credit transfer",
-              subtitle: "Pushes money out, in real time",
-              items: [
-                "Good for individual payouts",
-                "Watch per-payment cost",
-                "Some accounts are unreachable",
-              ],
-            },
-            {
-              title: "PayTo",
-              tone: "done",
-              subtitle: "Pulls money in, under an agreement",
-              items: [
-                "Good for funding the platform",
-                "Single transfers only",
-                "Bank support is uneven",
-              ],
-            },
-            {
-              title: "BECS direct entry",
-              tone: "caution",
-              subtitle: "Batched, not real time",
-              items: [
-                "Good for bulk runs and as a fallback",
-                "Rejections come back late",
-                "Limited data fields",
-              ],
-            },
-          ]}
-        />
-      ),
+      node: <MoneyMoves />,
     },
     {
       before: "Scam rules: who they bind and how they reach you",
       caption:
         "Five things a payout ledger for Australian A2A should have from the first release.",
       node: (
-        <Numbered
+        <Checklist
           items={[
             {
               title: "An idempotency key",
@@ -630,6 +714,8 @@ export const diagrams: Record<string, Placement[]> = {
       caption: "Three kinds of security testing, and the question each one answers.",
       node: (
         <Columns
+          link
+          stairs
           columns={[
             {
               title: "Vulnerability assessment",
@@ -669,7 +755,7 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Our view: planning ranges in AUD ex GST, based on a senior tester day rate of $1,500 to $2,500. A red team exercise costs well above all of these.",
       node: (
-        <RangeBars
+        <Ranges
           rows={[
             {
               label: "Vulnerability assessment",
@@ -721,14 +807,14 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Why SOC 2 compliance matters to APRA-regulated clients",
       caption:
         "A Type 1 report is a single date. A Type 2 report covers a stretch of time, which is why buyers should ask for it.",
-      node: <SnapshotVsPeriod />,
+      node: <PeriodsOfTime />,
     },
     {
       before: "Questions to ask a vendor",
       caption:
         "Our view: first-year planning ranges in AUD ex GST for a vendor of 20 to 100 staff. The largest cost, internal engineering time, isn't shown.",
       node: (
-        <RangeBars
+        <Ranges
           rows={[
             {
               label: "Readiness assessment",
@@ -823,31 +909,39 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Evidence beyond the certificate",
       caption: "Six checks to work through before trusting an ISO 27001 logo.",
       node: (
-        <Numbered
-          items={[
+        <Journey
+          flow="column"
+          stops={[
             {
+              icon: DocumentIcon,
               title: "Get the certificate",
               detail: "Note the number, certification body, version and expiry.",
             },
             {
+              icon: SearchIcon,
               title: "Look it up",
               detail: "On IAF CertSearch or the JAS-ANZ register.",
             },
             {
+              icon: CalendarIcon,
               title: "Check the version",
               detail: "ISO/IEC 27001:2022. A 2013 certificate is out of date.",
             },
             {
+              icon: EyeIcon,
               title: "Read the scope",
               detail: "It should name the entity and services delivering your work.",
             },
             {
+              icon: ClipboardIcon,
               title: "Read the Statement of Applicability",
               detail: "Look for secure development, suppliers, access and logging.",
             },
             {
+              icon: ChatIcon,
               title: "Ask about the last audit",
               detail: "Any major nonconformities in the latest surveillance audit?",
+              tone: "done",
             },
           ]}
         />

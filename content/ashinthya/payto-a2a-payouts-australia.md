@@ -23,14 +23,6 @@ Those were bank customers typing in a BSB and account number. A platform that pa
 
 This article is for advisors and product owners scoping that build. It covers the rails, where PayTo and Confirmation of Payee fit, the failure modes and the scam rules now landing on banks.
 
-> **The short version**
->
-> - A2A payouts run as push payments over the NPP. PayTo is a pull mechanism, so in a payout product it suits the funding leg, not the payout itself.
-> - Confirmation of Payee returns match, close match, no match and a few error states. It never blocks a payment, so your platform has to decide what each result means.
-> - PayTo is still small: the RBA says the total value of PayTo agreements was 0.1 per cent of BECS direct debits in 2025.
-> - BECS no longer has a closure date. AusPayNet removed the June 2030 target in December 2025, so plan for two rails.
-> - The Scams Prevention Framework binds banks directly, with most obligations from 31 March 2027. For now, non-bank platforms feel it through their sponsor bank.
-
 ## Two rails, and where PayTo actually sits
 
 Australia runs A2A payments over two systems: BECS, the older batch system behind direct entry files and direct debits, and the NPP, which settles individual payments in real time. In 2024 the NPP carried 1.6 billion transactions worth $1.99 trillion, and it was processing more than 30 per cent of Australia's A2A payments ([AP+](https://www.auspayplus.com.au/move-to-npp), April 2025).

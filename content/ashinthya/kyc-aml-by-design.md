@@ -23,14 +23,6 @@ That one line changes how KYC verification has to be built. A product that check
 
 If you advise a lender, remitter or digital asset platform, ask whether AML/CTF compliance is designed into the flows, the data model and the audit trail.
 
-> **The short version**
->
-> - The AML/CTF Amendment Act 2024 changed obligations for current reporting entities from 31 March 2026. New sectors joined on 1 July 2026.
-> - Ongoing CDD applies to all customers now. Old-style identification (ACIP) can continue for some customer classes until 31 March 2029.
-> - Suspicious matter reports are due within 3 business days, or 24 hours for terrorism financing. Your case tool should be able to show when a matter was first identified and when suspicion formed.
-> - Records are generally kept for 7 years, in their original format. AUSTRAC lists logs, databases and software code as possible records.
-> - Private sector access to the Australian Government Digital ID System is due by December 2026. Design onboarding so a new identity source can slot in.
-
 ## What changed in 2026
 
 AUSTRAC says the new laws "simplify and modernise the AML/CTF regime" ([AUSTRAC, about the reforms](https://www.austrac.gov.au/industry-and-business/about-amlctf-reforms/about-reforms)). For current reporting entities, the changes "started 31 March 2026 unless deferred under the transitional rules". Newly regulated businesses, including lawyers, accountants and real estate professionals, are regulated from 1 July 2026.
