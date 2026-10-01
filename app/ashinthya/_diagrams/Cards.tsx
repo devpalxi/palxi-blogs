@@ -1,168 +1,43 @@
-import type { CSSProperties, ReactNode } from "react";
-import { ArrowRightIcon, CheckIcon } from "../../dineth/_components/icons";
-import { CountUp } from "../../dineth/_components/CountUp";
+import type { ReactNode } from "react";
+import { CheckIcon } from "../../dineth/_components/icons";
 import { at } from "../../dineth/_components/diagram-kit";
-import { chipTone, linear, type DiagramIcon, type Tone } from "./shared";
+import { WarningIcon } from "./icons";
+import type { DiagramIcon } from "./shared";
 
-export type Column = {
-  title: string;
-  subtitle?: string;
-  tone?: Tone;
-  icon?: DiagramIcon;
-  items: string[];
-  /** A big number that counts up in the card, e.g. a cap or a limit. */
-  stat?: {
-    to: number;
-    prefix?: string;
-    suffix?: string;
-    caption: string;
-    group?: boolean;
-  };
-};
-
-const COL_LEAD = 700; // ms from a card appearing to its first item
-const ITEM_GAP = 430;
-
-// When each card starts, one after another.
-function columnStarts(columns: Column[]) {
-  const starts: number[] = [];
-  let t = 300;
-  for (const c of columns) {
-    starts.push(t);
-    t += COL_LEAD + c.items.length * ITEM_GAP + 250;
-  }
-  return starts;
-}
-
-/**
- * Cards that appear one after another. Within a card a highlight reads down
- * the list, ticking each line as it goes. `link` joins the cards with arrows,
- * `stairs` steps them upwards, and `sort` drops the items in as chips.
- */
-export function Columns({
-  columns,
-  link = false,
-  stairs = false,
-  sort = false,
-}: {
-  columns: Column[];
-  link?: boolean;
-  stairs?: boolean;
-  sort?: boolean;
-}) {
-  const starts = columnStarts(columns);
-  const cols =
-    columns.length === 2
-      ? "md:grid-cols-2"
-      : columns.length === 3
-        ? "md:grid-cols-3"
-        : "md:grid-cols-4";
+/** One line of a list, read by a highlight and ticked off. */
+export function Fact({ text, time }: { text: string; time: number }) {
   return (
-    <ul className={`grid gap-4 ${cols} ${stairs ? "md:items-end" : ""}`}>
-      {columns.map((c, i) => {
-        const t = starts[i];
-        const Icon = c.icon;
-        return (
-          <li
-            key={c.title}
-            data-anim="rise"
-            style={{ ...at(t, 700), "--i": i } as CSSProperties}
-            className={`relative rounded-md bg-surface p-5 shadow-device ${
-              stairs ? "md:mb-[calc(var(--i)*2.25rem)]" : ""
-            }`}
-          >
-            {link && i < columns.length - 1 && (
-              <span
-                aria-hidden="true"
-                data-anim="pop"
-                style={at(starts[i + 1] - 250)}
-                className="absolute top-9 -right-6 z-10 hidden size-8 items-center justify-center rounded-full bg-harbour text-surface md:flex"
-              >
-                <ArrowRightIcon size={18} />
-              </span>
-            )}
-            <span
-              data-anim="pop"
-              style={at(t + 200)}
-              className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-label font-semibold ${chipTone[c.tone ?? "default"]}`}
-            >
-              {Icon && <Icon size={18} />}
-              {c.title}
-            </span>
-            {c.subtitle && (
-              <p
-                data-anim="fade"
-                style={at(t + 350)}
-                className="mt-3 text-label font-semibold text-ink"
-              >
-                {c.subtitle}
-              </p>
-            )}
-            {c.stat && (
-              <p data-anim="pop" style={at(t + 450)} className="mt-3">
-                <span className="font-serif text-headline font-semibold text-ink">
-                  {c.stat.prefix}
-                  <CountUp
-                    to={c.stat.to}
-                    suffix={c.stat.suffix}
-                    group={c.stat.group}
-                    delay={t + 500}
-                    duration={1100}
-                  />
-                </span>
-                <span className="mt-0.5 block text-label text-muted">
-                  {c.stat.caption}
-                </span>
-              </p>
-            )}
-            <ul
-              className={`mt-4 text-label text-copy ${sort ? "flex flex-wrap gap-2" : "space-y-2"}`}
-            >
-              {c.items.map((item, j) => {
-                const ti = t + COL_LEAD + j * ITEM_GAP;
-                return sort ? (
-                  <li
-                    key={item}
-                    data-anim="drop"
-                    style={at(ti)}
-                    className={`rounded-md px-3 py-2 font-medium ${chipTone[c.tone ?? "default"]}`}
-                  >
-                    {item}
-                  </li>
-                ) : (
-                  <li key={item} className="relative flex gap-2.5">
-                    <span
-                      aria-hidden="true"
-                      data-anim="flash"
-                      style={at(ti, 1100)}
-                      className="absolute -inset-x-2 -inset-y-1 rounded-md bg-harbour-tint ring-1 ring-harbour/30"
-                    />
-                    <span className="relative mt-0.5 size-5 shrink-0">
-                      <span className="absolute inset-[6px] rounded-full bg-hairline-strong" />
-                      <span
-                        aria-hidden="true"
-                        data-anim="pop"
-                        style={at(ti + 150)}
-                        className="absolute inset-0 flex items-center justify-center rounded-full bg-harbour text-surface"
-                      >
-                        <CheckIcon size={14} />
-                      </span>
-                    </span>
-                    <span data-anim="focus" style={at(ti)} className="relative">
-                      {item}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        );
-      })}
-    </ul>
+    <li className="relative flex gap-2.5">
+      <span
+        aria-hidden="true"
+        data-anim="flash"
+        style={at(time, 1100)}
+        className="absolute -inset-x-2 -inset-y-1 rounded-md bg-harbour-tint ring-1 ring-harbour/30"
+      />
+      <span className="relative mt-0.5 size-5 shrink-0">
+        <span className="absolute inset-[6px] rounded-full bg-hairline-strong" />
+        <span
+          aria-hidden="true"
+          data-anim="pop"
+          style={at(time + 150)}
+          className="absolute inset-0 flex items-center justify-center rounded-full bg-harbour text-surface"
+        >
+          <CheckIcon size={14} />
+        </span>
+      </span>
+      <span data-anim="focus" style={at(time)} className="relative">
+        {text}
+      </span>
+    </li>
   );
 }
 
-export type CompareRow = { label: string; left: string; right: string };
+export type CompareRow = {
+  label: string;
+  left: string;
+  right: string;
+  icon?: DiagramIcon;
+};
 
 /**
  * Two options judged line by line. A row's label drops in, then each side
@@ -220,8 +95,13 @@ export function Compare({
               <p
                 data-anim="drop"
                 style={at(t)}
-                className="relative flex items-center font-serif text-[1.1875rem] font-semibold text-ink"
+                className="relative flex items-center gap-3 font-serif text-[1.1875rem] font-semibold text-ink"
               >
+                {r.icon && (
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-harbour-tint text-harbour">
+                    <r.icon size={18} />
+                  </span>
+                )}
                 {r.label}
               </p>
               <p
@@ -249,69 +129,6 @@ export function Compare({
         })}
       </ul>
     </div>
-  );
-}
-
-/**
- * Each result on the left leads, along a line with a small marker running
- * down it, to the action on the right.
- */
-export function Pairs({
-  rows,
-  gap = 820,
-}: {
-  rows: { result: string; tone: Tone; action: string }[];
-  gap?: number;
-}) {
-  return (
-    <ul className="space-y-3">
-      {rows.map((row, i) => {
-        const t = 300 + i * gap;
-        const run = at(t + 250, 520, linear);
-        return (
-          <li
-            key={row.result}
-            className="grid items-center gap-2 md:grid-cols-[13rem_3.5rem_minmax(0,1fr)] md:gap-0"
-          >
-            <span
-              data-anim="pop"
-              style={at(t)}
-              className={`inline-block w-fit rounded-full px-3 py-1.5 text-label font-semibold ${chipTone[row.tone]}`}
-            >
-              {row.result}
-            </span>
-            <span aria-hidden="true" className="relative hidden h-[3px] md:block">
-              <span className="absolute inset-0 rounded-full bg-hairline-strong" />
-              <span
-                data-anim="grow-x"
-                style={run}
-                className="absolute inset-0 rounded-full bg-harbour"
-              />
-              <span
-                data-anim="ride-x"
-                style={run}
-                className="absolute top-1/2 left-0 z-10 size-3.5 -translate-1/2 rounded-full bg-ink ring-[3px] ring-surface"
-              />
-            </span>
-            <span className="relative">
-              <span
-                aria-hidden="true"
-                data-anim="flash"
-                style={at(t + 750, 1100)}
-                className="absolute -inset-1 rounded-lg bg-harbour-tint ring-2 ring-harbour/25"
-              />
-              <span
-                data-anim="slide-r"
-                style={at(t + 700)}
-                className="relative block rounded-md bg-surface px-4 py-3 text-copy shadow-device"
-              >
-                {row.action}
-              </span>
-            </span>
-          </li>
-        );
-      })}
-    </ul>
   );
 }
 
@@ -393,11 +210,14 @@ export function Checklist({
               )}
               {item.worry && (
                 <p
-                  data-anim="fade"
-                  style={at(t + 650)}
-                  className="mt-1 text-label text-copy"
+                  data-anim="stamp"
+                  style={at(t + 750)}
+                  className="mt-2 flex -rotate-[4deg] gap-2 rounded-md border-l-4 border-stop bg-stop-tint px-3 py-2 text-label text-copy"
                 >
-                  <strong className="text-stop">Worry if:</strong> {item.worry}
+                  <WarningIcon size={18} className="mt-0.5 shrink-0 text-stop" />
+                  <span>
+                    <strong className="text-stop">Worry if:</strong> {item.worry}
+                  </span>
                 </p>
               )}
             </div>

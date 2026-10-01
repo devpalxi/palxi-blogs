@@ -133,3 +133,43 @@ export const BuildingIcon = (p: IconProps) => (
     <path d="M8 8h3M8 12h3M8 16h3" />
   </Icon>
 );
+
+export const MailIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+    <path d="M4 7.5l8 6 8-6" />
+  </Icon>
+);
+
+export const CameraIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M4 8.5h3l1.5-2.5h7L17 8.5h3v10H4z" />
+    <circle cx="12" cy="13" r="3.2" />
+  </Icon>
+);
+
+export const FilmIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="4" y="4.5" width="16" height="15" rx="2" />
+    <path d="M8 4.5v15M16 4.5v15M4 9h4M4 15h4M16 9h4M16 15h4" />
+  </Icon>
+);
+
+export const HeartbeatIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3 12h4l2-5 4 10 2-5h6" />
+  </Icon>
+);
+
+export const StampIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M9 14h6l1.5 4h-9zM12 14V9.5M9.5 9.5a2.5 2.5 0 115 0" />
+    <path d="M6 21h12" />
+  </Icon>
+);
+
+export const DoorIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M6 20.5V4h9v16.5M3 20.5h18M12 12v.1" />
+  </Icon>
+);
