@@ -14,6 +14,7 @@ import { at } from "../../dineth/_components/diagram-kit";
 import { CountUp } from "../../dineth/_components/CountUp";
 import { Checklist, Columns, Compare, Pairs } from "./Cards";
 import { CoreEdges } from "./CoreEdges";
+import { BackupWall, CoverageMap, SecondCheck } from "./Cps234";
 import {
   BellIcon,
   CalendarIcon,
@@ -45,6 +46,33 @@ const gap = { text: "Gap found", icon: WarningIcon } as const;
 
 export const diagrams: Record<string, Placement[]> = {
   "apra-cps-234-board-questions": [
+    {
+      before: "What APRA found in board reporting",
+      caption:
+        "Where CPS 234 lands. The board answers for it, the entity carries it out, and vendors feel it through the entity's contracts.",
+      node: (
+        <LayersFlow
+          layers={[
+            {
+              title: "The board",
+              detail:
+                "Ultimately responsible for the information security of the entity.",
+            },
+            {
+              title: "The regulated entity",
+              detail:
+                "Keeps security in line with the threats. Classifies its information assets, including those held by third parties.",
+            },
+            {
+              title: "The technology vendor",
+              detail:
+                "Not bound by the standard directly. Reached through contract terms, questionnaires and audits.",
+            },
+          ]}
+          footer="The standard binds the entity, which then has duties about its vendors."
+        />
+      ),
+    },
     {
       before: "Questions about assets and third parties",
       caption:
@@ -106,6 +134,24 @@ export const diagrams: Record<string, Placement[]> = {
           ]}
         />
       ),
+    },
+    {
+      before: "Backups the board has seen restored",
+      caption:
+        "An illustration: the same amount of testing each year, spread two ways. A board report should look like the second picture.",
+      node: <CoverageMap />,
+    },
+    {
+      before: "Who holds the keys",
+      caption:
+        "APRA lists insufficient segregation between production and backup environments as a common problem. This is the second backup question, in pictures.",
+      node: <BackupWall />,
+    },
+    {
+      before: "Incidents and the notification clocks",
+      caption:
+        "APRA's June 2025 letter expects MFA or equivalent controls for high-risk activities. For super trustees, that means actions like these.",
+      node: <SecondCheck />,
     },
     {
       before: "The board's question list, with evidence",
