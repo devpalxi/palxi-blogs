@@ -6,6 +6,20 @@ Editorial plan for Palxi blog posts. Each entry lists the angle, what to cover, 
 
 **Status:** Live at `/dineth/designing-for-trust` (`app/dineth/designing-for-trust/page.tsx`), published 28 September 2026. Written as a company-wide piece structured around four moments of trust (before, while, if something goes wrong, after you pay); the harbr/Stripe/Zepto specifics below were deliberately generalised. Uses the template for later posts: header with hero photo, prose sections, `Diagram` frames with generic wireframes, "In plain words" notes, takeaways, sources.
 
+**Revised 1 October 2026 (diagrams and photos):** All five diagrams rebuilt so the motion explains the idea instead of just revealing it:
+- One payment travels a single route, and "if something goes wrong" is a detour that rejoins it.
+- A reading highlight moves down the confirmation screen, then ties the total to the Pay button.
+- The card and PayTo routes run side by side and meet at one receipt that prints out, with the card number scrambling to show encryption.
+- Each worry left by "Error 402" is answered by a matching part of the clear message.
+- The receipt feeds out of a printer slot.
+
+New shared pieces:
+- `at()` timing and `Device` phone frame in `diagram-kit.tsx`
+- `Scramble.tsx`
+- `travel`, `focus`, `sweep`, `flash`, `ripple` and `print` animations, plus `.receipt-edge` and `.paper-shadow`, in `globals.css`
+
+Two Shixart1985 CC BY 2.0 photos were added: a card held over a laptop (in "While you pay") and a woman smiling at her laptop (after "One standard"). The other four posts still use the older diagram style.
+
 **Angle:** Money products need to feel safe as well as work correctly. This post explains how design decisions build user confidence.
 
 **What to cover:**

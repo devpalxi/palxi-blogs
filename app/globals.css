@@ -256,6 +256,17 @@
     padding: 0.1em 0.35em;
   }
 
+  /* Torn-paper bottom edge for receipts. The shadow sits on a parent,
+     because a mask would cut a box-shadow off. */
+  .receipt-edge {
+    mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      50% / 16px 100%;
+  }
+  .paper-shadow {
+    filter: drop-shadow(0 1px 2px rgb(18 32 38 / 0.08))
+      drop-shadow(0 4px 8px rgb(18 32 38 / 0.07));
+  }
+
   /*
    * Diagram motion. Content is fully visible by default; the client
    * component arms a diagram (hides animated parts) only when motion is
@@ -280,7 +291,7 @@
   }
   .diagram[data-state="play"] [data-anim="draw"] {
     animation-name: d-draw;
-    animation-duration: 700ms;
+    animation-duration: var(--dur, 700ms);
   }
   .diagram[data-state="armed"] [data-anim="grow-up"] {
     opacity: 1;
@@ -302,9 +313,67 @@
     transform: scaleY(0);
   }
   .diagram[data-state="play"] [data-anim] {
-    animation-delay: calc(var(--step, 0) * 450ms + 150ms);
+    /* --at (ms timeline) wins over --step (450ms beats) when a diagram
+       needs parts synced to a moving marker. */
+    animation-delay: var(--at, calc(var(--step, 0) * 450ms + 150ms));
     animation-fill-mode: both;
-    animation-timing-function: var(--ease-out-expo);
+    animation-timing-function: var(--ease, var(--ease-out-expo));
+  }
+
+  /* SVG parts scale about their own centre; travellers use the viewBox. */
+  .diagram svg [data-anim]:not([data-anim="travel"]) {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* A marker that moves along `offset-path` (set inline). Rests at the end. */
+  .diagram [data-anim="travel"] {
+    offset-distance: 100%;
+    offset-rotate: 0deg;
+  }
+  .diagram[data-state="play"] [data-anim="travel"] {
+    animation-name: d-travel;
+    animation-duration: var(--dur, 4000ms);
+  }
+
+  /* Dimmed until its moment, then brought into focus. */
+  .diagram[data-state="armed"] [data-anim="focus"] {
+    opacity: 0.32;
+  }
+  .diagram[data-state="play"] [data-anim="focus"] {
+    animation-name: d-focus;
+    animation-duration: 600ms;
+  }
+
+  /* Transient highlights: invisible at rest, they only exist mid-play. */
+  .diagram [data-anim="sweep"],
+  .diagram [data-anim="flash"],
+  .diagram [data-anim="ripple"] {
+    opacity: 0;
+  }
+  .diagram[data-state="play"] [data-anim="sweep"] {
+    animation-name: d-sweep;
+    animation-duration: var(--dur, 4000ms);
+  }
+  .diagram[data-state="play"] [data-anim="flash"] {
+    animation-name: d-flash;
+    animation-duration: var(--dur, 1400ms);
+  }
+  .diagram[data-state="play"] [data-anim="ripple"] {
+    animation-name: d-ripple;
+    animation-duration: 900ms;
+    animation-timing-function: var(--ease-out-quart);
+  }
+
+  /* Paper feeding out of a slot; the slot's parent clips it. */
+  .diagram[data-state="armed"] [data-anim="print"] {
+    opacity: 1;
+    transform: translateY(-101%);
+  }
+  .diagram[data-state="play"] [data-anim="print"] {
+    animation-name: d-print;
+    animation-duration: var(--dur, 1600ms);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.15, 1);
   }
   .diagram[data-state="play"] [data-anim="fade"] {
     animation-name: d-fade;
@@ -351,6 +420,39 @@
     from { transform: scaleY(0); }
     to { transform: scaleY(1); }
   }
+  @keyframes d-travel {
+    0% { offset-distance: 0%; opacity: 0; }
+    3% { opacity: 1; }
+    99% { offset-distance: 100%; opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+  @keyframes d-focus {
+    from { opacity: 0.32; }
+    to { opacity: 1; }
+  }
+  @keyframes d-flash {
+    0% { opacity: 0; }
+    18% { opacity: 1; }
+    72% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes d-ripple {
+    from { opacity: 0.7; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.9); }
+  }
+  @keyframes d-print {
+    from { transform: translateY(-101%); }
+    to { transform: translateY(0); }
+  }
+  /* Reading highlight: rests on each of --rows rows of --row height. */
+  @keyframes d-sweep {
+    0% { opacity: 0; transform: translateY(0); }
+    4%, 20% { opacity: 1; transform: translateY(0); }
+    26%, 42% { opacity: 1; transform: translateY(calc(var(--row) * 1)); }
+    48%, 64% { opacity: 1; transform: translateY(calc(var(--row) * 2)); }
+    70%, 90% { opacity: 1; transform: translateY(calc(var(--row) * 3)); }
+    100% { opacity: 0; transform: translateY(calc(var(--row) * 3)); }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -370,5 +472,10 @@
     transform: none !important;
     animation: none !important;
     stroke-dashoffset: 0 !important;
+  }
+  .diagram [data-anim="sweep"],
+  .diagram [data-anim="flash"],
+  .diagram [data-anim="ripple"] {
+    opacity: 0 !important;
   }
 }

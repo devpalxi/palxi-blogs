@@ -1,23 +1,62 @@
-import type { ComponentType, CSSProperties, SVGProps } from "react";
+import type { ComponentType, CSSProperties, ReactNode, SVGProps } from "react";
 
 export function step(n: number): CSSProperties {
   return { "--step": n } as CSSProperties;
+}
+
+// Exact timing in ms, for parts that must land in sync with a moving marker.
+export function at(ms: number, dur?: number, extra?: CSSProperties): CSSProperties {
+  return {
+    "--at": `${ms}ms`,
+    ...(dur ? { "--dur": `${dur}ms` } : {}),
+    ...extra,
+  } as CSSProperties;
+}
+
+// A generic phone: dark bezel around a white screen, with a camera pill.
+export function Device({
+  children,
+  className = "",
+  screenClassName = "",
+}: {
+  children: ReactNode;
+  className?: string;
+  screenClassName?: string;
+}) {
+  return (
+    <div
+      className={`rounded-[38px] bg-ink p-[9px] shadow-device ring-1 ring-ink/10 ${className}`}
+    >
+      <div
+        className={`relative overflow-hidden rounded-[30px] bg-surface px-5 pt-11 pb-6 text-label ${screenClassName}`}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute top-3 left-1/2 h-[22px] w-[84px] -translate-x-1/2 rounded-full bg-ink"
+        />
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export function Pin({
   n,
   className = "",
   static: isStatic = false,
+  at: atMs,
 }: {
   n: number;
   className?: string;
   static?: boolean;
+  /** Pop at an exact time (ms) instead of on beat n. */
+  at?: number;
 }) {
   return (
     <span
       aria-hidden={isStatic ? undefined : true}
       data-anim={isStatic ? undefined : "pop"}
-      style={isStatic ? undefined : step(n)}
+      style={isStatic ? undefined : atMs != null ? at(atMs) : step(n)}
       className={`flex size-8 shrink-0 items-center justify-center rounded-full bg-harbour text-label font-bold text-surface ${className}`}
     >
       {n}

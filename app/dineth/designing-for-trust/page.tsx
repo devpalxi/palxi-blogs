@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import cardPhoto from "@/public/images/blog/designing-for-trust/paying-by-card-at-laptop.jpg";
 import heroPhoto from "@/public/images/blog/designing-for-trust/reading-phone-by-window.jpg";
+import surePhoto from "@/public/images/blog/designing-for-trust/smiling-at-laptop.jpg";
 import {
   Photo,
   PlainWords,
@@ -98,7 +100,7 @@ export default function DesigningForTrust() {
             </p>
           </Prose>
 
-          <Diagram caption="The four moments of trust. Every Palxi product is designed to get each one right.">
+          <Diagram caption="The four moments of trust. If something goes wrong, it&apos;s a detour with a clear way back, not a dead end. Every Palxi product is designed to get each moment right.">
             <TrustJourney />
           </Diagram>
 
@@ -152,7 +154,24 @@ export default function DesigningForTrust() {
               make both feel equally simple, with the same layout, the same
               plain words and the same kind of receipt at the end.
             </p>
+          </Prose>
 
+          <Photo
+            src={cardPhoto}
+            alt="Seen from above, two people sit with a laptop. One holds a bank card in one hand and types with the other."
+            sizes="(min-width: 1064px) 1000px, 100vw"
+            className="mx-auto my-14 w-full max-w-[1000px]"
+            frameClassName="aspect-[3/2] sm:aspect-[16/9]"
+            credit={{
+              author: "Shixart1985",
+              licence: "CC BY 2.0",
+              licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Senior_couple_at_home_checking_finance_on_credit_card_from_above.jpg",
+            }}
+          />
+
+          <Prose>
             <h3>Paying by card</h3>
             <p>
               Card details are handled by specialist payment providers, whose
@@ -183,7 +202,7 @@ export default function DesigningForTrust() {
             </PlainWords>
           </Prose>
 
-          <Diagram caption="Two different journeys, one simple experience. Either way, the payment is confirmed and you get a receipt straight away.">
+          <Diagram caption="Two different journeys, one simple experience. Either way, you get the same kind of receipt straight away.">
             <TwoWaysToPay />
           </Diagram>
 
@@ -223,7 +242,7 @@ export default function DesigningForTrust() {
             </p>
           </Prose>
 
-          <Diagram caption="The same problem, two different messages. The one on the right answers the questions people actually have.">
+          <Diagram caption="The same problem, two different messages. The one on the right answers each question people actually have.">
             <ErrorComparison />
           </Diagram>
 
@@ -275,6 +294,21 @@ export default function DesigningForTrust() {
               feel sure, we know we&apos;ve got it right.
             </p>
           </Prose>
+
+          <Photo
+            src={surePhoto}
+            alt="A woman sitting with a laptop on her lap puts on her glasses and smiles at the screen."
+            sizes="(min-width: 768px) 704px, 100vw"
+            className="mx-auto mt-12 w-full max-w-[44rem]"
+            frameClassName="aspect-[3/2]"
+            credit={{
+              author: "Shixart1985",
+              licence: "CC BY 2.0",
+              licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Elderly_woman_with_curly_blonde_hair_putting_her_glasses_on_and_smiling_while_looking_at_the_laptop_screen.jpg",
+            }}
+          />
 
           <Takeaways
             title="Four things to look for before you pay, in any app"
