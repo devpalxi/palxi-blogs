@@ -47,8 +47,8 @@ export default function ShippingSafely() {
               How we ship safely: feature branching explained
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
-              Every software update carries a small risk. Here is how we build
-              new features on a safe copy, check them several times over and
+              Every software update carries a small risk. We build new
+              features on a safe copy, check them several times over and
               switch them on gradually, so the service you rely on keeps
               working.
             </p>
@@ -92,16 +92,14 @@ export default function ShippingSafely() {
               couldn&apos;t take EFTPOS.
             </p>
             <p>
-              Neither company set out to cause harm. Both outages began with an
-              update meant to make things better. That&apos;s the
-              uncomfortable truth about software: every change carries a small
-              risk, and no company is immune. What matters is how carefully
-              changes are made.
+              Both outages began with an update meant to make things better.
+              Every software change carries a small risk, and no company is
+              immune, so what matters is how carefully changes are made.
             </p>
             <p>
-              Our products look after people&apos;s money, so we are especially
-              careful. This post explains how, using a picture most Australians
-              know well: the railway.
+              Our products look after people&apos;s money, so we are
+              especially careful. The easiest way to explain how is with a
+              picture most Australians know well: the railway.
             </p>
 
             <h2>A branch line for every new feature</h2>
@@ -278,31 +276,10 @@ export default function ShippingSafely() {
               doesn&apos;t get paid or a business that can&apos;t take money.
               That&apos;s why we hold every change to the same careful process.
             </p>
-            <ul>
-              <li>
-                <strong>Stability.</strong> The service you rely on keeps
-                working while it improves, because new work never happens on
-                the main line.
-              </li>
-              <li>
-                <strong>A clear record.</strong> Every change can be traced:
-                what changed, who made it, who checked it, and when. If a
-                question ever comes up, we can show exactly what happened.
-              </li>
-              <li>
-                <strong>No downtime.</strong> Updates happen without closing the
-                service, so you can pay or get paid at any hour.
-              </li>
-              <li>
-                <strong>A safety net.</strong> Problems are caught early by a
-                small group, and changes can be switched off or rolled back
-                quickly.
-              </li>
-            </ul>
             <p>
-              None of this makes software perfect. What it does is make every
-              change small, checked and reversible, which is exactly what
-              you&apos;d want from anyone looking after your money.
+              No process makes software perfect, but this one keeps every
+              change small, checked and reversible, which is what you&apos;d
+              want from anyone looking after your money.
             </p>
           </Prose>
 

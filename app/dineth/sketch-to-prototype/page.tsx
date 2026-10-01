@@ -49,7 +49,7 @@ export default function SketchToPrototype() {
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
               Before we write a single line of code, we sketch ideas, build a
               pretend version you can tap through, and watch real people try
-              it. Here is how an idea becomes a feature, and why testing first
+              it. That is how an idea becomes a feature, and why testing first
               leads to better products.
             </p>
             <p className="mt-6 text-label text-muted">
@@ -92,7 +92,6 @@ export default function SketchToPrototype() {
               means the features you use have already been tried by people
               like you.
             </p>
-            <p>Here is what that looks like, step by step.</p>
           </Prose>
 
           <Diagram caption="Our five steps from idea to finished feature. If the design isn’t easy to use yet, the middle steps go round again.">
@@ -170,8 +169,7 @@ export default function SketchToPrototype() {
             </PlainWords>
             <p>
               Behind the scenes, nothing is actually connected: no real
-              payments and no real information. That&apos;s the point. A
-              prototype is a safe place for people to explore, make mistakes
+              payments and no real information. A prototype is a safe place for people to explore, make mistakes
               and change their minds.
             </p>
             <p>
@@ -228,8 +226,8 @@ export default function SketchToPrototype() {
 
           <Prose>
             <p>
-              You might expect this to need hundreds of people. It doesn&apos;t.
-              Nielsen&apos;s research found that testing with just five people
+              Testing doesn&apos;t need hundreds of people. Nielsen&apos;s
+              research found that testing with just five people
               uncovers most of the problems in a design, and that several small
               rounds of testing teach you more than one big one.
             </p>
@@ -262,15 +260,10 @@ export default function SketchToPrototype() {
             <h2>Why this matters to you</h2>
             <p>
               Testing with people first means problems are found in a quiet
-              room with a prototype, not by you in the middle of paying a bill.
-              It means the words on the screen have already been read by people
-              who aren&apos;t technical. And it means our developers spend
-              their time building the right thing, once.
-            </p>
-            <p>
-              It&apos;s a little more work at the start. We think it&apos;s the
-              most respectful way to build software that people rely on for
-              their money.
+              room with a prototype, not by you in the middle of paying a
+              bill. The words on the screen have already been read by people
+              who aren&apos;t technical, and our developers spend their time
+              building the right thing, once.
             </p>
           </Prose>
 

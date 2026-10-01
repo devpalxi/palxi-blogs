@@ -47,9 +47,8 @@ export default function ComplianceByDesign() {
               Compliance by design: building UX around AML, SOC 2 and ISO 27001
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
-              Rules that protect your money and information don&apos;t have to
-              feel like red tape. Here is how we build them into our products
-              from the start, so staying safe feels simple.
+              The rules that protect your money and information shape our
+              products from the start, so staying safe feels simple.
             </p>
             <p className="mt-6 text-label text-muted">
               By {post.author} · {formatDate(post.publishedOn)} ·{" "}
@@ -87,17 +86,16 @@ export default function ComplianceByDesign() {
             <p>
               They&apos;re there because an Australian standard, AS/NZS 1428.4,
               sets out how these tactile indicators should work. Good builders
-              don&apos;t add them as an afterthought. They&apos;re part of the
-              plan from the first drawing, so they fit neatly and help the
+              include them in the plan from the first drawing, so they fit
+              neatly and help the
               people who need them without getting in anyone else&apos;s way.
             </p>
             <p>
               That&apos;s what we mean by <strong>compliance by design</strong>.
               Financial products come with rules too: laws against money
               laundering, standards for keeping information safe, and
-              guidelines that make sure everyone can use them. It&apos;s
-              tempting to treat those rules as paperwork to add at the end. We
-              build them in from the start.
+              guidelines that make sure everyone can use them. We build them
+              in from the start.
             </p>
 
             <h2>The rules we design around</h2>
@@ -217,9 +215,8 @@ export default function ComplianceByDesign() {
 
             <h2>Built for everyone</h2>
             <p>
-              Accessibility is sometimes thought of as a small issue affecting
-              a few people. The numbers say otherwise. According to the
-              Australian Bureau of Statistics, 5.5 million Australians had
+              Accessibility affects far more people than many expect.
+              According to the Australian Bureau of Statistics, 5.5 million Australians had
               disability in 2022. Among Australians aged 65 and over, it was
               more than half.
             </p>
@@ -274,8 +271,8 @@ export default function ComplianceByDesign() {
 
             <h2>Fewer steps, no shortcuts</h2>
             <p>
-              It&apos;s easy to assume that more hoops mean more safety. Often
-              the opposite is true. When security is painful, people find ways
+              More hoops don&apos;t always mean more safety. When security is
+              painful, people find ways
               around it, like writing passwords on sticky notes or using the
               same one everywhere.
             </p>
@@ -301,10 +298,10 @@ export default function ComplianceByDesign() {
 
             <h2>Why this matters to you</h2>
             <p>
-              Compliance done well is mostly invisible. You notice it only as a
-              product that asks sensible questions, explains itself, keeps your
-              information to itself, and works however you use it. Just like
-              the yellow studs at the top of the ramp.
+              Compliance done well is mostly invisible, like the yellow studs
+              at the top of the ramp. You notice it only as a product that
+              asks sensible questions, explains itself and works however you
+              use it.
             </p>
             <p>
               Building it in from the start also costs far less than adding it

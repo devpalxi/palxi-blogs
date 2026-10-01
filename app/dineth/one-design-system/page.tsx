@@ -47,9 +47,8 @@ export default function OneDesignSystem() {
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
               Drive anywhere in Australia and the road signs speak the same
-              language. Here is how one shared design system does the same for
-              every Palxi product, so you learn once and feel at home
-              everywhere.
+              language. One shared design system does the same for every Palxi
+              product, so you learn once and feel at home everywhere.
             </p>
             <p className="mt-6 text-label text-muted">
               By {post.author} · {formatDate(post.publishedOn)} ·{" "}
@@ -84,8 +83,7 @@ export default function OneDesignSystem() {
               Yellow diamond, black picture: watch out.
             </p>
             <p>
-              That&apos;s no accident. Road signs across Australia follow a
-              national standard, AS 1742, which sets their shapes, colours and
+              Road signs across Australia follow a national standard, AS 1742, which sets their shapes, colours and
               symbols. Standards Australia describes the aim as &ldquo;clear
               and consistent messaging&rdquo;, and the reason is safety. When
               every sign follows the same rules, drivers don&apos;t have to
@@ -94,8 +92,7 @@ export default function OneDesignSystem() {
             <p>
               Software can work the same way. At Palxi, everything we build,
               from harbr and Cruz to our Northern Territory Government systems,
-              shares one design system. This post explains what that means, and
-              why it matters to you.
+              shares one design system.
             </p>
 
             <h2>What a design system is</h2>
@@ -208,9 +205,9 @@ export default function OneDesignSystem() {
           <Prose>
             <h2>A system that keeps learning</h2>
             <p>
-              A design system isn&apos;t a rulebook carved in stone. It&apos;s
-              more like a well-kept family recipe book, updated whenever
-              someone finds a better way.
+              A design system is closer to a well-kept family recipe book than
+              a rulebook carved in stone: it&apos;s updated whenever someone
+              finds a better way.
             </p>
             <p>
               Much of what we learn comes from watching people use our

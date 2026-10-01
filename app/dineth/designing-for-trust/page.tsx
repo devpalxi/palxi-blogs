@@ -48,9 +48,9 @@ export default function DesigningForTrust() {
               Designing for trust: how we approach UI/UX in fintech
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
-              Money apps have to feel safe as well as work properly. Here is
-              how we design every Palxi product so you can feel sure about each
-              payment, from the moment before you pay to the record you keep
+              Money apps have to feel safe as well as work properly. We design
+              every Palxi product so you can feel sure about each payment,
+              from the moment before you pay to the record you keep
               afterwards.
             </p>
             <p className="mt-6 text-label text-muted">
@@ -88,8 +88,8 @@ export default function DesigningForTrust() {
               That trust is hard won, and for good reason. In 2025, Australians
               aged 65 and over made up about 17 per cent of the population, yet
               carried <strong>26.5 per cent of the scam losses</strong>{" "}
-              reported to Scamwatch. Pausing before you pay online isn&apos;t
-              being old-fashioned. It&apos;s being sensible.
+              reported to Scamwatch. Pausing before you pay online is simply
+              sensible.
             </p>
             <p>
               At Palxi, we treat trust the way we treat a working Pay button:
@@ -114,8 +114,7 @@ export default function DesigningForTrust() {
 
             <h2>Before you pay: clear words beat clever ones</h2>
             <p>
-              A clever design can impress people. A clear design helps them.
-              When money is involved, we choose clear every time.
+              When money is involved, we choose clear over clever every time.
             </p>
             <p>
               That starts with the words. A button should say exactly what it
@@ -224,9 +223,9 @@ export default function DesigningForTrust() {
             </p>
             <p>
               A confusing message makes a small problem feel like a big one.
-              &ldquo;Error 402&rdquo; means something to a computer, but nothing
-              to you. And most people&apos;s first worry isn&apos;t the code
-              anyway. It&apos;s: <strong>has my money gone?</strong>
+              &ldquo;Error 402&rdquo; means something to a computer but
+              nothing to you, and the first thing most people want to know is:
+              <strong>has my money gone?</strong>
             </p>
             <p>
               So we answer that first. Our messages say, in plain words, what
@@ -249,8 +248,8 @@ export default function DesigningForTrust() {
           <Prose>
             <h2>After you pay: small signs that add up to trust</h2>
             <p>
-              Trust also grows from many small, consistent details. Most are so
-              ordinary you may never notice them, and that&apos;s the point.
+              Trust also grows from many small, consistent details. Most are
+              so ordinary you may never notice them.
             </p>
             <ul>
               <li>
@@ -281,9 +280,8 @@ export default function DesigningForTrust() {
           <Prose>
             <h2>One standard, in every product</h2>
             <p>
-              Trust isn&apos;t a coat of paint added at the end. It&apos;s
-              decided in hundreds of small choices: the words on a button, the
-              order of a screen, the first line of an error message. We hold
+              Trust is decided in hundreds of small choices, such as the words
+              on a button and the first line of an error message. We hold
               every Palxi product to the same standard for each of the four
               moments, so wherever you meet us, it should feel just as clear
               and just as safe.
