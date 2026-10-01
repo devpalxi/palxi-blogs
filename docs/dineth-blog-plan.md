@@ -62,7 +62,7 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 
 **Status:** Live at `/dineth/shipping-safely` (`app/dineth/shipping-safely/page.tsx`), published 28 September 2026. Opens with two verified Australian outages caused by updates (Optus, Nov 2023; CrowdStrike, Jul 2024), then uses a railway branch-line metaphor throughout (hero photo: Wolli junction, Sydney). Zero-downtime is explained as "one common way" (blue-green) rather than a claim about Palxi's exact setup. APRA CPS 230 was deliberately left for post 4 (compliance).
 
-**Revised 1 October 2026 (diagrams and photo):** All five diagrams rebuilt as railway-style maps and scenes (shared kit in `_diagrams/rail.tsx`: `Track`, `Trail`, `Train`, `Station`).
+**Revised 1 October 2026 (diagrams and photo):** All five diagrams rebuilt as railway-style maps and scenes (shared kit in `app/dineth/_components/rail.tsx`: `Track`, `Trail`, `Train`, `Station`).
 - Feature branch: a track map. New work leaves the main line, is built and checked on its own track, and rejoins, while a customers' train keeps running on the main line.
 - Design and code branches: two parallel lanes (ink for design, green for code), each with its own train, merging into one live product.
 - Five checks: a change travels through five gates. A "Problem?" chip above each turns into a green "Caught" as the change passes.
@@ -110,6 +110,14 @@ One photo added after the principles diagram: a refreshable braille display (Edd
 ## 5. One Design System, Many Products: How We Keep Palxi Consistent
 
 **Status:** Live at `/dineth/one-design-system` (`app/dineth/one-design-system/page.tsx`), published 29 September 2026. Framed around Australian road signs (AS 1742; hero photo: camel, wombat and kangaroo warning signs on the Nullarbor) as a national "design system". harbr, Cruz and NT Government systems are named once in the intro only; diagrams use generic "booking / payments / community service" wireframes. Includes a short aside that this blog runs on its own small design system (true of the blog; no claim about Palxi's product system beyond the plan). No end-of-series links, by request. This completes the five-post plan.
+
+**Revised 1 October 2026 (diagrams and photo):** All four diagrams rebuilt in the new motion style.
+- Three layers: the basics are chosen first, pulses carry them down into the building blocks, and the blocks drop into three finished screens, each block lighting up as it is used.
+- Learn once: a tap lands on each screen's button. Without a system each tap meets a different button and a "Which one?" doubt; with one system every tap lands instantly ("Got it").
+- Fix once: the shared button is improved, then a pulse fans out down three lines at once and all three services update together ("Updated").
+- Feedback loop: a marker goes once round a closed loop (use, notice, improve, every product gets it) and returns to the start, with "never finished" in the middle.
+
+One photo added before the three-layers diagram: a child fitting coloured wooden blocks (Shixart1985, CC BY 2.0). The rail kit was moved to `app/dineth/_components/rail.tsx` so more than one post can share it.
 
 **Angle:** Explain how a shared design system keeps harbr, Cruz, and government projects feeling like one reliable family.
 

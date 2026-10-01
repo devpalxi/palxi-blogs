@@ -1,5 +1,5 @@
 import type { ComponentType, CSSProperties, SVGProps } from "react";
-import { at } from "../../_components/diagram-kit";
+import { at } from "./diagram-kit";
 
 type Icon = ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
 

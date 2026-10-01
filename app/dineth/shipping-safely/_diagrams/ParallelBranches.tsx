@@ -8,7 +8,7 @@ import {
   UsersIcon,
 } from "../../_components/icons";
 import { at } from "../../_components/diagram-kit";
-import { Station, Track, Trail, Train, arrival } from "./rail";
+import { Station, Track, Trail, Train, arrival } from "../../_components/rail";
 
 // Design and code each get their own branch. They're worked on side by side,
 // reviewed separately, and merged back into the live product together.

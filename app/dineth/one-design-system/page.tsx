@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import blocksPhoto from "@/public/images/blog/one-design-system/colourful-building-blocks.jpg";
 import heroPhoto from "@/public/images/blog/one-design-system/nullarbor-warning-signs.jpg";
 import {
   Photo,
@@ -122,7 +123,23 @@ export default function OneDesignSystem() {
             </ul>
           </Prose>
 
-          <Diagram caption="A design system in three layers: the basics make the building blocks, and the building blocks make every screen.">
+          <Photo
+            src={blocksPhoto}
+            alt="A child's hands fit coloured wooden blocks of different shapes onto a wooden base."
+            sizes="(min-width: 1064px) 1000px, 100vw"
+            className="mx-auto my-14 w-full max-w-[1000px]"
+            frameClassName="aspect-[3/2] sm:aspect-[16/9]"
+            caption="Pieces made once, fitted together in many ways."
+            credit={{
+              author: "Shixart1985",
+              licence: "CC BY 2.0",
+              licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Child_engages_in_colorful_building_activity.jpg",
+            }}
+          />
+
+          <Diagram caption="A design system in three layers: the basics make the building blocks, and the building blocks make every screen. Each block lights up as it is used.">
             <BuildingBlocks />
           </Diagram>
 

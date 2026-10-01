@@ -9,7 +9,7 @@ import {
   ReceiptIcon,
 } from "../../_components/icons";
 import { at } from "../../_components/diagram-kit";
-import { Station, Track, Trail, Train, arrival } from "./rail";
+import { Station, Track, Trail, Train, arrival } from "../../_components/rail";
 
 // A change travels through five checks. At each one, a problem that might
 // have been hiding in it is caught, so it never reaches you.

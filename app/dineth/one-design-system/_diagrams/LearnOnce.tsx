@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
-import { CheckIcon, CrossIcon } from "../../_components/icons";
-import { Bar, step } from "../../_components/diagram-kit";
+import { CheckIcon, CrossIcon, QuestionIcon } from "../../_components/icons";
+import { Bar, at } from "../../_components/diagram-kit";
+
+// Someone taps the button on each of three services. Without a shared system
+// every button is different, so each tap needs a pause to work it out. With
+// one design system, every tap just works.
+const SLOW = [1300, 2300, 3300];
+const FAST = [5600, 5950, 6300];
+const NOTE_1 = 4200;
+const ROW_2 = 4800;
+const NOTE_2 = 6900;
 
 const services = ["A booking service", "A payments service", "A community service"];
 
@@ -14,13 +23,17 @@ function Screen({
   label,
   buttonClass,
   align,
+  tap,
+  doubt,
 }: {
   label: string;
   buttonClass: string;
   align: string;
+  tap: number;
+  doubt: boolean;
 }) {
   return (
-    <div className="flex min-h-40 flex-col rounded-md bg-surface p-3 ring-1 ring-hairline">
+    <div className="relative flex min-h-40 flex-col rounded-md bg-surface p-3 ring-1 ring-hairline">
       <Bar className="w-3/4" strong />
       <div className="mt-2.5 space-y-1.5">
         <Bar className="w-full" />
@@ -28,31 +41,51 @@ function Screen({
       </div>
       <div className={`mt-auto flex pt-4 ${align}`}>
         <span
-          className={`inline-flex min-h-10 items-center px-3 text-label font-semibold ${buttonClass}`}
+          className={`relative inline-flex min-h-10 items-center px-3 text-label font-semibold ${buttonClass}`}
         >
           {label}
+          <span
+            data-anim="ripple"
+            style={at(tap)}
+            className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/40"
+          />
         </span>
       </div>
+
+      <span
+        data-anim="pop"
+        style={at(tap + (doubt ? 250 : 150), 450)}
+        className={`absolute -top-3.5 right-2 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-label font-semibold ring-2 ring-surface ${
+          doubt ? "bg-wattle-tint text-wattle" : "bg-settled-tint text-settled"
+        }`}
+      >
+        {doubt ? <QuestionIcon size={18} /> : <CheckIcon size={18} />}
+        {doubt ? "Which one?" : "Got it"}
+      </span>
     </div>
   );
 }
 
 function Row({
-  at,
+  time,
   good,
   title,
   note,
+  noteAt,
   children,
 }: {
-  at: number;
+  time: number;
   good: boolean;
   title: string;
   note: string;
+  noteAt: number;
   children: ReactNode;
 }) {
   return (
-    <section data-anim="rise" style={step(at)}>
+    <section>
       <p
+        data-anim="rise"
+        style={at(time, 600)}
         className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-label font-semibold ${
           good ? "bg-settled-tint text-settled" : "bg-stop-tint text-stop"
         }`}
@@ -60,15 +93,22 @@ function Row({
         {good ? <CheckIcon size={18} /> : <CrossIcon size={18} />}
         {title}
       </p>
-      <div aria-hidden="true" className="mt-4 grid grid-cols-3 gap-2 sm:gap-4">
+      <div
+        aria-hidden="true"
+        data-anim="rise"
+        style={at(time + 150, 600)}
+        className="mt-6 grid grid-cols-3 gap-4"
+      >
         {children}
       </div>
-      <div aria-hidden="true" className="mt-2 grid grid-cols-3 gap-2 text-center text-label text-muted sm:gap-4">
+      <div aria-hidden="true" className="mt-2 grid grid-cols-3 gap-4 text-center text-label text-muted">
         {services.map((s) => (
           <span key={s}>{s}</span>
         ))}
       </div>
-      <p className="mt-4 text-copy">{note}</p>
+      <p data-anim="rise" style={at(noteAt, 600)} className="mt-4 text-copy">
+        {note}
+      </p>
     </section>
   );
 }
@@ -77,27 +117,39 @@ export function LearnOnce() {
   return (
     <div className="space-y-10">
       <Row
-        at={0}
+        time={0}
         good={false}
         title="Without a shared system"
         note="Three products, three different buttons. Each time, you have to stop and work out which one does what."
+        noteAt={NOTE_1}
       >
-        {without.map((w) => (
-          <Screen key={w.label} label={w.label} buttonClass={w.button} align={w.align} />
+        {without.map((w, i) => (
+          <Screen
+            key={w.label}
+            label={w.label}
+            buttonClass={w.button}
+            align={w.align}
+            tap={SLOW[i]}
+            doubt
+          />
         ))}
       </Row>
+
       <Row
-        at={1.5}
+        time={ROW_2}
         good
         title="With one design system"
         note="The same button, in the same place, saying the same thing. Learn it once, and you know it everywhere."
+        noteAt={NOTE_2}
       >
-        {services.map((s) => (
+        {services.map((s, i) => (
           <Screen
             key={s}
             label="Next"
             buttonClass="bg-harbour text-surface rounded-sm w-full justify-center"
             align="justify-center"
+            tap={FAST[i]}
+            doubt={false}
           />
         ))}
       </Row>

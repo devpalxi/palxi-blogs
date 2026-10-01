@@ -1,6 +1,6 @@
 import { CodeIcon, EyeIcon, LayersIcon, UsersIcon } from "../../_components/icons";
 import { at } from "../../_components/diagram-kit";
-import { Station, Track, Trail, Train, arrival } from "./rail";
+import { Station, Track, Trail, Train, arrival } from "../../_components/rail";
 
 // The main line runs left to right. New work splits off onto its own track,
 // is built and checked there, and joins back only when it's ready.
