@@ -8,11 +8,13 @@ import {
   CodeIcon,
   EyeIcon,
   LayersIcon,
+  ShieldIcon,
   UsersIcon,
 } from "../../dineth/_components/icons";
 import { at } from "../../dineth/_components/diagram-kit";
 import { CountUp } from "../../dineth/_components/CountUp";
 import { Checklist, Columns, Compare, Pairs } from "./Cards";
+import { Cascade } from "./Cascade";
 import { CoreEdges } from "./CoreEdges";
 import { BackupWall, CoverageMap, SecondCheck } from "./Cps234";
 import {
@@ -24,6 +26,7 @@ import {
   ScaleIcon,
   SearchIcon,
   SendIcon,
+  ServerIcon,
   WarningIcon,
 } from "./icons";
 import { Journey } from "./Journey";
@@ -51,23 +54,34 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Where CPS 234 lands. The board answers for it, the entity carries it out, and vendors feel it through the entity's contracts.",
       node: (
-        <LayersFlow
-          layers={[
+        <Cascade
+          nodes={[
             {
+              icon: UsersIcon,
               title: "The board",
               detail:
                 "Ultimately responsible for the information security of the entity.",
+              badge: { text: "Accountable", tone: "default", icon: ShieldIcon },
             },
             {
+              icon: BankIcon,
               title: "The regulated entity",
               detail:
                 "Keeps security in line with the threats. Classifies its information assets, including those held by third parties.",
+              badge: { text: "Bound by CPS 234", tone: "done", icon: ShieldIcon },
             },
             {
+              icon: ServerIcon,
               title: "The technology vendor",
               detail:
-                "Not bound by the standard directly. Reached through contract terms, questionnaires and audits.",
+                "Not bound by the standard directly. Reached through the entity's contracts, assessments and audits.",
+              bound: false,
+              badge: { text: "Not bound directly", tone: "caution", icon: DocumentIcon },
             },
+          ]}
+          links={[
+            { label: "Answers for it", kind: "solid" },
+            { label: "Contracts and audits", kind: "dashed" },
           ]}
           footer="The standard binds the entity, which then has duties about its vendors."
         />
