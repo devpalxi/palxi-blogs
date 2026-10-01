@@ -1,5 +1,11 @@
-import { IdCardIcon, LockIcon } from "../../_components/icons";
-import { Bar, Pin, step } from "../../_components/diagram-kit";
+import type { ReactNode } from "react";
+import { CheckIcon, ChatIcon, IdCardIcon, LockIcon } from "../../_components/icons";
+import { Bar, Device, Pin, at } from "../../_components/diagram-kit";
+
+// A highlight reads down the screen, element by element, while the matching
+// note lights up. Then the two escape hatches are tried: save and leave, and
+// ask for a person.
+const T = [800, 2300, 3800, 5300, 7400];
 
 const callouts = [
   {
@@ -24,28 +30,45 @@ const callouts = [
   },
 ];
 
-export function IdentityCheck() {
+// A part of the screen that is briefly highlighted when it's being "read".
+function Reg({
+  n,
+  className = "",
+  children,
+}: {
+  n: number;
+  className?: string;
+  children: ReactNode;
+}) {
   return (
-    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,330px)_minmax(0,1fr)] md:gap-14">
-      <div
-        data-anim="rise"
-        style={step(0)}
-        aria-hidden="true"
-        className="mx-auto w-full max-w-[330px] rounded-[26px] bg-surface p-3 shadow-device"
-      >
-        <div className="rounded-[18px] border border-hairline px-5 pt-6 pb-6 text-label">
-          <div className="relative pr-10">
-            <p className="font-serif text-[1.3125rem] leading-tight font-semibold text-ink">
-              A quick identity check
-            </p>
-            <div className="mt-2 space-y-1.5">
-              <Bar className="w-full" />
-              <Bar className="w-3/4" />
-            </div>
-            <Pin n={1} className="absolute top-0 right-0" />
-          </div>
+    <div className={`relative pr-10 ${className}`}>
+      <span
+        data-anim="flash"
+        style={at(T[n - 1], 1400)}
+        className="absolute -inset-2 right-8 rounded-md bg-harbour-tint ring-2 ring-harbour/35"
+      />
+      <div className="relative">{children}</div>
+      <Pin n={n} at={T[n - 1]} className="absolute top-0 right-0" />
+    </div>
+  );
+}
 
-          <div className="relative mt-5 space-y-2 pr-10">
+function Phone() {
+  return (
+    <Device className="mx-auto w-full max-w-[340px]" screenClassName="pb-24">
+      <div aria-hidden="true">
+        <Reg n={1}>
+          <p className="font-serif text-[1.3125rem] leading-tight font-semibold text-ink">
+            A quick identity check
+          </p>
+          <div className="mt-2 space-y-1.5">
+            <Bar className="w-full" />
+            <Bar className="w-3/4" />
+          </div>
+        </Reg>
+
+        <Reg n={2} className="mt-6">
+          <div className="space-y-2">
             {[0, 1].map((k) => (
               <div
                 key={k}
@@ -55,51 +78,89 @@ export function IdentityCheck() {
                 <Bar className="w-28" />
               </div>
             ))}
-            <Pin n={2} className="absolute top-2 right-0" />
           </div>
+        </Reg>
 
-          <div className="relative mt-4 pr-10">
-            <p className="flex items-start gap-2 text-copy">
-              <LockIcon size={18} className="mt-0.5 shrink-0 text-harbour" />
-              <span className="flex-1 space-y-1.5 pt-1">
-                <Bar className="w-full" />
-                <Bar className="w-2/3" />
-              </span>
-            </p>
-            <Pin n={3} className="absolute top-0 right-0" />
-          </div>
+        <Reg n={3} className="mt-5">
+          <p className="flex items-start gap-2 text-copy">
+            <LockIcon size={18} className="mt-0.5 shrink-0 text-harbour" />
+            <span className="flex-1 space-y-1.5 pt-1">
+              <Bar className="w-full" />
+              <Bar className="w-2/3" />
+            </span>
+          </p>
+        </Reg>
 
-          <div className="mt-5 flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
-            Continue
-          </div>
-          <div className="relative mt-2 pr-10">
-            <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
-              Save and finish later
-            </p>
-            <Pin n={4} className="absolute top-1.5 right-0" />
-          </div>
-          <div className="relative pr-10">
-            <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
-              Talk to a person
-            </p>
-            <Pin n={5} className="absolute top-1.5 right-0" />
-          </div>
+        <div className="mt-5 flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+          Continue
         </div>
+
+        <Reg n={4} className="mt-2">
+          <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
+            Save and finish later
+          </p>
+          <span
+            data-anim="ripple"
+            style={at(T[3] + 500)}
+            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-harbour/40"
+          />
+        </Reg>
+
+        <Reg n={5}>
+          <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
+            Talk to a person
+          </p>
+          <span
+            data-anim="ripple"
+            style={at(T[4] + 500)}
+            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-harbour/40"
+          />
+        </Reg>
+      </div>
+
+      {/* The two escape hatches answer back, then disappear. */}
+      <p
+        aria-hidden="true"
+        data-anim="window"
+        style={at(T[3] + 700, 2600)}
+        className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-md bg-ink px-4 py-3 font-semibold text-surface"
+      >
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-settled">
+          <CheckIcon size={16} />
+        </span>
+        Progress saved
+      </p>
+      <p
+        aria-hidden="true"
+        data-anim="window"
+        style={at(T[4] + 700, 2600)}
+        className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-md bg-ink px-4 py-3 font-semibold text-surface"
+      >
+        <ChatIcon size={22} className="shrink-0" />
+        A person is on their way
+      </p>
+    </Device>
+  );
+}
+
+export function IdentityCheck() {
+  return (
+    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,340px)_minmax(0,1fr)] md:gap-14">
+      <div data-anim="rise" style={at(0, 700)}>
+        <Phone />
       </div>
 
       <ol className="space-y-6">
         {callouts.map((c, i) => (
           <li
             key={c.title}
-            data-anim="rise"
-            style={step(i + 1)}
+            data-anim="focus"
+            style={at(T[i])}
             className="flex gap-4"
           >
             <Pin n={i + 1} static />
             <div>
-              <p className="text-[1.1875rem] font-semibold text-ink">
-                {c.title}
-              </p>
+              <p className="text-[1.1875rem] font-semibold text-ink">{c.title}</p>
               <p className="mt-1 text-copy">{c.body}</p>
             </div>
           </li>

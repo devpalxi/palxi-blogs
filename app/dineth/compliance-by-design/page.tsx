@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import braillePhoto from "@/public/images/blog/compliance-by-design/braille-display.jpg";
 import heroPhoto from "@/public/images/blog/compliance-by-design/tactile-indicators-corinda.jpg";
 import {
   Photo,
@@ -246,6 +247,22 @@ export default function ComplianceByDesign() {
           <Diagram caption="The four principles behind WCAG 2.2, in plain words, with the kind of design choices each one leads to.">
             <FourPrinciples />
           </Diagram>
+
+          <Photo
+            src={braillePhoto}
+            alt="A close-up of a refreshable braille display: a row of small black cells, each with white pins raised in a different pattern."
+            sizes="(min-width: 1064px) 1000px, 100vw"
+            className="mx-auto my-14 w-full max-w-[1000px]"
+            frameClassName="aspect-[3/2] sm:aspect-[16/9]"
+            caption="A refreshable braille display raises and lowers small pins so a blind person can read the screen by touch. It only works when a page is built to be read by assistive technology."
+            credit={{
+              author: "Eddau",
+              licence: "CC0",
+              licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Refreshable_Braille_display_2010_0123.JPG",
+            }}
+          />
 
           <Prose>
             <p>

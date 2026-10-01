@@ -87,6 +87,15 @@ New shared animations in `globals.css`: `window` (visible only between two beats
 
 **Status:** Live at `/dineth/compliance-by-design` (`app/dineth/compliance-by-design/page.tsx`), published 29 September 2026. Framed around tactile ground indicators (AS/NZS 1428.4; hero photo: Corinda station, Brisbane) as "compliance built in, not bolted on". Generalised per the no-examples rule: the Cruz/pub-owner KYC flow became a generic identity-check wireframe for "busy people running a business", and the NT camping/caravan-park systems became "services the whole community relies on, including NT Government systems". Wording decisions: Palxi designs "around the principles" of SOC 2 and ISO 27001 (no certification claim); Palxi's products "help businesses meet" AML rules (no claim about Palxi's own AUSTRAC status). APRA CPS 230 included as one line of industry context. No cross-links to the Ashinthya articles (by request). Note: AUSTRAC, OAIC-adjacent gov sites were unreachable during research, so AML dates are cited via MinterEllison and AUSTRAC's role via Wikipedia.
 
+**Revised 1 October 2026 (diagrams and photo):** All five diagrams rebuilt in the new motion style.
+- Identity check: a highlight reads down the screen with its note; then "Save and finish later" is tapped (a "Progress saved" toast) and "Talk to a person" is tapped (a helper appears).
+- Keys and records: each team tries its doors and only its own opens; each success writes a line into a log that ends up "Sealed".
+- One in five: two fields of 100 dots light up while the numbers count (21, then 52).
+- Four principles (WCAG): each of P, O, U, R has a tiny live demo (text growing clear, a button growing big, jargon turning into plain words, a screen reader speaking a button).
+- Safer and simpler: each old security habit gets a red "no" badge and an arrow to the current guidance.
+
+One photo added after the principles diagram: a refreshable braille display (Eddau, CC0). Uses the existing shared kit; no new shared animations.
+
 **Angle:** Compliance is usually seen as friction. Show how Palxi makes it smooth.
 
 **What to cover:**
