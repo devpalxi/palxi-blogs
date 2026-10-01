@@ -62,6 +62,15 @@ Include before/after screenshots of an early wireframe versus the final screen. 
 
 **Status:** Live at `/dineth/shipping-safely` (`app/dineth/shipping-safely/page.tsx`), published 28 September 2026. Opens with two verified Australian outages caused by updates (Optus, Nov 2023; CrowdStrike, Jul 2024), then uses a railway branch-line metaphor throughout (hero photo: Wolli junction, Sydney). Zero-downtime is explained as "one common way" (blue-green) rather than a claim about Palxi's exact setup. APRA CPS 230 was deliberately left for post 4 (compliance).
 
+**Revised 1 October 2026 (diagrams and photo):** All five diagrams rebuilt as railway-style maps and scenes (shared kit in `_diagrams/rail.tsx`: `Track`, `Trail`, `Train`, `Station`).
+- Feature branch: a track map. New work leaves the main line, is built and checked on its own track, and rejoins, while a customers' train keeps running on the main line.
+- Design and code branches: two parallel lanes (ink for design, green for code), each with its own train, merging into one live product.
+- Five checks: a change travels through five gates. A "Problem?" chip above each turns into a green "Caught" as the change passes.
+- Gradual rollout: 100 people light up as the feature reaches 1, 10, half, then everyone; then a feature flag flips off and the lit people drain back.
+- Two copies: one live scene with three phases (prepare, switch, safety net), with customers' traffic moving between copy A and copy B.
+
+New shared animations in `globals.css`: `window` (visible only between two beats) and `dip` (steps aside between two beats). One photo added before the checks diagram: Lisamarie Babik, CC BY 2.0.
+
 **Angle:** Explain, in non-technical terms, how Palxi releases new features without breaking payments or live services.
 
 **What to cover:**

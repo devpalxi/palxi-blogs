@@ -380,6 +380,26 @@
     animation-duration: 600ms;
   }
 
+  /* Visible only between two beats (hidden at rest), and its opposite:
+     visible at rest, stepping aside between two beats. Both take --at
+     (start) and --dur (the whole window). */
+  .diagram [data-anim="window"] {
+    opacity: 0;
+  }
+  .diagram[data-state="armed"] [data-anim="dip"] {
+    opacity: 1;
+  }
+  .diagram[data-state="play"] [data-anim="window"] {
+    animation-name: d-window;
+    animation-duration: var(--dur, 2000ms);
+    animation-timing-function: linear;
+  }
+  .diagram[data-state="play"] [data-anim="dip"] {
+    animation-name: d-dip;
+    animation-duration: var(--dur, 2000ms);
+    animation-timing-function: linear;
+  }
+
   /* Paper feeding out of a slot; the slot's parent clips it. */
   .diagram[data-state="armed"] [data-anim="print"] {
     opacity: 1;
@@ -455,6 +475,14 @@
     from { opacity: 0.7; transform: scale(1); }
     to { opacity: 0; transform: scale(1.9); }
   }
+  @keyframes d-window {
+    0%, 100% { opacity: 0; }
+    6%, 94% { opacity: 1; }
+  }
+  @keyframes d-dip {
+    0%, 100% { opacity: 1; }
+    6%, 94% { opacity: 0; }
+  }
   @keyframes d-swap-out {
     from { opacity: 1; }
     to { opacity: 0; }
@@ -495,7 +523,8 @@
   .diagram [data-anim="sweep"],
   .diagram [data-anim="flash"],
   .diagram [data-anim="ripple"],
-  .diagram [data-anim="swap-out"] {
+  .diagram [data-anim="swap-out"],
+  .diagram [data-anim="window"] {
     opacity: 0 !important;
   }
 }

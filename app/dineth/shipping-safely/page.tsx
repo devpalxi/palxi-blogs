@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import reviewPhoto from "@/public/images/blog/shipping-safely/colleague-reviewing-work.jpg";
 import heroPhoto from "@/public/images/blog/shipping-safely/wolli-creek-junction-sydney.jpg";
 import {
   Photo,
@@ -119,7 +120,7 @@ export default function ShippingSafely() {
             </p>
           </Prose>
 
-          <Diagram caption="A feature branch splits off from the main line, is built and checked on its own track, and joins back only when it's ready.">
+          <Diagram caption="A feature branch splits off from the main line, is built and checked on its own track, and joins back only when it's ready. Customers' trains keep running on the main line the whole time.">
             <BranchLine />
           </Diagram>
 
@@ -190,7 +191,23 @@ export default function ShippingSafely() {
             </ul>
           </Prose>
 
-          <Diagram caption="Five checks between an idea and a release. Each one is another chance to catch a problem before it reaches you.">
+          <Photo
+            src={reviewPhoto}
+            alt="Two colleagues sit at one computer. One points at something on the screen while the other, holding the mouse, looks where they are pointing."
+            sizes="(min-width: 1064px) 1000px, 100vw"
+            className="mx-auto my-14 w-full max-w-[1000px]"
+            frameClassName="aspect-[3/2] sm:aspect-[16/9]"
+            caption="A second pair of eyes: one person works while a colleague checks."
+            credit={{
+              author: "Lisamarie Babik",
+              licence: "CC BY 2.0",
+              licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Pair_programming_1.jpg",
+            }}
+          />
+
+          <Diagram caption="Five checks between an idea and a release. At each one, a problem that might be hiding in the new work is caught before it reaches you.">
             <ChecksPipeline />
           </Diagram>
 
