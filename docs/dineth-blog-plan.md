@@ -35,6 +35,15 @@ Two Shixart1985 CC BY 2.0 photos were added: a card held over a laptop (in "Whil
 
 **Status:** Live at `/dineth/sketch-to-prototype` (`app/dineth/sketch-to-prototype/page.tsx`), published 28 September 2026. Generalised per the no-examples rule: the marina-manager example was dropped, and the before/after "screenshots" are a generic side-by-side wireframe vs tested design of a "choose how to pay" screen, framed as typical changes rather than a real study. Uses a display-home analogy for Australian readers; facts from NN/g (5 users, paper prototyping, think-aloud), Design Council (Double Diamond) and Figma's help centre.
 
+**Revised 1 October 2026 (diagrams and photo):** All five diagrams rebuilt in the new motion style (see post 1's note for the shared kit).
+- Process overview: one idea travels a route, with a "go round again" loop between watch and build.
+- Cost of change: 100 dots fill while a counter runs from 1 to 100.
+- Before/after: one phone screen whose four regions swap from wireframe to final design, each synced to its note.
+- Think-aloud: a touch marker wanders the screen as the tester's thoughts appear and the notepad fills.
+- Five testers: a field of 100 hidden problems that each tester uncovers a share of.
+
+New shared pieces: `CountUp.tsx` and the `swap-out` animation. Also fixed `ripple` so it stays invisible until its beat. One photo added before the think-aloud diagram: Samuel Mann, CC BY 2.0.
+
 **Angle:** Take readers behind the scenes of how an idea becomes a real feature.
 
 **What to cover:**

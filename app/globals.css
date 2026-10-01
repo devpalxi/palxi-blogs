@@ -363,6 +363,21 @@
     animation-name: d-ripple;
     animation-duration: 900ms;
     animation-timing-function: var(--ease-out-quart);
+    /* No backwards fill: stay invisible until the beat arrives. */
+    animation-fill-mode: forwards;
+  }
+
+  /* The "before" half of a before/after swap: hidden at rest (the finished
+     state is the "after"), shown while armed, then faded out on its beat. */
+  .diagram [data-anim="swap-out"] {
+    opacity: 0;
+  }
+  .diagram[data-state="armed"] [data-anim="swap-out"] {
+    opacity: 1;
+  }
+  .diagram[data-state="play"] [data-anim="swap-out"] {
+    animation-name: d-swap-out;
+    animation-duration: 600ms;
   }
 
   /* Paper feeding out of a slot; the slot's parent clips it. */
@@ -440,6 +455,10 @@
     from { opacity: 0.7; transform: scale(1); }
     to { opacity: 0; transform: scale(1.9); }
   }
+  @keyframes d-swap-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
   @keyframes d-print {
     from { transform: translateY(-101%); }
     to { transform: translateY(0); }
@@ -475,7 +494,8 @@
   }
   .diagram [data-anim="sweep"],
   .diagram [data-anim="flash"],
-  .diagram [data-anim="ripple"] {
+  .diagram [data-anim="ripple"],
+  .diagram [data-anim="swap-out"] {
     opacity: 0 !important;
   }
 }

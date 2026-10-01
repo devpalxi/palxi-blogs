@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
 import { BankIcon, CardIcon, CheckIcon, LockIcon } from "../../_components/icons";
-import { Pin, step } from "../../_components/diagram-kit";
+import { Device, Pin, at } from "../../_components/diagram-kit";
+
+// One screen, four edits. Each region of the early wireframe is swapped for
+// its improved version on a beat, while the matching note lights up.
+const T = [1400, 2900, 4400, 5900];
+const SWAP = 600;
 
 const changes = [
   {
@@ -21,58 +26,30 @@ const changes = [
   },
 ];
 
-function Frame({
-  label,
-  tone,
-  children,
+// Both versions of a region sit in the same box, so the swap never shifts the layout.
+function Region({
+  n,
+  className = "",
+  before,
+  after,
 }: {
-  label: string;
-  tone: "before" | "after";
-  children: ReactNode;
+  n: number;
+  className?: string;
+  before: ReactNode;
+  after: ReactNode;
 }) {
   return (
-    <div>
-      <p
-        className={`mb-4 inline-flex rounded-full px-3 py-1 text-label font-semibold ${
-          tone === "before"
-            ? "bg-surface text-muted ring-1 ring-hairline-strong"
-            : "bg-harbour-tint text-harbour-deep"
-        }`}
-      >
-        {label}
-      </p>
+    <div className={`relative grid pr-10 ${className}`}>
+      <div className="[grid-area:1/1]">{after}</div>
       <div
-        aria-hidden="true"
-        className="mx-auto w-full max-w-[320px] rounded-[26px] bg-surface p-3 shadow-device"
+        data-anim="swap-out"
+        style={at(T[n - 1], SWAP)}
+        className="[grid-area:1/1] bg-surface"
       >
-        <div className="min-h-[400px] rounded-[18px] border border-hairline px-5 py-6 text-label">
-          {children}
-        </div>
+        {before}
       </div>
+      <Pin n={n} at={T[n - 1] + 150} className="absolute top-0 right-0" />
     </div>
-  );
-}
-
-function Before() {
-  return (
-    <Frame label="Early wireframe" tone="before">
-      <div className="h-3 w-24 rounded-full bg-hairline-strong" />
-      <p className="mt-6 text-muted">Payment instrument</p>
-      <div className="mt-4 space-y-3">
-        {["Card", "Account"].map((o) => (
-          <div key={o} className="flex items-center gap-2 text-muted">
-            <span className="size-4 rounded-full border-2 border-hairline-strong" />
-            {o}
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 flex h-16 items-center justify-center rounded-sm border-2 border-dashed border-hairline-strong text-muted">
-        Terms
-      </div>
-      <div className="mt-8 ml-auto flex h-9 w-24 items-center justify-center rounded-sm border-2 border-hairline-strong text-muted">
-        Submit
-      </div>
-    </Frame>
   );
 }
 
@@ -104,55 +81,111 @@ function Option({
   );
 }
 
-function After() {
+function Phone() {
   return (
-    <Frame label="After testing" tone="after">
-      <div className="relative pr-10">
-        <p className="font-serif text-[1.375rem] leading-tight font-semibold text-ink">
-          How would you like to pay?
-        </p>
-        <Pin n={1} className="absolute top-0 right-0" />
+    <Device className="mx-auto w-full max-w-[340px]">
+      <div aria-hidden="true">
+        {/* 1. The question */}
+        <Region
+          n={1}
+          className="h-[3.75rem] content-start"
+          before={<p className="pt-1 text-muted">Payment instrument</p>}
+          after={
+            <p className="font-serif text-[1.375rem] leading-tight font-semibold text-ink">
+              How would you like to pay?
+            </p>
+          }
+        />
+
+        {/* 2. The choices */}
+        <Region
+          n={2}
+          className="mt-4 h-[8.25rem] content-start"
+          before={
+            <div className="space-y-3 pt-1">
+              {["Card", "Account"].map((o) => (
+                <div key={o} className="flex items-center gap-2 text-muted">
+                  <span className="size-4 rounded-full border-2 border-hairline-strong" />
+                  {o}
+                </div>
+              ))}
+            </div>
+          }
+          after={
+            <div className="space-y-3">
+              <Option icon={<CardIcon size={24} />} label="Card" selected />
+              <Option icon={<BankIcon size={24} />} label="Bank account" />
+            </div>
+          }
+        />
+
+        {/* 3. The reassurance */}
+        <Region
+          n={3}
+          className="mt-4 h-[4.25rem] content-start"
+          before={
+            <div className="flex h-14 items-center justify-center rounded-sm border-2 border-dashed border-hairline-strong text-muted">
+              Terms
+            </div>
+          }
+          after={
+            <p className="flex items-start gap-2 pt-1 text-copy">
+              <LockIcon size={20} className="mt-0.5 shrink-0 text-harbour" />
+              Nothing is charged until you confirm.
+            </p>
+          }
+        />
+
+        {/* 4. The next step */}
+        <Region
+          n={4}
+          className="mt-3 h-12 content-center"
+          before={
+            <div className="ml-auto flex h-9 w-24 items-center justify-center rounded-sm border-2 border-hairline-strong text-muted">
+              Submit
+            </div>
+          }
+          after={
+            <div className="flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+              Continue
+            </div>
+          }
+        />
       </div>
-      <div className="relative mt-5 space-y-3 pr-10">
-        <Option icon={<CardIcon size={24} />} label="Card" selected />
-        <Option icon={<BankIcon size={24} />} label="Bank account" />
-        <Pin n={2} className="absolute top-3 right-0" />
-      </div>
-      <div className="relative mt-5 pr-10">
-        <p className="flex items-start gap-2 text-copy">
-          <LockIcon size={20} className="mt-0.5 shrink-0 text-harbour" />
-          Nothing is charged until you confirm.
-        </p>
-        <Pin n={3} className="absolute top-0 right-0" />
-      </div>
-      <div className="relative mt-6 pr-10">
-        <div className="flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
-          Continue
-        </div>
-        <Pin n={4} className="absolute top-2 right-0" />
-      </div>
-    </Frame>
+    </Device>
   );
 }
 
 export function BeforeAfter() {
   return (
-    <div>
-      <div className="grid gap-10 md:grid-cols-2 md:gap-8">
-        <div data-anim="rise" style={step(0)}>
-          <Before />
-        </div>
-        <div data-anim="rise" style={step(1)}>
-          <After />
-        </div>
+    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,340px)_minmax(0,1fr)] md:gap-14">
+      <div data-anim="rise" style={at(0, 700)}>
+        {/* The label swaps with the screen. */}
+        <p className="relative mx-auto mb-5 grid w-full max-w-[340px] justify-items-start">
+          <span
+            data-anim="fade"
+            style={at(T[3] + 100, SWAP)}
+            className="inline-flex rounded-full bg-harbour-tint px-3 py-1 text-label font-semibold text-harbour-deep [grid-area:1/1]"
+          >
+            After testing
+          </span>
+          <span
+            data-anim="swap-out"
+            style={at(T[3], SWAP)}
+            className="inline-flex rounded-full bg-surface px-3 py-1 text-label font-semibold text-muted ring-1 ring-hairline-strong [grid-area:1/1]"
+          >
+            Early wireframe
+          </span>
+        </p>
+        <Phone />
       </div>
 
-      <ol className="mt-10 grid gap-6 md:grid-cols-2 md:gap-x-8">
+      <ol className="space-y-6">
         {changes.map((c, i) => (
           <li
             key={c.title}
-            data-anim="rise"
-            style={step(i + 1)}
+            data-anim="focus"
+            style={at(T[i])}
             className="flex gap-4"
           >
             <Pin n={i + 1} static />

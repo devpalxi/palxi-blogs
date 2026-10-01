@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import heroPhoto from "@/public/images/blog/sketch-to-prototype/paper-wireframe-sketches.jpg";
+import testPhoto from "@/public/images/blog/sketch-to-prototype/watching-someone-try-it.jpg";
 import {
   Photo,
   PlainWords,
@@ -94,7 +95,7 @@ export default function SketchToPrototype() {
             <p>Here is what that looks like, step by step.</p>
           </Prose>
 
-          <Diagram caption="Our five steps from idea to finished feature. The middle steps repeat until the design is easy to use.">
+          <Diagram caption="Our five steps from idea to finished feature. If the design isn’t easy to use yet, the middle steps go round again.">
             <ProcessOverview />
           </Diagram>
 
@@ -204,6 +205,22 @@ export default function SketchToPrototype() {
               person.
             </PlainWords>
           </Prose>
+
+          <Photo
+            src={testPhoto}
+            alt="Two people at a laptop. One points at the screen while the other, seen from behind, rests a hand on the keyboard."
+            sizes="(min-width: 1064px) 1000px, 100vw"
+            className="mx-auto my-14 w-full max-w-[1000px]"
+            frameClassName="aspect-[3/2] sm:aspect-[16/9]"
+            caption="A researcher and a test participant try out a website together."
+            credit={{
+              author: "Samuel Mann",
+              licence: "CC BY 2.0",
+              licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+              sourceUrl:
+                "https://commons.wikimedia.org/wiki/File:Project_User_Experience_Testing_(9719939867).jpg",
+            }}
+          />
 
           <Diagram caption="In a think-aloud test, people say what they're thinking as they use the prototype. Their questions show us what to make clearer.">
             <ThinkAloud />
