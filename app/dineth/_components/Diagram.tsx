@@ -41,8 +41,10 @@ export function Diagram({ caption, children }: DiagramProps) {
     const stage = stageRef.current;
     if (!stage) return;
     stage.dataset.state = "armed";
-    // Force a style flush so the animations restart from the beginning.
-    void stage.offsetWidth;
+    // Reading the animations makes the browser apply the "armed" styles, which
+    // cancels every running animation. Cancelling them explicitly too means the
+    // restart never depends on a layout read that a build step could drop.
+    stage.getAnimations({ subtree: true }).forEach((a) => a.cancel());
     stage.dataset.state = "play";
   }
 
