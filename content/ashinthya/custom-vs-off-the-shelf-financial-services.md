@@ -23,14 +23,6 @@ A year later ASX chose "a product based solution" from TCS, which it expected to
 
 That isn't proof that custom software development is a mistake. It does show that the choice is expensive to get wrong, in both directions. This guide is for advisors and BFSI decision-makers who have to make that call for a regulated firm, and then defend it to a board.
 
-> **The short version**
->
-> - Buy commodity functions. Build where the firm competes, where integration is the product, or where no product fits the regulatory shape of the business.
-> - Most regulated firms end up hybrid: they buy the core systems and build the customer-facing and integration layers around them.
-> - Compare total cost over five years or more, including exit. Licence fees and build quotes are the smallest lines.
-> - CPS 230 requires an orderly exit from arrangements with material service providers. Plan the same exit test for a custom build, especially if an outside team runs it.
-> - Regulators expect the same evidence either way, and a vendor's certification doesn't carry your obligations.
-
 ## The real question is which parts to build
 
 Build or buy sounds like one decision. In practice it's a dozen smaller ones, one per capability.

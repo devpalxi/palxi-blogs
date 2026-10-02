@@ -23,14 +23,6 @@ That puts every material technology arrangement in scope, from the core banking 
 
 If you advise a bank, insurer or super trustee, this is now a technology question as much as a compliance one. This article sets out what CPS 230 asks for, in the terms an engineering team works in.
 
-> **The short version**
->
-> - CPS 230 has applied since 1 July 2025. Pre-existing service contracts had to comply by their next renewal or 1 July 2026, whichever came first.
-> - "Core technology services" sit on APRA's default list of material service providers for every regulated entity.
-> - Tolerance levels (maximum outage, maximum data loss, minimum service) are engineering targets. If your systems can't measure them, you can't report against them.
-> - A disruption to a critical operation outside tolerance has to reach APRA within 24 hours.
-> - The April 2026 amendments gave no contractual exemptions to IT, cloud or communications providers.
-
 ## What CPS 230 is, briefly
 
 CPS 230 is APRA's prudential standard on operational risk management, and the centre of its approach to operational resilience. APRA finalised it in July 2023 and it came into force on 1 July 2025 ([APRA](https://www.apra.gov.au/news-and-publications/apras-new-prudential-standard-operational-risk-management-comes-force), 1 July 2025). It applies to authorised deposit-taking institutions, general and life insurers, private health insurers and superannuation trustees.

@@ -27,14 +27,6 @@ Third parties now show up in about half of all breaches. Verizon's 2026 Data Bre
 
 This guide is written for advisors. Each check ends in something you can verify yourself, such as a register entry or a working session with the people who will write the code.
 
-> **The short version**
->
-> - Technical due diligence on a build team covers its people, security evidence, code, delivery habits and contract terms. A capabilities deck covers none of them properly.
-> - For APRA-regulated clients, CPS 230 requires due diligence before a material arrangement starts, and CPS 234 requires the entity to assess a third party's information security capability.
-> - To check an ISO 27001 certificate, look it up on IAF CertSearch or the JAS-ANZ register, read the scope and confirm it is the 2022 version.
-> - In Australia, a contractor owns the IP it creates unless the contract says otherwise. Get the assignment in writing before work starts.
-> - Ask to see real code and a real pipeline. Software due diligence finds problems that questionnaires miss.
-
 ## Why the recommendation carries your risk
 
 When an advisor names a build team, the client hears an endorsement. If the team misses deadlines or walks away with the only copy of the system, the client remembers who suggested it.

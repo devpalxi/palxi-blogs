@@ -12,6 +12,7 @@ export function CountUp({
   delay = 0,
   duration = 1600,
   suffix = "",
+  group = false,
   className = "",
 }: {
   to: number;
@@ -19,9 +20,12 @@ export function CountUp({
   delay?: number;
   duration?: number;
   suffix?: string;
+  /** Show thousands separators, the Australian way (7,500). */
+  group?: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
+  const show = (n: number) => (group ? n.toLocaleString("en-AU") : String(n));
 
   useEffect(() => {
     const el = ref.current;
@@ -34,14 +38,14 @@ export function CountUp({
     function run() {
       window.clearTimeout(timer);
       if (frame) cancelAnimationFrame(frame);
-      el!.textContent = `${from}${suffix}`;
+      el!.textContent = `${show(from)}${suffix}`;
       timer = window.setTimeout(() => {
         const begin = performance.now();
         const tick = (now: number) => {
           const t = Math.min((now - begin) / duration, 1);
           // Ease-out so the last few numbers arrive gently.
           const eased = 1 - (1 - t) ** 3;
-          el!.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+          el!.textContent = `${show(Math.round(from + (to - from) * eased))}${suffix}`;
           if (t < 1) frame = requestAnimationFrame(tick);
         };
         frame = requestAnimationFrame(tick);
@@ -58,11 +62,11 @@ export function CountUp({
       window.clearTimeout(timer);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [to, from, delay, duration, suffix]);
+  }, [to, from, delay, duration, suffix, group]);
 
   return (
     <span ref={ref} className={`tabular-nums ${className}`}>
-      {to}
+      {show(to)}
       {suffix}
     </span>
   );

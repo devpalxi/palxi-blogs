@@ -1,22 +1,56 @@
 import type { ReactNode } from "react";
 import {
-  CheckIcon,
-  ChatIcon,
+  BankIcon,
+  BeakerIcon,
   ClipboardIcon,
+  CodeIcon,
   EyeIcon,
-  ReceiptIcon,
+  LayersIcon,
+  ShieldIcon,
+  UsersIcon,
 } from "../../dineth/_components/icons";
-import { StepFlow } from "../../dineth/_components/diagram-kit";
+import { CertCheck } from "./CertCheck";
+import { Checklist, Compare } from "./Cards";
+import { Cascade } from "./Cascade";
+import { CoreEdges } from "./CoreEdges";
+import { BackupWall, CoverageMap, SecondCheck } from "./Cps234";
+import { Dials } from "./Dials";
+import { FlipCards } from "./FlipCards";
+import { Hardship } from "./Hardship";
+import { Hub } from "./Hub";
+import { Iceberg } from "./Iceberg";
 import {
-  BarRows,
-  Checklist,
-  Columns,
-  Layers,
-  Numbered,
-  Outcomes,
-  RangeBars,
-  SnapshotVsPeriod,
-} from "./kit";
+  BellIcon,
+  CalendarIcon,
+  CashIcon,
+  DocumentIcon,
+  DoorIcon,
+  RefreshIcon,
+  ScaleIcon,
+  SearchIcon,
+  SendIcon,
+  ServerIcon,
+  WrenchIcon,
+} from "./icons";
+import { Journey } from "./Journey";
+import { MoneyMoves } from "./MoneyMoves";
+import { PeriodsOfTime } from "./PeriodsOfTime";
+import { Radar } from "./Radar";
+import { Ranges } from "./Ranges";
+import { Resilience } from "./Resilience";
+import {
+  DoorsScene,
+  FallbackScene,
+  IdempotencyScene,
+  QueueScene,
+  ReconcileScene,
+  ScanScene,
+  SceneGrid,
+  StatusScene,
+  StealthScene,
+} from "./Scenes";
+import { Sorter } from "./Sorter";
+import { Staircase } from "./Staircase";
 
 export type Placement = {
   // Text of the h2 the diagram sits directly above.
@@ -28,29 +62,78 @@ export type Placement = {
 export const diagrams: Record<string, Placement[]> = {
   "apra-cps-234-board-questions": [
     {
+      before: "What APRA found in board reporting",
+      caption:
+        "Where CPS 234 lands. The board answers for it, the entity carries it out, and vendors feel it through the entity's contracts.",
+      node: (
+        <Cascade
+          nodes={[
+            {
+              icon: UsersIcon,
+              title: "The board",
+              detail:
+                "Ultimately responsible for the information security of the entity.",
+              badge: { text: "Accountable", tone: "default", icon: ShieldIcon },
+            },
+            {
+              icon: BankIcon,
+              title: "The regulated entity",
+              detail:
+                "Keeps security in line with the threats. Classifies its information assets, including those held by third parties.",
+              badge: { text: "Bound by CPS 234", tone: "done", icon: ShieldIcon },
+            },
+            {
+              icon: ServerIcon,
+              title: "The technology vendor",
+              detail:
+                "Not bound by the standard directly. Reached through the entity's contracts, assessments and audits.",
+              bound: false,
+              badge: { text: "Not bound directly", tone: "caution", icon: DocumentIcon },
+            },
+          ]}
+          links={[
+            { label: "Answers for it", kind: "solid" },
+            { label: "Contracts and audits", kind: "dashed" },
+          ]}
+          footer="The standard binds the entity, which then has duties about its vendors."
+        />
+      ),
+    },
+    {
       before: "Questions about assets and third parties",
       caption:
         "The five gaps APRA found in the first round of independent CPS 234 assessments (July 2023).",
       node: (
-        <Numbered
-          items={[
+        <Radar
+          centre={{
+            to: 300,
+            suffix: "+",
+            caption: "banks, insurers and super trustees",
+          }}
+          intro="They were due to be assessed by the end of 2023. These five gaps came up in the first round."
+          findings={[
             {
+              icon: LayersIcon,
               title: "Assets not fully identified",
               detail: "Critical and sensitive assets were not all classified.",
             },
             {
+              icon: UsersIcon,
               title: "Third parties barely checked",
               detail: "Limited checks on vendors' security capability.",
             },
             {
+              icon: BeakerIcon,
               title: "Testing poorly run",
               detail: "Testing programs were poorly defined or poorly run.",
             },
             {
+              icon: EyeIcon,
               title: "Little internal audit",
               detail: "Limited internal audit review of security controls.",
             },
             {
+              icon: BellIcon,
               title: "Late reporting to APRA",
               detail:
                 "Material incidents and weaknesses reported late or inconsistently.",
@@ -60,33 +143,57 @@ export const diagrams: Record<string, Placement[]> = {
       ),
     },
     {
+      before: "Backups the board has seen restored",
+      caption:
+        "An illustration: the same amount of testing each year, spread two ways. A board report should look like the second picture.",
+      node: <CoverageMap />,
+    },
+    {
+      before: "Who holds the keys",
+      caption:
+        "APRA lists insufficient segregation between production and backup environments as a common problem. This is the second backup question, in pictures.",
+      node: <BackupWall />,
+    },
+    {
+      before: "Incidents and the notification clocks",
+      caption:
+        "APRA's June 2025 letter expects MFA or equivalent controls for high-risk activities. For super trustees, that means actions like these.",
+      node: <SecondCheck />,
+    },
+    {
       before: "The board's question list, with evidence",
       caption:
-        "One incident can start several clocks at once. Bar lengths show the order of the deadlines, not their exact size, and business days run longer than calendar hours.",
+        "One incident can start several clocks at once. Ring lengths show the order of the deadlines, not their exact size, and business days run longer than calendar hours.",
       node: (
-        <BarRows
-          rows={[
+        <Dials
+          startLabel="An incident happens"
+          dials={[
             {
-              label:
-                "CPS 230: a critical operation is disrupted beyond tolerance",
-              chip: "24 hours",
-              pct: 12,
+              count: { to: 24, unit: "hours" },
+              f: 0.25,
+              tone: "stop",
+              tag: "CPS 230",
+              label: "A critical operation is disrupted beyond tolerance",
             },
             {
-              label: "CPS 234: a material information security incident",
-              chip: "72 hours",
-              pct: 36,
+              count: { to: 72, unit: "hours" },
+              f: 0.5,
+              tone: "caution",
+              tag: "CPS 234",
+              label: "A material information security incident",
             },
             {
-              label: "CPS 230: an operational risk incident with material impact",
-              chip: "72 hours",
-              pct: 36,
+              count: { to: 72, unit: "hours" },
+              f: 0.5,
+              tone: "caution",
+              tag: "CPS 230",
+              label: "An operational risk incident with material impact",
             },
             {
-              label:
-                "CPS 234: a material control weakness that can't be fixed in time",
-              chip: "10 business days",
-              pct: 100,
+              count: { to: 10, unit: "business days" },
+              f: 1,
+              tag: "CPS 234",
+              label: "A material control weakness that can't be fixed in time",
             },
           ]}
           note="Not to scale. Privacy Act and ransomware payment reporting add further clocks."
@@ -101,37 +208,89 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Seven components, each one owning specific obligations. Write this map before choosing a loan management system.",
       node: (
-        <Numbered
-          items={[
+        <Hub
+          hub={{
+            icon: BankIcon,
+            title: "Ledger and reconciliation",
+            detail: "The record of who owes what.",
+          }}
+          spokes={[
             {
+              icon: ClipboardIcon,
               title: "Origination",
               detail: "Application, identity checks and documents.",
             },
             {
+              icon: ScaleIcon,
               title: "Decisioning",
               detail: "Rules and scorecards that approve, decline or refer.",
             },
             {
+              icon: SearchIcon,
               title: "Credit reporting",
               detail: "Enquiries and reports in, repayment history out.",
             },
             {
+              icon: RefreshIcon,
               title: "Servicing",
               detail: "Schedules, repayments, fees, variations, statements.",
             },
             {
+              icon: BellIcon,
               title: "Hardship and collections",
               detail: "Cases, arrangements, notices and clocks.",
             },
             {
-              title: "Ledger and reconciliation",
-              detail: "The record of who owes what.",
-            },
-            {
+              icon: SendIcon,
               title: "Reporting",
               detail: "To regulators, funders, auditors and the board.",
+              out: true,
             },
           ]}
+          fallback={
+            <Journey
+              flow="column"
+              stops={[
+                {
+                  icon: ClipboardIcon,
+                  title: "Origination",
+                  detail: "Application, identity checks and documents.",
+                },
+                {
+                  icon: ScaleIcon,
+                  title: "Decisioning",
+                  detail: "Rules and scorecards that approve, decline or refer.",
+                },
+                {
+                  icon: SearchIcon,
+                  title: "Credit reporting",
+                  detail: "Enquiries and reports in, repayment history out.",
+                },
+                {
+                  icon: RefreshIcon,
+                  title: "Servicing",
+                  detail: "Schedules, repayments, fees, variations, statements.",
+                },
+                {
+                  icon: BellIcon,
+                  title: "Hardship and collections",
+                  detail: "Cases, arrangements, notices and clocks.",
+                },
+                {
+                  icon: BankIcon,
+                  title: "Ledger and reconciliation",
+                  detail: "The record of who owes what.",
+                  tone: "done",
+                },
+                {
+                  icon: SendIcon,
+                  title: "Reporting",
+                  detail: "To regulators, funders, auditors and the board.",
+                  tone: "done",
+                },
+              ]}
+            />
+          }
         />
       ),
     },
@@ -139,39 +298,7 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Security and the APRA lens",
       caption:
         "A hardship request has 21 days to be decided under the National Credit Code. Every channel should lead into the same case.",
-      node: (
-        <StepFlow
-          steps={[
-            {
-              icon: ChatIcon,
-              title: "Request arrives",
-              detail: "By phone, email, web form or chat.",
-            },
-            {
-              icon: ClipboardIcon,
-              title: "Case opens",
-              detail: "Created automatically with the date received.",
-            },
-            {
-              icon: EyeIcon,
-              title: "Clock runs",
-              detail: "A visible countdown, with alerts before day 21.",
-              tone: "caution",
-            },
-            {
-              icon: ReceiptIcon,
-              title: "Notice sent",
-              detail: "No case closes without a stored customer notice.",
-            },
-            {
-              icon: CheckIcon,
-              title: "Arrangement applied",
-              detail: "Schedule changes and collections pause.",
-              tone: "done",
-            },
-          ]}
-        />
-      ),
+      node: <Hardship />,
     },
   ],
 
@@ -180,74 +307,52 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Why cloud and IT vendors got no exemption",
       caption:
         "The three CPS 230 ideas that turn into engineering work for a technology vendor.",
-      node: (
-        <Columns
-          columns={[
-            {
-              title: "Critical operations",
-              subtitle: "What must keep running",
-              items: [
-                "Payments, deposits, claims or fund administration",
-                "Customer enquiries",
-                "The systems and infrastructure that support them",
-              ],
-            },
-            {
-              title: "Tolerance levels",
-              subtitle: "Three limits the board approves",
-              items: [
-                "Longest acceptable disruption",
-                "Most data you can afford to lose",
-                "Minimum service in a degraded mode",
-              ],
-            },
-            {
-              title: "Material service providers",
-              subtitle: "Vendors the entity relies on",
-              items: [
-                "Core technology services by default",
-                "Kept on a register",
-                "Submitted to APRA every year",
-              ],
-            },
-          ]}
-        />
-      ),
+      node: <Resilience />,
     },
     {
       before: "Fourth parties and offshoring",
       caption: "When APRA must hear about a change or an incident under CPS 230.",
       node: (
-        <Outcomes
-          rows={[
+        <Dials
+          dials={[
             {
-              result: "Before it happens",
+              icon: CalendarIcon,
+              f: 0.12,
               tone: "caution",
-              action:
+              tag: "Before it happens",
+              label:
                 "Entering a material offshoring arrangement, or significantly changing one.",
             },
             {
-              result: "Within 24 hours",
+              count: { to: 24, unit: "hours" },
+              f: 0.3,
               tone: "stop",
-              action: "A critical operation is disrupted outside tolerance.",
+              tag: "Within 24 hours",
+              label: "A critical operation is disrupted outside tolerance.",
             },
             {
-              result: "Within 72 hours",
+              count: { to: 72, unit: "hours" },
+              f: 0.5,
               tone: "stop",
-              action: "An operational risk incident with a material impact.",
+              tag: "Within 72 hours",
+              label: "An operational risk incident with a material impact.",
             },
             {
-              result: "Within 20 business days",
-              tone: "default",
-              action:
+              count: { to: 20, unit: "business days" },
+              f: 0.78,
+              tag: "Within 20 business days",
+              label:
                 "A new or materially changed agreement for a critical operation.",
             },
             {
-              result: "Once a year",
+              icon: RefreshIcon,
+              f: 1,
               tone: "done",
-              action: "The register of material service providers.",
+              tag: "Once a year",
+              label: "The register of material service providers.",
             },
           ]}
+          note="Ring lengths show the order of the deadlines, not their exact size."
         />
       ),
     },
@@ -259,31 +364,27 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Most regulated firms buy the systems of record and build what surrounds them. This is one hypothetical mid-sized lender.",
       node: (
-        <Columns
-          columns={[
-            {
-              title: "Buy the core",
-              tone: "default",
-              subtitle: "Systems of record and specialist services",
-              items: [
-                "Loan management ledger",
-                "General ledger",
-                "Identity verification",
-                "Sanctions screening",
-              ],
-            },
-            {
-              title: "Build the edges",
-              tone: "done",
-              subtitle: "What customers and brokers touch",
-              items: [
-                "Broker and customer apps",
-                "Credit decisioning rules",
-                "The integration layer",
-                "Reporting",
-              ],
-            },
-          ]}
+        <CoreEdges
+          core={{
+            title: "Buy the core",
+            subtitle: "Systems of record and specialist services",
+            items: [
+              "Loan management ledger",
+              "General ledger",
+              "Identity verification",
+              "Sanctions screening",
+            ],
+          }}
+          edges={{
+            title: "Build the edges",
+            subtitle: "What customers and brokers touch",
+            items: [
+              "Broker and customer apps",
+              "Credit decisioning rules",
+              "The integration layer",
+              "Reporting",
+            ],
+          }}
         />
       ),
     },
@@ -292,31 +393,53 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Put both options on the same five-year view. A licence price and a build quote are not comparable on their own.",
       node: (
-        <Numbered
-          items={[
+        <Compare
+          leftTitle="Off the shelf"
+          rightTitle="Custom build"
+          leftIcon={LayersIcon}
+          rightIcon={CodeIcon}
+          rows={[
             {
-              title: "Upfront",
-              detail: "Licence and setup, or discovery, design and build.",
+              label: "Upfront",
+              icon: CashIcon,
+              left: "Licence or setup fees, implementation partner, configuration",
+              right: "Discovery, design, build, testing",
             },
             {
-              title: "Integration",
-              detail: "Connectors are often priced separately when you buy.",
+              label: "Integration",
+              icon: LayersIcon,
+              left: "Connectors to your systems, often priced separately",
+              right: "Built as part of the product",
             },
             {
-              title: "Running",
-              detail: "Subscriptions that grow with volume, or hosting and support.",
+              label: "Running",
+              icon: RefreshIcon,
+              left: "Subscription, often tied to volume or accounts",
+              right: "Hosting, monitoring, on-call support",
             },
             {
-              title: "Change",
-              detail: "Waiting on the vendor's roadmap, or your own team's time.",
+              label: "Change",
+              icon: WrenchIcon,
+              left: "Vendor change requests, or waiting for their roadmap",
+              right: "Your own team's time",
             },
             {
-              title: "Compliance evidence",
-              detail: "Vendor reports plus your own controls, or all your own.",
+              label: "Compliance evidence",
+              icon: ClipboardIcon,
+              left: "Vendor reports plus your own controls and testing",
+              right: "Your own controls, testing and audits",
             },
             {
-              title: "Upgrades and exit",
-              detail: "Forced upgrades and migration costs apply to both.",
+              label: "Upgrades",
+              icon: CalendarIcon,
+              left: "Forced upgrades, retesting your customisations",
+              right: "Framework and dependency upgrades",
+            },
+            {
+              label: "Exit",
+              icon: DoorIcon,
+              left: "Data extraction, parallel running, migration",
+              right: "Handover and documentation, if the team changes",
             },
           ]}
         />
@@ -330,12 +453,12 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "The licence decides which rules apply to the stack, so settle it before the vendor list.",
       node: (
-        <Columns
-          columns={[
+        <Staircase
+          steps={[
             {
               title: "Non-bank lender",
-              subtitle: "ASIC credit licence",
-              items: [
+              authority: "ASIC credit licence",
+              facts: [
                 "Cannot take deposits",
                 "CPS 230 does not apply",
                 "Plan for credit and conduct controls",
@@ -343,19 +466,21 @@ export const diagrams: Record<string, Placement[]> = {
             },
             {
               title: "Restricted ADI",
+              authority: "APRA licence, up to two years",
               tone: "caution",
-              subtitle: "APRA licence, up to two years",
-              items: [
-                "Deposits capped at $2 million in total",
-                "CPS 230 applies",
-                "Must reach full ADI standards or exit",
-              ],
+              stat: {
+                prefix: "$",
+                to: 2,
+                suffix: " million",
+                caption: "Cap on total deposits",
+              },
+              facts: ["CPS 230 applies", "Must reach full ADI standards or exit"],
             },
             {
               title: "Full ADI",
+              authority: "APRA licence",
               tone: "done",
-              subtitle: "APRA licence",
-              items: [
+              facts: [
                 "Can take deposits",
                 "CPS 230 applies",
                 "Ongoing resilience and vendor oversight",
@@ -369,8 +494,9 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Open banking solutions and CDR data holder duties",
       caption: "The default build or buy call for most lenders.",
       node: (
-        <Columns
-          columns={[
+        <Sorter
+          beltLabel="Capabilities"
+          bins={[
             {
               title: "Buy",
               subtitle: "Costly, invisible to customers",
@@ -395,10 +521,7 @@ export const diagrams: Record<string, Placement[]> = {
               title: "It depends",
               tone: "caution",
               subtitle: "Check before signing",
-              items: [
-                "Credit decisioning engine",
-                "CDR data holder APIs",
-              ],
+              items: ["Credit decisioning engine", "CDR data holder APIs"],
             },
           ]}
         />
@@ -412,17 +535,19 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "The customer sees one app. Behind it, the account can sit on a partner's licence.",
       node: (
-        <Layers
-          layers={[
+        <Iceberg
+          product={{
+            title: "Your client's product",
+            detail: "The screens customers use, onboarding and the sub-ledger.",
+          }}
+          deep={[
             {
-              title: "Your client's product",
-              detail: "The screens customers use, onboarding and the sub-ledger.",
-            },
-            {
+              icon: ServerIcon,
               title: "The partner's platform",
               detail: "A pooled account, cards or payments, and scheme access.",
             },
             {
+              icon: ScaleIcon,
               title: "The licence",
               detail: "Held by a bank or licensed payments provider.",
             },
@@ -436,8 +561,9 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "A common split of who owns what. The contract decides the details.",
       node: (
-        <Columns
-          columns={[
+        <Sorter
+          beltLabel="Responsibilities"
+          bins={[
             {
               title: "Usually the partner",
               items: [
@@ -471,53 +597,17 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Each AUSTRAC obligation ends up as a feature, a data field or a log.",
       node: (
-        <Outcomes
-          rows={[
-            {
-              result: "Initial CDD",
-              tone: "default",
-              action: "Risk-based onboarding flow with a rules engine behind it.",
-            },
-            {
-              result: "Ongoing CDD",
-              tone: "default",
-              action: "Transaction monitoring, periodic reviews, refresh triggers.",
-            },
-            {
-              result: "Enhanced CDD",
-              tone: "caution",
-              action: "Escalation path, source of funds and senior approval.",
-            },
-            {
-              result: "PEP screening",
-              tone: "default",
-              action: "Screening at onboarding and on list updates, with match review.",
-            },
-            {
-              result: "Sanctions checks",
-              tone: "stop",
-              action: "Fuzzy name matching, a hold on funds, an escalation queue.",
-            },
-            {
-              result: "Suspicious matters",
-              tone: "stop",
-              action: "Case management with timestamps and a reporting clock.",
-            },
-            {
-              result: "Threshold reports",
-              tone: "default",
-              action: "A cash flag on transactions and a report builder.",
-            },
-            {
-              result: "International transfers",
-              tone: "default",
-              action: "Cross-border flag, transfer chain model, report extraction.",
-            },
-            {
-              result: "Record keeping",
-              tone: "done",
-              action: "Immutable event log, retention rules, deletion jobs.",
-            },
+        <FlipCards
+          cards={[
+            { front: "Initial CDD", tone: "default", back: "Risk-based onboarding flow with a rules engine behind it." },
+            { front: "Ongoing CDD", tone: "default", back: "Transaction monitoring, periodic reviews, refresh triggers." },
+            { front: "Enhanced CDD", tone: "caution", back: "Escalation path, source of funds and senior approval." },
+            { front: "PEP screening", tone: "default", back: "Screening at onboarding and on list updates, with match review." },
+            { front: "Sanctions checks", tone: "stop", back: "Fuzzy name matching, a hold on funds, an escalation queue." },
+            { front: "Suspicious matters", tone: "stop", back: "Case management with timestamps and a reporting clock." },
+            { front: "Threshold reports", tone: "default", back: "A cash flag on transactions and a report builder." },
+            { front: "International transfers", tone: "default", back: "Cross-border flag, transfer chain model, report extraction." },
+            { front: "Record keeping", tone: "done", back: "Immutable event log, retention rules, deletion jobs." },
           ]}
         />
       ),
@@ -525,24 +615,30 @@ export const diagrams: Record<string, Placement[]> = {
     {
       before: "Records that last seven years",
       caption:
-        "AUSTRAC reporting deadlines. Bar lengths show the order, not an exact scale.",
+        "AUSTRAC reporting deadlines. Ring lengths show the order, not an exact scale.",
       node: (
-        <BarRows
-          rows={[
+        <Dials
+          startLabel="The clock starts"
+          dials={[
             {
-              label: "Suspicious matter report: terrorism financing",
-              chip: "24 hours",
-              pct: 10,
+              count: { to: 24, unit: "hours" },
+              f: 0.2,
+              tone: "stop",
+              tag: "Suspicious matter",
+              label: "Terrorism financing",
             },
             {
-              label: "Suspicious matter report: other suspicions",
-              chip: "3 business days",
-              pct: 35,
+              count: { to: 3, unit: "business days" },
+              f: 0.5,
+              tone: "caution",
+              tag: "Suspicious matter",
+              label: "Other suspicions",
             },
             {
+              count: { to: 10, unit: "business days" },
+              f: 1,
+              tag: "Reports",
               label: "Threshold and international funds transfer reports",
-              chip: "10 business days",
-              pct: 100,
             },
           ]}
           note="The suspicious matter clock runs from the moment suspicion forms, so your case tool needs a distinct 'suspicion formed' field."
@@ -555,68 +651,44 @@ export const diagrams: Record<string, Placement[]> = {
     {
       before: "Confirmation of Payee in a payout flow",
       caption: "Three ways to move money account to account in Australia.",
-      node: (
-        <Columns
-          columns={[
-            {
-              title: "NPP credit transfer",
-              subtitle: "Pushes money out, in real time",
-              items: [
-                "Good for individual payouts",
-                "Watch per-payment cost",
-                "Some accounts are unreachable",
-              ],
-            },
-            {
-              title: "PayTo",
-              tone: "done",
-              subtitle: "Pulls money in, under an agreement",
-              items: [
-                "Good for funding the platform",
-                "Single transfers only",
-                "Bank support is uneven",
-              ],
-            },
-            {
-              title: "BECS direct entry",
-              tone: "caution",
-              subtitle: "Batched, not real time",
-              items: [
-                "Good for bulk runs and as a fallback",
-                "Rejections come back late",
-                "Limited data fields",
-              ],
-            },
-          ]}
-        />
-      ),
+      node: <MoneyMoves />,
     },
     {
       before: "Scam rules: who they bind and how they reach you",
       caption:
         "Five things a payout ledger for Australian A2A should have from the first release.",
       node: (
-        <Numbered
-          items={[
+        <SceneGrid
+          scenes={[
             {
               title: "An idempotency key",
               detail: "On every instruction, so a timeout never doubles a payment.",
+              start: 600,
+              scene: <IdempotencyScene t={800} />,
             },
             {
               title: "A clear status model",
               detail: "Submitted, settled, rejected and held are separate states.",
+              start: 1600,
+              scene: <StatusScene t={1800} />,
             },
             {
               title: "A BECS fallback",
               detail: "For unreachable accounts, with the payee told about the delay.",
+              start: 2600,
+              scene: <FallbackScene t={2800} />,
             },
             {
               title: "Daily reconciliation",
               detail: "Against the bank statement, not your own API logs.",
+              start: 3600,
+              scene: <ReconcileScene t={3800} />,
             },
             {
               title: "An exceptions queue",
               detail: "Worked by a person, with ageing alerts.",
+              start: 4600,
+              scene: <QueueScene t={4800} />,
             },
           ]}
         />
@@ -629,36 +701,29 @@ export const diagrams: Record<string, Placement[]> = {
       before: "What APRA expects under CPS 234",
       caption: "Three kinds of security testing, and the question each one answers.",
       node: (
-        <Columns
-          columns={[
+        <SceneGrid
+          cols="md:grid-cols-3"
+          scenes={[
             {
-              title: "Vulnerability assessment",
-              subtitle: "What known weaknesses do we have?",
-              items: [
-                "Automated scans with human triage",
-                "Monthly or quarterly",
-                "Suits everyone",
-              ],
+              title: "Vulnerability assessment: what known weaknesses do we have?",
+              detail:
+                "Automated scans with human triage. Monthly or quarterly. Suits everyone.",
+              start: 600,
+              scene: <ScanScene t={900} />,
             },
             {
-              title: "Penetration test",
-              tone: "done",
-              subtitle: "What can an attacker actually do?",
-              items: [
-                "Manual testing within a defined scope",
-                "At least annually and after major change",
-                "Any platform holding customer or payment data",
-              ],
+              title: "Penetration test: what can an attacker actually do?",
+              detail:
+                "Manual testing within a defined scope. At least annually and after major change. Any platform holding customer or payment data.",
+              start: 1900,
+              scene: <DoorsScene t={2200} />,
             },
             {
-              title: "Red team",
-              tone: "caution",
-              subtitle: "Would we detect a real attack?",
-              items: [
-                "Goal-based attack simulation",
-                "Occasionally",
-                "Large regulated entities with a security team",
-              ],
+              title: "Red team: would we detect a real attack?",
+              detail:
+                "Goal-based attack simulation, occasionally. For large regulated entities with a security team.",
+              start: 3200,
+              scene: <StealthScene t={3500} />,
             },
           ]}
         />
@@ -669,7 +734,7 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Our view: planning ranges in AUD ex GST, based on a senior tester day rate of $1,500 to $2,500. A red team exercise costs well above all of these.",
       node: (
-        <RangeBars
+        <Ranges
           rows={[
             {
               label: "Vulnerability assessment",
@@ -721,14 +786,14 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Why SOC 2 compliance matters to APRA-regulated clients",
       caption:
         "A Type 1 report is a single date. A Type 2 report covers a stretch of time, which is why buyers should ask for it.",
-      node: <SnapshotVsPeriod />,
+      node: <PeriodsOfTime />,
     },
     {
       before: "Questions to ask a vendor",
       caption:
         "Our view: first-year planning ranges in AUD ex GST for a vendor of 20 to 100 staff. The largest cost, internal engineering time, isn't shown.",
       node: (
-        <RangeBars
+        <Ranges
           rows={[
             {
               label: "Readiness assessment",
@@ -823,34 +888,7 @@ export const diagrams: Record<string, Placement[]> = {
       before: "Evidence beyond the certificate",
       caption: "Six checks to work through before trusting an ISO 27001 logo.",
       node: (
-        <Numbered
-          items={[
-            {
-              title: "Get the certificate",
-              detail: "Note the number, certification body, version and expiry.",
-            },
-            {
-              title: "Look it up",
-              detail: "On IAF CertSearch or the JAS-ANZ register.",
-            },
-            {
-              title: "Check the version",
-              detail: "ISO/IEC 27001:2022. A 2013 certificate is out of date.",
-            },
-            {
-              title: "Read the scope",
-              detail: "It should name the entity and services delivering your work.",
-            },
-            {
-              title: "Read the Statement of Applicability",
-              detail: "Look for secure development, suppliers, access and logging.",
-            },
-            {
-              title: "Ask about the last audit",
-              detail: "Any major nonconformities in the latest surveillance audit?",
-            },
-          ]}
-        />
+        <CertCheck />
       ),
     },
   ],

@@ -23,14 +23,6 @@ Breach figures sit alongside that finding. The OAIC received 1,205 data breach n
 
 That stocktake covered APRA-regulated entities (banks, insurers and super trustees). Where one of them relies on a third party's control testing, CPS 234 says it must assess whether that testing fits the risk. Our view: if you advise a regulated firm or run a platform one relies on, have a ready answer on pen testing: scope, dates, testers and fixes.
 
-> **The short version**
->
-> - CPS 234 requires a systematic testing program, run by appropriately skilled and functionally independent specialists, with the program reviewed at least annually.
-> - A vulnerability assessment finds known weaknesses, and a penetration test tries to exploit them. Red team exercises check whether anyone notices.
-> - If card data is in scope, PCI DSS v4.0.1 requires internal and external penetration tests at least every 12 months and after significant change.
-> - Test before launch, after major change and at least once a year. Scope by attack surface: web app, API, mobile, cloud.
-> - Our view: a focused web app and API test costs roughly $13,500 to $45,000 ex GST on the assumptions below, plus $1,500 to $7,500 for the retest.
-
 ## Pen test, vulnerability assessment and red team
 
 These terms get used loosely, which makes quotes hard to compare until you know which one is on offer.
