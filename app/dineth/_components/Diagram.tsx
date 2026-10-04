@@ -8,6 +8,19 @@ type DiagramProps = {
   children: ReactNode;
 };
 
+// SVG scenes (svg[data-scene="<end in seconds>"]) run on SVG's own clock
+// rather than CSS, so they are paused, sought and restarted directly.
+function scenes(stage: HTMLElement) {
+  return [...stage.querySelectorAll<SVGSVGElement>("svg[data-scene]")];
+}
+
+function restartScenes(stage: HTMLElement) {
+  for (const svg of scenes(stage)) {
+    svg.setCurrentTime(0);
+    svg.unpauseAnimations();
+  }
+}
+
 export function Diagram({ caption, children }: DiagramProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
@@ -15,19 +28,34 @@ export function Diagram({ caption, children }: DiagramProps) {
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Show the finished frame, with nothing moving.
+      for (const svg of scenes(stage)) {
+        svg.pauseAnimations();
+        svg.setCurrentTime(Number(svg.dataset.scene) || 60);
+      }
+      return;
+    }
 
     setMotionAllowed(true);
 
     // Never hide something the reader can already see.
     const { top } = stage.getBoundingClientRect();
-    if (top < window.innerHeight * 0.9) return;
+    if (top < window.innerHeight * 0.9) {
+      restartScenes(stage);
+      return;
+    }
 
     stage.dataset.state = "armed";
+    for (const svg of scenes(stage)) {
+      svg.pauseAnimations();
+      svg.setCurrentTime(0);
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           stage.dataset.state = "play";
+          restartScenes(stage);
           observer.disconnect();
         }
       },
@@ -46,6 +74,7 @@ export function Diagram({ caption, children }: DiagramProps) {
     // restart never depends on a layout read that a build step could drop.
     stage.getAnimations({ subtree: true }).forEach((a) => a.cancel());
     stage.dataset.state = "play";
+    restartScenes(stage);
   }
 
   return (

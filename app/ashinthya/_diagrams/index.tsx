@@ -1,19 +1,13 @@
 import type { ReactNode } from "react";
 import {
   BankIcon,
-  BeakerIcon,
   ClipboardIcon,
   CodeIcon,
-  EyeIcon,
   LayersIcon,
-  ShieldIcon,
-  UsersIcon,
 } from "../../dineth/_components/icons";
 import { CertCheck } from "./CertCheck";
 import { Checklist, Compare } from "./Cards";
-import { Cascade } from "./Cascade";
 import { CoreEdges } from "./CoreEdges";
-import { BackupWall, CoverageMap, SecondCheck } from "./Cps234";
 import { Dials } from "./Dials";
 import { FlipCards } from "./FlipCards";
 import { Hardship } from "./Hardship";
@@ -23,7 +17,6 @@ import {
   BellIcon,
   CalendarIcon,
   CashIcon,
-  DocumentIcon,
   DoorIcon,
   RefreshIcon,
   ScaleIcon,
@@ -35,7 +28,6 @@ import {
 import { Journey } from "./Journey";
 import { MoneyMoves } from "./MoneyMoves";
 import { PeriodsOfTime } from "./PeriodsOfTime";
-import { Radar } from "./Radar";
 import { Ranges } from "./Ranges";
 import { Resilience } from "./Resilience";
 import {
@@ -51,6 +43,9 @@ import {
 } from "./Scenes";
 import { Sorter } from "./Sorter";
 import { Staircase } from "./Staircase";
+import { BoardChain } from "../_scenes/BoardChain";
+import { Hourglasses } from "../_scenes/Hourglasses";
+import { VaultDoor } from "../_scenes/VaultDoor";
 
 export type Placement = {
   // Text of the h2 the diagram sits directly above.
@@ -65,140 +60,19 @@ export const diagrams: Record<string, Placement[]> = {
       before: "What APRA found in board reporting",
       caption:
         "Where CPS 234 lands. The board answers for it, the entity carries it out, and vendors feel it through the entity's contracts.",
-      node: (
-        <Cascade
-          nodes={[
-            {
-              icon: UsersIcon,
-              title: "The board",
-              detail:
-                "Ultimately responsible for the information security of the entity.",
-              badge: { text: "Accountable", tone: "default", icon: ShieldIcon },
-            },
-            {
-              icon: BankIcon,
-              title: "The regulated entity",
-              detail:
-                "Keeps security in line with the threats. Classifies its information assets, including those held by third parties.",
-              badge: { text: "Bound by CPS 234", tone: "done", icon: ShieldIcon },
-            },
-            {
-              icon: ServerIcon,
-              title: "The technology vendor",
-              detail:
-                "Not bound by the standard directly. Reached through the entity's contracts, assessments and audits.",
-              bound: false,
-              badge: { text: "Not bound directly", tone: "caution", icon: DocumentIcon },
-            },
-          ]}
-          links={[
-            { label: "Answers for it", kind: "solid" },
-            { label: "Contracts and audits", kind: "dashed" },
-          ]}
-          footer="The standard binds the entity, which then has duties about its vendors."
-        />
-      ),
-    },
-    {
-      before: "Questions about assets and third parties",
-      caption:
-        "The five gaps APRA found in the first round of independent CPS 234 assessments (July 2023).",
-      node: (
-        <Radar
-          centre={{
-            to: 300,
-            suffix: "+",
-            caption: "banks, insurers and super trustees",
-          }}
-          intro="They were due to be assessed by the end of 2023. These five gaps came up in the first round."
-          findings={[
-            {
-              icon: LayersIcon,
-              title: "Assets not fully identified",
-              detail: "Critical and sensitive assets were not all classified.",
-            },
-            {
-              icon: UsersIcon,
-              title: "Third parties barely checked",
-              detail: "Limited checks on vendors' security capability.",
-            },
-            {
-              icon: BeakerIcon,
-              title: "Testing poorly run",
-              detail: "Testing programs were poorly defined or poorly run.",
-            },
-            {
-              icon: EyeIcon,
-              title: "Little internal audit",
-              detail: "Limited internal audit review of security controls.",
-            },
-            {
-              icon: BellIcon,
-              title: "Late reporting to APRA",
-              detail:
-                "Material incidents and weaknesses reported late or inconsistently.",
-            },
-          ]}
-        />
-      ),
-    },
-    {
-      before: "Backups the board has seen restored",
-      caption:
-        "An illustration: the same amount of testing each year, spread two ways. A board report should look like the second picture.",
-      node: <CoverageMap />,
-    },
-    {
-      before: "Who holds the keys",
-      caption:
-        "APRA lists insufficient segregation between production and backup environments as a common problem. This is the second backup question, in pictures.",
-      node: <BackupWall />,
+      node: <BoardChain />,
     },
     {
       before: "Incidents and the notification clocks",
       caption:
         "APRA's June 2025 letter expects MFA or equivalent controls for high-risk activities. For super trustees, that means actions like these.",
-      node: <SecondCheck />,
+      node: <VaultDoor />,
     },
     {
       before: "The board's question list, with evidence",
       caption:
-        "One incident can start several clocks at once. Ring lengths show the order of the deadlines, not their exact size, and business days run longer than calendar hours.",
-      node: (
-        <Dials
-          startLabel="An incident happens"
-          dials={[
-            {
-              count: { to: 24, unit: "hours" },
-              f: 0.25,
-              tone: "stop",
-              tag: "CPS 230",
-              label: "A critical operation is disrupted beyond tolerance",
-            },
-            {
-              count: { to: 72, unit: "hours" },
-              f: 0.5,
-              tone: "caution",
-              tag: "CPS 234",
-              label: "A material information security incident",
-            },
-            {
-              count: { to: 72, unit: "hours" },
-              f: 0.5,
-              tone: "caution",
-              tag: "CPS 230",
-              label: "An operational risk incident with material impact",
-            },
-            {
-              count: { to: 10, unit: "business days" },
-              f: 1,
-              tag: "CPS 234",
-              label: "A material control weakness that can't be fixed in time",
-            },
-          ]}
-          note="Not to scale. Privacy Act and ransomware payment reporting add further clocks."
-        />
-      ),
+        "One incident can start several clocks at once. The sand runs out in the order of the deadlines, not to scale, and business days run longer than calendar hours.",
+      node: <Hourglasses />,
     },
   ],
 
