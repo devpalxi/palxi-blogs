@@ -13,10 +13,11 @@ const services = ["A booking service", "A payments service", "A community servic
 
 // Drops land over the centre of each of the three screens (704 wide, 16px gaps).
 const ROUTES = [
-  "M352 0 V40 H112 V110",
-  "M352 0 V110",
-  "M352 0 V40 H592 V110",
+  "M352 0 C352 56 112 48 112 106",
+  "M352 0 V106",
+  "M352 0 C352 56 592 48 592 106",
 ];
+const ENDS = [112, 352, 592];
 
 const grid = "[grid-area:1/1]";
 
@@ -67,7 +68,15 @@ export function FixOnce() {
         focusable="false"
         className="mx-auto block w-full max-w-[44rem]"
       >
-        {ROUTES.map((d) => (
+        <circle
+          cx={352}
+          cy={4}
+          r={6}
+          fill="var(--harbour-green)"
+          data-anim="pop"
+          style={at(SEND - 200, 400)}
+        />
+        {ROUTES.map((d, i) => (
           <g key={d}>
             <path
               d={d}
@@ -99,6 +108,14 @@ export function FixOnce() {
                 offsetPath: `path("${d}")`,
                 "--ease": "linear",
               } as CSSProperties)}
+            />
+            <circle
+              cx={ENDS[i]}
+              cy={104}
+              r={6}
+              fill="var(--harbour-green)"
+              data-anim="pop"
+              style={at(ARRIVE - 100, 400)}
             />
           </g>
         ))}
