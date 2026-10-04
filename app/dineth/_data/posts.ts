@@ -14,7 +14,7 @@ export const posts: Post[] = [
     slug: "one-design-system",
     title: "One design system, many products: how we keep Palxi consistent",
     summary:
-      "Drive anywhere in Australia and the road signs speak the same language. One shared design system does the same for every Palxi product, so you learn once and feel at home everywhere.",
+      "Drive anywhere in Australia and the road signs speak the same language. One shared design system does the same for every product.",
     tag: "Design system",
     author: "Dineth Nimsara",
     publishedOn: "2026-09-29",

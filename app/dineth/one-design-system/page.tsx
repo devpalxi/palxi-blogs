@@ -47,8 +47,8 @@ export default function OneDesignSystem() {
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
               Drive anywhere in Australia and the road signs speak the same
-              language. One shared design system does the same for every Palxi
-              product, so you learn once and feel at home everywhere.
+              language. One shared design system does the same for every
+              product.
             </p>
             <p className="mt-6 text-label text-muted">
               By {post.author} · {formatDate(post.publishedOn)} ·{" "}
@@ -80,7 +80,7 @@ export default function OneDesignSystem() {
               Drive across the Nullarbor and you&apos;ll pass a sign with a
               camel, a wombat and a kangaroo on it. You may never have seen a
               camel on the road, but you know exactly what that sign means.
-              Yellow diamond, black picture: watch out.
+              Yellow diamond, black symbol: WATCH OUT.
             </p>
             <p>
               Road signs across Australia follow a national standard, AS 1742, which sets their shapes, colours and
