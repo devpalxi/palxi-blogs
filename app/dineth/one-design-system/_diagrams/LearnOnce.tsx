@@ -19,6 +19,52 @@ const without = [
   { label: "OK", button: "bg-harbour-tint text-harbour-deep rounded-lg", align: "justify-center" },
 ];
 
+// A fingertip that rises onto the button, taps it, then lifts away. It exists
+// only while the tap happens, so the finished diagram stays uncluttered.
+function Finger({ tap }: { tap: number }) {
+  return (
+    <span
+      aria-hidden="true"
+      data-anim="window"
+      style={at(tap - 500, 1200)}
+      className="pointer-events-none absolute top-1/2 left-1/2 z-10"
+    >
+      <span data-anim="rise" style={at(tap - 500, 450)} className="block">
+        {/* A pointing hand; the index fingertip sits at the button's centre. */}
+        <svg
+          viewBox="0 0 42 50"
+          focusable="false"
+          className="-mt-1 -ml-3.5 block h-[50px] w-[42px] drop-shadow-sm"
+        >
+          <circle
+            cx={14}
+            cy={5}
+            r={9}
+            fill="var(--harbour-green)"
+            fillOpacity={0.25}
+            stroke="var(--harbour-green)"
+            strokeWidth={2}
+          />
+          <path
+            d="M10 25 V7 a4 4 0 0 1 8 0 V17 a3.5 3.5 0 0 1 7 0 a3.5 3.5 0 0 1 7 0 a3.5 3.5 0 0 1 7 0 V31 Q39 45 28 46 H18 Q12 46 9 38 L3.5 29.5 Q2.5 26.5 5.5 25.5 Q8 25.5 10 28.5 Z"
+            fill="var(--paper-white)"
+            stroke="var(--deep-ink)"
+            strokeWidth={2.2}
+            strokeLinejoin="round"
+          />
+          <path
+            d="M25 19 V27 M32 19 V27"
+            fill="none"
+            stroke="var(--deep-ink)"
+            strokeWidth={1.8}
+            strokeLinecap="round"
+          />
+        </svg>
+      </span>
+    </span>
+  );
+}
+
 function Screen({
   label,
   buttonClass,
@@ -49,6 +95,7 @@ function Screen({
             style={at(tap)}
             className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/40"
           />
+          <Finger tap={tap} />
         </span>
       </div>
 
