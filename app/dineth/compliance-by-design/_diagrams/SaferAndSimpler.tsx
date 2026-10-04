@@ -1,5 +1,5 @@
+import type { CSSProperties } from "react";
 import {
-  ArrowRightIcon,
   CheckIcon,
   ClipboardIcon,
   CrossIcon,
@@ -12,6 +12,12 @@ import { at } from "../../_components/diagram-kit";
 // Each old habit is marked as out, then replaced by what current guidance says.
 const GAP = 1900;
 const t = (i: number) => 500 + i * GAP;
+
+const stroke = {
+  fill: "none",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
 
 const pairs = [
   {
@@ -68,26 +74,60 @@ export function SaferAndSimpler() {
                   {p.old}
                 </span>
                 {/* A red "no" badge lands on the old habit. */}
-                <span
+                <svg
+                  viewBox="0 0 28 28"
                   aria-hidden="true"
-                  data-anim="pop"
-                  style={at(t(i) + 700, 450)}
-                  className="absolute -top-2.5 -right-2.5 flex size-7 items-center justify-center rounded-full bg-stop text-surface ring-2 ring-surface"
+                  focusable="false"
+                  className="absolute -top-3 -right-3 size-8"
                 >
-                  <CrossIcon size={16} />
-                </span>
+                  <circle
+                    cx={14}
+                    cy={14}
+                    r={13}
+                    fill="var(--stop-red)"
+                    stroke="var(--paper-white)"
+                    strokeWidth={2}
+                    data-anim="pop"
+                    style={at(t(i) + 700, 450)}
+                  />
+                  <path
+                    d="M9.5 9.5 L18.5 18.5 M18.5 9.5 L9.5 18.5"
+                    pathLength={1}
+                    {...stroke}
+                    stroke="var(--paper-white)"
+                    strokeWidth={3}
+                    data-anim="draw"
+                    style={at(t(i) + 950, 350, { "--ease": "linear" } as CSSProperties)}
+                  />
+                </svg>
               </p>
 
-              <span
+              {/* An arrow that draws itself from the old habit to the new advice. */}
+              <svg
+                viewBox="0 0 56 40"
                 aria-hidden="true"
-                data-anim="pop"
-                style={at(t(i) + 1300)}
-                className="hidden items-center justify-center md:flex"
+                focusable="false"
+                className="hidden h-10 w-full self-center md:block"
               >
-                <span className="flex size-10 items-center justify-center rounded-full bg-harbour text-surface">
-                  <ArrowRightIcon size={22} />
-                </span>
-              </span>
+                <path
+                  d="M4 20 H50"
+                  pathLength={1}
+                  {...stroke}
+                  stroke="var(--harbour-green)"
+                  strokeWidth={4}
+                  data-anim="draw"
+                  style={at(t(i) + 1150, 350, { "--ease": "linear" } as CSSProperties)}
+                />
+                <path
+                  d="M40 10 L51 20 L40 30"
+                  pathLength={1}
+                  {...stroke}
+                  stroke="var(--harbour-green)"
+                  strokeWidth={4}
+                  data-anim="draw"
+                  style={at(t(i) + 1450, 250, { "--ease": "linear" } as CSSProperties)}
+                />
+              </svg>
 
               <p
                 data-anim="rise"
