@@ -289,6 +289,27 @@ export function Mini({
   );
 }
 
+/** An arc from angle a0 to a1 (degrees, 0 = 12 o'clock, clockwise). */
+export function arcPath(cx: number, cy: number, r: number, a0: number, a1: number) {
+  const pt = (a: number) => {
+    const t = ((a - 90) * Math.PI) / 180;
+    return `${(cx + r * Math.cos(t)).toFixed(2)} ${(cy + r * Math.sin(t)).toFixed(2)}`;
+  };
+  const large = a1 - a0 > 180 ? 1 : 0;
+  return `M${pt(a0)} A${r} ${r} 0 ${large} 1 ${pt(a1)}`;
+}
+
+/** Shows its children only between `from` and `to` (seconds), with no fade. */
+export function Window({ from, to, children }: { from: number; to?: number; children: ReactNode }) {
+  return (
+    <g opacity={0}>
+      <Anim attr="opacity" values={[0, 1]} at={from} dur={0.01} ease={null} />
+      {to != null && <Anim attr="opacity" values={[1, 0]} at={to} dur={0.01} ease={null} />}
+      {children}
+    </g>
+  );
+}
+
 /** A tick inside a filled circle, drawn about the origin. */
 export function TickBadge({ r = 16, fill = C.settled }: { r?: number; fill?: string }) {
   const k = r / 16;
