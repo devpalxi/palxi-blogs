@@ -60,6 +60,35 @@ function Screen() {
         className="absolute top-[248px] left-[calc(50%-24px)] size-12 rounded-full ring-4 ring-harbour/40"
       />
 
+      {/* The route the finger took, left on screen so you can see the wandering. */}
+      <svg
+        viewBox="0 0 234 304"
+        aria-hidden="true"
+        focusable="false"
+        className="pointer-events-none absolute inset-0 size-full"
+      >
+        <path
+          d={TOUCH_PATH}
+          pathLength={1}
+          fill="none"
+          stroke="var(--harbour-green)"
+          strokeOpacity={0.45}
+          strokeWidth={5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          data-anim="draw"
+          style={at(START, TRAVEL, { "--ease": "linear" } as CSSProperties)}
+        />
+        <circle
+          cx={215}
+          cy={200}
+          r={6}
+          fill="var(--harbour-green)"
+          data-anim="pop"
+          style={at(START, 400)}
+        />
+      </svg>
+
       {/* The finger. Hidden at rest; it only exists while it moves. */}
       <span
         data-anim="travel"
