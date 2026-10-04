@@ -2,15 +2,33 @@ import type { CSSProperties, ReactNode } from "react";
 import { CheckIcon } from "../../_components/icons";
 import { Bar, at } from "../../_components/diagram-kit";
 
-// The basics are chosen first. Pulses carry them down into the building
+// The basics are chosen first. Curved lines carry them down into the building
 // blocks, and the blocks are then dropped into every finished screen.
 const SWATCH = 520;
 const J1 = 2000;
 const BLOCKS = 2900;
 const J2 = 4100;
 const SCREENS = 4700;
+const FLIGHT = 800;
 // When each block is used in the screens (and flashes in the layer above).
 const USE = { field: 5000, notice: 5700, button: 6400 };
+
+// The diagram is a 704px column (44rem). Every tier is padded by 20px and
+// holds three columns with a 16px gap, so the column centres below are where
+// the curved joiners start and end.
+const COLS = [125.33, 352, 578.67];
+const JOIN_H = 72;
+const ROUTES = COLS.map((x) =>
+  x === 352
+    ? `M352 0 V${JOIN_H}`
+    : `M352 0 C352 40 ${x} 32 ${x} ${JOIN_H}`,
+);
+
+const stroke = {
+  fill: "none",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
 
 function Tier({
   time,
@@ -27,36 +45,78 @@ function Tier({
     <div
       data-anim="rise"
       style={at(time, 700)}
-      className="grid gap-5 rounded-lg bg-surface p-5 sm:p-6 md:grid-cols-[13rem_minmax(0,1fr)] md:items-center md:gap-8"
+      className="rounded-lg bg-surface p-5"
     >
-      <div>
-        <p className="font-serif text-title font-semibold text-ink">{title}</p>
-        <p className="mt-1 text-label text-copy">{body}</p>
+      <p className="font-serif text-title font-semibold text-ink">{title}</p>
+      <p className="mt-1 text-label text-copy">{body}</p>
+      <div aria-hidden="true" className="mt-5">
+        {children}
       </div>
-      <div aria-hidden="true">{children}</div>
     </div>
   );
 }
 
-// A line that draws downwards with a pulse riding it.
-function Joiner({ time }: { time: number }) {
+// One line fans out into three, with a pulse riding each curve. On phones the
+// columns stack, so a single short line stands in for the fan.
+function Fan({ time }: { time: number }) {
   return (
-    <div aria-hidden="true" className="relative mx-auto h-10 w-[3px]">
-      <span className="absolute inset-0 rounded-full bg-hairline-strong" />
-      <span
-        data-anim="grow-y"
-        style={at(time, 600, { "--ease": "linear" } as CSSProperties)}
-        className="absolute inset-0 rounded-full bg-harbour"
-      />
-      <span
-        data-anim="travel"
-        className="absolute top-0 left-0 size-3.5 rounded-full bg-harbour-deep opacity-0 ring-4 ring-surface"
-        style={at(time, 600, {
-          offsetPath: 'path("M1.5 0 V40")',
-          "--ease": "linear",
-        } as CSSProperties)}
-      />
-    </div>
+    <>
+      <svg
+        viewBox={`0 0 704 ${JOIN_H}`}
+        aria-hidden="true"
+        focusable="false"
+        className="mx-auto hidden w-full max-w-[44rem] sm:block"
+      >
+        {ROUTES.map((d, i) => (
+          <g key={d}>
+            <path
+              d={d}
+              {...stroke}
+              stroke="var(--hairline-strong)"
+              strokeWidth={3}
+              strokeDasharray="1 9"
+            />
+            <path
+              d={d}
+              pathLength={1}
+              {...stroke}
+              stroke="var(--harbour-green)"
+              strokeWidth={4}
+              data-anim="draw"
+              style={at(time, FLIGHT, { "--ease": "linear" } as CSSProperties)}
+            />
+            <circle
+              r={8}
+              fill="var(--harbour-green-deep)"
+              stroke="var(--paper-white)"
+              strokeWidth={3}
+              data-anim="travel"
+              className="opacity-0"
+              style={at(time, FLIGHT, {
+                offsetPath: `path("${d}")`,
+                "--ease": "linear",
+              } as CSSProperties)}
+            />
+            <circle
+              cx={COLS[i]}
+              cy={JOIN_H - 2}
+              r={6}
+              fill="var(--harbour-green)"
+              data-anim="pop"
+              style={at(time + FLIGHT - 100, 400)}
+            />
+          </g>
+        ))}
+      </svg>
+      <div aria-hidden="true" className="relative mx-auto h-10 w-[3px] sm:hidden">
+        <span className="absolute inset-0 rounded-full bg-hairline-strong" />
+        <span
+          data-anim="grow-y"
+          style={at(time, 600, { "--ease": "linear" } as CSSProperties)}
+          className="absolute inset-0 rounded-full bg-harbour"
+        />
+      </div>
+    </>
   );
 }
 
@@ -108,54 +168,144 @@ function Screen({ s }: { s: number }) {
   );
 }
 
+// ---- The basics: three small drawings, each 210 x 72 -------------------
+
 const swatches = [
-  "bg-harbour",
-  "bg-ink",
-  "bg-shallows ring-1 ring-hairline-strong",
-  "bg-settled",
-  "bg-stop",
+  { fill: "var(--harbour-green)" },
+  { fill: "var(--deep-ink)" },
+  { fill: "var(--shallows)", ring: true },
+  { fill: "var(--settled-green)" },
+  { fill: "var(--stop-red)" },
+];
+
+function Colours() {
+  return (
+    <svg viewBox="0 0 210 72" focusable="false" className="w-full">
+      {swatches.map((s, i) => (
+        <circle
+          key={s.fill}
+          cx={25 + i * 40}
+          cy={36}
+          r={17}
+          fill={s.fill}
+          stroke={s.ring ? "var(--hairline-strong)" : "none"}
+          strokeWidth={2}
+          data-anim="pop"
+          style={at(SWATCH + i * 140, 450)}
+        />
+      ))}
+    </svg>
+  );
+}
+
+function TextStyles() {
+  return (
+    <svg viewBox="0 0 210 72" focusable="false" className="w-full">
+      {[18, 52].map((y, i) => (
+        <path
+          key={y}
+          d={`M8 ${y} H202`}
+          pathLength={1}
+          {...stroke}
+          stroke="var(--hairline-strong)"
+          strokeWidth={2}
+          strokeDasharray="1"
+          data-anim="draw"
+          style={at(SWATCH + 700 + i * 150, 700)}
+        />
+      ))}
+      <text
+        x={20}
+        y={52}
+        fontSize={48}
+        fontWeight={600}
+        fill="var(--deep-ink)"
+        className="font-serif"
+        data-anim="fade"
+        style={at(SWATCH + 1000, 600)}
+      >
+        Aa
+      </text>
+      <text
+        x={112}
+        y={52}
+        fontSize={34}
+        fill="var(--deep-ink)"
+        className="font-sans"
+        data-anim="fade"
+        style={at(SWATCH + 1200, 600)}
+      >
+        Aa
+      </text>
+    </svg>
+  );
+}
+
+function Spacing() {
+  const boxes = [18, 82, 146];
+  const gaps = [58, 122];
+  return (
+    <svg viewBox="0 0 210 72" focusable="false" className="w-full">
+      {boxes.map((x, i) => (
+        <rect
+          key={x}
+          x={x}
+          y={14}
+          width={40}
+          height={44}
+          rx={6}
+          fill="var(--shallows)"
+          stroke="var(--hairline-strong)"
+          strokeWidth={2}
+          data-anim="pop"
+          style={at(SWATCH + 1100 + i * 140, 450)}
+        />
+      ))}
+      {gaps.map((x, i) => (
+        <path
+          key={x}
+          d={`M${x + 3} 36 H${x + 21} M${x + 3} 28 V44 M${x + 21} 28 V44`}
+          pathLength={1}
+          {...stroke}
+          stroke="var(--harbour-green)"
+          strokeWidth={3}
+          strokeDasharray="1"
+          data-anim="draw"
+          style={at(SWATCH + 1700 + i * 200, 500)}
+        />
+      ))}
+    </svg>
+  );
+}
+
+const basics = [
+  { label: "Colours", Drawing: Colours },
+  { label: "Text styles", Drawing: TextStyles },
+  { label: "Spacing", Drawing: Spacing },
 ];
 
 export function BuildingBlocks() {
   return (
-    <div>
+    <div className="mx-auto max-w-[44rem]">
       <Tier time={0} title="The basics" body="Colours, text styles and spacing, chosen once.">
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-          <div className="flex gap-2">
-            {swatches.map((c, i) => (
-              <span
-                key={c}
-                data-anim="pop"
-                style={at(SWATCH + i * 140, 450)}
-                className={`size-9 rounded-full ${c}`}
-              />
-            ))}
-          </div>
-          <div data-anim="fade" style={at(SWATCH + 800, 600)} className="flex items-baseline gap-3 text-ink">
-            <span className="font-serif text-[2rem] font-semibold">Aa</span>
-            <span className="text-[1.5rem]">Aa</span>
-          </div>
-          <div className="flex items-end gap-1.5">
-            {[8, 14, 20, 28].map((h, i) => (
-              <span
-                key={h}
-                data-anim="grow-up"
-                style={{ ...at(SWATCH + 1100 + i * 120, 500), height: h }}
-                className="w-3 rounded-t-[3px] bg-hairline-strong"
-              />
-            ))}
-          </div>
+        <div className="grid gap-5 sm:grid-cols-3 sm:gap-4">
+          {basics.map(({ label, Drawing }) => (
+            <div key={label}>
+              <Drawing />
+              <p className="mt-1 text-center text-label text-muted">{label}</p>
+            </div>
+          ))}
         </div>
       </Tier>
 
-      <Joiner time={J1} />
+      <Fan time={J1} />
 
       <Tier
         time={J1 + 500}
         title="Building blocks"
         body="Buttons, form fields and notices, made from the basics."
       >
-        <div className="grid gap-5 sm:grid-cols-3 sm:items-center">
+        <div className="grid gap-5 sm:grid-cols-3 sm:items-center sm:gap-4">
           <Block time={BLOCKS + 300} use={USE.button}>
             <div className="flex min-h-11 items-center justify-center rounded-sm bg-harbour px-4 text-label font-semibold text-surface">
               Continue
@@ -174,14 +324,14 @@ export function BuildingBlocks() {
         </div>
       </Tier>
 
-      <Joiner time={J2} />
+      <Fan time={J2} />
 
       <Tier
         time={J2 + 500}
         title="Finished screens"
         body="Every screen, in every product, built from the same blocks."
       >
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-4">
           {[0, 1, 2].map((s) => (
             <Screen key={s} s={s} />
           ))}
