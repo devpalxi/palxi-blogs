@@ -47,7 +47,7 @@ export function Ranges({
                   <p
                     data-anim="fade"
                     style={at(t)}
-                    className="text-label font-semibold text-harbour-deep"
+                    className="text-label font-semibold text-magenta-deep"
                   >
                     $<CountUp to={row.min} group delay={t + 150} duration={800} />{" "}
                     to $
@@ -68,12 +68,12 @@ export function Ranges({
                       left: `${left}%`,
                       width: `${width}%`,
                     }}
-                    className="absolute inset-y-0 rounded-full bg-harbour-chart"
+                    className="absolute inset-y-0 rounded-full bg-magenta-chart"
                   />
                   <span
                     data-anim="pop"
                     style={{ ...at(t), left: `${left}%` }}
-                    className="absolute top-1/2 size-5 -translate-1/2 rounded-full bg-harbour ring-[3px] ring-surface"
+                    className="absolute top-1/2 size-5 -translate-1/2 rounded-full bg-magenta ring-[3px] ring-surface"
                   />
                 </div>
               </li>

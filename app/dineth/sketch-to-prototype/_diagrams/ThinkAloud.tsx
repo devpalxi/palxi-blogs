@@ -44,7 +44,7 @@ function Screen() {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 top-[248px] h-12 rounded-sm bg-harbour" />
+      <div className="absolute inset-x-0 top-[248px] h-12 rounded-sm bg-magenta" />
 
       {/* The "I'm not sure" moment. */}
       <span
@@ -57,7 +57,7 @@ function Screen() {
       <span
         data-anim="ripple"
         style={at(PAUSE_AT)}
-        className="absolute top-[248px] left-[calc(50%-24px)] size-12 rounded-full ring-4 ring-harbour/40"
+        className="absolute top-[248px] left-[calc(50%-24px)] size-12 rounded-full ring-4 ring-magenta/40"
       />
 
       {/* The route the finger took, left on screen so you can see the wandering. */}
@@ -71,7 +71,7 @@ function Screen() {
           d={TOUCH_PATH}
           pathLength={1}
           fill="none"
-          stroke="var(--harbour-green)"
+          stroke="var(--magenta)"
           strokeOpacity={0.45}
           strokeWidth={5}
           strokeLinecap="round"
@@ -83,7 +83,7 @@ function Screen() {
           cx={215}
           cy={200}
           r={6}
-          fill="var(--harbour-green)"
+          fill="var(--magenta)"
           data-anim="pop"
           style={at(START, 400)}
         />
@@ -92,7 +92,7 @@ function Screen() {
       {/* The finger. Hidden at rest; it only exists while it moves. */}
       <span
         data-anim="travel"
-        className="absolute top-0 left-0 size-[34px] rounded-full bg-harbour/20 opacity-0 ring-2 ring-harbour"
+        className="absolute top-0 left-0 size-[34px] rounded-full bg-magenta/20 opacity-0 ring-2 ring-magenta"
         style={at(START, TRAVEL, {
           offsetPath: `path("${TOUCH_PATH}")`,
           "--ease": "linear",
@@ -131,9 +131,9 @@ export function ThinkAloud() {
           ))}
         </ul>
 
-        <div className="mt-8 rounded-md bg-harbour-tint px-5 py-5">
+        <div className="mt-8 rounded-md bg-magenta-tint px-5 py-5">
           <p className="flex items-center gap-3 font-semibold text-ink">
-            <EyeIcon size={24} className="shrink-0 text-harbour-deep" />
+            <EyeIcon size={24} className="shrink-0 text-magenta-deep" />
             Meanwhile, we watch and write it down
           </p>
           <p className="mt-2 text-copy">
@@ -148,7 +148,7 @@ export function ThinkAloud() {
                 style={at(n.at)}
                 className="flex items-start gap-3 text-label text-ink"
               >
-                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-harbour text-surface">
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-magenta text-surface">
                   <CheckIcon size={16} />
                 </span>
                 {n.text}

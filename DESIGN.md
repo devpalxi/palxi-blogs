@@ -6,12 +6,10 @@ colors:
   magenta-deep: "#8f2678"
   magenta-tint: "#fbeff8"
   magenta-soft: "#c65baf"
-  plum-glow: "#5d214e"
   near-black: "#0a0a0a"
   ink: "#222124"
   body-ink: "#3b3a3e"
   slate: "#686868"
-  on-dark-muted: "#a8a8a8"
   paper: "#ffffff"
   band-grey: "#f6f6f6"
   hairline: "#e8e8e8"
@@ -113,10 +111,6 @@ components:
     backgroundColor: "{colors.band-grey}"
     textColor: "{colors.ink}"
     padding: "{spacing.section} 0"
-  dark-section:
-    backgroundColor: "{colors.near-black}"
-    textColor: "{colors.paper}"
-    padding: "{spacing.section} 0"
   plain-words-note:
     backgroundColor: "{colors.band-grey}"
     textColor: "{colors.body-ink}"
@@ -141,16 +135,16 @@ components:
 
 **Creative North Star: "The Briefing Room"**
 
-The Palxi website feels like a senior colleague briefing you in a quiet room. A near-black hero with a dusk photograph of the Sydney Harbour Bridge sets a serious tone. Then the page opens into white and pale grey, headings sit in confident ink, and a single magenta pill tells you where to go next. Nothing shouts. The blog inherits that room: the same near-black and white, the same one magenta signal, the same pill buttons and generous spacing, now carrying plain-English explanations for readers who are 50 or older and not technical.
+The Palxi website feels like a senior colleague briefing you in a quiet room. The website opens with a near-black hero over a dusk photograph of the Sydney Harbour Bridge, then settles into white and pale grey with headings in confident ink and a single magenta pill telling you where to go next. Nothing shouts. The blog keeps that room but leaves the dark hero at the door: every blog page stays light, white and pale grey, with the same one magenta signal, the same pill buttons and generous spacing, now carrying plain-English explanations for readers who are 50 or older and not technical.
 
-The system is restrained and committed at once. Neutrals (white, `#f6f6f6` bands, ink) carry about 90% of any screen. Magenta (`#b8339b`) is the only accent and appears on buttons, links, the active step of a diagram and the odd tag. Near-black is used for whole bands, not for decoration: the hero, the "built for regulated industries" style section, the closing call to action. Depth comes from tonal bands and hairlines, not shadows.
+The system is restrained and committed at once. Neutrals (white, `#f6f6f6` bands, ink) carry about 90% of any screen. Magenta (`#b8339b`) is the only accent and appears on buttons, links, the active step of a diagram and the odd tag. Near-black appears only on the black "Get in touch" pill and primary text on dark buttons; the blog has no dark hero and no dark bands. Depth comes from tonal bands and hairlines, not shadows.
 
 The website sets its small text at around 14px. The blog does not. Readers here are unhurried, wearing reading glasses and cautious about money, so the blog keeps the website's identity (palette, typeface, pill buttons, radii, section rhythm) and raises the reading sizes: body about 19 to 20px, nothing below 16px, magenta never lighter than `#b8339b` on white.
 
 This system rejects, by name, the looks in PRODUCT.md: **crypto and trading apps** (neon dashboards, hype), **big-bank corporate** (navy-and-gold, handshake stock photos, legal-sounding copy), **startup SaaS templates** (gradient heroes, identical icon-card grids, buzzwords) and **government form sites** (dense, grey, small text).
 
 **Key Characteristics:**
-- White and `#f6f6f6` pages with near-black bands. No dark mode toggle: the dark bands are chosen sections, not a theme.
+- Light only: white pages with `#f6f6f6` bands. No dark hero, no dark bands, no dark mode.
 - One accent, magenta, used on no more than about 10% of a screen.
 - Inter throughout, in medium to semibold weights for headings with tight tracking, regular for reading.
 - Pill buttons, 20px cards, 8px fields. Nothing fully square.
@@ -160,21 +154,19 @@ This system rejects, by name, the looks in PRODUCT.md: **crypto and trading apps
 
 ## 2. Colors
 
-A near-neutral palette with one confident magenta signal, a deep plum used only in imagery, and three meaning-only colours reserved for diagrams.
+A near-neutral palette with one confident magenta signal, and three meaning-only colours reserved for diagrams.
 
 ### Primary
 - **Palxi Magenta** (`#b8339b`): the only accent. Primary buttons, links, the active step or path in a diagram, small tags. Measured at 5.3:1 against white, so it passes AA as text and as a button fill. Never lighter on white.
 - **Magenta Deep** (`#8f2678`): hover and pressed state for Palxi Magenta, and tag text on Magenta Tint. Derived from the website's magenta; about 7.7:1 on white.
 - **Magenta Tint** (`#fbeff8`): the soft fill behind tags and the highlight behind a link on hover. Derived.
 - **Magenta Soft** (`#c65baf`): the round arrow chip inside a primary pill (white arrow on a lighter magenta disc). Decorative only. Never used for text on white (about 3.8:1, below the 4.5:1 text minimum).
-- **Plum Glow** (`#5d214e`): the deep magenta wave that glows inside the dark section's artwork. Imagery only. Never a surface or text colour.
 
 ### Neutral
-- **Near Black** (`#0a0a0a`): the hero, the dark feature band, the closing call-to-action band and the black "Get in touch" pill.
+- **Near Black** (`#0a0a0a`): the black "Get in touch" pill and other dark buttons. Never a section or page background in the blog.
 - **Ink** (`#222124`): headings and the strongest text on light surfaces (about 16:1 on white).
 - **Body Ink** (`#3b3a3e`): paragraph text in posts. The website sets body copy in `#686868`; the blog darkens it for long reading (about 11:1).
 - **Slate** (`#686868`): captions, bylines, credits, secondary text (5.6:1 on white). Nothing lighter is ever used for text.
-- **On Dark Muted** (`#a8a8a8`): secondary text on Near Black (about 8:1).
 - **Paper White** (`#ffffff`): the page, cards, wireframe screens.
 - **Band Grey** (`#f6f6f6`): alternate page bands, the diagram frame, notes, the footer.
 - **Hairline** (`#e8e8e8`): 1px rules between list rows, under the header, around cards.
@@ -193,14 +185,14 @@ A near-neutral palette with one confident magenta signal, a deep plum used only 
 
 **The Meaning-Only Rule.** Red, green and amber appear only when they mean something, and always with a word and an icon. Magenta is never used to mean success or failure.
 
-**The Dark Band Rule.** Near Black is a whole section, with white text and an edge-to-edge background, used at most twice on a page (an opening band and a closing call to action, or one feature band). It is never a card colour and never a page theme.
+**The Light Page Rule.** Blog pages are light from top to bottom. Near Black is for button fills only: never a hero, a band, a card or a page theme, even though the website uses a dark hero.
 
 ## 3. Typography
 
 **Display Font:** Inter (with system-ui, sans-serif)
 **Body Font:** Inter (with system-ui, sans-serif)
 
-**Character:** One grotesque family does everything, the way the website does. Headings are medium to semibold with tight negative tracking, which gives them the plain, confident look of the site's hero. Body is regular at generous size and line height. Turn on Inter's disambiguation set (`font-feature-settings: "ss02"`) for body text, so a capital I, a lowercase l and the digit 1 are never confused.
+**Character:** One grotesque family does everything, the way the website does. Headings are medium to semibold with tight negative tracking, which gives them the plain, confident look of the site's hero. Body is regular at generous size and line height. If the font build includes Inter's disambiguation set (`font-feature-settings: "ss02"`), turn it on for body text, so a capital I, a lowercase l and the digit 1 are never confused.
 
 ### Hierarchy
 - **Display** (600, clamp(2.5rem to 4rem), 1.08, -0.03em): post titles and page heroes only. `text-wrap: balance`.
@@ -219,7 +211,7 @@ A near-neutral palette with one confident magenta signal, a deep plum used only 
 
 ## 4. Elevation
 
-Flat by default. Depth comes from tonal bands (white, `#f6f6f6`, near-black) and 1px hairlines, exactly as on the website's contact page, where cards are white with a barely visible border on a pale grey band. Cards lift only on hover, and only slightly.
+Flat by default. Depth comes from tonal bands (white and `#f6f6f6`) and 1px hairlines, exactly as on the website's contact page, where cards are white with a barely visible border on a pale grey band. Cards lift only on hover, and only slightly.
 
 ### Shadow Vocabulary
 - **Resting device** (`box-shadow: 0 1px 2px rgba(10,10,10,0.06), 0 4px 8px rgba(10,10,10,0.06)`): wireframe phone screens and receipts inside a diagram frame, so they read as physical objects. Never combined with a border.
@@ -251,7 +243,7 @@ Pills, with a soft round arrow chip on the primary.
 The website's signature layout for services and capabilities: a full-width row between 1px Hairline rules with a small index at the left, a large Title-size heading, a short Body description in Slate on the right and a small arrow at the far end. Use it in place of a grid of identical cards.
 
 ### Section Bands
-Alternating full-width bands: White, Band Grey, and a Near Black band with white text. Vertical rhythm is `clamp(64px, 8vw, 112px)` between bands. A band's heading is large and left-aligned with the intro text in a second column on wide screens.
+Alternating full-width bands: White and Band Grey. Vertical rhythm is `clamp(64px, 8vw, 112px)` between bands. A band's heading is large and left-aligned with the intro text in a second column on wide screens.
 
 ### Stat Row
 Three columns separated by a 1px ink rule on top of each. A big number in Ink (Headline size or larger), a Label-size description in Slate beneath. Figures appear whole, never counting up.
@@ -276,10 +268,7 @@ Band Grey panel, 20px radius, 24px by 28px padding, no side stripe. A bold Label
 ### Figures and Photography
 - **Corners:** 20px radius on photographs.
 - **Caption:** Label type in Slate beneath, with a credit line (author, source and licence, linked).
-- **Treatment:** natural colour. The opening photograph of a post may sit under a dark gradient to carry white text, like the website's hero. One decisive photo per section at most.
-
-### Dark Feature Band
-Near Black background, optional faint Plum Glow artwork on one side, a white Headline on the left, and a list of items on the right, each separated by a hairline at white 15% opacity. Text is white or On Dark Muted.
+- **Treatment:** natural colour. The opening photograph of a post sits beside the title on the white page, with no overlay. One decisive photo per section at most.
 
 ## 6. Do's and Don'ts
 
@@ -287,12 +276,13 @@ Near Black background, optional faint Plum Glow artwork on one side, a white Hea
 - **Do** use Palxi Magenta (`#b8339b`) as the single accent, and keep it to about 10% of any screen.
 - **Do** set body copy at 19 to 20px in Body Ink (`#3b3a3e`) on white, maximum 44rem wide, line height 1.65.
 - **Do** make every button a pill, at least 44px tall, with a visible 3px magenta focus ring.
-- **Do** alternate White, Band Grey and Near Black bands, and use hairline-separated list rows instead of grids of identical cards.
+- **Do** alternate White and Band Grey bands, and use hairline-separated list rows instead of grids of identical cards.
 - **Do** give every technical idea a labelled diagram inside a Diagram Frame, and define unavoidable jargon in an "In plain words" note.
 - **Do** use Australian English and real Australian context, and credit every open-licence photo with author, source and licence, linked.
 - **Do** make every animation replayable, and show the finished diagram instantly under reduced motion.
 
 ### Don't:
+- **Don't** put a dark hero, a near-black band or any dark section on a blog page, even though the website has one.
 - **Don't** look like **crypto and trading apps**: no neon dashboards, no charts for decoration, no hype energy.
 - **Don't** look like **big-bank corporate**: no navy-and-gold, no stock photos of handshakes, no legal-sounding copy.
 - **Don't** look like **startup SaaS templates**: no gradient heroes, no identical icon-card grids, no "seamless", "elevate", "next-gen" or "game-changer".

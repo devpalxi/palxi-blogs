@@ -14,7 +14,7 @@ export type Step = {
 };
 
 const plinthTone: Record<Tone, string> = {
-  default: "bg-harbour",
+  default: "bg-magenta",
   done: "bg-settled",
   caution: "bg-wattle",
   stop: "bg-stop",
@@ -50,7 +50,7 @@ export function Staircase({ steps }: { steps: Step[] }) {
               </span>
               {s.stat && (
                 <p className="mt-3">
-                  <span className="font-serif text-headline font-semibold text-ink">
+                  <span className="font-heading text-headline font-semibold text-ink">
                     {s.stat.prefix}
                     <CountUp
                       to={s.stat.to}
@@ -85,7 +85,7 @@ export function Staircase({ steps }: { steps: Step[] }) {
                 style={at(t, 800)}
                 className={`flex flex-col justify-end rounded-t-md px-5 pt-8 pb-4 text-surface ${plinthTone[tone]} ${heights[i] ?? ""}`}
               >
-                <p className="font-serif text-title leading-tight font-semibold">
+                <p className="font-heading text-title leading-tight font-semibold">
                   {s.title}
                 </p>
                 <p className="text-label">{s.authority}</p>

@@ -47,7 +47,7 @@ function Stage({
           <span
             data-anim="grow-y"
             style={at(time + 300, until - time - 300, { "--ease": "linear" } as CSSProperties)}
-            className="block h-full w-full rounded-full bg-harbour"
+            className="block h-full w-full rounded-full bg-magenta"
           />
         </span>
       )}
@@ -55,7 +55,7 @@ function Stage({
         aria-hidden="true"
         data-anim="pop"
         style={at(time)}
-        className="relative flex size-11 shrink-0 items-center justify-center rounded-full bg-harbour text-surface"
+        className="relative flex size-11 shrink-0 items-center justify-center rounded-full bg-magenta text-surface"
       >
         <Icon size={22} />
       </span>
@@ -90,12 +90,12 @@ function Lane({
       <div className="flex items-start gap-3">
         <span
           aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center rounded-md bg-harbour-tint text-harbour-deep"
+          className="flex size-10 shrink-0 items-center justify-center rounded-md bg-magenta-tint text-magenta-deep"
         >
           <Icon size={22} />
         </span>
         <div>
-          <h3 className="font-serif text-[1.375rem] leading-tight font-semibold text-ink">
+          <h3 className="font-heading text-[1.375rem] leading-tight font-semibold text-ink">
             {title}
           </h3>
           <p className="mt-1 text-label text-muted">{subtitle}</p>
@@ -108,7 +108,7 @@ function Lane({
 
 // Where the two routes meet. Desktop: two lines join into one.
 function Join() {
-  const line = "absolute rounded-full bg-harbour";
+  const line = "absolute rounded-full bg-magenta";
   return (
     <div aria-hidden="true" className="relative h-12 md:h-16">
       <span
@@ -152,7 +152,7 @@ function Receipt() {
           className="paper-shadow"
         >
           <div className="receipt-edge bg-surface px-6 pt-7 pb-9">
-          <p className="flex items-center gap-2.5 font-serif text-[1.25rem] font-semibold text-settled">
+          <p className="flex items-center gap-2.5 font-heading text-[1.25rem] font-semibold text-settled">
             <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-settled text-surface">
               <CheckIcon size={20} />
             </span>
@@ -215,7 +215,7 @@ export function TwoWaysToPay() {
             time={T.second}
             until={T.third}
           >
-            <p className="mt-3 flex h-11 items-center overflow-hidden rounded-sm bg-harbour-tint px-3.5 text-[1.0625rem] font-semibold whitespace-nowrap text-harbour-deep">
+            <p className="mt-3 flex h-11 items-center overflow-hidden rounded-sm bg-magenta-tint px-3.5 text-[1.0625rem] font-semibold whitespace-nowrap text-magenta-deep">
               <Scramble
                 text="k7#Q zR8! w2&d M9$x"
                 delay={T.second}
@@ -253,12 +253,12 @@ export function TwoWaysToPay() {
               <span className="flex h-11 items-center justify-center rounded-sm border border-hairline-strong text-ink">
                 Decline
               </span>
-              <span className="relative flex h-11 items-center justify-center rounded-sm bg-harbour text-surface">
+              <span className="relative flex h-11 items-center justify-center rounded-sm bg-magenta text-surface">
                 Approve
                 <span
                   data-anim="flash"
                   style={at(T.second - 250, 900)}
-                  className="absolute -inset-1 rounded-md ring-3 ring-harbour/40"
+                  className="absolute -inset-1 rounded-md ring-3 ring-magenta/40"
                 />
               </span>
             </div>

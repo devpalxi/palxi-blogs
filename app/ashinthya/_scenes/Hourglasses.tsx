@@ -139,7 +139,7 @@ export function HourglassScene({ clock, index }: { clock: Clock; index: number }
 const TAG_TONE: Record<string, string> = {
   "24 hours": "bg-stop-tint text-stop",
   "72 hours": "bg-wattle-tint text-wattle",
-  "10 business days": "bg-harbour-tint text-harbour-deep",
+  "10 business days": "bg-magenta-tint text-magenta-deep",
 };
 
 export function Hourglasses() {
@@ -151,7 +151,7 @@ export function Hourglasses() {
         {CLOCKS.map((clock, i) => (
           <li key={`${clock.amount}-${clock.tag}`} className="text-center">
             <HourglassScene clock={clock} index={i} />
-            <p className="mt-3 font-serif text-title font-semibold text-ink">{clock.amount}</p>
+            <p className="mt-3 font-heading text-title font-semibold text-ink">{clock.amount}</p>
             <p className="mt-1">
               <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${TAG_TONE[clock.amount]}`}>
                 {clock.tag}

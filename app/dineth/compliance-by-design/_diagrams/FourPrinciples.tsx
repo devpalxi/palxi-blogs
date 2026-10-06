@@ -40,7 +40,7 @@ function See({ time }: { time: number }) {
       }
       after={
         <div className="text-center">
-          <p className="font-serif text-[1.5rem] leading-tight font-semibold text-ink">
+          <p className="font-heading text-[1.5rem] leading-tight font-semibold text-ink">
             Large, clear text
           </p>
           <p className="mt-1 text-label text-copy">With strong contrast</p>
@@ -59,13 +59,13 @@ function Use({ time }: { time: number }) {
       }
       after={
         <span className="relative">
-          <span className="flex h-12 w-56 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+          <span className="flex h-12 w-56 items-center justify-center rounded-sm bg-magenta font-semibold text-surface">
             Pay
           </span>
           <span
             data-anim="ripple"
             style={at(time + 900)}
-            className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/35"
+            className="absolute -inset-1.5 rounded-md ring-4 ring-magenta/35"
           />
         </span>
       }
@@ -99,13 +99,13 @@ function Work({ time }: { time: number }) {
   return (
     <div aria-hidden="true" className="flex items-center gap-4">
       <span className="relative">
-        <span className="flex h-11 w-24 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+        <span className="flex h-11 w-24 items-center justify-center rounded-sm bg-magenta font-semibold text-surface">
           Pay
         </span>
         <span
           data-anim="ripple"
           style={at(time + 200)}
-          className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/35"
+          className="absolute -inset-1.5 rounded-md ring-4 ring-magenta/35"
         />
       </span>
       <span className="flex items-end gap-1" data-anim="pop" style={at(time + 700, 400)}>
@@ -114,7 +114,7 @@ function Work({ time }: { time: number }) {
             key={i}
             data-anim="grow-up"
             style={{ ...at(time + 800 + i * 90, 500), height: h }}
-            className="w-1.5 rounded-full bg-harbour-chart"
+            className="w-1.5 rounded-full bg-magenta-chart"
           />
         ))}
       </span>
@@ -181,7 +181,7 @@ export function FourPrinciples() {
                 aria-hidden="true"
                 data-anim="pop"
                 style={at(t(i) - 200)}
-                className="flex size-12 shrink-0 items-center justify-center rounded-md bg-harbour font-serif text-[1.625rem] font-semibold text-surface"
+                className="flex size-12 shrink-0 items-center justify-center rounded-md bg-magenta font-heading text-[1.625rem] font-semibold text-surface"
               >
                 {p.letter}
               </span>

@@ -113,7 +113,7 @@ export function SaferAndSimpler() {
                   d="M4 20 H50"
                   pathLength={1}
                   {...stroke}
-                  stroke="var(--harbour-green)"
+                  stroke="var(--magenta)"
                   strokeWidth={4}
                   data-anim="draw"
                   style={at(t(i) + 1150, 350, { "--ease": "linear" } as CSSProperties)}
@@ -122,7 +122,7 @@ export function SaferAndSimpler() {
                   d="M40 10 L51 20 L40 30"
                   pathLength={1}
                   {...stroke}
-                  stroke="var(--harbour-green)"
+                  stroke="var(--magenta)"
                   strokeWidth={4}
                   data-anim="draw"
                   style={at(t(i) + 1450, 250, { "--ease": "linear" } as CSSProperties)}

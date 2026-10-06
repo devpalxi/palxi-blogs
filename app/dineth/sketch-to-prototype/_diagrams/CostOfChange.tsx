@@ -29,12 +29,12 @@ function Card({
       <div className="flex items-start gap-3">
         <span
           aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center rounded-md bg-harbour-tint text-harbour-deep"
+          className="flex size-10 shrink-0 items-center justify-center rounded-md bg-magenta-tint text-magenta-deep"
         >
           {icon}
         </span>
         <div>
-          <p className="font-serif text-[1.375rem] leading-tight font-semibold text-ink">
+          <p className="font-heading text-[1.375rem] leading-tight font-semibold text-ink">
             {title}
           </p>
           <p className="mt-1 text-label text-muted">{subtitle}</p>
@@ -59,7 +59,7 @@ export function CostOfChange() {
             aria-hidden="true"
             data-anim="pop"
             style={at(700, 500)}
-            className="size-[22px] rounded-full bg-harbour-chart"
+            className="size-[22px] rounded-full bg-magenta-chart"
           />
         </div>
         <p className="text-[1.1875rem] font-semibold text-ink">
@@ -83,7 +83,7 @@ export function CostOfChange() {
               key={i}
               data-anim="pop"
               style={at(DOT_START + i * PER_DOT, 420)}
-              className="aspect-square rounded-full bg-harbour-chart"
+              className="aspect-square rounded-full bg-magenta-chart"
             />
           ))}
         </div>

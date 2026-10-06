@@ -70,7 +70,7 @@ export function ChecksPipeline() {
             y={65}
             icon={c.icon}
             time={T[i]}
-            fill={i === checks.length - 1 ? "var(--settled-green)" : "var(--harbour-green)"}
+            fill={i === checks.length - 1 ? "var(--settled-green)" : "var(--magenta)"}
           />
         ))}
         <Train d={ROUTE} start={START} dur={TRAVEL} />
@@ -99,9 +99,9 @@ export function ChecksPipeline() {
       <p
         data-anim="rise"
         style={at(DONE + 300)}
-        className="mt-8 flex items-start gap-3 rounded-md border-2 border-dashed border-harbour/40 bg-surface px-5 py-4 text-copy"
+        className="mt-8 flex items-start gap-3 rounded-md border-2 border-dashed border-magenta/40 bg-surface px-5 py-4 text-copy"
       >
-        <ReceiptIcon size={24} className="mt-0.5 shrink-0 text-harbour-deep" />
+        <ReceiptIcon size={24} className="mt-0.5 shrink-0 text-magenta-deep" />
         <span>
           <strong className="text-ink">Every step is recorded:</strong> what
           changed, who made the change, who checked it, and when.

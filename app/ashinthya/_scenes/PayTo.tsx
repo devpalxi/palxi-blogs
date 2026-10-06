@@ -106,7 +106,7 @@ export function TwoLegsScene() {
         <Fragment key={y}>
           <path d={fan(y)} fill="none" stroke={C.chart} strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" />
           <g transform={`translate(860 ${y})`}>
-            <Person fill={i === 3 ? C.shallows : C.tint} stroke={i === 3 ? C.muted : C.harbour} />
+            <Person fill={i === 3 ? C.shallows : C.tint} stroke={i === 3 ? C.muted : C.magenta} />
           </g>
           <g opacity={0}>
             <Anim attr="opacity" values={[0, 1, 1, 0]} times={[0, 0.1, 0.85, 1]} at={PUSH + i * 0.08} dur={0.45} ease={null} />
@@ -154,7 +154,7 @@ export function TwoLegs() {
       <Rows
         items={[
           ["bg-wattle", "Funding: a PayTo pull.", "The payer authorises an agreement in online banking, then the platform debits within its terms."],
-          ["bg-harbour-chart", "Payouts: NPP credit transfers.", "Real time, 24/7, one payee at a time, to a BSB and account number or PayID."],
+          ["bg-magenta-chart", "Payouts: NPP credit transfers.", "Real time, 24/7, one payee at a time, to a BSB and account number or PayID."],
           ["bg-wattle", "Fallback: BECS direct entry.", "Batched and slower, for the accounts the NPP can't reach."],
         ]}
       />
@@ -472,7 +472,7 @@ export function Idempotent() {
       <Rows
         items={[
           ["bg-wattle", "An idempotency key", "on every payout instruction, so a timeout never becomes a double payment."],
-          ["bg-harbour-chart", "A clear status model:", "submitted, settled, rejected and held are separate states."],
+          ["bg-magenta-chart", "A clear status model:", "submitted, settled, rejected and held are separate states."],
           ["bg-wattle", "A BECS fallback", "for unreachable accounts, with the payee told about the delay."],
         ]}
       />

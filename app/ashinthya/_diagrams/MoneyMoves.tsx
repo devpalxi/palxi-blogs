@@ -54,7 +54,7 @@ const lanes: Lane[] = [
 function Node({ icon: Icon, label }: { icon: DiagramIcon; label: string }) {
   return (
     <span className="flex w-20 shrink-0 flex-col items-center gap-1.5 text-center">
-      <span className="flex size-14 items-center justify-center rounded-full bg-surface text-harbour shadow-device ring-1 ring-hairline-strong">
+      <span className="flex size-14 items-center justify-center rounded-full bg-surface text-magenta shadow-device ring-1 ring-hairline-strong">
         <Icon size={28} />
       </span>
       <span className="text-label leading-tight font-semibold text-ink">{label}</span>
@@ -82,7 +82,7 @@ function Dot({
         data-anim="ride-x"
         style={at(start, dur, linear)}
         className={`absolute top-1/2 left-0 size-5 -translate-1/2 rounded-full ring-[3px] ring-surface ${
-          tone === "ink" ? "bg-ink" : "bg-harbour-chart"
+          tone === "ink" ? "bg-ink" : "bg-magenta-chart"
         }`}
       />
     </span>
@@ -200,7 +200,7 @@ export function MoneyMoves() {
                 <li key={item} className="flex gap-2.5">
                   <span
                     aria-hidden="true"
-                    className="mt-2 size-2 shrink-0 rounded-full bg-harbour-chart"
+                    className="mt-2 size-2 shrink-0 rounded-full bg-magenta-chart"
                   />
                   {item}
                 </li>

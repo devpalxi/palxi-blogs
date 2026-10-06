@@ -29,14 +29,14 @@ export function FixOnce() {
         style={at(0, 700)}
         className="mx-auto max-w-[36rem] rounded-lg bg-surface p-5 sm:p-6"
       >
-        <p className="font-serif text-title font-semibold text-ink">
+        <p className="font-heading text-title font-semibold text-ink">
           The shared button, improved once
         </p>
         <div
           aria-hidden="true"
           className="mt-5 flex items-center justify-center gap-6"
         >
-          <span className="inline-flex min-h-8 items-center rounded-[4px] bg-harbour/55 px-3 text-label text-surface">
+          <span className="inline-flex min-h-8 items-center rounded-[4px] bg-magenta/55 px-3 text-label text-surface">
             Next
           </span>
           <ArrowRightIcon size={24} className="shrink-0 text-muted" />
@@ -44,14 +44,14 @@ export function FixOnce() {
             <span
               data-anim="pop"
               style={at(FIX, 500)}
-              className="inline-flex min-h-12 items-center rounded-sm bg-harbour px-6 text-[1.125rem] font-semibold text-surface"
+              className="inline-flex min-h-12 items-center rounded-sm bg-magenta px-6 text-[1.125rem] font-semibold text-surface"
             >
               Next
             </span>
             <span
               data-anim="ripple"
               style={at(FIX)}
-              className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/35"
+              className="absolute -inset-1.5 rounded-md ring-4 ring-magenta/35"
             />
           </span>
         </div>
@@ -72,7 +72,7 @@ export function FixOnce() {
           cx={352}
           cy={4}
           r={6}
-          fill="var(--harbour-green)"
+          fill="var(--magenta)"
           data-anim="pop"
           style={at(SEND - 200, 400)}
         />
@@ -90,7 +90,7 @@ export function FixOnce() {
               d={d}
               pathLength={1}
               fill="none"
-              stroke="var(--harbour-green)"
+              stroke="var(--magenta)"
               strokeWidth={4}
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -99,7 +99,7 @@ export function FixOnce() {
             />
             <circle
               r={9}
-              fill="var(--harbour-green-deep)"
+              fill="var(--magenta-deep)"
               stroke="var(--paper-white)"
               strokeWidth={3}
               data-anim="travel"
@@ -113,7 +113,7 @@ export function FixOnce() {
               cx={ENDS[i]}
               cy={104}
               r={6}
-              fill="var(--harbour-green)"
+              fill="var(--magenta)"
               data-anim="pop"
               style={at(ARRIVE - 100, 400)}
             />
@@ -139,20 +139,20 @@ export function FixOnce() {
                 <span
                   data-anim="swap-out"
                   style={at(ARRIVE, 500)}
-                  className={`${grid} flex min-h-8 items-center justify-center justify-self-center rounded-[4px] bg-harbour/55 px-5 text-label text-surface`}
+                  className={`${grid} flex min-h-8 items-center justify-center justify-self-center rounded-[4px] bg-magenta/55 px-5 text-label text-surface`}
                 >
                   Next
                 </span>
                 <span
                   data-anim="fade"
                   style={at(ARRIVE, 500)}
-                  className={`${grid} relative flex min-h-11 items-center justify-center rounded-sm bg-harbour text-[1.0625rem] font-semibold text-surface`}
+                  className={`${grid} relative flex min-h-11 items-center justify-center rounded-sm bg-magenta text-[1.0625rem] font-semibold text-surface`}
                 >
                   Next
                   <span
                     data-anim="ripple"
                     style={at(ARRIVE + 100)}
-                    className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/35"
+                    className="absolute -inset-1.5 rounded-md ring-4 ring-magenta/35"
                   />
                 </span>
               </div>

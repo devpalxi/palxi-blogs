@@ -41,7 +41,7 @@ function Panel({
       className="mx-auto w-full max-w-[34rem] rounded-md bg-surface p-5 shadow-device lg:max-w-none"
     >
       <p className="flex items-center gap-3 text-[1.125rem] font-semibold text-ink">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-harbour text-label font-bold text-surface">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-magenta text-label font-bold text-surface">
           {n}
         </span>
         {title}
@@ -72,7 +72,7 @@ export function Hardship() {
                   style={at(300 + i * 160)}
                   className="flex h-10 items-center gap-2 rounded-md bg-shallows px-3 text-label font-semibold text-ink"
                 >
-                  <Icon size={18} className="text-harbour" />
+                  <Icon size={18} className="text-magenta" />
                   {c.label}
                 </li>
               );
@@ -89,7 +89,7 @@ export function Hardship() {
                 <span
                   data-anim="grow-x"
                   style={at(500 + i * 160, 500, linear)}
-                  className="absolute inset-x-0 h-[3px] rounded-full bg-harbour"
+                  className="absolute inset-x-0 h-[3px] rounded-full bg-magenta"
                 />
                 <span
                   data-anim="ride-x"
@@ -102,7 +102,7 @@ export function Hardship() {
           <div
             data-anim="pop"
             style={at(T_CASE)}
-            className="flex w-[5.5rem] shrink-0 flex-col items-center justify-center rounded-md bg-harbour p-3 text-center text-surface"
+            className="flex w-[5.5rem] shrink-0 flex-col items-center justify-center rounded-md bg-magenta p-3 text-center text-surface"
           >
             <ClipboardIcon size={28} />
             <span className="mt-1 text-label leading-tight font-semibold">
@@ -124,7 +124,7 @@ export function Hardship() {
         <p
           data-anim="fade"
           style={at(T_CAL - 200)}
-          className="mb-3 font-serif text-headline leading-none font-semibold text-ink"
+          className="mb-3 font-heading text-headline leading-none font-semibold text-ink"
         >
           <Ticker
             phases={[
@@ -155,7 +155,7 @@ export function Hardship() {
                   data-anim="pop"
                   style={at(t, 300)}
                   className={`absolute inset-0 flex items-center justify-center rounded-md text-surface ${
-                    last ? "bg-stop" : warn ? "bg-wattle" : "bg-harbour-chart"
+                    last ? "bg-stop" : warn ? "bg-wattle" : "bg-magenta-chart"
                   }`}
                 >
                   {d}
@@ -214,7 +214,7 @@ export function Hardship() {
             <span
               data-anim="swap-out"
               style={at(T_PAUSE + 500, 400)}
-              className="absolute inset-0 rounded-full bg-harbour"
+              className="absolute inset-0 rounded-full bg-magenta"
             >
               <span className="absolute top-1 right-1 size-7 rounded-full bg-surface shadow-device" />
             </span>

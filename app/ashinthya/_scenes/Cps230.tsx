@@ -175,7 +175,7 @@ export function Tolerance() {
       <Legend
         items={[
           ["bg-wattle", "Maximum period of disruption.", "The stopwatch. A recovery time per service, tested, that lands before the tolerance mark."],
-          ["bg-harbour-chart", "Maximum extent of data loss.", "The records. Replication and backups keep any loss inside the dashed line."],
+          ["bg-magenta-chart", "Maximum extent of data loss.", "The records. Replication and backups keep any loss inside the dashed line."],
           ["bg-wattle", "Minimum service in degraded mode.", "The detour. A slower way that still works, such as manual processing."],
         ]}
       />
@@ -202,7 +202,7 @@ const CLOCK: [number, number] = [830, 110];
 function KeyNode() {
   return (
     <g>
-      <circle r="30" fill={C.tint} stroke={C.harbour} strokeWidth="3" />
+      <circle r="30" fill={C.tint} stroke={C.magenta} strokeWidth="3" />
       <circle cx="-8" r="8" fill="none" stroke={C.ink} strokeWidth="4" />
       <path d="M0 0 L16 0 M10 0 L10 7 M15 0 L15 6" stroke={C.ink} strokeWidth="4" strokeLinecap="round" />
     </g>
@@ -263,10 +263,10 @@ export function MonitoringScene() {
       <g transform={`translate(110 ${J_Y + 40})`} opacity={0}>
         <FadeIn at={PROBE} dur={0.2} />
         <Move path={`M0 0 L${BREAK_X - 125} 0`} at={PROBE} dur={1.1} ease={null} />
-        <circle r="10" fill={C.harbour} />
-        <circle r="16" fill="none" stroke={C.harbour} strokeWidth="2" strokeDasharray="3 4" />
+        <circle r="10" fill={C.magenta} />
+        <circle r="16" fill="none" stroke={C.magenta} strokeWidth="2" strokeDasharray="3 4" />
       </g>
-      <path d={`M110 ${J_Y + 40} L${BREAK_X - 15} ${J_Y + 40}`} stroke={C.harbour} strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" fill="none" opacity={0}>
+      <path d={`M110 ${J_Y + 40} L${BREAK_X - 15} ${J_Y + 40}`} stroke={C.magenta} strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" fill="none" opacity={0}>
         <FadeIn at={PROBE} dur={0.3} />
       </path>
       <Pulse x={BREAK_X - 10} y={J_Y + 40} at={ALERT - 0.1} from={14} to={50} colour={C.stop} />
@@ -320,7 +320,7 @@ export function Monitoring() {
       <Legend
         items={[
           ["bg-settled", "Server checks:", "every machine is up, so every light stays green, even while customers can't pay."],
-          ["bg-harbour", "A journey check:", "a test payment asks \"can a customer make a payment?\" end to end, and finds the break."],
+          ["bg-magenta", "A journey check:", "a test payment asks \"can a customer make a payment?\" end to end, and finds the break."],
           ["bg-stop", "The 24-hour notice:", "APRA must hear within 24 hours when a critical operation is outside tolerance."],
         ]}
       />
@@ -387,7 +387,7 @@ export function FourthPartyScene() {
         d="M480 18 C600 18 700 120 690 212 C780 300 560 420 480 412 C400 420 180 300 270 212 C260 120 360 18 480 18 Z"
         fill={C.tint}
         fillOpacity="0.35"
-        stroke={C.harbour}
+        stroke={C.magenta}
         strokeWidth="4"
         strokeDasharray="1"
         strokeDashoffset={1}

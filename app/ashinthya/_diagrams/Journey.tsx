@@ -52,7 +52,7 @@ export function Segment({
       <span
         data-anim={x ? "grow-x" : "grow-y"}
         style={timing}
-        className={`absolute rounded-full bg-harbour ${
+        className={`absolute rounded-full bg-magenta ${
           x ? "inset-x-0 top-0 h-[3px]" : "inset-y-0 left-0 w-[3px]"
         }`}
       />
@@ -195,9 +195,9 @@ export function Journey({
         <p
           data-anim="rise"
           style={at(end + 500)}
-          className="mt-8 flex items-start gap-3 rounded-md border-2 border-dashed border-harbour/40 bg-surface px-5 py-4 text-copy"
+          className="mt-8 flex items-start gap-3 rounded-md border-2 border-dashed border-magenta/40 bg-surface px-5 py-4 text-copy"
         >
-          <Foot size={24} className="mt-0.5 shrink-0 text-harbour-deep" />
+          <Foot size={24} className="mt-0.5 shrink-0 text-magenta-deep" />
           <span>{footer.children}</span>
         </p>
       )}

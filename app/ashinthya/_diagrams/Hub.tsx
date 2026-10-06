@@ -79,7 +79,7 @@ export function Hub({
                   y1={CY}
                   x2={p.x}
                   y2={p.y}
-                  stroke="var(--harbour-green)"
+                  stroke="var(--magenta)"
                   strokeWidth={0.6}
                   strokeLinecap="round"
                   pathLength={1}
@@ -122,7 +122,7 @@ export function Hub({
             ))}
             <div className="relative rounded-xl bg-settled px-5 py-5 text-center text-surface shadow-[0_0_0_10px_rgb(34_104_59/0.12)]">
               <HubIcon size={36} className="mx-auto" />
-              <p className="mt-2 font-serif text-title leading-tight font-semibold">
+              <p className="mt-2 font-heading text-title leading-tight font-semibold">
                 {hub.title}
               </p>
               <p className="mt-1 text-label">{hub.detail}</p>
@@ -147,7 +147,7 @@ export function Hub({
               className="absolute z-10 w-[29%] -translate-1/2"
             >
               <div className="flex gap-3 rounded-md bg-surface p-3.5 shadow-device ring-1 ring-hairline">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-harbour text-surface">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-magenta text-surface">
                   <Icon size={22} />
                 </span>
                 <div>

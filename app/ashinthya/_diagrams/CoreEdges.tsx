@@ -44,7 +44,7 @@ export function CoreEdges({ core, edges }: { core: Part; edges: Part }) {
         <div
           data-anim="rise"
           style={at(CORE_START, 700)}
-          className="my-4 rounded-md bg-harbour p-5 text-surface sm:my-5"
+          className="my-4 rounded-md bg-magenta p-5 text-surface sm:my-5"
         >
           <p data-anim="pop" style={at(CORE_START + 150)} className="text-[1.25rem] font-semibold">
             {core.title}
@@ -56,7 +56,7 @@ export function CoreEdges({ core, edges }: { core: Part; edges: Part }) {
                 key={item}
                 data-anim="pop"
                 style={at(CORE_START + 900 + i * GAP)}
-                className="rounded-md bg-surface px-4 py-2.5 text-center text-label font-semibold text-harbour-deep"
+                className="rounded-md bg-surface px-4 py-2.5 text-center text-label font-semibold text-magenta-deep"
               >
                 {item}
               </li>

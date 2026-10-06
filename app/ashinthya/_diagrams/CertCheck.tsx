@@ -48,7 +48,7 @@ function Reg({
       <span
         data-anim="flash"
         style={at(T[n - 1], 1500)}
-        className="absolute -inset-2 rounded-md bg-harbour-tint ring-2 ring-harbour/35"
+        className="absolute -inset-2 rounded-md bg-magenta-tint ring-2 ring-magenta/35"
       />
       <div className="relative">{children}</div>
       <Pin n={n} at={T[n - 1]} className="absolute -top-3 -right-3 z-10" />
@@ -61,10 +61,10 @@ function Certificate() {
     <div className="mx-auto w-full max-w-[26rem] rounded-md bg-surface p-3 shadow-device ring-1 ring-hairline-strong">
       <div
         aria-hidden="true"
-        className="rounded-sm border-2 border-double border-harbour/40 px-6 py-7"
+        className="rounded-sm border-2 border-double border-magenta/40 px-6 py-7"
       >
         <div className="flex flex-col items-center text-center">
-          <span className="flex size-12 items-center justify-center rounded-full bg-harbour-tint text-harbour">
+          <span className="flex size-12 items-center justify-center rounded-full bg-magenta-tint text-magenta">
             <ShieldIcon size={26} />
           </span>
           <div className="mt-3 w-full space-y-1.5">
@@ -83,14 +83,14 @@ function Certificate() {
 
         <Reg n={2} className="mt-6">
           <div className="flex min-h-10 items-center gap-2 rounded-md px-3 ring-1 ring-hairline-strong">
-            <SearchIcon size={18} className="shrink-0 text-harbour" />
+            <SearchIcon size={18} className="shrink-0 text-magenta" />
             <Bar className="w-2/3" />
           </div>
         </Reg>
 
         <Reg n={3} className="mt-6">
           <div className="flex items-center gap-2">
-            <CalendarIcon size={20} className="shrink-0 text-harbour" />
+            <CalendarIcon size={20} className="shrink-0 text-magenta" />
             <Bar className="w-1/3" strong />
             <Bar className="w-1/4" />
           </div>
@@ -107,7 +107,7 @@ function Certificate() {
         <div className="mt-6 grid grid-cols-2 gap-4">
           <Reg n={5}>
             <div className="flex items-start gap-2">
-              <DocumentIcon size={22} className="mt-0.5 shrink-0 text-harbour" />
+              <DocumentIcon size={22} className="mt-0.5 shrink-0 text-magenta" />
               <span className="flex-1 space-y-1.5 pt-1">
                 <Bar className="w-full" />
                 <Bar className="w-2/3" />
@@ -115,7 +115,7 @@ function Certificate() {
             </div>
           </Reg>
           <Reg n={6} className="flex justify-end">
-            <span className="flex size-14 items-center justify-center rounded-full border-2 border-dashed border-harbour/50">
+            <span className="flex size-14 items-center justify-center rounded-full border-2 border-dashed border-magenta/50">
               <Bar className="w-7" />
             </span>
           </Reg>

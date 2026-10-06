@@ -19,7 +19,7 @@ const STOPS = [0, 0.308, 0.654, 1];
 const arrive = (i: number) => Math.round(START + STOPS[i] * TRAVEL);
 
 const tones = {
-  go: { fill: "var(--harbour-green)", title: "text-ink" },
+  go: { fill: "var(--magenta)", title: "text-ink" },
   caution: { fill: "var(--wattle-amber)", title: "text-wattle" },
   done: { fill: "var(--settled-green)", title: "text-settled" },
 };
@@ -81,7 +81,7 @@ function Route() {
         d={ROUTE}
         pathLength={1}
         fill="none"
-        stroke="var(--harbour-green)"
+        stroke="var(--magenta)"
         strokeWidth={4}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -126,7 +126,7 @@ function Route() {
         } as CSSProperties)}
       >
         <circle r={13} fill="var(--paper-white)" />
-        <circle r={9} fill="var(--harbour-green-deep)" />
+        <circle r={9} fill="var(--magenta-deep)" />
       </g>
     </svg>
   );
@@ -155,7 +155,7 @@ export function TrustJourney() {
                   <span
                     data-anim="grow-y"
                     style={at(arrive(i), next, { "--ease": "linear" } as CSSProperties)}
-                    className="block h-full w-full rounded-full bg-harbour"
+                    className="block h-full w-full rounded-full bg-magenta"
                   />
                 </span>
               )}

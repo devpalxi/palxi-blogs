@@ -32,17 +32,17 @@ export default function OneDesignSystem() {
           <div className="animate-rise">
             <Link
               href="/dineth"
-              className="-ml-2 inline-flex min-h-11 items-center gap-2 rounded-sm px-2 text-label font-semibold text-harbour transition-colors duration-200 ease-out-quart hover:bg-harbour-tint hover:text-harbour-deep"
+              className="-ml-2 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-label font-semibold text-magenta transition-colors duration-150 ease-out-quart hover:bg-magenta-tint hover:text-magenta-deep"
             >
               <ArrowLeftIcon size={20} />
               All stories
             </Link>
             <p className="mt-8">
-              <span className="inline-block rounded-full bg-harbour-tint px-3 py-1 text-label font-semibold text-harbour-deep">
+              <span className="inline-block rounded-full bg-magenta-tint px-3.5 py-1 text-label font-semibold text-magenta-deep">
                 {post.tag}
               </span>
             </p>
-            <h1 className="mt-5 font-serif text-display font-semibold text-ink">
+            <h1 className="mt-5 text-display font-semibold text-ink">
               One design system, many products: how we keep Palxi consistent
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">

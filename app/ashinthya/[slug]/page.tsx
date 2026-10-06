@@ -65,17 +65,17 @@ export default async function ArticlePage({
           <div className="animate-rise">
             <Link
               href="/ashinthya"
-              className="-ml-2 inline-flex min-h-11 items-center gap-2 rounded-sm px-2 text-label font-semibold text-harbour transition-colors duration-200 ease-out-quart hover:bg-harbour-tint hover:text-harbour-deep"
+              className="-ml-2 inline-flex min-h-11 items-center gap-2 rounded-sm px-2 text-label font-semibold text-magenta transition-colors duration-200 ease-out-quart hover:bg-magenta-tint hover:text-magenta-deep"
             >
               <ArrowLeftIcon size={20} />
               All articles
             </Link>
             <p className="mt-8">
-              <span className="inline-block rounded-full bg-harbour-tint px-3 py-1 text-label font-semibold text-harbour-deep">
+              <span className="inline-block rounded-full bg-magenta-tint px-3 py-1 text-label font-semibold text-magenta-deep">
                 {article.kicker}
               </span>
             </p>
-            <h1 className="mt-5 font-serif text-display font-semibold text-ink">
+            <h1 className="mt-5 font-heading text-display font-semibold text-ink">
               {article.title}
             </h1>
             <p className="mt-6 max-w-[36rem] text-standfirst text-copy">
@@ -103,7 +103,7 @@ export default async function ArticlePage({
             typeof part === "string" ? (
               <div
                 key={i}
-                className="prose-harbour prose-article mx-auto"
+                className="prose-post prose-article mx-auto"
                 dangerouslySetInnerHTML={{ __html: part }}
               />
             ) : (

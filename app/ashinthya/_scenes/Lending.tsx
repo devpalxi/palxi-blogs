@@ -23,9 +23,9 @@ import { Bank, Bubble, Coin, Doc, Letter, Padlock, Person, Phone, Seal, WebForm 
 
 const ROW_Y = (i: number) => 156 + i * 36;
 const EVENTS = [
-  { at: 0.9, len: 130, colour: C.harbour },
-  { at: 2.0, len: 64, colour: C.harbour },
-  { at: 3.1, len: 42, colour: C.harbour },
+  { at: 0.9, len: 130, colour: C.magenta },
+  { at: 2.0, len: 64, colour: C.magenta },
+  { at: 3.1, len: 42, colour: C.magenta },
   { at: 4.3, len: 130, colour: C.stop }, // the reversal of a dishonoured repayment
 ];
 const PIVOT: [number, number] = [330, 62];
@@ -122,7 +122,7 @@ export function LedgerScene() {
         <FadeIn at={RECON - 0.2} dur={0.3} />
         <Move path="M0 0 L-200 0" at={RECON - 0.2} dur={0.6} ease={ease.out} />
         <rect x="-10" y="120" width="170" height="222" rx="6" fill={C.paper} stroke={C.ink} strokeWidth="2.5" />
-        <rect x="-10" y="120" width="170" height="24" rx="6" fill={C.harbour} />
+        <rect x="-10" y="120" width="170" height="24" rx="6" fill={C.magenta} />
         {EVENTS.map((e, i) => (
           <path key={i} d={`M14 ${ROW_Y(i)} L${14 + e.len * 0.8} ${ROW_Y(i)}`} stroke={e.colour} strokeWidth="7" strokeLinecap="round" opacity="0.85" />
         ))}
@@ -203,10 +203,10 @@ export function RailsScene() {
           <Doc lines={3} />
         </g>
         <circle cx="14" cy="24" r="11" fill={HEX.wattle} stroke={C.ink} strokeWidth="2.5">
-          <Anim attr="fill" values={[HEX.wattle, HEX.harbour]} at={FLIP + 0.3} dur={0.4} />
+          <Anim attr="fill" values={[HEX.wattle, HEX.magenta]} at={FLIP + 0.3} dur={0.4} />
         </circle>
       </g>
-      <Pulse x={110} y={194} at={FLIP + 0.3} from={11} to={34} colour={C.harbour} />
+      <Pulse x={110} y={194} at={FLIP + 0.3} from={11} to={34} colour={C.magenta} />
 
       {/* The points blade and its lever. */}
       <g transform={`rotate(28 250 170)`}>
@@ -247,7 +247,7 @@ export function Rails() {
       <RailsScene />
       <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
         <li className="flex items-start gap-3">
-          <span className="mt-1.5 size-4 shrink-0 rounded-full bg-harbour" />
+          <span className="mt-1.5 size-4 shrink-0 rounded-full bg-magenta" />
           <p className="text-label font-normal text-copy">
             <span className="font-semibold text-ink">Top track: PayTo.</span> Runs on the New Payments Platform. The customer approves the agreement in their banking app.
           </p>
@@ -346,7 +346,7 @@ export function HardshipClockScene() {
             x={DIAL[0]}
             y={DIAL[1] + 26}
             textAnchor="middle"
-            className="font-serif"
+            className="font-heading"
             fontWeight="600"
             fontSize="78"
             fill={k + 1 >= ALERT ? C.wattle : C.ink}

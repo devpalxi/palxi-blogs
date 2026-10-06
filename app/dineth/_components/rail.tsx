@@ -27,7 +27,7 @@ export function Trail({
   d,
   start,
   dur,
-  color = "var(--harbour-green)",
+  color = "var(--magenta)",
 }: {
   d: string;
   start: number;
@@ -61,7 +61,7 @@ export function Train({
   dur: number;
   tone?: "go" | "ink";
 }) {
-  const fill = tone === "go" ? "var(--harbour-green-deep)" : "var(--deep-ink)";
+  const fill = tone === "go" ? "var(--magenta-deep)" : "var(--deep-ink)";
   return (
     <g
       data-anim="travel"
@@ -81,7 +81,7 @@ export function Station({
   y,
   icon: Icon,
   time,
-  fill = "var(--harbour-green)",
+  fill = "var(--magenta)",
   r = 28,
 }: {
   x: number;

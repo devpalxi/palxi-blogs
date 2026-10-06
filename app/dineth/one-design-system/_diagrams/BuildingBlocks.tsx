@@ -47,7 +47,7 @@ function Tier({
       style={at(time, 700)}
       className="rounded-lg bg-surface p-5"
     >
-      <p className="font-serif text-title font-semibold text-ink">{title}</p>
+      <p className="font-heading text-title font-semibold text-ink">{title}</p>
       <p className="mt-1 text-label text-copy">{body}</p>
       <div aria-hidden="true" className="mt-5">
         {children}
@@ -80,14 +80,14 @@ function Fan({ time }: { time: number }) {
               d={d}
               pathLength={1}
               {...stroke}
-              stroke="var(--harbour-green)"
+              stroke="var(--magenta)"
               strokeWidth={4}
               data-anim="draw"
               style={at(time, FLIGHT, { "--ease": "linear" } as CSSProperties)}
             />
             <circle
               r={8}
-              fill="var(--harbour-green-deep)"
+              fill="var(--magenta-deep)"
               stroke="var(--paper-white)"
               strokeWidth={3}
               data-anim="travel"
@@ -101,7 +101,7 @@ function Fan({ time }: { time: number }) {
               cx={COLS[i]}
               cy={JOIN_H - 2}
               r={6}
-              fill="var(--harbour-green)"
+              fill="var(--magenta)"
               data-anim="pop"
               style={at(time + FLIGHT - 100, 400)}
             />
@@ -113,7 +113,7 @@ function Fan({ time }: { time: number }) {
         <span
           data-anim="grow-y"
           style={at(time, 600, { "--ease": "linear" } as CSSProperties)}
-          className="absolute inset-0 rounded-full bg-harbour"
+          className="absolute inset-0 rounded-full bg-magenta"
         />
       </div>
     </>
@@ -127,7 +127,7 @@ function Block({ time, use, children }: { time: number; use: number; children: R
       <span
         data-anim="flash"
         style={at(use, 1500)}
-        className="absolute -inset-2 rounded-md ring-2 ring-harbour/55"
+        className="absolute -inset-2 rounded-md ring-2 ring-magenta/55"
       />
       <div data-anim="pop" style={at(time, 500)} className="relative">
         {children}
@@ -160,7 +160,7 @@ function Screen({ s }: { s: number }) {
       <div
         data-anim="rise"
         style={at(USE.button + d, 600)}
-        className="mt-3 flex min-h-10 items-center justify-center rounded-sm bg-harbour text-label font-semibold text-surface"
+        className="mt-3 flex min-h-10 items-center justify-center rounded-sm bg-magenta text-label font-semibold text-surface"
       >
         Continue
       </div>
@@ -171,7 +171,7 @@ function Screen({ s }: { s: number }) {
 // ---- The basics: three small drawings, each 210 x 72 -------------------
 
 const swatches = [
-  { fill: "var(--harbour-green)" },
+  { fill: "var(--magenta)" },
   { fill: "var(--deep-ink)" },
   { fill: "var(--shallows)", ring: true },
   { fill: "var(--settled-green)" },
@@ -220,7 +220,7 @@ function TextStyles() {
         fontSize={48}
         fontWeight={600}
         fill="var(--deep-ink)"
-        className="font-serif"
+        className="font-heading"
         data-anim="fade"
         style={at(SWATCH + 1000, 600)}
       >
@@ -267,7 +267,7 @@ function Spacing() {
           d={`M${x + 3} 36 H${x + 21} M${x + 3} 28 V44 M${x + 21} 28 V44`}
           pathLength={1}
           {...stroke}
-          stroke="var(--harbour-green)"
+          stroke="var(--magenta)"
           strokeWidth={3}
           strokeDasharray="1"
           data-anim="draw"
@@ -307,7 +307,7 @@ export function BuildingBlocks() {
       >
         <div className="grid gap-5 sm:grid-cols-3 sm:items-center sm:gap-4">
           <Block time={BLOCKS + 300} use={USE.button}>
-            <div className="flex min-h-11 items-center justify-center rounded-sm bg-harbour px-4 text-label font-semibold text-surface">
+            <div className="flex min-h-11 items-center justify-center rounded-sm bg-magenta px-4 text-label font-semibold text-surface">
               Continue
             </div>
           </Block>

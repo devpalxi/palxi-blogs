@@ -66,14 +66,14 @@ function Option({
     <div
       className={`flex min-h-14 items-center gap-3 rounded-md px-4 py-3 ${
         selected
-          ? "bg-harbour-tint text-ink ring-2 ring-harbour"
+          ? "bg-magenta-tint text-ink ring-2 ring-magenta"
           : "text-ink ring-1 ring-hairline-strong"
       }`}
     >
-      <span className="text-harbour">{icon}</span>
+      <span className="text-magenta">{icon}</span>
       <span className="flex-1 font-semibold">{label}</span>
       {selected && (
-        <span className="flex size-6 items-center justify-center rounded-full bg-harbour text-surface">
+        <span className="flex size-6 items-center justify-center rounded-full bg-magenta text-surface">
           <CheckIcon size={16} />
         </span>
       )}
@@ -91,7 +91,7 @@ function Phone() {
           className="h-[3.75rem] content-start"
           before={<p className="pt-1 text-muted">Payment instrument</p>}
           after={
-            <p className="font-serif text-[1.375rem] leading-tight font-semibold text-ink">
+            <p className="font-heading text-[1.375rem] leading-tight font-semibold text-ink">
               How would you like to pay?
             </p>
           }
@@ -130,7 +130,7 @@ function Phone() {
           }
           after={
             <p className="flex items-start gap-2 pt-1 text-copy">
-              <LockIcon size={20} className="mt-0.5 shrink-0 text-harbour" />
+              <LockIcon size={20} className="mt-0.5 shrink-0 text-magenta" />
               Nothing is charged until you confirm.
             </p>
           }
@@ -146,7 +146,7 @@ function Phone() {
             </div>
           }
           after={
-            <div className="flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+            <div className="flex min-h-12 items-center justify-center rounded-sm bg-magenta font-semibold text-surface">
               Continue
             </div>
           }
@@ -165,7 +165,7 @@ export function BeforeAfter() {
           <span
             data-anim="fade"
             style={at(T[3] + 100, SWAP)}
-            className="inline-flex rounded-full bg-harbour-tint px-3 py-1 text-label font-semibold text-harbour-deep [grid-area:1/1]"
+            className="inline-flex rounded-full bg-magenta-tint px-3 py-1 text-label font-semibold text-magenta-deep [grid-area:1/1]"
           >
             After testing
           </span>

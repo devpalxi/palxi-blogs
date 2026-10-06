@@ -70,7 +70,7 @@ function Receipt() {
           <div className="receipt-edge bg-surface px-6 pt-8 pb-10 text-label">
             <Line pin={1}>
               <div className="flex items-center gap-3">
-                <span className="size-9 shrink-0 rounded-sm bg-harbour-tint" />
+                <span className="size-9 shrink-0 rounded-sm bg-magenta-tint" />
                 <Bar className="w-32" strong />
               </div>
             </Line>

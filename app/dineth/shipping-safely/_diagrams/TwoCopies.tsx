@@ -21,7 +21,7 @@ function Traffic({ d, starts }: { d: string; starts: number[] }) {
         <circle
           key={s}
           r={7}
-          fill="var(--harbour-green)"
+          fill="var(--magenta)"
           data-anim="travel"
           className="opacity-0"
           style={at(s, 1200, {
@@ -42,7 +42,7 @@ function Chip({
   children: ReactNode;
 }) {
   const styles = {
-    live: "bg-harbour text-surface",
+    live: "bg-magenta text-surface",
     wait: "bg-hairline text-muted",
     fix: "bg-wattle-tint text-wattle",
   }[tone];
@@ -101,8 +101,8 @@ export function TwoCopies() {
             <path d={PA} stroke="var(--hairline-strong)" strokeWidth={4} strokeDasharray="1 11" />
             <path d={PB} stroke="var(--hairline-strong)" strokeWidth={4} strokeDasharray="1 11" />
             {/* The live connection: on to A, then B, then back to A. */}
-            <path d={PA} stroke="var(--harbour-green)" strokeWidth={6} data-anim="dip" style={at(T2, W)} />
-            <path d={PB} stroke="var(--harbour-green)" strokeWidth={6} data-anim="window" style={at(T2, W)} />
+            <path d={PA} stroke="var(--magenta)" strokeWidth={6} data-anim="dip" style={at(T2, W)} />
+            <path d={PB} stroke="var(--magenta)" strokeWidth={6} data-anim="window" style={at(T2, W)} />
           </g>
           <Traffic d={PA} starts={[500, 950, 1400]} />
           <Traffic d={PB} starts={[T2 + 350, T2 + 800, T2 + 1250]} />
@@ -128,7 +128,7 @@ export function TwoCopies() {
             <span
               data-anim="dip"
               style={at(T2, W)}
-              className="absolute inset-0 rounded-md bg-harbour-tint ring-2 ring-harbour"
+              className="absolute inset-0 rounded-md bg-magenta-tint ring-2 ring-magenta"
             />
           }
           status={
@@ -156,7 +156,7 @@ export function TwoCopies() {
             <span
               data-anim="window"
               style={at(T2, W)}
-              className="absolute inset-0 rounded-md bg-harbour-tint ring-2 ring-harbour"
+              className="absolute inset-0 rounded-md bg-magenta-tint ring-2 ring-magenta"
             />
           }
           status={
@@ -167,7 +167,7 @@ export function TwoCopies() {
                   <span
                     data-anim="grow-x"
                     style={at(400, 2200, { "--ease": "linear" } as CSSProperties)}
-                    className="block h-full w-full rounded-full bg-harbour-chart"
+                    className="block h-full w-full rounded-full bg-magenta-chart"
                   />
                 </span>
               </span>
@@ -188,19 +188,19 @@ export function TwoCopies() {
       {/* Three captions share one spot; each is on screen for its own phase. */}
       <div className="mt-6 grid rounded-md bg-surface px-6 py-5">
         <div data-anim="swap-out" style={at(T2, 500)} className={grid}>
-          <p className="font-serif text-title font-semibold text-ink">1. Prepare</p>
+          <p className="font-heading text-title font-semibold text-ink">1. Prepare</p>
           <p className="mt-1 text-copy">
             Customers use copy A. The new version is set up and checked on copy B.
           </p>
         </div>
         <div data-anim="window" style={at(T2, W)} className={grid}>
-          <p className="font-serif text-title font-semibold text-ink">2. Switch</p>
+          <p className="font-heading text-title font-semibold text-ink">2. Switch</p>
           <p className="mt-1 text-copy">
             Customers are moved across to copy B in an instant. No closed sign.
           </p>
         </div>
         <div data-anim="fade" style={at(T3, 500)} className={grid}>
-          <p className="font-serif text-title font-semibold text-ink">3. Safety net</p>
+          <p className="font-heading text-title font-semibold text-ink">3. Safety net</p>
           <p className="mt-1 text-copy">
             Copy A stays ready. If anything looks wrong, we switch straight back.
           </p>

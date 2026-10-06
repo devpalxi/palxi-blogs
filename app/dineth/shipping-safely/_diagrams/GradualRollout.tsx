@@ -37,7 +37,7 @@ function Toggle() {
         <span
           data-anim="swap-out"
           style={at(SWITCH, 450)}
-          className="relative rounded-full bg-harbour [grid-area:1/1]"
+          className="relative rounded-full bg-magenta [grid-area:1/1]"
         >
           <span className="absolute top-1 right-1 size-8 rounded-full bg-surface shadow-device" />
         </span>
@@ -46,7 +46,7 @@ function Toggle() {
         <span
           data-anim="swap-out"
           style={at(SWITCH, 450)}
-          className="text-harbour-deep [grid-area:1/1]"
+          className="text-magenta-deep [grid-area:1/1]"
         >
           On
         </span>
@@ -74,7 +74,7 @@ export function GradualRollout() {
                 <span
                   data-anim="pop"
                   style={at(time, 380)}
-                  className="absolute inset-0 rounded-full bg-harbour-chart"
+                  className="absolute inset-0 rounded-full bg-magenta-chart"
                 />
               </span>
             );
@@ -94,7 +94,7 @@ export function GradualRollout() {
                 data-anim="pop"
                 style={at(s.start)}
                 className={`flex size-10 shrink-0 items-center justify-center rounded-full text-surface ${
-                  i === stages.length - 1 ? "bg-settled" : "bg-harbour"
+                  i === stages.length - 1 ? "bg-settled" : "bg-magenta"
                 }`}
               >
                 {i === stages.length - 1 ? <CheckIcon size={22} /> : <EyeIcon size={22} />}
@@ -111,7 +111,7 @@ export function GradualRollout() {
       <div
         data-anim="rise"
         style={at(DONE)}
-        className="mt-8 flex items-center gap-5 rounded-md border-2 border-dashed border-harbour/40 bg-surface px-5 py-4"
+        className="mt-8 flex items-center gap-5 rounded-md border-2 border-dashed border-magenta/40 bg-surface px-5 py-4"
       >
         <Toggle />
         <div aria-hidden="true" className="grid shrink-0 grid-cols-10 gap-1.5">
@@ -120,7 +120,7 @@ export function GradualRollout() {
               <span
                 data-anim="swap-out"
                 style={at(SWITCH + 250 + i * 35, 400)}
-                className="absolute inset-0 rounded-full bg-harbour-chart"
+                className="absolute inset-0 rounded-full bg-magenta-chart"
               />
             </span>
           ))}

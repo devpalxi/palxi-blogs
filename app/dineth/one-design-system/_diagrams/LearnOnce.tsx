@@ -16,7 +16,7 @@ const services = ["A booking service", "A payments service", "A community servic
 const without = [
   { label: "Submit", button: "bg-muted text-surface rounded-none", align: "justify-start" },
   { label: "Go", button: "bg-surface text-ink ring-2 ring-ink rounded-full", align: "justify-end" },
-  { label: "OK", button: "bg-harbour-tint text-harbour-deep rounded-lg", align: "justify-center" },
+  { label: "OK", button: "bg-magenta-tint text-magenta-deep rounded-lg", align: "justify-center" },
 ];
 
 // A fingertip that rises onto the button, taps it, then lifts away. It exists
@@ -40,9 +40,9 @@ function Finger({ tap }: { tap: number }) {
             cx={14}
             cy={5}
             r={9}
-            fill="var(--harbour-green)"
+            fill="var(--magenta)"
             fillOpacity={0.25}
-            stroke="var(--harbour-green)"
+            stroke="var(--magenta)"
             strokeWidth={2}
           />
           <path
@@ -93,7 +93,7 @@ function Screen({
           <span
             data-anim="ripple"
             style={at(tap)}
-            className="absolute -inset-1.5 rounded-md ring-4 ring-harbour/40"
+            className="absolute -inset-1.5 rounded-md ring-4 ring-magenta/40"
           />
           <Finger tap={tap} />
         </span>
@@ -193,7 +193,7 @@ export function LearnOnce() {
           <Screen
             key={s}
             label="Next"
-            buttonClass="bg-harbour text-surface rounded-sm w-full justify-center"
+            buttonClass="bg-magenta text-surface rounded-sm w-full justify-center"
             align="justify-center"
             tap={FAST[i]}
             doubt={false}

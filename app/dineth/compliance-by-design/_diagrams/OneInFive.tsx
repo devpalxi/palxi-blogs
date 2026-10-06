@@ -28,14 +28,14 @@ export function OneInFive() {
                     <span
                       data-anim="pop"
                       style={at(g.start + 150 + c * g.gap, 380)}
-                      className="absolute inset-0 rounded-full bg-harbour-chart"
+                      className="absolute inset-0 rounded-full bg-magenta-chart"
                     />
                   )}
                 </span>
               ))}
             </div>
             <figcaption className="mt-5">
-              <p className="font-serif text-headline font-semibold text-ink">
+              <p className="font-heading text-headline font-semibold text-ink">
                 <CountUp to={g.lit} delay={g.start + 150} duration={run} /> in 100
               </p>
               <p className="mt-1 text-[1.125rem] font-semibold text-ink">{g.label}</p>

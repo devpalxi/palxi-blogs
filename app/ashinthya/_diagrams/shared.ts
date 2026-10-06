@@ -4,7 +4,7 @@ export type DiagramIcon = ComponentType<SVGProps<SVGSVGElement> & { size?: numbe
 export type Tone = "default" | "done" | "caution" | "stop";
 
 export const chipTone: Record<Tone, string> = {
-  default: "bg-harbour-tint text-harbour-deep",
+  default: "bg-magenta-tint text-magenta-deep",
   done: "bg-settled-tint text-settled",
   caution: "bg-wattle-tint text-wattle",
   stop: "bg-stop-tint text-stop",
@@ -12,14 +12,14 @@ export const chipTone: Record<Tone, string> = {
 
 // Solid fill for a lit station or marker of each tone.
 export const solidTone: Record<Tone, string> = {
-  default: "bg-harbour",
+  default: "bg-magenta",
   done: "bg-settled",
   caution: "bg-wattle",
   stop: "bg-stop",
 };
 
 export const ringTone: Record<Tone, string> = {
-  default: "ring-harbour/40",
+  default: "ring-magenta/40",
   done: "ring-settled/40",
   caution: "ring-wattle/40",
   stop: "ring-stop/40",

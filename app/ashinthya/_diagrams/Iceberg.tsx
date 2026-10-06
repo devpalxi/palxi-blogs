@@ -24,7 +24,7 @@ export function Iceberg({
   footer?: ReactNode;
 }) {
   const arrive = (i: number) => FALL + 300 + (i + 1) * LEG;
-  const tones = ["bg-harbour-tint text-ink", "bg-harbour text-surface", "bg-harbour-deep text-surface"];
+  const tones = ["bg-magenta-tint text-ink", "bg-magenta text-surface", "bg-magenta-deep text-surface"];
   return (
     <div className="overflow-hidden rounded-lg bg-surface ring-1 ring-hairline-strong">
       {/* Above the waterline. */}
@@ -44,9 +44,9 @@ export function Iceberg({
                 <span
                   data-anim="ripple"
                   style={at(TAP)}
-                  className="absolute inset-0 rounded-sm ring-4 ring-harbour/40"
+                  className="absolute inset-0 rounded-sm ring-4 ring-magenta/40"
                 />
-                <div className="relative flex min-h-11 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+                <div className="relative flex min-h-11 items-center justify-center rounded-sm bg-magenta font-semibold text-surface">
                   Continue
                 </div>
               </div>
@@ -64,7 +64,7 @@ export function Iceberg({
           <p
             data-anim="rise"
             style={at(400, 700)}
-            className="mt-1 font-serif text-title font-semibold text-ink"
+            className="mt-1 font-heading text-title font-semibold text-ink"
           >
             {product.title}
           </p>
@@ -84,12 +84,12 @@ export function Iceberg({
       >
         <path
           d="M0 12 C60 0 120 24 180 12 S300 0 360 12 480 24 540 12 660 0 720 12 840 24 900 12 960 6 960 6 V24 H0 Z"
-          fill="var(--harbour-green-tint)"
+          fill="var(--magenta-tint)"
         />
         <path
           d="M0 12 C60 0 120 24 180 12 S300 0 360 12 480 24 540 12 660 0 720 12 840 24 900 12 960 6 960 6"
           fill="none"
-          stroke="var(--harbour-green-chart)"
+          stroke="var(--magenta-chart)"
           strokeWidth={2}
           pathLength={1}
           data-anim="draw"
@@ -121,11 +121,11 @@ export function Iceberg({
                 style={at(t, 1300)}
                 className="absolute inset-0 bg-surface/25"
               />
-              <span className="absolute top-1/2 left-8 z-20 flex size-11 -translate-1/2 items-center justify-center rounded-full bg-surface text-harbour-deep shadow-device md:left-10">
+              <span className="absolute top-1/2 left-8 z-20 flex size-11 -translate-1/2 items-center justify-center rounded-full bg-surface text-magenta-deep shadow-device md:left-10">
                 <Icon size={22} />
               </span>
               <div className="relative">
-                <p className="font-serif text-title leading-tight font-semibold">
+                <p className="font-heading text-title leading-tight font-semibold">
                   {layer.title}
                 </p>
                 <p className="mt-0.5 text-label">{layer.detail}</p>
@@ -138,7 +138,7 @@ export function Iceberg({
         <p
           data-anim="rise"
           style={at(arrive(deep.length - 1) + 400)}
-          className="bg-harbour-deep px-6 py-5 text-surface md:px-10"
+          className="bg-magenta-deep px-6 py-5 text-surface md:px-10"
         >
           {footer}
         </p>

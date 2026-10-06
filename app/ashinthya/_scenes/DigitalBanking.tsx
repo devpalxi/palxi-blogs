@@ -177,7 +177,7 @@ export function LicencePath() {
         items={[
           { title: "Non-bank lender", chip: ["ASIC credit licence", "bg-shallows text-ink ring-1 ring-hairline-strong"], detail: "Can't take deposits. CPS 230 doesn't apply, but credit and conduct controls do." },
           { title: "Restricted ADI", chip: ["APRA, up to two years", "bg-wattle-tint text-wattle"], detail: "Deposits capped at $2 million in total and $250,000 per account-holder. Then it moves to a full licence or exits." },
-          { title: "Full ADI", chip: ["APRA licence", "bg-harbour-tint text-harbour-deep"], detail: "Can take deposits. CPS 230 applies, with ongoing vendor oversight and data sharing." },
+          { title: "Full ADI", chip: ["APRA licence", "bg-magenta-tint text-magenta-deep"], detail: "Can take deposits. CPS 230 applies, with ongoing vendor oversight and data sharing." },
         ]}
       />
     </div>
@@ -266,14 +266,14 @@ export function CdrScene() {
       <g transform="translate(850 300) scale(0.85)">
         <Bank fill={C.shallows} />
       </g>
-      <path d={IN_PATH} fill="none" stroke={C.harbour} strokeWidth="4" strokeDasharray="2 9" strokeLinecap="round" opacity={0}>
+      <path d={IN_PATH} fill="none" stroke={C.magenta} strokeWidth="4" strokeDasharray="2 9" strokeLinecap="round" opacity={0}>
         <FadeIn at={CONSENT + 1.6} dur={0.3} />
       </path>
       {[0, 0.4, 0.8].map((d) => (
         <g key={d} opacity={0}>
           <Anim attr="opacity" values={[0, 1, 1, 0]} times={[0, 0.1, 0.85, 1]} at={CONSENT + 1.8 + d} dur={1.0} ease={null} />
           <Move path={IN_PATH} at={CONSENT + 1.8 + d} dur={1.0} />
-          <DataCard tone={C.harbour} />
+          <DataCard tone={C.magenta} />
         </g>
       ))}
       <g transform="translate(520 336)">
@@ -281,7 +281,7 @@ export function CdrScene() {
         <path d="M-24 8 A24 24 0 0 1 24 8" fill="none" stroke={C.hair} strokeWidth="6" strokeLinecap="round" />
         <g transform="rotate(-60 0 8)">
           <Turn type="rotate" values={["-60 0 8", "40 0 8", "25 0 8"]} at={CONSENT + 3.0} dur={1.0} />
-          <line x1="0" y1="8" x2="0" y2="-16" stroke={C.harbour} strokeWidth="5" strokeLinecap="round" />
+          <line x1="0" y1="8" x2="0" y2="-16" stroke={C.magenta} strokeWidth="5" strokeLinecap="round" />
         </g>
         <circle cy="8" r="5" fill={C.ink} />
       </g>
@@ -386,9 +386,9 @@ export function CoreSwapScene() {
       {/* Right: everything calls the lender's own API layer. */}
       <EdgeIcons ox={HALF} />
       {viaApi.map((d, i) => (
-        <path key={i} d={d} stroke={C.harbour} strokeWidth="4" strokeLinecap="round" fill="none" />
+        <path key={i} d={d} stroke={C.magenta} strokeWidth="4" strokeLinecap="round" fill="none" />
       ))}
-      <rect x={HALF + 50} y="188" width="380" height="24" rx="12" fill={C.harbour} />
+      <rect x={HALF + 50} y="188" width="380" height="24" rx="12" fill={C.magenta} />
       <path d={apiDown} stroke={HEX.ink} strokeWidth="4" strokeLinecap="round" fill="none">
         <Anim attr="stroke-dasharray" values={["0 0", "6 10"]} at={SWAP} dur={0.01} ease={null} />
         <Anim attr="stroke" values={[HEX.ink, HEX.stop]} at={SWAP} dur={0.2} />

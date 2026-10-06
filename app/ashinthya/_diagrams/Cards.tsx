@@ -12,7 +12,7 @@ export function Fact({ text, time }: { text: string; time: number }) {
         aria-hidden="true"
         data-anim="flash"
         style={at(time, 1100)}
-        className="absolute -inset-x-2 -inset-y-1 rounded-md bg-harbour-tint ring-1 ring-harbour/30"
+        className="absolute -inset-x-2 -inset-y-1 rounded-md bg-magenta-tint ring-1 ring-magenta/30"
       />
       <span className="relative mt-0.5 size-5 shrink-0">
         <span className="absolute inset-[6px] rounded-full bg-hairline-strong" />
@@ -20,7 +20,7 @@ export function Fact({ text, time }: { text: string; time: number }) {
           aria-hidden="true"
           data-anim="pop"
           style={at(time + 150)}
-          className="absolute inset-0 flex items-center justify-center rounded-full bg-harbour text-surface"
+          className="absolute inset-0 flex items-center justify-center rounded-full bg-magenta text-surface"
         >
           <CheckIcon size={14} />
         </span>
@@ -64,7 +64,7 @@ export function Compare({
         <p
           data-anim="slide-l"
           style={at(0, 700)}
-          className="flex items-center gap-3 rounded-md bg-harbour px-5 py-3 text-[1.125rem] font-semibold text-surface"
+          className="flex items-center gap-3 rounded-md bg-magenta px-5 py-3 text-[1.125rem] font-semibold text-surface"
         >
           <LeftIcon size={24} />
           {leftTitle}
@@ -90,15 +90,15 @@ export function Compare({
                 aria-hidden="true"
                 data-anim="flash"
                 style={at(t, 1300)}
-                className="absolute -inset-x-2 -inset-y-1.5 rounded-lg bg-harbour-tint ring-2 ring-harbour/25"
+                className="absolute -inset-x-2 -inset-y-1.5 rounded-lg bg-magenta-tint ring-2 ring-magenta/25"
               />
               <p
                 data-anim="drop"
                 style={at(t)}
-                className="relative flex items-center gap-3 font-serif text-[1.1875rem] font-semibold text-ink"
+                className="relative flex items-center gap-3 font-heading text-[1.1875rem] font-semibold text-ink"
               >
                 {r.icon && (
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-harbour-tint text-harbour">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-magenta-tint text-magenta">
                     <r.icon size={18} />
                   </span>
                 )}
@@ -109,7 +109,7 @@ export function Compare({
                 style={at(t + 120)}
                 className="relative rounded-md bg-surface p-4 text-label text-copy shadow-device"
               >
-                <span className="mb-1 block font-semibold text-harbour-deep md:hidden">
+                <span className="mb-1 block font-semibold text-magenta-deep md:hidden">
                   {leftTitle}
                 </span>
                 {r.left}
@@ -163,21 +163,21 @@ export function Checklist({
               aria-hidden="true"
               data-anim="flash"
               style={at(t, 1400)}
-              className="absolute -inset-1 rounded-lg bg-harbour-tint ring-2 ring-harbour/30"
+              className="absolute -inset-1 rounded-lg bg-magenta-tint ring-2 ring-magenta/30"
             />
             <span className="relative size-9 shrink-0">
               <span
                 aria-hidden="true"
                 data-anim="ripple"
                 style={at(t + 250)}
-                className="absolute inset-0 rounded-full ring-4 ring-harbour/40"
+                className="absolute inset-0 rounded-full ring-4 ring-magenta/40"
               />
               <span className="absolute inset-0 rounded-full bg-hairline-strong/60" />
               <span
                 aria-hidden="true"
                 data-anim="pop"
                 style={at(t + 250)}
-                className="absolute inset-0 flex items-center justify-center rounded-full bg-harbour text-surface"
+                className="absolute inset-0 flex items-center justify-center rounded-full bg-magenta text-surface"
               >
                 <CheckIcon size={20} />
               </span>

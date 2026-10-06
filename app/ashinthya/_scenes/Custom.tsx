@@ -95,7 +95,7 @@ const P = {
 const TRAYS = [
   { x: 170, fill: C.shallows, edge: C.hair, label: "Buy" },
   { x: 480, fill: C.wattleTint, edge: C.wattle, label: "Integrate" },
-  { x: 790, fill: C.tint, edge: C.harbour, label: "Build" },
+  { x: 790, fill: C.tint, edge: C.magenta, label: "Build" },
 ];
 const CARDS: { icon: ReactNode; tray: number; slot: number; name: string }[] = [
   { icon: P.ledger, tray: 0, slot: 0, name: "General ledger" },
@@ -204,7 +204,7 @@ export function Sort() {
         {[
           { label: "Buy", cls: "bg-shallows text-ink ring-1 ring-hairline-strong", note: "A commodity: every firm needs it, nobody wins customers with it.", tray: 0 },
           { label: "Integrate", cls: "bg-wattle-tint text-wattle", note: "The joins between systems. Custom work whichever way you go.", tray: 1 },
-          { label: "Build", cls: "bg-harbour-tint text-harbour-deep", note: "How the firm competes. You own the roadmap.", tray: 2 },
+          { label: "Build", cls: "bg-magenta-tint text-magenta-deep", note: "How the firm competes. You own the roadmap.", tray: 2 },
         ].map((col) => (
           <div key={col.label}>
             <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${col.cls}`}>{col.label}</span>
@@ -287,7 +287,7 @@ export function CoreEdgesScene() {
       </g>
 
       {/* The integration layer you own. */}
-      <rect x={RING.x} y={RING.y} width={RING.w} height={RING.h} rx="26" fill="none" stroke={C.harbour} strokeWidth="12" {...drawable}>
+      <rect x={RING.x} y={RING.y} width={RING.w} height={RING.h} rx="26" fill="none" stroke={C.magenta} strokeWidth="12" {...drawable}>
         <Draw at={RING_AT} dur={1.1} />
       </rect>
 
@@ -310,7 +310,7 @@ export function CoreEdgesScene() {
             <path
               d={`M${e.x - side * 50} ${e.y} C${(e.x + e.plug[0]) / 2} ${e.y} ${(e.x + e.plug[0]) / 2} ${e.plug[1]} ${e.plug[0] + side * 6} ${e.plug[1]}`}
               fill="none"
-              stroke={C.harbour}
+              stroke={C.magenta}
               strokeWidth="5"
               strokeLinecap="round"
               {...drawable}
@@ -318,7 +318,7 @@ export function CoreEdgesScene() {
               <Draw at={at + 0.5} dur={0.5} />
             </path>
             <Pop x={e.plug[0]} y={e.plug[1]} at={at + 0.95} dur={0.3}>
-              <circle r="9" fill={C.harbour} stroke={C.paper} strokeWidth="3" />
+              <circle r="9" fill={C.magenta} stroke={C.paper} strokeWidth="3" />
             </Pop>
             {i === 0 ? (
               /* The broker app is there from the start: it's the one wired wrongly first. */
@@ -338,7 +338,7 @@ export function CoreEdgesScene() {
       <g transform="translate(800 388) scale(0.9)">
         <Cylinder />
       </g>
-      <path d={`M${RING.x + RING.w - 40} ${RING.y + RING.h} C${RING.x + RING.w - 40} 380 700 390 760 388`} fill="none" stroke={C.harbour} strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" opacity={0}>
+      <path d={`M${RING.x + RING.w - 40} ${RING.y + RING.h} C${RING.x + RING.w - 40} 380 700 390 760 388`} fill="none" stroke={C.magenta} strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" opacity={0}>
         <FadeIn at={COPY - 0.2} dur={0.3} />
       </path>
       {[0, 0.35, 0.7].map((d) => (

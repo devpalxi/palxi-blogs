@@ -2,20 +2,23 @@
 
 /* Tokens mirror DESIGN.md (frontmatter is normative). */
 :root {
-  --still-water: #f7fbfb;
+  --page: #ffffff;
   --paper-white: #ffffff;
-  --shallows: #edf4f4;
-  --deep-ink: #122026;
-  --body-ink: #263338;
-  --slate-muted: #4f5d63;
-  --hairline: rgb(18 32 38 / 0.12);
-  --hairline-strong: rgb(18 32 38 / 0.22);
+  --shallows: #f6f6f6; /* Band Grey */
+  --deep-ink: #222124;
+  --body-ink: #3b3a3e;
+  --slate-muted: #686868;
+  --near-black: #0a0a0a;
+  --hairline: rgb(10 10 10 / 0.1);
+  --hairline-strong: rgb(10 10 10 / 0.2);
+  --field-edge: #767676;
 
-  --harbour-green: #00635f;
-  --harbour-green-deep: #004b48;
-  --harbour-green-tint: #dff4f2;
-  /* Chart marks only: Harbour Green is too grey (chroma < 0.10) as a fill. */
-  --harbour-green-chart: #009087;
+  /* Palxi Magenta, the single accent. */
+  --magenta: #b8339b;
+  --magenta-deep: #8f2678;
+  --magenta-tint: #fbeff8;
+  --magenta-soft: #c65baf; /* arrow chip only, never text */
+  --magenta-chart: #b8339b; /* chart marks */
 
   --settled-green: #22683b;
   --settled-green-tint: #e2f6e6;
@@ -24,12 +27,13 @@
   --wattle-amber: #845922;
   --wattle-amber-tint: #fff2d6;
 
-  --shadow-device: 0 1px 2px rgb(18 32 38 / 0.06), 0 4px 8px rgb(18 32 38 / 0.06);
+  --shadow-device: 0 1px 2px rgb(10 10 10 / 0.06), 0 4px 8px rgb(10 10 10 / 0.06);
+  --shadow-card-hover: 0 6px 20px rgb(10 10 10 / 0.08);
 }
 
 @theme inline {
-  --color-canvas: var(--still-water);
-  --color-background: var(--still-water);
+  --color-canvas: var(--page);
+  --color-background: var(--page);
   --color-surface: var(--paper-white);
   --color-shallows: var(--shallows);
   --color-ink: var(--deep-ink);
@@ -37,10 +41,12 @@
   --color-muted: var(--slate-muted);
   --color-hairline: var(--hairline);
   --color-hairline-strong: var(--hairline-strong);
-  --color-harbour: var(--harbour-green);
-  --color-harbour-deep: var(--harbour-green-deep);
-  --color-harbour-tint: var(--harbour-green-tint);
-  --color-harbour-chart: var(--harbour-green-chart);
+  --color-field: var(--field-edge);
+  --color-magenta: var(--magenta);
+  --color-magenta-deep: var(--magenta-deep);
+  --color-magenta-tint: var(--magenta-tint);
+  --color-magenta-soft: var(--magenta-soft);
+  --color-magenta-chart: var(--magenta-chart);
   --color-settled: var(--settled-green);
   --color-settled-tint: var(--settled-green-tint);
   --color-stop: var(--stop-red);
@@ -48,17 +54,18 @@
   --color-wattle: var(--wattle-amber);
   --color-wattle-tint: var(--wattle-amber-tint);
 
-  --font-sans: var(--font-atkinson), system-ui, sans-serif;
-  --font-serif: var(--font-literata), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-inter), system-ui, sans-serif;
 
   --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4rem);
   --text-display--line-height: 1.08;
-  --text-display--letter-spacing: -0.02em;
+  --text-display--letter-spacing: -0.03em;
   --text-headline: clamp(1.875rem, 1.5rem + 1.4vw, 2.5rem);
   --text-headline--line-height: 1.15;
-  --text-headline--letter-spacing: -0.015em;
+  --text-headline--letter-spacing: -0.025em;
   --text-title: 1.5625rem;
   --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.015em;
   --text-standfirst: clamp(1.3125rem, 1.2rem + 0.5vw, 1.5rem);
   --text-standfirst--line-height: 1.5;
   --text-body: clamp(1.1875rem, 1.125rem + 0.25vw, 1.25rem);
@@ -66,11 +73,13 @@
   --text-label: 1rem;
   --text-label--line-height: 1.4;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
   --shadow-device: var(--shadow-device);
+  --shadow-card-hover: var(--shadow-card-hover);
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,7 +104,7 @@
   }
 
   body {
-    background: var(--still-water);
+    background: var(--page);
     color: var(--body-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
@@ -114,77 +123,141 @@
   }
 
   ::selection {
-    background: var(--harbour-green-tint);
+    background: var(--magenta-tint);
     color: var(--deep-ink);
   }
 
   :focus-visible {
-    outline: 3px solid var(--harbour-green);
+    outline: 3px solid var(--magenta);
     outline-offset: 3px;
     border-radius: 4px;
   }
+
 }
 
 @layer components {
+  /* Pill buttons (DESIGN.md "Buttons"). */
+  .btn-primary,
+  .btn-dark,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    font-size: var(--text-label);
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    transition:
+      background-color 150ms var(--ease-out-quart),
+      transform 150ms var(--ease-out-quart);
+  }
+  .btn-primary:active,
+  .btn-dark:active,
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+  /* Magenta pill with a round arrow chip at its right end. */
+  .btn-primary {
+    gap: 18px;
+    min-height: 52px;
+    padding: 8px 8px 8px 26px;
+    background: var(--magenta);
+    color: #ffffff;
+  }
+  .btn-primary:hover {
+    background: var(--magenta-deep);
+  }
+  .btn-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    background: var(--magenta-soft);
+    color: #ffffff;
+  }
+  .btn-dark {
+    min-height: 48px;
+    padding: 12px 24px;
+    background: var(--near-black);
+    color: #ffffff;
+  }
+  .btn-dark:hover {
+    background: var(--deep-ink);
+  }
+  .btn-secondary {
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 22px;
+    background: var(--paper-white);
+    color: var(--deep-ink);
+    border: 1px solid var(--hairline-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--shallows);
+  }
+
   /* Long-form article prose. */
-  .prose-harbour {
+  .prose-post {
     max-width: 44rem;
     font-size: var(--text-body);
     line-height: 1.65;
     color: var(--body-ink);
   }
-  .prose-harbour > * + * {
+  .prose-post > * + * {
     margin-top: 1.25em;
   }
-  .prose-harbour h2 {
-    font-family: var(--font-serif);
+  .prose-post h2 {
+    font-family: var(--font-heading);
     font-size: var(--text-headline);
     line-height: 1.15;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.025em;
     font-weight: 600;
     margin-top: 2.4em;
     scroll-margin-top: 2rem;
   }
-  .prose-harbour h3 {
-    font-family: var(--font-serif);
+  .prose-post h3 {
+    font-family: var(--font-heading);
     font-size: var(--text-title);
     line-height: 1.25;
+    letter-spacing: -0.015em;
     font-weight: 600;
     margin-top: 1.8em;
   }
-  .prose-harbour h2 + *,
-  .prose-harbour h3 + * {
+  .prose-post h2 + *,
+  .prose-post h3 + * {
     margin-top: 0.6em;
   }
-  .prose-harbour a {
-    color: var(--harbour-green);
+  .prose-post a {
+    color: var(--magenta);
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.2em;
     transition: color 200ms var(--ease-out-quart);
   }
-  .prose-harbour a:hover {
-    color: var(--harbour-green-deep);
+  .prose-post a:hover {
+    color: var(--magenta-deep);
   }
-  .prose-harbour strong {
+  .prose-post strong {
     color: var(--deep-ink);
     font-weight: 700;
   }
-  .prose-harbour ul,
-  .prose-harbour ol {
+  .prose-post ul,
+  .prose-post ol {
     padding-left: 1.3em;
   }
-  .prose-harbour ul {
+  .prose-post ul {
     list-style: disc;
   }
-  .prose-harbour ol {
+  .prose-post ol {
     list-style: decimal;
   }
-  .prose-harbour li + li {
+  .prose-post li + li {
     margin-top: 0.5em;
   }
-  .prose-harbour li::marker {
-    color: var(--harbour-green);
+  .prose-post li::marker {
+    color: var(--magenta);
     font-weight: 700;
   }
 
@@ -193,9 +266,8 @@
     margin-top: 1.25em;
   }
   .prose-article blockquote {
-    border-left: 4px solid var(--harbour-green);
-    background: var(--harbour-green-tint);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: var(--magenta-tint);
+    border-radius: var(--radius-lg);
     padding: 1.25rem 1.5rem;
   }
   .prose-article blockquote > * + * {
@@ -263,8 +335,8 @@
       50% / 16px 100%;
   }
   .paper-shadow {
-    filter: drop-shadow(0 1px 2px rgb(18 32 38 / 0.08))
-      drop-shadow(0 4px 8px rgb(18 32 38 / 0.07));
+    filter: drop-shadow(0 1px 2px rgb(10 10 10 / 0.08))
+      drop-shadow(0 4px 8px rgb(10 10 10 / 0.07));
   }
 
   /*

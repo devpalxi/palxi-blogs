@@ -18,7 +18,7 @@ export type Dial = {
 };
 
 const ringColour: Record<Tone, string> = {
-  default: "var(--harbour-green-chart)",
+  default: "var(--magenta-chart)",
   done: "var(--settled-green)",
   caution: "var(--wattle-amber)",
   stop: "var(--stop-red)",
@@ -83,7 +83,7 @@ function Ring({ d, index }: { d: Dial; index: number }) {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
         {d.count ? (
           <>
-            <span className="font-serif text-[1.75rem] leading-none font-semibold text-ink sm:text-[2rem]">
+            <span className="font-heading text-[1.75rem] leading-none font-semibold text-ink sm:text-[2rem]">
               <CountUp to={d.count.to} delay={begin} duration={run} />
             </span>
             <span className="mt-0.5 max-w-[5.5rem] text-label leading-[1.1] text-muted">

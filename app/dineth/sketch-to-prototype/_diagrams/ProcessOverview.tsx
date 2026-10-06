@@ -81,7 +81,7 @@ function Route() {
           d={ROUTE}
           pathLength={1}
           fill="none"
-          stroke="var(--harbour-green)"
+          stroke="var(--magenta)"
           strokeWidth={4}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -91,7 +91,7 @@ function Route() {
 
         {stages.map((s, i) => {
           const Icon = s.icon;
-          const fill = s.done ? "var(--settled-green)" : "var(--harbour-green)";
+          const fill = s.done ? "var(--settled-green)" : "var(--magenta)";
           return (
             <g key={s.title} transform={`translate(${s.x} 146)`}>
               <circle
@@ -137,7 +137,7 @@ function Route() {
           } as CSSProperties)}
         >
           <circle r={13} fill="var(--paper-white)" />
-          <circle r={9} fill="var(--harbour-green-deep)" />
+          <circle r={9} fill="var(--magenta-deep)" />
         </g>
       </svg>
 
@@ -145,7 +145,7 @@ function Route() {
       <p
         data-anim="pop"
         style={at(when(frac(700 + 120)), 500)}
-        className="absolute top-[24%] left-[65%] flex -translate-x-1/2 items-center gap-2 rounded-full bg-surface px-4 py-2 text-label font-semibold whitespace-nowrap text-harbour-deep ring-2 ring-harbour/35"
+        className="absolute top-[24%] left-[65%] flex -translate-x-1/2 items-center gap-2 rounded-full bg-surface px-4 py-2 text-label font-semibold whitespace-nowrap text-magenta-deep ring-2 ring-magenta/35"
       >
         <ReplayIcon size={20} className="shrink-0" />
         Not easy yet? Go round again.
@@ -177,7 +177,7 @@ export function ProcessOverview() {
                   <span
                     data-anim="grow-y"
                     style={at(ARRIVE[i], next, { "--ease": "linear" } as CSSProperties)}
-                    className="block h-full w-full rounded-full bg-harbour"
+                    className="block h-full w-full rounded-full bg-magenta"
                   />
                 </span>
               )}
@@ -190,7 +190,7 @@ export function ProcessOverview() {
                   data-anim="pop"
                   style={{
                     ...at(ARRIVE[i]),
-                    background: s.done ? "var(--settled-green)" : "var(--harbour-green)",
+                    background: s.done ? "var(--settled-green)" : "var(--magenta)",
                   }}
                   className="absolute inset-0 flex items-center justify-center rounded-full text-surface"
                 >
@@ -216,7 +216,7 @@ export function ProcessOverview() {
       </ol>
 
       {/* Phones and tablets show the loop as a note under the list. */}
-      <p className="mt-8 flex items-center gap-3 rounded-md border-2 border-dashed border-harbour/40 bg-surface px-4 py-3 text-label font-semibold text-harbour-deep lg:hidden">
+      <p className="mt-8 flex items-center gap-3 rounded-md border-2 border-dashed border-magenta/40 bg-surface px-4 py-3 text-label font-semibold text-magenta-deep lg:hidden">
         <ReplayIcon size={22} className="shrink-0" />
         Not easy yet? Go round again: make it clickable, watch, improve.
       </p>

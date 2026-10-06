@@ -54,7 +54,7 @@ function Panel({
           aria-hidden="true"
           data-anim="pop"
           style={at(t(index + 1) - 250)}
-          className="absolute top-9 -right-6 z-10 hidden size-8 items-center justify-center rounded-full bg-harbour text-surface md:flex"
+          className="absolute top-9 -right-6 z-10 hidden size-8 items-center justify-center rounded-full bg-magenta text-surface md:flex"
         >
           <ArrowRightIcon size={18} />
         </span>
@@ -134,7 +134,7 @@ export function Resilience() {
                   <span
                     data-anim="grow-x"
                     style={{ ...at(ti, 900, linear), width: `${l.stop}%` }}
-                    className="absolute inset-y-0 left-0 rounded-full bg-harbour-chart"
+                    className="absolute inset-y-0 left-0 rounded-full bg-magenta-chart"
                   />
                   <span
                     data-anim="pop"
@@ -163,7 +163,7 @@ export function Resilience() {
           <span
             data-anim="pop"
             style={at(t(2) + 2100)}
-            className="flex size-12 shrink-0 items-center justify-center rounded-md bg-shallows text-harbour ring-1 ring-hairline-strong"
+            className="flex size-12 shrink-0 items-center justify-center rounded-md bg-shallows text-magenta ring-1 ring-hairline-strong"
           >
             <BuildingIcon size={24} />
           </span>

@@ -6,10 +6,10 @@ export default function Home() {
     <main className="flex min-h-[100dvh] w-full items-center justify-center px-5 py-24">
       <div className="flex w-full max-w-md flex-col gap-10">
         <div className="animate-rise">
-          <p className="font-serif text-[1.625rem] font-semibold text-ink">
+          <p className="font-heading text-[1.625rem] font-semibold text-ink">
             Palxi
           </p>
-          <h1 className="mt-6 font-serif text-headline font-semibold text-ink">
+          <h1 className="mt-6 font-heading text-headline font-semibold text-ink">
             Find me here
           </h1>
           <p className="mt-3 text-body text-copy">

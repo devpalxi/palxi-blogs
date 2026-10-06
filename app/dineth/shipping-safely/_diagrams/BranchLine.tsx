@@ -70,7 +70,7 @@ export function BranchLine() {
           style={at(1800, 700)}
           className="absolute top-[70%] left-0 w-[24%]"
         >
-          <p className="text-[1.1875rem] font-semibold text-harbour-deep">A branch</p>
+          <p className="text-[1.1875rem] font-semibold text-magenta-deep">A branch</p>
           <p className="text-label text-copy">A safe copy where the new feature is built.</p>
         </div>
       </div>

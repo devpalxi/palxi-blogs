@@ -157,7 +157,7 @@ export function PluginsScene() {
         <g key={i}>
           <path d={`M${DIAL[0] + 56} ${DIAL[1]} C${DIAL[0] + 120} ${DIAL[1]} ${SRC_X - 120} ${s.y} ${SRC_X - 62} ${s.y}`} fill="none" stroke={C.hair} strokeWidth="3" />
           {s.chosen && (
-            <path d={`M${DIAL[0] + 56} ${DIAL[1]} C${DIAL[0] + 120} ${DIAL[1]} ${SRC_X - 120} ${s.y} ${SRC_X - 62} ${s.y}`} fill="none" stroke={C.harbour} strokeWidth="5" {...drawable}>
+            <path d={`M${DIAL[0] + 56} ${DIAL[1]} C${DIAL[0] + 120} ${DIAL[1]} ${SRC_X - 120} ${s.y} ${SRC_X - 62} ${s.y}`} fill="none" stroke={C.magenta} strokeWidth="5" {...drawable}>
               <Draw at={PICK} dur={0.6} />
             </path>
           )}
@@ -174,7 +174,7 @@ export function PluginsScene() {
       ))}
 
       {/* One adapter, one record. */}
-      <rect x={ADAPTER_X} y="62" width="74" height="300" rx="14" fill={C.harbour} />
+      <rect x={ADAPTER_X} y="62" width="74" height="300" rx="14" fill={C.magenta} />
       {[0, 1, 2].map((k) => (
         <circle key={k} cx={ADAPTER_X + 37} cy={150 + k * 30} r="5" fill={C.tint} />
       ))}
@@ -279,7 +279,7 @@ export function RescreenScene() {
           <Anim attr="opacity" values={[0, 1, 1, 0]} times={[0, 0.05, 0.95, 1]} at={t + 0.4} dur={SWEEP} ease={null} />
           <Move path="M0 0 L360 0" at={t + 0.4} dur={SWEEP} ease={null} />
           <rect x="-10" y="56" width="20" height="300" rx="10" fill={C.chart} opacity="0.18" />
-          <line x1="0" y1="56" x2="0" y2="356" stroke={C.harbour} strokeWidth="4" strokeLinecap="round" />
+          <line x1="0" y1="56" x2="0" y2="356" stroke={C.magenta} strokeWidth="4" strokeLinecap="round" />
         </g>
       ))}
 
@@ -329,9 +329,9 @@ export function Rescreen() {
 /* ================================================================== */
 
 const LOG = [
-  { y: 104, at: 0.4, tone: C.harbour },
+  { y: 104, at: 0.4, tone: C.magenta },
   { y: 168, at: 1.0, tone: C.wattle }, // address changed: a new version, the old one kept
-  { y: 232, at: 1.6, tone: C.harbour },
+  { y: 232, at: 1.6, tone: C.magenta },
   { y: 296, at: 2.2, tone: C.chart },
 ];
 const ERASE = 3.0;

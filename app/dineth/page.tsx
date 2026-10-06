@@ -11,56 +11,66 @@ export const metadata: Metadata = {
 
 export default function BlogIndex() {
   return (
-    <main className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">
-      <section className="max-w-[40rem] pt-[clamp(56px,8vw,104px)] pb-12">
-        <h1 className="animate-rise font-serif text-display font-semibold text-ink">
-          How we build money tools you can trust
-        </h1>
-        <p
-          className="animate-rise mt-6 text-standfirst text-copy"
-          style={{ animationDelay: "90ms" }}
-        >
-          Plain-English stories from the Palxi team about the thinking behind
-          harbr, Cruz and our work with the Northern Territory Government. No
-          jargon, and pictures wherever words aren&apos;t enough.
-        </p>
-      </section>
-
-      <ul className="border-t border-hairline">
-        {posts.map((post, i) => (
-          <li
-            key={post.slug}
-            className="animate-rise border-b border-hairline"
-            style={{ animationDelay: `${180 + i * 80}ms` }}
+    <main>
+      <div className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">
+        <section className="pt-[clamp(56px,8vw,104px)] pb-12">
+          <h1 className="animate-rise max-w-[44rem] text-display font-semibold text-ink">
+            How we build money tools you can trust
+          </h1>
+          <p
+            className="animate-rise mt-6 max-w-[40rem] text-standfirst text-copy"
+            style={{ animationDelay: "90ms" }}
           >
-            <Link
-              href={`/dineth/${post.slug}`}
-              className="group grid gap-4 py-10 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-10"
+            Plain-English stories from the Palxi team about the thinking behind
+            harbr, Cruz and our work with the Northern Territory Government. No
+            jargon, and pictures wherever words aren&apos;t enough.
+          </p>
+        </section>
+
+        <ul className="border-t border-hairline">
+          {posts.map((post, i) => (
+            <li
+              key={post.slug}
+              className="animate-rise border-b border-hairline"
+              style={{ animationDelay: `${180 + i * 80}ms` }}
             >
-              <div className="max-w-[44rem]">
-                <span className="inline-block rounded-full bg-harbour-tint px-3 py-1 text-label font-semibold text-harbour-deep">
-                  {post.tag}
+              <Link
+                href={`/dineth/${post.slug}`}
+                className="group grid gap-5 py-10 lg:grid-cols-[13rem_minmax(0,1fr)_auto] lg:items-center lg:gap-10"
+              >
+                <div>
+                  <span className="inline-block rounded-full bg-magenta-tint px-3.5 py-1 text-label font-semibold text-magenta-deep">
+                    {post.tag}
+                  </span>
+                  <p className="mt-3 text-label text-muted">
+                    {formatDate(post.publishedOn)}
+                    <br />
+                    {post.readingMinutes} minute read
+                  </p>
+                </div>
+                <div className="max-w-[44rem]">
+                  <h2 className="text-headline font-semibold text-ink transition-colors duration-150 ease-out-quart group-hover:text-magenta">
+                    {post.title}
+                  </h2>
+                  <p className="mt-3 text-body text-copy">{post.summary}</p>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="btn-chip hidden size-12 bg-magenta transition-colors duration-150 ease-out-quart group-hover:bg-magenta-deep lg:inline-flex"
+                >
+                  <ArrowRightIcon size={22} />
                 </span>
-                <h2 className="mt-4 font-serif text-headline font-semibold text-ink transition-colors duration-200 ease-out-quart group-hover:text-harbour-deep">
-                  {post.title}
-                </h2>
-                <p className="mt-3 text-body text-copy">{post.summary}</p>
-                <p className="mt-4 text-label text-muted">
-                  {formatDate(post.publishedOn)} · {post.readingMinutes} minute
-                  read
-                </p>
-              </div>
-              <span className="inline-flex min-h-12 items-center gap-2 self-start rounded-sm bg-harbour px-5 text-label font-semibold text-surface transition-[background-color,transform] duration-200 ease-out-quart group-hover:bg-harbour-deep group-active:scale-[0.98] sm:self-end">
-                Read the story
-                <ArrowRightIcon
-                  size={20}
-                  className="transition-transform duration-200 ease-out-quart group-hover:translate-x-0.5"
-                />
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+                <span className="btn-primary self-start lg:hidden">
+                  Read the story
+                  <span className="btn-chip">
+                    <ArrowRightIcon size={20} />
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }

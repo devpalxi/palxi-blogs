@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 export function Prose({ children }: { children: ReactNode }) {
-  return <div className="prose-harbour mx-auto">{children}</div>;
+  return <div className="prose-post mx-auto">{children}</div>;
 }
 
 export function PlainWords({
@@ -15,9 +15,9 @@ export function PlainWords({
   return (
     <aside
       aria-label={`In plain words: ${term}`}
-      className="rounded-md bg-harbour-tint px-7 py-6 text-body"
+      className="rounded-lg bg-shallows px-7 py-6 text-body"
     >
-      <p className="text-label font-semibold text-harbour-deep">
+      <p className="text-label font-semibold text-magenta-deep">
         In plain words
       </p>
       <p className="mt-2">
@@ -53,9 +53,10 @@ export function Photo({
   frameClassName?: string;
   eager?: boolean;
 }) {
+  const link = "underline decoration-1 underline-offset-2 hover:text-ink";
   return (
     <figure className={className}>
-      <div className={`overflow-hidden rounded-md bg-shallows ${frameClassName}`}>
+      <div className={`overflow-hidden rounded-lg bg-shallows ${frameClassName}`}>
         <Image
           src={src}
           alt={alt}
@@ -70,17 +71,11 @@ export function Photo({
         {caption && <span>{caption} </span>}
         <span>
           Photo: {credit.author},{" "}
-          <a
-            href={credit.licenceUrl}
-            className="underline decoration-1 underline-offset-2 hover:text-ink"
-          >
+          <a href={credit.licenceUrl} className={link}>
             {credit.licence}
           </a>
           , via{" "}
-          <a
-            href={credit.sourceUrl}
-            className="underline decoration-1 underline-offset-2 hover:text-ink"
-          >
+          <a href={credit.sourceUrl} className={link}>
             Wikimedia Commons
           </a>
           .
@@ -102,11 +97,11 @@ export function Takeaways({
   return (
     <section
       aria-labelledby="takeaways-title"
-      className="mx-auto my-16 max-w-[44rem] rounded-md border border-hairline-strong bg-surface px-7 py-8 sm:px-10"
+      className="mx-auto my-16 max-w-[44rem] rounded-lg bg-shallows px-7 py-8 sm:px-10"
     >
       <h2
         id="takeaways-title"
-        className="font-serif text-title font-semibold text-ink"
+        className="font-heading text-title font-semibold text-ink"
       >
         {title}
       </h2>
@@ -115,7 +110,7 @@ export function Takeaways({
           <li key={i} className="flex gap-4">
             <span
               aria-hidden="true"
-              className="flex size-9 shrink-0 items-center justify-center rounded-full bg-harbour font-semibold text-surface"
+              className="flex size-9 shrink-0 items-center justify-center rounded-full bg-magenta font-semibold text-surface"
             >
               {i + 1}
             </span>
@@ -140,7 +135,7 @@ export function Sources({
     >
       <h2
         id="sources-title"
-        className="font-serif text-title font-semibold text-ink"
+        className="font-heading text-title font-semibold text-ink"
       >
         Where our facts come from
       </h2>
@@ -149,7 +144,7 @@ export function Sources({
           <li key={item.href}>
             <a
               href={item.href}
-              className="inline-block py-2 text-copy underline decoration-1 underline-offset-2 hover:text-harbour"
+              className="inline-block py-2 text-copy underline decoration-1 underline-offset-2 hover:text-magenta"
             >
               {item.label}
             </a>

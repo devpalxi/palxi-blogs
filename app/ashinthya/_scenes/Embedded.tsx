@@ -113,7 +113,7 @@ export function MoneyModesScene() {
         <FadeOut at={2.4} dur={0.2} />
         <Bag />
       </g>
-      <Pulse x={70} y={LANES[2]} at={2.4} from={20} to={50} colour={C.harbour} />
+      <Pulse x={70} y={LANES[2]} at={2.4} from={20} to={50} colour={C.magenta} />
       {PAYS.map((t, k) => (
         <Fragment key={t}>
           <g opacity={0}>
@@ -123,7 +123,7 @@ export function MoneyModesScene() {
               <Coin fill={C.chart} />
             </g>
           </g>
-          <path d={arcPath(APP_X + 70, LANES[2] - 26, 16, k * 90 + 4, k * 90 + 86)} fill="none" stroke={C.harbour} strokeWidth="9" opacity={0}>
+          <path d={arcPath(APP_X + 70, LANES[2] - 26, 16, k * 90 + 4, k * 90 + 86)} fill="none" stroke={C.magenta} strokeWidth="9" opacity={0}>
             <Anim attr="opacity" values={[0, 1]} at={t + 0.7} dur={0.15} ease={null} />
           </path>
         </Fragment>
@@ -141,7 +141,7 @@ export function MoneyModes() {
         items={[
           ["bg-surface ring-2 ring-hairline-strong", "Passes instructions on.", "The product tells a bank or payment provider to move money but never holds it. The lightest load."],
           ["bg-wattle", "Holds money.", "Funds sit in a balance, wallet or escrow the product controls. Expect stored value and safeguarding questions."],
-          ["bg-harbour", "Lends or defers payment.", "Goods now, pay later. A credit licence question, and BNPL has needed one since 10 June 2025."],
+          ["bg-magenta", "Lends or defers payment.", "Goods now, pay later. A credit licence question, and BNPL has needed one since 10 June 2025."],
         ]}
       />
     </div>
@@ -195,7 +195,7 @@ export function ReconcileScene() {
           <g key={i} opacity={late ? 0 : 1}>
             {late && <FadeIn at={FIX} dur={0.3} />}
             <g transform={`translate(84 ${y}) scale(0.7)`}>
-              <Person fill={late ? C.wattleTint : C.tint} stroke={late ? C.wattle : C.harbour} />
+              <Person fill={late ? C.wattleTint : C.tint} stroke={late ? C.wattle : C.magenta} />
             </g>
             <rect x="120" y={y - 9} width={len * 1.6} height="18" rx="5" fill={late ? C.wattle : C.chart}>
               {!late && <Anim attr="opacity" values={[1, 0.4, 1]} at={D1 + i * 0.5} dur={0.5} ease={null} />}
@@ -207,7 +207,7 @@ export function ReconcileScene() {
       {/* The column built from the sub-ledger. */}
       <rect x={COL_X - 46} y={BASE - total - gap - 20} width="92" height={total + gap + 20} fill="none" stroke={C.hair} strokeWidth="2" strokeDasharray="4 6" />
       {heights.map((h, i) => (
-        <rect key={i} x={COL_X - 40} y={tops[i] + h} width="80" height="0" fill={i % 2 ? C.harbour : C.chart} stroke={C.paper} strokeWidth="2">
+        <rect key={i} x={COL_X - 40} y={tops[i] + h} width="80" height="0" fill={i % 2 ? C.magenta : C.chart} stroke={C.paper} strokeWidth="2">
           <Anim attr="y" values={[tops[i] + h, tops[i]]} at={D1 + i * 0.5 + 0.2} dur={0.4} />
           <Anim attr="height" values={[0, h]} at={D1 + i * 0.5 + 0.2} dur={0.4} />
         </rect>
@@ -271,8 +271,8 @@ export function Reconcile() {
       <ReconcileScene />
       <Rows
         items={[
-          ["bg-harbour-chart", "The sub-ledger.", "Your client's record of each customer's share of the money. Often kept in your client's product."],
-          ["bg-harbour", "The pooled account.", "The partner holds the money in one account. Its statement is what the sub-ledger must add up to."],
+          ["bg-magenta-chart", "The sub-ledger.", "Your client's record of each customer's share of the money. Often kept in your client's product."],
+          ["bg-magenta", "The pooled account.", "The partner holds the money in one account. Its statement is what the sub-ledger must add up to."],
           ["bg-wattle", "A break.", "When they differ, someone finds out why that day, and fixes the record before it grows."],
         ]}
       />
@@ -373,7 +373,7 @@ export function RelayScene() {
         <Bank fill={C.tint} />
       </g>
       <Pulse x={580} y={260} at={HANDOFF + 1.0} from={40} to={80} colour={C.wattle} />
-      <path d="M640 240 C720 180 780 170 830 190" fill="none" stroke={C.harbour} strokeWidth="4" strokeDasharray="2 9" strokeLinecap="round" opacity={0}>
+      <path d="M640 240 C720 180 780 170 830 190" fill="none" stroke={C.magenta} strokeWidth="4" strokeDasharray="2 9" strokeLinecap="round" opacity={0}>
         <FadeIn at={REPORT - 0.3} dur={0.3} />
       </path>
       <g transform="translate(640 240)" opacity={0}>
@@ -400,7 +400,7 @@ export function Relay() {
         items={[
           ["bg-wattle", "Your client's product detects.", "It runs the onboarding screens and sees the behaviour, so it spots what looks suspicious."],
           ["bg-wattle", "It passes it on, fast.", "The contract says how, and how quickly, anything suspicious reaches the partner."],
-          ["bg-harbour", "The partner reports.", "Whoever provides the designated service is the reporting entity, and reports to AUSTRAC."],
+          ["bg-magenta", "The partner reports.", "Whoever provides the designated service is the reporting entity, and reports to AUSTRAC."],
         ]}
       />
     </div>

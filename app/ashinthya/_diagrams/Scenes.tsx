@@ -67,7 +67,7 @@ function Runner({
   start,
   dur,
   stop = 100,
-  className = "bg-harbour-chart",
+  className = "bg-magenta-chart",
 }: {
   start: number;
   dur: number;
@@ -119,7 +119,7 @@ export function IdempotencyScene({ t }: { t: number }) {
         </span>
       </div>
       <div className="flex w-20 shrink-0 flex-col items-center gap-1 text-center">
-        <span className="relative flex size-12 items-center justify-center rounded-md bg-surface text-harbour shadow-device ring-1 ring-hairline-strong">
+        <span className="relative flex size-12 items-center justify-center rounded-md bg-surface text-magenta shadow-device ring-1 ring-hairline-strong">
           <BankIcon size={24} />
           <span
             data-anim="pop"
@@ -136,7 +136,7 @@ export function IdempotencyScene({ t }: { t: number }) {
         style={at(t + 400)}
         className="absolute top-3 left-4 flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-label font-semibold text-ink shadow-device"
       >
-        <KeyIcon size={16} className="text-harbour" />
+        <KeyIcon size={16} className="text-magenta" />
         Same key twice
       </span>
     </div>
@@ -146,7 +146,7 @@ export function IdempotencyScene({ t }: { t: number }) {
 /** Four separate states, each lit in turn. */
 export function StatusScene({ t }: { t: number }) {
   const states = [
-    { label: "Submitted", cls: "bg-harbour-tint text-harbour-deep", ring: "ring-harbour/40" },
+    { label: "Submitted", cls: "bg-magenta-tint text-magenta-deep", ring: "ring-magenta/40" },
     { label: "Settled", cls: "bg-settled-tint text-settled", ring: "ring-settled/40" },
     { label: "Rejected", cls: "bg-stop-tint text-stop", ring: "ring-stop/40" },
     { label: "Held", cls: "bg-wattle-tint text-wattle", ring: "ring-wattle/40" },
@@ -274,7 +274,7 @@ export function QueueScene({ t }: { t: number }) {
             <span
               data-anim="grow-x"
               style={{ ...at(t + i * 300, 1600, linear), width: `${it.w}%` }}
-              className={`absolute inset-y-0 left-0 rounded-full ${it.warn ? "bg-wattle" : "bg-harbour-chart"}`}
+              className={`absolute inset-y-0 left-0 rounded-full ${it.warn ? "bg-wattle" : "bg-magenta-chart"}`}
             />
           </div>
           {it.warn && (
@@ -293,7 +293,7 @@ export function QueueScene({ t }: { t: number }) {
         style={at(t + 2400)}
         className={`absolute right-4 bottom-3 flex items-center gap-1.5 bg-surface text-ink shadow-device ${pill}`}
       >
-        <PersonIcon size={16} className="text-harbour" />
+        <PersonIcon size={16} className="text-magenta" />
         A person works it
       </span>
     </div>
@@ -315,7 +315,7 @@ export function ScanScene({ t }: { t: number }) {
             aria-hidden="true"
             data-anim="flash"
             style={at(t + i * 380, 700)}
-            className="absolute -inset-x-2 -inset-y-0.5 rounded-md bg-harbour-tint ring-1 ring-harbour/30"
+            className="absolute -inset-x-2 -inset-y-0.5 rounded-md bg-magenta-tint ring-1 ring-magenta/30"
           />
           <ServerIcon size={16} className="relative shrink-0 text-muted" />
           <span className="relative h-2.5 flex-1 rounded-full bg-hairline-strong" />
@@ -335,7 +335,7 @@ export function ScanScene({ t }: { t: number }) {
         style={at(t + 2700)}
         className={`absolute right-3 bottom-2 flex items-center gap-1.5 bg-surface text-ink shadow-device ${pill}`}
       >
-        <EyeIcon size={16} className="text-harbour" />
+        <EyeIcon size={16} className="text-magenta" />
         Human triage
       </span>
     </div>
@@ -350,8 +350,8 @@ export function DoorsScene({ t }: { t: number }) {
       <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink text-surface">
         <PersonIcon size={22} />
       </span>
-      <div className="relative h-full flex-1 rounded-md border-2 border-dashed border-harbour/50 px-2 py-2">
-        <span className="absolute -top-3 left-3 bg-shallows px-2 text-label font-semibold text-harbour-deep">
+      <div className="relative h-full flex-1 rounded-md border-2 border-dashed border-magenta/50 px-2 py-2">
+        <span className="absolute -top-3 left-3 bg-shallows px-2 text-label font-semibold text-magenta-deep">
           In scope
         </span>
         <div className="flex h-full flex-col justify-around">
@@ -424,7 +424,7 @@ export function StealthScene({ t }: { t: number }) {
           }
         />
       </svg>
-      <span className="absolute top-0 right-0 flex size-8 items-center justify-center rounded-full bg-surface text-harbour shadow-device">
+      <span className="absolute top-0 right-0 flex size-8 items-center justify-center rounded-full bg-surface text-magenta shadow-device">
         <FlagIcon size={16} />
       </span>
       <span
@@ -432,7 +432,7 @@ export function StealthScene({ t }: { t: number }) {
         style={at(t + 3500)}
         className={`absolute bottom-0 left-0 flex items-center gap-1.5 bg-surface text-ink shadow-device ${pill}`}
       >
-        <SearchIcon size={16} className="text-harbour" />
+        <SearchIcon size={16} className="text-magenta" />
         Did anyone notice?
       </span>
     </div>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-06T17:33:59.508Z",
+  "generatedAt": "2026-10-06T18:14:08.494Z",
   "title": "Design System: Palxi Blog",
   "extensions": {
     "colorMeta": {
@@ -318,9 +318,9 @@
   ],
   "narrative": {
     "northStar": "The Briefing Room",
-    "overview": "The Palxi website feels like a senior colleague briefing you in a quiet room. A near-black hero with a dusk photograph of the Sydney Harbour Bridge sets a serious tone. Then the page opens into white and pale grey, headings sit in confident ink, and a single magenta pill tells you where to go next. Nothing shouts. The blog inherits that room: the same near-black and white, the same one magenta signal, the same pill buttons and generous spacing, now carrying plain-English explanations for readers who are 50 or older and not technical.\n\nThe system is restrained and committed at once. Neutrals (white, `#f6f6f6` bands, ink) carry about 90% of any screen. Magenta (`#b8339b`) is the only accent and appears on buttons, links, the active step of a diagram and the odd tag. Near-black is used for whole bands, not for decoration: the hero, the \"built for regulated industries\" style section, the closing call to action. Depth comes from tonal bands and hairlines, not shadows.\n\nThe website sets its small text at around 14px. The blog does not. Readers here are unhurried, wearing reading glasses and cautious about money, so the blog keeps the website's identity (palette, typeface, pill buttons, radii, section rhythm) and raises the reading sizes: body about 19 to 20px, nothing below 16px, magenta never lighter than `#b8339b` on white.\n\nThis system rejects, by name, the looks in PRODUCT.md: **crypto and trading apps** (neon dashboards, hype), **big-bank corporate** (navy-and-gold, handshake stock photos, legal-sounding copy), **startup SaaS templates** (gradient heroes, identical icon-card grids, buzzwords) and **government form sites** (dense, grey, small text).",
+    "overview": "The Palxi website feels like a senior colleague briefing you in a quiet room. The website opens with a near-black hero over a dusk photograph of the Sydney Harbour Bridge, then settles into white and pale grey with headings in confident ink and a single magenta pill telling you where to go next. Nothing shouts. The blog keeps that room but leaves the dark hero at the door: every blog page stays light, white and pale grey, with the same one magenta signal, the same pill buttons and generous spacing, now carrying plain-English explanations for readers who are 50 or older and not technical.\n\nThe system is restrained and committed at once. Neutrals (white, `#f6f6f6` bands, ink) carry about 90% of any screen. Magenta (`#b8339b`) is the only accent and appears on buttons, links, the active step of a diagram and the odd tag. Near-black appears only on the black \"Get in touch\" pill and primary text on dark buttons; the blog has no dark hero and no dark bands. Depth comes from tonal bands and hairlines, not shadows.\n\nThe website sets its small text at around 14px. The blog does not. Readers here are unhurried, wearing reading glasses and cautious about money, so the blog keeps the website's identity (palette, typeface, pill buttons, radii, section rhythm) and raises the reading sizes: body about 19 to 20px, nothing below 16px, magenta never lighter than `#b8339b` on white.\n\nThis system rejects, by name, the looks in PRODUCT.md: **crypto and trading apps** (neon dashboards, hype), **big-bank corporate** (navy-and-gold, handshake stock photos, legal-sounding copy), **startup SaaS templates** (gradient heroes, identical icon-card grids, buzzwords) and **government form sites** (dense, grey, small text).",
     "keyCharacteristics": [
-      "White and `#f6f6f6` pages with near-black bands. No dark mode toggle: the dark bands are chosen sections, not a theme.",
+      "Light only: white pages with `#f6f6f6` bands. No dark hero, no dark bands, no dark mode.",
       "One accent, magenta, used on no more than about 10% of a screen.",
       "Inter throughout, in medium to semibold weights for headings with tight tracking, regular for reading.",
       "Pill buttons, 20px cards, 8px fields. Nothing fully square.",
@@ -335,8 +335,8 @@
         "section": "colors"
       },
       {
-        "name": "The Dark Band Rule",
-        "body": "Near Black is a whole section, with white text and an edge-to-edge background, used at most twice on a page (an opening band and a closing call to action, or one feature band). It is never a card colour and never a page theme.",
+        "name": "The Light Page Rule",
+        "body": "Blog pages are light from top to bottom. Near Black is for button fills only: never a hero, a band, a card or a page theme, even though the website uses a dark hero.",
         "section": "colors"
       },
       {
@@ -359,12 +359,13 @@
       "**Do** use Palxi Magenta (`#b8339b`) as the single accent, and keep it to about 10% of any screen.",
       "**Do** set body copy at 19 to 20px in Body Ink (`#3b3a3e`) on white, maximum 44rem wide, line height 1.65.",
       "**Do** make every button a pill, at least 44px tall, with a visible 3px magenta focus ring.",
-      "**Do** alternate White, Band Grey and Near Black bands, and use hairline-separated list rows instead of grids of identical cards.",
+      "**Do** alternate White and Band Grey bands, and use hairline-separated list rows instead of grids of identical cards.",
       "**Do** give every technical idea a labelled diagram inside a Diagram Frame, and define unavoidable jargon in an \"In plain words\" note.",
       "**Do** use Australian English and real Australian context, and credit every open-licence photo with author, source and licence, linked.",
       "**Do** make every animation replayable, and show the finished diagram instantly under reduced motion."
     ],
     "donts": [
+      "**Don't** put a dark hero, a near-black band or any dark section on a blog page, even though the website has one.",
       "**Don't** look like **crypto and trading apps**: no neon dashboards, no charts for decoration, no hype energy.",
       "**Don't** look like **big-bank corporate**: no navy-and-gold, no stock photos of handshakes, no legal-sounding copy.",
       "**Don't** look like **startup SaaS templates**: no gradient heroes, no identical icon-card grids, no \"seamless\", \"elevate\", \"next-gen\" or \"game-changer\".",

@@ -170,11 +170,11 @@ function Corridor({ role, start }: { role: (typeof roles)[number]; start: number
           "--ease": "linear",
         } as CSSProperties)}
       >
-        <circle r={7} cx={-10} cy={0} fill="var(--paper-white)" stroke="var(--harbour-green-deep)" strokeWidth={3.5} />
+        <circle r={7} cx={-10} cy={0} fill="var(--paper-white)" stroke="var(--magenta-deep)" strokeWidth={3.5} />
         <path
           d="M-3 0 H15 M10 0 V6 M15 0 V5"
           {...stroke}
-          stroke="var(--harbour-green-deep)"
+          stroke="var(--magenta-deep)"
           strokeWidth={3.5}
         />
       </g>
@@ -186,7 +186,7 @@ export function KeysAndRecords() {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
       <section data-anim="rise" style={at(0, 700)} className="rounded-lg bg-surface p-5 sm:p-6">
-        <h3 className="font-serif text-title font-semibold text-ink">
+        <h3 className="font-heading text-title font-semibold text-ink">
           Only the keys you need
         </h3>
         <p className="mt-1 text-label text-muted">
@@ -215,7 +215,7 @@ export function KeysAndRecords() {
                   aria-hidden="true"
                   data-anim="flash"
                   style={at(R[i], RUN + 300)}
-                  className="absolute -inset-x-2 inset-y-1 rounded-md bg-harbour-tint ring-2 ring-harbour/30"
+                  className="absolute -inset-x-2 inset-y-1 rounded-md bg-magenta-tint ring-2 ring-magenta/30"
                 />
                 <span className="relative pr-2 text-label font-semibold text-ink">
                   {r.role}
@@ -234,7 +234,7 @@ export function KeysAndRecords() {
       </section>
 
       <section data-anim="rise" style={at(300, 700)} className="flex flex-col rounded-lg bg-surface p-5 sm:p-6">
-        <h3 className="font-serif text-title font-semibold text-ink">
+        <h3 className="font-heading text-title font-semibold text-ink">
           A record of every action
         </h3>
         <p className="mt-1 text-label text-muted">
@@ -255,10 +255,10 @@ export function KeysAndRecords() {
                   aria-hidden="true"
                   data-anim="flash"
                   style={at(when, 1400)}
-                  className="absolute -inset-x-2 inset-y-1 rounded-md bg-harbour-tint ring-2 ring-harbour/30"
+                  className="absolute -inset-x-2 inset-y-1 rounded-md bg-magenta-tint ring-2 ring-magenta/30"
                 />
                 <span className="relative flex items-center gap-3">
-                  <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-harbour" />
+                  <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-magenta" />
                   <span className="font-semibold text-ink">
                     {r.role} <span className="font-normal text-copy">{r.did}</span>
                   </span>
@@ -271,7 +271,7 @@ export function KeysAndRecords() {
           })}
         </ul>
 
-        <div className="mt-4 flex items-center gap-4 rounded-md bg-harbour-tint px-4 py-3 font-semibold text-harbour-deep">
+        <div className="mt-4 flex items-center gap-4 rounded-md bg-magenta-tint px-4 py-3 font-semibold text-magenta-deep">
           <span
             aria-hidden="true"
             data-anim="stamp"
@@ -279,8 +279,8 @@ export function KeysAndRecords() {
             className="relative flex size-14 shrink-0 items-center justify-center"
           >
             <svg viewBox="0 0 56 56" focusable="false" className="absolute inset-0 size-full">
-              <circle cx={28} cy={28} r={25} fill="var(--paper-white)" stroke="var(--harbour-green-deep)" strokeWidth={2.5} />
-              <circle cx={28} cy={28} r={20} fill="none" stroke="var(--harbour-green-deep)" strokeWidth={1.5} strokeDasharray="2 4" strokeLinecap="round" />
+              <circle cx={28} cy={28} r={25} fill="var(--paper-white)" stroke="var(--magenta-deep)" strokeWidth={2.5} />
+              <circle cx={28} cy={28} r={20} fill="none" stroke="var(--magenta-deep)" strokeWidth={1.5} strokeDasharray="2 4" strokeLinecap="round" />
             </svg>
             <LockIcon size={24} className="relative" />
           </span>

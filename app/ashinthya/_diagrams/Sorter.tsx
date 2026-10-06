@@ -123,7 +123,7 @@ export function Sorter({
         <p
           data-anim="rise"
           style={at(end + 500)}
-          className="mt-6 rounded-md border-2 border-dashed border-harbour/40 bg-surface px-5 py-4 text-copy"
+          className="mt-6 rounded-md border-2 border-dashed border-magenta/40 bg-surface px-5 py-4 text-copy"
         >
           {footer}
         </p>

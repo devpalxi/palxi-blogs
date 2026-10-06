@@ -45,7 +45,7 @@ function Reg({
       <span
         data-anim="flash"
         style={at(T[n - 1], 1400)}
-        className="absolute -inset-2 right-8 rounded-md bg-harbour-tint ring-2 ring-harbour/35"
+        className="absolute -inset-2 right-8 rounded-md bg-magenta-tint ring-2 ring-magenta/35"
       />
       <div className="relative">{children}</div>
       <Pin n={n} at={T[n - 1]} className="absolute top-0 right-0" />
@@ -58,7 +58,7 @@ function Phone() {
     <Device className="mx-auto w-full max-w-[340px]" screenClassName="pb-24">
       <div aria-hidden="true">
         <Reg n={1}>
-          <p className="font-serif text-[1.3125rem] leading-tight font-semibold text-ink">
+          <p className="font-heading text-[1.3125rem] leading-tight font-semibold text-ink">
             A quick identity check
           </p>
           <div className="mt-2 space-y-1.5">
@@ -74,7 +74,7 @@ function Phone() {
                 key={k}
                 className="flex min-h-12 items-center gap-3 rounded-md px-3 ring-1 ring-hairline-strong"
               >
-                <IdCardIcon size={22} className="shrink-0 text-harbour" />
+                <IdCardIcon size={22} className="shrink-0 text-magenta" />
                 <Bar className="w-28" />
               </div>
             ))}
@@ -83,7 +83,7 @@ function Phone() {
 
         <Reg n={3} className="mt-5">
           <p className="flex items-start gap-2 text-copy">
-            <LockIcon size={18} className="mt-0.5 shrink-0 text-harbour" />
+            <LockIcon size={18} className="mt-0.5 shrink-0 text-magenta" />
             <span className="flex-1 space-y-1.5 pt-1">
               <Bar className="w-full" />
               <Bar className="w-2/3" />
@@ -91,29 +91,29 @@ function Phone() {
           </p>
         </Reg>
 
-        <div className="mt-5 flex min-h-12 items-center justify-center rounded-sm bg-harbour font-semibold text-surface">
+        <div className="mt-5 flex min-h-12 items-center justify-center rounded-sm bg-magenta font-semibold text-surface">
           Continue
         </div>
 
         <Reg n={4} className="mt-2">
-          <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
+          <p className="flex min-h-11 items-center justify-center font-semibold text-magenta underline underline-offset-2">
             Save and finish later
           </p>
           <span
             data-anim="ripple"
             style={at(T[3] + 500)}
-            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-harbour/40"
+            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-magenta/40"
           />
         </Reg>
 
         <Reg n={5}>
-          <p className="flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
+          <p className="flex min-h-11 items-center justify-center font-semibold text-magenta underline underline-offset-2">
             Talk to a person
           </p>
           <span
             data-anim="ripple"
             style={at(T[4] + 500)}
-            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-harbour/40"
+            className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-magenta/40"
           />
         </Reg>
       </div>

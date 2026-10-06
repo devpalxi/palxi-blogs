@@ -50,7 +50,7 @@ export function FlipCards({ cards }: { cards: Flip[] }) {
             <div
               data-anim="flip-in"
               style={at(t + 300)}
-              className="flex flex-col rounded-md bg-surface p-5 shadow-device ring-2 ring-harbour/20 [grid-area:1/1]"
+              className="flex flex-col rounded-md bg-surface p-5 shadow-device ring-2 ring-magenta/20 [grid-area:1/1]"
             >
               <span
                 className={`inline-block w-fit rounded-full px-3 py-1 text-label font-semibold ${chipTone[c.tone]}`}

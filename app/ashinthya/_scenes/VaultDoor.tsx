@@ -53,7 +53,7 @@ const END = REVEAL + 4 * 0.15 + 0.6;
 
 const pict = {
   fill: "none",
-  stroke: C.harbour,
+  stroke: C.magenta,
   strokeWidth: 4,
   strokeLinecap: "round",
   strokeLinejoin: "round",

@@ -14,25 +14,25 @@ const END = START + TRAVEL;
 
 const stops = [
   {
-    x: 500, y: 110, icon: UsersIcon, fill: "var(--harbour-green)",
+    x: 500, y: 110, icon: UsersIcon, fill: "var(--magenta)",
     title: "People use our products",
     detail: "Every day, in every product built from the system.",
     place: "absolute top-0 left-1/2 w-[34%] -translate-x-1/2 text-center",
   },
   {
-    x: 770, y: 220, icon: EyeIcon, fill: "var(--harbour-green)",
+    x: 770, y: 220, icon: EyeIcon, fill: "var(--magenta)",
     title: "We notice what trips them up",
     detail: "Through testing, feedback and questions to our support team.",
     place: "absolute top-[40%] right-0 w-[19%]",
   },
   {
-    x: 500, y: 330, icon: PencilIcon, fill: "var(--harbour-green)",
+    x: 500, y: 330, icon: PencilIcon, fill: "var(--magenta)",
     title: "We improve the shared piece",
     detail: "Once, in the design system, and test the change.",
     place: "absolute bottom-0 left-1/2 w-[34%] -translate-x-1/2 text-center",
   },
   {
-    x: 230, y: 220, icon: CheckIcon, fill: "var(--settled-green)",
+    x: 230, y: 220, icon: CheckIcon, fill: "var(--magenta)",
     title: "Every product gets it",
     detail: "The improvement reaches all our products together.",
     place: "absolute top-[40%] left-0 w-[19%] text-right",
@@ -55,7 +55,7 @@ export function FeedbackLoop() {
           d={LOOP}
           pathLength={1}
           fill="none"
-          stroke="var(--harbour-green)"
+          stroke="var(--magenta)"
           strokeWidth={5}
           strokeLinecap="round"
           data-anim="draw"
@@ -71,7 +71,7 @@ export function FeedbackLoop() {
           cy={110}
           r={28}
           fill="none"
-          stroke="var(--harbour-green)"
+          stroke="var(--magenta)"
           strokeWidth={3}
           data-anim="ripple"
           style={at(END)}
@@ -89,7 +89,7 @@ export function FeedbackLoop() {
         />
         <circle
           r={9}
-          fill="var(--harbour-green-deep)"
+          fill="var(--magenta-deep)"
           data-anim="travel"
           className="opacity-0"
           style={at(START, TRAVEL, {
@@ -108,7 +108,7 @@ export function FeedbackLoop() {
         >
           <p
             className={`text-[1.1875rem] leading-snug font-semibold ${
-              i === 3 ? "text-settled" : "text-ink"
+              i === 3 ? "text-magenta" : "text-ink"
             }`}
           >
             {s.title}
@@ -122,10 +122,10 @@ export function FeedbackLoop() {
         style={at(END - 200, 700)}
         className="absolute top-[38%] left-1/2 flex w-[34%] -translate-x-1/2 flex-col items-center text-center"
       >
-        <span className="flex size-11 items-center justify-center rounded-full bg-harbour-tint text-harbour-deep">
+        <span className="flex size-11 items-center justify-center rounded-full bg-magenta-tint text-magenta-deep">
           <ReplayIcon size={24} />
         </span>
-        <p className="mt-2 text-label font-semibold text-harbour-deep">
+        <p className="mt-2 text-label font-semibold text-magenta-deep">
           And round again. The system is never finished; it keeps learning from
           the people who use it.
         </p>

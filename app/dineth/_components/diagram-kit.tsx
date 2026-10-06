@@ -57,7 +57,7 @@ export function Pin({
       aria-hidden={isStatic ? undefined : true}
       data-anim={isStatic ? undefined : "pop"}
       style={isStatic ? undefined : atMs != null ? at(atMs) : step(n)}
-      className={`flex size-8 shrink-0 items-center justify-center rounded-full bg-harbour text-label font-bold text-surface ${className}`}
+      className={`flex size-8 shrink-0 items-center justify-center rounded-full bg-magenta text-label font-bold text-surface ${className}`}
     >
       {n}
     </span>
@@ -88,7 +88,7 @@ export type FlowStep = {
 };
 
 const toneStyles = {
-  default: { dot: "bg-surface text-harbour shadow-device", title: "text-ink" },
+  default: { dot: "bg-surface text-magenta shadow-device", title: "text-ink" },
   done: { dot: "bg-settled text-surface", title: "text-settled" },
   caution: { dot: "bg-wattle-tint text-wattle", title: "text-ink" },
 };
@@ -122,13 +122,13 @@ export function StepFlow({
                   aria-hidden="true"
                   data-anim="grow-x"
                   style={step(at + 0.6)}
-                  className="absolute top-[22.5px] left-14 hidden h-[3px] w-[calc(100%-3rem)] rounded-full bg-harbour md:block"
+                  className="absolute top-[22.5px] left-14 hidden h-[3px] w-[calc(100%-3rem)] rounded-full bg-magenta md:block"
                 />
                 <span
                   aria-hidden="true"
                   data-anim="grow-y"
                   style={step(at + 0.6)}
-                  className="absolute top-14 left-[22.5px] h-[calc(100%-4rem)] w-[3px] rounded-full bg-harbour md:hidden"
+                  className="absolute top-14 left-[22.5px] h-[calc(100%-4rem)] w-[3px] rounded-full bg-magenta md:hidden"
                 />
               </>
             )}

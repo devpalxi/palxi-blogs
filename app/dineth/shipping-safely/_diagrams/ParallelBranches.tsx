@@ -96,7 +96,7 @@ export function ParallelBranches() {
           <p className="text-label text-copy">In Figma, our design tool.</p>
         </div>
         <div data-anim="rise" style={at(1200, 700)} className="absolute top-[53%] left-[19%]">
-          <p className="text-[1.1875rem] font-semibold text-harbour-deep">The code branch</p>
+          <p className="text-[1.1875rem] font-semibold text-magenta-deep">The code branch</p>
           <p className="text-label text-copy">In Git, where our code lives.</p>
         </div>
         <div

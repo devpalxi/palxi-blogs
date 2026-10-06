@@ -114,8 +114,8 @@ export function TypesScene() {
           <rect key={x} x={x} y={STRIP_Y - 15} width="26" height="30" rx="2" fill={C.shallows} />
         ))}
       </g>
-      <line x1={mx(3)} y1={STRIP_Y + 40} x2={mx(3)} y2="340" stroke={C.harbour} strokeWidth="3" />
-      <line x1={mx(9)} y1={STRIP_Y + 40} x2={mx(9)} y2="340" stroke={C.harbour} strokeWidth="3" />
+      <line x1={mx(3)} y1={STRIP_Y + 40} x2={mx(3)} y2="340" stroke={C.magenta} strokeWidth="3" />
+      <line x1={mx(9)} y1={STRIP_Y + 40} x2={mx(9)} y2="340" stroke={C.magenta} strokeWidth="3" />
       <g transform={`translate(${FRAMES[0]} ${STRIP_Y - 80})`} opacity={0}>
         <FadeIn at={SAMPLE(0) - 0.4} dur={0.2} />
         <Move
@@ -158,7 +158,7 @@ export function TypesScene() {
         <Move path="M0 -60 L0 0" at={BRIDGE} dur={0.5} ease={ease.out} />
         <rect x="-36" y="-26" width="72" height="52" rx="5" fill={C.paper} stroke={C.ink} strokeWidth="2.5" />
         <path d="M-36 -25 L0 2 L36 -25" fill="none" stroke={C.ink} strokeWidth="2.5" />
-        <path d="M-20 16 q5 -8 10 0 t10 0 t8 -3" fill="none" stroke={C.harbour} strokeWidth="2.5" strokeLinecap="round" {...drawable}>
+        <path d="M-20 16 q5 -8 10 0 t10 0 t8 -3" fill="none" stroke={C.magenta} strokeWidth="2.5" strokeLinecap="round" {...drawable}>
           <Draw at={BRIDGE + 0.5} dur={0.5} ease={ease.out} />
         </path>
       </g>
@@ -177,7 +177,7 @@ export function Types() {
       <Rows
         items={[
           ["bg-wattle", "Type 1: one date.", "Were the controls suitably designed on that day? A photo, not a record of how they ran."],
-          ["bg-harbour", "Type 2: a period.", "Did they operate effectively over months? The auditor samples evidence across the period and lists exceptions."],
+          ["bg-magenta", "Type 2: a period.", "Did they operate effectively over months? The auditor samples evidence across the period and lists exceptions."],
           ["bg-hairline-strong", "Bridge letter: the gap.", "From the vendor's management, not the auditor, with no independent testing behind it."],
         ]}
       />
@@ -204,10 +204,10 @@ export function ScopeScene() {
       label="A dashed boundary draws around a vendor's system: its product and its people. The vendor's corporate laptop sits outside it. The client's bank on the right is linked to the product, which gets a tick for being inside the boundary. The auditor's test samples tick along the top of the box, one of them amber, and the auditor's seal stamps the corner. The cloud host below is outside the boundary, carved out, so its own report is asked for. Finally two keys slide out to the client: controls the client is expected to run itself."
     >
       {/* The scope boundary. */}
-      <rect x={BOX.x} y={BOX.y} width={BOX.w} height={BOX.h} rx="22" fill={C.tint} fillOpacity="0.35" stroke={C.harbour} strokeWidth="4" strokeDasharray="1" strokeDashoffset={1} pathLength={1}>
+      <rect x={BOX.x} y={BOX.y} width={BOX.w} height={BOX.h} rx="22" fill={C.tint} fillOpacity="0.35" stroke={C.magenta} strokeWidth="4" strokeDasharray="1" strokeDashoffset={1} pathLength={1}>
         <Draw at={0.3} dur={1.1} />
       </rect>
-      <rect x={BOX.x} y={BOX.y} width={BOX.w} height={BOX.h} rx="22" fill="none" stroke={C.harbour} strokeWidth="4" strokeDasharray="14 10" opacity={0}>
+      <rect x={BOX.x} y={BOX.y} width={BOX.w} height={BOX.h} rx="22" fill="none" stroke={C.magenta} strokeWidth="4" strokeDasharray="14 10" opacity={0}>
         <FadeIn at={1.4} dur={0.2} />
       </rect>
       <g transform="translate(400 230)">
@@ -248,7 +248,7 @@ export function ScopeScene() {
       <Pop x={BOX.x + BOX.w} y={BOX.y} at={OPINION}>
         <circle r="30" fill={C.paper} />
         <g transform="scale(1.25)">
-          <Seal r={22} colour={C.harbour} />
+          <Seal r={22} colour={C.magenta} />
         </g>
       </Pop>
 
@@ -287,7 +287,7 @@ export function ScopeCheck() {
       <Rows
         cols={4}
         items={[
-          ["bg-harbour", "Scope.", "Is the product your client uses inside the boundary, for a recent period?"],
+          ["bg-magenta", "Scope.", "Is the product your client uses inside the boundary, for a recent period?"],
           ["bg-wattle", "Exceptions.", "Which tests failed, how serious were they, and what's been fixed?"],
           ["bg-hairline-strong", "Carve-outs.", "Hosting outside the boundary relies on its own report. Ask for it."],
           ["bg-wattle", "Customer controls.", "What the report assumes your client does, like reviewing access or guarding API keys."],
@@ -301,7 +301,7 @@ export function ScopeCheck() {
 /* 3. The template mill                                                 */
 /* ================================================================== */
 
-const LOGOS = [C.harbour, C.wattle, C.stop, C.chart, C.ink];
+const LOGOS = [C.magenta, C.wattle, C.stop, C.chart, C.ink];
 const PRESS = (k: number) => 0.5 + k * 0.75;
 const OUTX = (k: number) => 380 + k * 112;
 const COMPARE = PRESS(4) + 1.4;

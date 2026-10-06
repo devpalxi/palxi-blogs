@@ -38,7 +38,7 @@ function Table({ lit = false }: { lit?: boolean }) {
       {CHAIRS.map(([x, y]) => (
         <circle key={`${x}${y}`} cx={x} cy={y} r="15" fill={C.shallows} stroke={C.ink} strokeWidth="2.5" />
       ))}
-      <circle cx="-120" cy="0" r="17" fill={lit ? C.harbour : C.tint} stroke={C.harbour} strokeWidth="3" />
+      <circle cx="-120" cy="0" r="17" fill={lit ? C.magenta : C.tint} stroke={C.magenta} strokeWidth="3" />
     </>
   );
 }
@@ -159,10 +159,10 @@ export function BoardChainScene() {
         <Table />
       </g>
       {/* The chair's seat lights up when the letter lands. */}
-      <circle cx="40" cy="200" r="17" fill={C.harbour} opacity={0}>
+      <circle cx="40" cy="200" r="17" fill={C.magenta} opacity={0}>
         <Anim attr="opacity" values={[0, 1]} at={2.05} dur={0.3} />
       </circle>
-      <Pulse x={40} y={200} at={2.05} from={17} to={48} colour={C.harbour} />
+      <Pulse x={40} y={200} at={2.05} from={17} to={48} colour={C.magenta} />
 
       {/* APRA's letter flies in to the chair. */}
       <g transform="translate(26 30)" opacity={0}>
@@ -176,11 +176,11 @@ export function BoardChainScene() {
       </g>
 
       {/* The board answers for the entity. */}
-      <path d="M268 200 L338 200" stroke={C.harbour} strokeWidth="6" strokeLinecap="round" fill="none" {...drawable}>
+      <path d="M268 200 L338 200" stroke={C.magenta} strokeWidth="6" strokeLinecap="round" fill="none" {...drawable}>
         <Draw at={2.4} dur={0.6} />
       </path>
       <Pop x={344} y={200} at={2.95} dur={0.35}>
-        <path d="M-14 -12 L4 0 L-14 12 Z" fill={C.harbour} />
+        <path d="M-14 -12 L4 0 L-14 12 Z" fill={C.magenta} />
       </Pop>
 
       {/* The entity, inside the standard's shield. */}
@@ -203,7 +203,7 @@ export function BoardChainScene() {
             <rect x="-22" y="-220" width="44" height="440" fill={C.paper} opacity="0.55" transform="rotate(22)" />
           </g>
         </g>
-        <path d={SHIELD} fill="none" stroke={C.harbour} strokeWidth="5" strokeLinejoin="round" {...drawable}>
+        <path d={SHIELD} fill="none" stroke={C.magenta} strokeWidth="5" strokeLinejoin="round" {...drawable}>
           <Draw at={3.05} dur={1.3} />
         </path>
       </g>
@@ -258,13 +258,13 @@ const STATIONS = [
       </g>
     ),
     title: "The board",
-    chip: { text: "Accountable", cls: "bg-harbour-tint text-harbour-deep" },
+    chip: { text: "Accountable", cls: "bg-magenta-tint text-magenta-deep" },
     detail: "Ultimately responsible for the information security of the entity.",
   },
   {
     mini: (
       <g transform="scale(0.34)">
-        <path d={SHIELD} fill={C.tint} stroke={C.harbour} strokeWidth="8" />
+        <path d={SHIELD} fill={C.tint} stroke={C.magenta} strokeWidth="8" />
         <g transform="scale(0.8)">
           <Building />
         </g>

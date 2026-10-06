@@ -47,7 +47,7 @@ export function Doc({ lines = 4, fill = C.paper, accent }: { lines?: number; fil
 }
 
 /** A head and shoulders, about 44 tall. */
-export function Person({ fill = C.tint, stroke = C.harbour }: { fill?: string; stroke?: string }) {
+export function Person({ fill = C.tint, stroke = C.magenta }: { fill?: string; stroke?: string }) {
   return (
     <g>
       <circle cy="-10" r="11" fill={fill} stroke={stroke} strokeWidth="3" />
@@ -82,7 +82,7 @@ export function Bank({ fill = C.paper }: { fill?: string }) {
 }
 
 /** A shopfront or business, about 90 wide. */
-export function Shop({ awning = C.harbour }: { awning?: string }) {
+export function Shop({ awning = C.magenta }: { awning?: string }) {
   return (
     <g strokeLinejoin="round">
       <rect x="-42" y="-14" width="84" height="56" fill={C.paper} stroke={C.ink} strokeWidth="3" />
@@ -203,7 +203,7 @@ export function WebForm() {
       <rect x="-30" y="-22" width="60" height="44" rx="4" fill={C.paper} stroke={C.ink} strokeWidth="2.5" />
       <line x1="-30" y1="-12" x2="30" y2="-12" stroke={C.ink} strokeWidth="2.5" />
       <rect x="-22" y="-5" width="44" height="7" rx="2" fill={C.shallows} stroke={C.hair} strokeWidth="1.5" />
-      <rect x="-22" y="6" width="26" height="8" rx="2" fill={C.harbour} />
+      <rect x="-22" y="6" width="26" height="8" rx="2" fill={C.magenta} />
     </g>
   );
 }

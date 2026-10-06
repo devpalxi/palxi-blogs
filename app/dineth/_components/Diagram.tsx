@@ -82,7 +82,7 @@ export function Diagram({ caption, children }: DiagramProps) {
       <div
         ref={stageRef}
         data-state="static"
-        className="diagram rounded-md bg-shallows p-[clamp(16px,3.2vw,44px)]"
+        className="diagram rounded-lg bg-shallows p-[clamp(16px,3.2vw,44px)]"
       >
         {children}
       </div>
@@ -92,7 +92,7 @@ export function Diagram({ caption, children }: DiagramProps) {
           <button
             type="button"
             onClick={replay}
-            className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-sm border border-hairline-strong bg-surface px-4 font-semibold text-ink transition-[background-color,transform] duration-200 ease-out-quart hover:bg-harbour-tint active:scale-[0.98]"
+            className="btn-secondary shrink-0 self-start"
           >
             <ReplayIcon size={20} />
             Play again

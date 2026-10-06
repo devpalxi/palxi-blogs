@@ -46,11 +46,11 @@ function Phone() {
   return (
     <Device className="mx-auto w-full max-w-[340px]">
       <div aria-hidden="true">
-        <p className="flex items-center gap-1.5 font-semibold text-harbour">
+        <p className="flex items-center gap-1.5 font-semibold text-magenta">
           <ArrowLeftIcon size={18} />
           Back
         </p>
-        <p className="mt-4 font-serif text-[1.375rem] leading-tight font-semibold text-ink">
+        <p className="mt-4 font-heading text-[1.375rem] leading-tight font-semibold text-ink">
           Check before you pay
         </p>
 
@@ -61,7 +61,7 @@ function Phone() {
           <span
             data-anim="sweep"
             style={at(START, SWEEP)}
-            className="absolute inset-x-[-10px] top-0 h-14 rounded-sm bg-harbour-tint ring-2 ring-harbour/35"
+            className="absolute inset-x-[-10px] top-0 h-14 rounded-sm bg-magenta-tint ring-2 ring-magenta/35"
           />
           {rows.map((r, i) => (
             <div
@@ -80,19 +80,19 @@ function Phone() {
           <span
             data-anim="grow-y"
             style={at(LINK_AT, 600)}
-            className="absolute top-[12.25rem] -left-3.5 h-[4.5rem] w-2.5 rounded-l-md border-y-2 border-l-2 border-harbour"
+            className="absolute top-[12.25rem] -left-3.5 h-[4.5rem] w-2.5 rounded-l-md border-y-2 border-l-2 border-magenta"
           />
         </div>
 
         <div className="relative mt-5">
-          <div className="flex min-h-12 items-center justify-center gap-2 rounded-sm bg-harbour px-4 font-semibold text-surface">
+          <div className="flex min-h-12 items-center justify-center gap-2 rounded-sm bg-magenta px-4 font-semibold text-surface">
             Pay
             <span className="inline-block h-3.5 w-14 rounded-full bg-surface/45" />
           </div>
           <span
             data-anim="flash"
             style={at(LINK_AT, 1600)}
-            className="absolute -inset-1 rounded-md ring-3 ring-harbour/40"
+            className="absolute -inset-1 rounded-md ring-3 ring-magenta/40"
           />
         </div>
 
@@ -100,9 +100,9 @@ function Phone() {
           <span
             data-anim="flash"
             style={at(EXIT_AT, 1600)}
-            className="absolute inset-y-0 right-8 left-[-2px] rounded-sm bg-harbour-tint ring-2 ring-harbour/35"
+            className="absolute inset-y-0 right-8 left-[-2px] rounded-sm bg-magenta-tint ring-2 ring-magenta/35"
           />
-          <p className="relative flex min-h-11 items-center justify-center font-semibold text-harbour underline underline-offset-2">
+          <p className="relative flex min-h-11 items-center justify-center font-semibold text-magenta underline underline-offset-2">
             Go back
           </p>
           <Pin n={5} at={EXIT_AT} className="absolute top-1.5 right-0" />

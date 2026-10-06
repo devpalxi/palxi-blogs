@@ -117,7 +117,7 @@ export function ErrorComparison() {
         </Verdict>
         <div data-anim="rise" style={at(T.goodScreen)}>
           <Device className="mx-auto w-full max-w-[320px]" screenClassName="min-h-[430px]">
-            <p className="font-serif text-[1.3125rem] leading-snug font-semibold text-ink">
+            <p className="font-heading text-[1.3125rem] leading-snug font-semibold text-ink">
               Your payment hasn&apos;t gone through
             </p>
             <div className="mt-4 space-y-4">
@@ -135,7 +135,7 @@ export function ErrorComparison() {
               </Answers>
               <Answers i={2}>
                 <div className="space-y-2 font-semibold">
-                  <div className="flex min-h-11 items-center justify-center rounded-sm bg-harbour text-surface">
+                  <div className="flex min-h-11 items-center justify-center rounded-sm bg-magenta text-surface">
                     Try another card
                   </div>
                   <div className="flex min-h-11 items-center justify-center rounded-sm border border-hairline-strong text-ink">

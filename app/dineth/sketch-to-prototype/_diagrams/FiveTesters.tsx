@@ -23,7 +23,7 @@ function finder(i: number) {
 export function FiveTesters() {
   return (
     <div>
-      <p className="font-serif text-title font-semibold text-ink">
+      <p className="font-heading text-title font-semibold text-ink">
         Share of problems found
       </p>
       <p className="mt-1 text-label text-muted">
@@ -67,7 +67,7 @@ export function FiveTesters() {
                   <span
                     data-anim="pop"
                     style={at(tester(f + 1) + 200 + (i - prev) * PER_DOT, 380)}
-                    className="absolute inset-0 rounded-full bg-harbour-chart"
+                    className="absolute inset-0 rounded-full bg-magenta-chart"
                   />
                 )}
               </span>
@@ -81,7 +81,7 @@ export function FiveTesters() {
               <span
                 data-anim="pop"
                 style={at(tester(d.n))}
-                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-surface text-harbour shadow-device"
+                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-surface text-magenta shadow-device"
               >
                 <PersonIcon size={24} />
               </span>
@@ -110,7 +110,7 @@ export function FiveTesters() {
                       ...at(tester(d.n) + 200, 900),
                       width: `${d.pct}%`,
                     }}
-                    className="block h-full rounded-full bg-harbour-chart"
+                    className="block h-full rounded-full bg-magenta-chart"
                   />
                 </div>
               </div>
