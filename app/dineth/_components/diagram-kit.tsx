@@ -89,7 +89,7 @@ export type FlowStep = {
 
 const toneStyles = {
   default: { dot: "bg-surface text-magenta shadow-device", title: "text-ink" },
-  done: { dot: "bg-settled text-surface", title: "text-settled" },
+  done: { dot: "bg-magenta text-surface", title: "text-magenta" },
   caution: { dot: "bg-wattle-tint text-wattle", title: "text-ink" },
 };
 

@@ -88,7 +88,7 @@ function Understand({ time }: { time: number }) {
           <p className="text-[1.1875rem] leading-snug font-semibold text-ink">
             Your payment hasn&apos;t gone through
           </p>
-          <p className="mt-1 text-label text-settled">No money has left your account.</p>
+          <p className="mt-1 text-label text-magenta">No money has left your account.</p>
         </div>
       }
     />

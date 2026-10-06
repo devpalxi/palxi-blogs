@@ -21,7 +21,7 @@ const arrive = (i: number) => Math.round(START + STOPS[i] * TRAVEL);
 const tones = {
   go: { fill: "var(--magenta)", title: "text-ink" },
   caution: { fill: "var(--wattle-amber)", title: "text-wattle" },
-  done: { fill: "var(--settled-green)", title: "text-settled" },
+  done: { fill: "var(--magenta)", title: "text-magenta" },
 };
 
 const moments = [

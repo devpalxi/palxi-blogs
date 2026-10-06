@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-06T18:14:08.494Z",
+  "generatedAt": "2026-10-06T18:24:28.612Z",
   "title": "Design System: Palxi Blog",
   "extensions": {
     "colorMeta": {
@@ -137,21 +137,6 @@
           "#a4a4a4",
           "#cacaca",
           "#eeeeee"
-        ]
-      },
-      "settled-green": {
-        "role": "tertiary",
-        "displayName": "Settled Green",
-        "canonical": "oklch(46% 0.101 152)",
-        "tonalRamp": [
-          "#001102",
-          "#002e04",
-          "#00481e",
-          "#1e6538",
-          "#478b5c",
-          "#72b785",
-          "#98deaa",
-          "#d7f9de"
         ]
       },
       "stop-red": {
@@ -375,7 +360,7 @@
       "**Don't** use the logo colours (purple, rose, teal, lime) anywhere except the wordmark.",
       "**Don't** put a coloured `border-left` stripe on notes or callouts. Use the full tinted panel.",
       "**Don't** pair a border with a soft wide shadow on the same element, or round cards beyond 28px.",
-      "**Don't** use red, green or amber without a matching word and icon, and never use magenta to signal success or failure.",
+      "**Don't** use red or amber without a matching word and icon, and don't use green anywhere in a blog post. Success is magenta with a tick and a word.",
       "**Don't** use gradient text, glassmorphism, tiny all-caps eyebrows above every section, or numbered section scaffolding.",
       "**Don't** auto-play looping animation or count numbers up. Motion plays once when seen, then rests.",
       "**Don't** invent statistics or product claims. Cite a real source or leave it out.",

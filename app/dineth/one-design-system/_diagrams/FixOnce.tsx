@@ -161,7 +161,7 @@ export function FixOnce() {
             <p
               data-anim="pop"
               style={at(ARRIVE + 300, 450)}
-              className="mt-1 inline-flex items-center justify-center gap-1.5 text-label font-semibold text-settled"
+              className="mt-1 inline-flex items-center justify-center gap-1.5 text-label font-semibold text-magenta"
             >
               <CheckIcon size={18} />
               Updated

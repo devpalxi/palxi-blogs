@@ -152,10 +152,10 @@ function Screen({ s }: { s: number }) {
       <div
         data-anim="rise"
         style={at(USE.notice + d, 600)}
-        className="mt-3 flex items-center gap-2 rounded-sm bg-settled-tint px-2.5 py-2 text-settled"
+        className="mt-3 flex items-center gap-2 rounded-sm bg-magenta-tint px-2.5 py-2 text-magenta"
       >
         <CheckIcon size={18} className="shrink-0" />
-        <span className="inline-block h-3 w-16 rounded-full bg-settled/30" />
+        <span className="inline-block h-3 w-16 rounded-full bg-magenta/30" />
       </div>
       <div
         data-anim="rise"
@@ -174,7 +174,7 @@ const swatches = [
   { fill: "var(--magenta)" },
   { fill: "var(--deep-ink)" },
   { fill: "var(--shallows)", ring: true },
-  { fill: "var(--settled-green)" },
+  { fill: "var(--magenta-deep)" },
   { fill: "var(--stop-red)" },
 ];
 
@@ -183,7 +183,7 @@ function Colours() {
     <svg viewBox="0 0 210 72" focusable="false" className="w-full">
       {swatches.map((s, i) => (
         <circle
-          key={s.fill}
+          key={i}
           cx={25 + i * 40}
           cy={36}
           r={17}
@@ -316,9 +316,9 @@ export function BuildingBlocks() {
             <div className="mt-1.5 h-10 rounded-sm ring-1 ring-hairline-strong" />
           </Block>
           <Block time={BLOCKS + 600} use={USE.notice}>
-            <div className="flex items-center gap-2 rounded-sm bg-settled-tint px-3 py-2.5 text-label font-semibold text-settled">
+            <div className="flex items-center gap-2 rounded-sm bg-magenta-tint px-3 py-2.5 text-label font-semibold text-magenta">
               <CheckIcon size={18} />
-              <span className="inline-block h-3.5 w-14 rounded-full bg-settled/30" />
+              <span className="inline-block h-3.5 w-14 rounded-full bg-magenta/30" />
             </div>
           </Block>
         </div>

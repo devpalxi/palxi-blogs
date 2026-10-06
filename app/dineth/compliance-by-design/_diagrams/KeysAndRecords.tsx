@@ -104,21 +104,21 @@ function OwnDoor({ cx, time }: { cx: number; time: number }) {
           width={48}
           height={56}
           rx={6}
-          fill="var(--settled-green-tint)"
-          stroke="var(--settled-green)"
+          fill="var(--magenta-tint)"
+          stroke="var(--magenta)"
           strokeWidth={2.5}
         />
         <path
           d={`M${cx - 24} 4 L${cx - 5} 11 V53 L${cx - 24} 60 Z`}
-          fill="var(--settled-green)"
-          stroke="var(--settled-green)"
+          fill="var(--magenta)"
+          stroke="var(--magenta)"
           strokeWidth={2.5}
           strokeLinejoin="round"
         />
         <path
           d={`M${cx + 3} 33 l6 6 l12 -13`}
           {...stroke}
-          stroke="var(--settled-green)"
+          stroke="var(--magenta)"
           strokeWidth={4}
         />
       </g>
@@ -129,7 +129,7 @@ function OwnDoor({ cx, time }: { cx: number; time: number }) {
         height={64}
         rx={10}
         fill="none"
-        stroke="var(--settled-green)"
+        stroke="var(--magenta)"
         strokeWidth={4}
         data-anim="ripple"
         style={at(time + 100)}

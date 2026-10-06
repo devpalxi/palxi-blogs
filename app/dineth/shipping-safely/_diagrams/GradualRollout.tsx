@@ -94,7 +94,7 @@ export function GradualRollout() {
                 data-anim="pop"
                 style={at(s.start)}
                 className={`flex size-10 shrink-0 items-center justify-center rounded-full text-surface ${
-                  i === stages.length - 1 ? "bg-settled" : "bg-magenta"
+                  i === stages.length - 1 ? "bg-magenta" : "bg-magenta"
                 }`}
               >
                 {i === stages.length - 1 ? <CheckIcon size={22} /> : <EyeIcon size={22} />}

@@ -50,7 +50,7 @@ export function SaferAndSimpler() {
           <CrossIcon size={20} /> The old habit
         </p>
         <span />
-        <p className="inline-flex items-center gap-2 font-semibold text-settled">
+        <p className="inline-flex items-center gap-2 font-semibold text-magenta">
           <CheckIcon size={20} /> What current guidance recommends
         </p>
       </div>
@@ -132,11 +132,11 @@ export function SaferAndSimpler() {
               <p
                 data-anim="rise"
                 style={at(t(i) + 1450)}
-                className="relative flex items-start gap-3 rounded-md bg-settled-tint px-4 py-4 text-ink"
+                className="relative flex items-start gap-3 rounded-md bg-magenta-tint px-4 py-4 text-ink"
               >
-                <CheckIcon size={22} className="mt-0.5 shrink-0 text-settled" />
+                <CheckIcon size={22} className="mt-0.5 shrink-0 text-magenta" />
                 <span>
-                  <strong className="block text-label text-settled md:sr-only">
+                  <strong className="block text-label text-magenta md:sr-only">
                     Recommended now
                   </strong>
                   {p.now}
@@ -145,7 +145,7 @@ export function SaferAndSimpler() {
                   aria-hidden="true"
                   data-anim="flash"
                   style={at(t(i) + 1450, 1300)}
-                  className="absolute inset-0 rounded-md ring-2 ring-settled/55"
+                  className="absolute inset-0 rounded-md ring-2 ring-magenta/55"
                 />
               </p>
             </li>

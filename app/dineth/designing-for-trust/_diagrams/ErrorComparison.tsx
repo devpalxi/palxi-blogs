@@ -30,12 +30,12 @@ function Verdict({
   time,
   children,
 }: {
-  tone: "stop" | "settled";
+  tone: "stop" | "magenta";
   time: number;
   children: ReactNode;
 }) {
   const styles =
-    tone === "stop" ? "bg-stop-tint text-stop" : "bg-settled-tint text-settled";
+    tone === "stop" ? "bg-stop-tint text-stop" : "bg-magenta-tint text-magenta";
   return (
     <p
       data-anim="fade"
@@ -55,7 +55,7 @@ function Answers({ i, children }: { i: number; children: ReactNode }) {
       <span
         data-anim="flash"
         style={at(T.answers[i], 1500)}
-        className="absolute -inset-2 rounded-md ring-2 ring-settled/45"
+        className="absolute -inset-2 rounded-md ring-2 ring-magenta/45"
       />
       <div data-anim="focus" style={at(T.answers[i])}>
         {children}
@@ -112,7 +112,7 @@ export function ErrorComparison() {
 
       {/* Reassuring */}
       <div className="flex flex-col">
-        <Verdict tone="settled" time={T.goodScreen}>
+        <Verdict tone="magenta" time={T.goodScreen}>
           What we show instead
         </Verdict>
         <div data-anim="rise" style={at(T.goodScreen)}>
@@ -122,7 +122,7 @@ export function ErrorComparison() {
             </p>
             <div className="mt-4 space-y-4">
               <Answers i={0}>
-                <p className="flex items-start gap-2 rounded-sm bg-settled-tint px-3 py-2.5 font-semibold text-settled">
+                <p className="flex items-start gap-2 rounded-sm bg-magenta-tint px-3 py-2.5 font-semibold text-magenta">
                   <CheckIcon size={20} className="mt-0.5 shrink-0" />
                   No money has left your account.
                 </p>
@@ -159,13 +159,13 @@ export function ErrorComparison() {
               <span
                 data-anim="pop"
                 style={at(T.answers[i])}
-                className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-settled text-surface"
+                className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-magenta text-surface"
               >
                 <CheckIcon size={18} />
               </span>
               <span>
                 <span className="block text-[1.125rem] text-ink">{p.worry}</span>
-                <span className="block text-label text-settled">{p.answer}</span>
+                <span className="block text-label text-magenta">{p.answer}</span>
               </span>
             </li>
           ))}

@@ -91,7 +91,7 @@ function Route() {
 
         {stages.map((s, i) => {
           const Icon = s.icon;
-          const fill = s.done ? "var(--settled-green)" : "var(--magenta)";
+          const fill = s.done ? "var(--magenta)" : "var(--magenta)";
           return (
             <g key={s.title} transform={`translate(${s.x} 146)`}>
               <circle
@@ -190,7 +190,7 @@ export function ProcessOverview() {
                   data-anim="pop"
                   style={{
                     ...at(ARRIVE[i]),
-                    background: s.done ? "var(--settled-green)" : "var(--magenta)",
+                    background: s.done ? "var(--magenta)" : "var(--magenta)",
                   }}
                   className="absolute inset-0 flex items-center justify-center rounded-full text-surface"
                 >
@@ -201,7 +201,7 @@ export function ProcessOverview() {
               <div data-anim="focus" style={at(ARRIVE[i])} className="pt-1.5 lg:pt-0">
                 <p
                   className={`text-[1.1875rem] leading-snug font-semibold ${
-                    s.done ? "text-settled" : "text-ink"
+                    s.done ? "text-magenta" : "text-ink"
                   }`}
                 >
                   {s.title}

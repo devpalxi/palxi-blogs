@@ -14,8 +14,6 @@ colors:
   band-grey: "#f6f6f6"
   hairline: "#e8e8e8"
   field-edge: "#767676"
-  settled-green: "#22683b"
-  settled-green-tint: "#e2f6e6"
   stop-red: "#a83630"
   stop-red-tint: "#ffebe8"
   wattle-amber: "#845922"
@@ -154,7 +152,7 @@ This system rejects, by name, the looks in PRODUCT.md: **crypto and trading apps
 
 ## 2. Colors
 
-A near-neutral palette with one confident magenta signal, and three meaning-only colours reserved for diagrams.
+A near-neutral palette with one confident magenta signal, and two meaning-only colours (red and amber) reserved for diagrams.
 
 ### Primary
 - **Palxi Magenta** (`#b8339b`): the only accent. Primary buttons, links, the active step or path in a diagram, small tags. Measured at 5.3:1 against white, so it passes AA as text and as a button fill. Never lighter on white.
@@ -173,7 +171,7 @@ A near-neutral palette with one confident magenta signal, and three meaning-only
 - **Field Edge** (`#767676`): borders of form fields and checkboxes (4.5:1). The website's field border (`#dcdcdc`) is too faint to meet the 3:1 boundary rule, so the blog darkens it.
 
 ### Tertiary (meaning only, diagrams and wireframes)
-- **Settled Green** (`#22683b`) on **Settled Green Tint** (`#e2f6e6`): success, "done", "money arrived".
+- **Success is Palxi Magenta.** "Done", "money arrived" and "caught" are shown in Palxi Magenta on Magenta Tint, always with a tick and a word. There is no green in blog diagrams.
 - **Stop Red** (`#a83630`) on **Stop Red Tint** (`#ffebe8`): failure, "nothing happened". Always paired with an icon and words.
 - **Wattle Amber** (`#845922`) on **Wattle Amber Tint** (`#fff2d6`): caution, "check this".
 
@@ -183,7 +181,7 @@ A near-neutral palette with one confident magenta signal, and three meaning-only
 ### Named Rules
 **The One Signal Rule.** Magenta covers no more than about 10% of any screen. If two magenta blocks compete for the eye, one of them is wrong.
 
-**The Meaning-Only Rule.** Red, green and amber appear only when they mean something, and always with a word and an icon. Magenta is never used to mean success or failure.
+**The Meaning-Only Rule.** Red and amber appear only when they mean something (failure, caution), and always with a word and an icon. Success and "done" use Palxi Magenta with a tick and a word. Colour never carries the meaning alone.
 
 **The Light Page Rule.** Blog pages are light from top to bottom. Near Black is for button fills only: never a hero, a band, a card or a page theme, even though the website uses a dark hero.
 
@@ -259,7 +257,7 @@ Three columns separated by a 1px ink rule on top of each. A big number in Ink (H
 
 ### Diagram Frame (signature component for the blog)
 A Band Grey panel (20px radius, no border, no shadow) holding the diagram, then a caption in Slate and a secondary "Play again" button.
-- **Drawing style:** 2px Ink strokes with rounded caps and joins. Wireframe screens are Paper White devices with the Resting device shadow and grey placeholder bars. Palxi Magenta marks the active step, the path a payment or request travels, and the moving marker. Settled Green, Stop Red and Wattle Amber appear only for outcomes, with words and icons.
+- **Drawing style:** 2px Ink strokes with rounded caps and joins. Wireframe screens are Paper White devices with the Resting device shadow and grey placeholder bars. Palxi Magenta marks the active step, the path a payment or request travels, and the moving marker. Stop Red and Wattle Amber appear only for failure and caution, with words and icons; success is magenta with a tick.
 - **Motion:** plays once when scrolled into view (400 to 700ms per step, ease-out), then rests. Everything is visible without JavaScript. Under `prefers-reduced-motion: reduce` the finished diagram shows instantly.
 
 ### "In plain words" Note
@@ -292,7 +290,7 @@ Band Grey panel, 20px radius, 24px by 28px padding, no side stripe. A bold Label
 - **Don't** use the logo colours (purple, rose, teal, lime) anywhere except the wordmark.
 - **Don't** put a coloured `border-left` stripe on notes or callouts. Use the full tinted panel.
 - **Don't** pair a border with a soft wide shadow on the same element, or round cards beyond 28px.
-- **Don't** use red, green or amber without a matching word and icon, and never use magenta to signal success or failure.
+- **Don't** use red or amber without a matching word and icon, and don't use green anywhere in a blog post. Success is magenta with a tick and a word.
 - **Don't** use gradient text, glassmorphism, tiny all-caps eyebrows above every section, or numbered section scaffolding.
 - **Don't** auto-play looping animation or count numbers up. Motion plays once when seen, then rests.
 - **Don't** invent statistics or product claims. Cite a real source or leave it out.

@@ -51,7 +51,7 @@ export function ChecksPipeline() {
             <span
               data-anim="pop"
               style={at(T[i] + 100, 500)}
-              className="inline-flex items-center gap-1.5 rounded-full bg-settled-tint px-3 py-1 text-label font-semibold text-settled [grid-area:1/1]"
+              className="inline-flex items-center gap-1.5 rounded-full bg-magenta-tint px-3 py-1 text-label font-semibold text-magenta [grid-area:1/1]"
             >
               <CheckIcon size={18} />
               Caught
@@ -70,7 +70,7 @@ export function ChecksPipeline() {
             y={65}
             icon={c.icon}
             time={T[i]}
-            fill={i === checks.length - 1 ? "var(--settled-green)" : "var(--magenta)"}
+            fill={i === checks.length - 1 ? "var(--magenta)" : "var(--magenta)"}
           />
         ))}
         <Train d={ROUTE} start={START} dur={TRAVEL} />
@@ -86,7 +86,7 @@ export function ChecksPipeline() {
           >
             <p
               className={`text-[1.0625rem] leading-snug font-semibold ${
-                i === checks.length - 1 ? "text-settled" : "text-ink"
+                i === checks.length - 1 ? "text-magenta" : "text-ink"
               }`}
             >
               {c.title}

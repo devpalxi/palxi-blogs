@@ -125,7 +125,7 @@ function Phone() {
         style={at(T[3] + 700, 2600)}
         className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-md bg-ink px-4 py-3 font-semibold text-surface"
       >
-        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-settled">
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-magenta">
           <CheckIcon size={16} />
         </span>
         Progress saved

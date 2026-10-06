@@ -80,7 +80,7 @@ export function ParallelBranches() {
           {code.map((s, i) => (
             <Station key={s.title} x={[300, 500, 700][i]} y={380} icon={s.icon} time={cT[i]} />
           ))}
-          <Station x={960} y={265} icon={UsersIcon} time={END} fill="var(--settled-green)" />
+          <Station x={960} y={265} icon={UsersIcon} time={END} fill="var(--magenta)" />
 
           <Train d={DESIGN} start={D.start} dur={D.dur} tone="ink" />
           <Train d={CODE} start={C.start} dur={C.dur} />
@@ -104,14 +104,14 @@ export function ParallelBranches() {
           style={at(END)}
           className="absolute top-[58%] right-0 w-[10%] text-right"
         >
-          <p className="text-[1.1875rem] leading-tight font-semibold text-settled">The live product</p>
+          <p className="text-[1.1875rem] leading-tight font-semibold text-magenta">The live product</p>
         </div>
       </div>
 
       <p
         data-anim="rise"
         style={at(END + 200)}
-        className="mt-6 flex items-center gap-3 rounded-md bg-settled-tint px-5 py-4 text-[1.125rem] font-semibold text-settled"
+        className="mt-6 flex items-center gap-3 rounded-md bg-magenta-tint px-5 py-4 text-[1.125rem] font-semibold text-magenta"
       >
         <MergeIcon size={26} className="shrink-0" />
         Both are merged back into the live product together, so what you see

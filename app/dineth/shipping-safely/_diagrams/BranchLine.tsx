@@ -33,7 +33,7 @@ export function BranchLine() {
           {stops.map((s, i) => (
             <Station key={s.title} x={s.x} y={250} icon={s.icon} time={T[i]} />
           ))}
-          <Station x={960} y={120} icon={UsersIcon} time={END} fill="var(--settled-green)" />
+          <Station x={960} y={120} icon={UsersIcon} time={END} fill="var(--magenta)" />
 
           <Train d={MAIN} start={CUSTOMERS.start} dur={CUSTOMERS.dur} tone="ink" />
           <Train d={ROUTE} start={START} dur={TRAVEL} />
@@ -62,7 +62,7 @@ export function BranchLine() {
           style={at(END)}
           className="absolute top-0 right-0 w-[26%] text-right"
         >
-          <p className="text-[1.1875rem] font-semibold text-settled">Joins the main line</p>
+          <p className="text-[1.1875rem] font-semibold text-magenta">Joins the main line</p>
           <p className="text-label text-copy">Customers get it, already checked.</p>
         </div>
         <div

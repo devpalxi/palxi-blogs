@@ -36,7 +36,7 @@ function Screen() {
         <span
           data-anim="flash"
           style={at(PAUSE_AT + 700, 1800)}
-          className="absolute -inset-2 rounded-md bg-settled-tint ring-2 ring-settled/40"
+          className="absolute -inset-2 rounded-md bg-magenta-tint ring-2 ring-magenta/40"
         />
         <div className="relative space-y-2 pt-3">
           <Bar className="w-48" />

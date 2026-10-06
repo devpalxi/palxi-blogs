@@ -152,8 +152,8 @@ function Receipt() {
           className="paper-shadow"
         >
           <div className="receipt-edge bg-surface px-6 pt-7 pb-9">
-          <p className="flex items-center gap-2.5 font-heading text-[1.25rem] font-semibold text-settled">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-settled text-surface">
+          <p className="flex items-center gap-2.5 font-heading text-[1.25rem] font-semibold text-magenta">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-magenta text-surface">
               <CheckIcon size={20} />
             </span>
             Payment complete

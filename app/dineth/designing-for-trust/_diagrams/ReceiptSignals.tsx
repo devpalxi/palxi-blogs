@@ -78,7 +78,7 @@ function Receipt() {
             <p
               data-anim="pop"
               style={at(STAMP_AT, 500)}
-              className="mt-5 flex items-center gap-2 rounded-sm bg-settled-tint px-3 py-2 font-semibold text-settled"
+              className="mt-5 flex items-center gap-2 rounded-sm bg-magenta-tint px-3 py-2 font-semibold text-magenta"
             >
               <CheckIcon size={20} />
               Payment received

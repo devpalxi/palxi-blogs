@@ -103,7 +103,7 @@ function Screen({
         data-anim="pop"
         style={at(tap + (doubt ? 250 : 150), 450)}
         className={`absolute -top-3.5 right-2 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-label font-semibold ring-2 ring-surface ${
-          doubt ? "bg-wattle-tint text-wattle" : "bg-settled-tint text-settled"
+          doubt ? "bg-wattle-tint text-wattle" : "bg-magenta-tint text-magenta"
         }`}
       >
         {doubt ? <QuestionIcon size={18} /> : <CheckIcon size={18} />}
@@ -134,7 +134,7 @@ function Row({
         data-anim="rise"
         style={at(time, 600)}
         className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-label font-semibold ${
-          good ? "bg-settled-tint text-settled" : "bg-stop-tint text-stop"
+          good ? "bg-magenta-tint text-magenta" : "bg-stop-tint text-stop"
         }`}
       >
         {good ? <CheckIcon size={18} /> : <CrossIcon size={18} />}
