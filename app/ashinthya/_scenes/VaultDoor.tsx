@@ -15,6 +15,7 @@ import {
   Turn,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 
 /*
  * High-risk actions sit behind a vault door with two locks: a keyhole for
@@ -347,37 +348,18 @@ export function VaultDoor() {
   return (
     <div>
       <VaultDoorScene />
-      <ol className="mt-6 grid gap-4 md:grid-cols-2 md:gap-8">
-        <li className="flex items-start gap-3">
-          <span className="mt-0.5 inline-block shrink-0 rounded-full bg-stop-tint px-3 py-0.5 text-label font-semibold text-stop">
-            First
-          </span>
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">A password alone.</span> The
-            keyhole turns, but the second lock stays shut and the door won&apos;t open.
-          </p>
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="mt-0.5 inline-block shrink-0 rounded-full bg-settled-tint px-3 py-0.5 text-label font-semibold text-settled">
-            Then
-          </span>
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">Password plus a second check.</span>{" "}
-            The member confirms on their phone, both locks open, and so does the door.
-          </p>
-        </li>
-      </ol>
-      <p className="mt-6 border-t border-hairline pt-4 font-semibold text-ink">
-        Behind the door, for a super trustee:
-      </p>
-      <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
-        {ACTIONS.map((a) => (
-          <li key={a.label} className="flex items-center gap-3 text-label font-normal text-copy">
-            <Mini className="size-12 rounded-sm bg-surface">{a.icon}</Mini>
-            {a.label}
-          </li>
-        ))}
-      </ul>
+      <KeyLine
+        items={[
+          { label: "Password alone: stays shut", dot: "bg-stop" },
+          { label: "Password plus phone check: opens", dot: "bg-settled" },
+        ]}
+      />
+      <KeyLine
+        items={ACTIONS.map((a) => ({
+          label: a.label,
+          icon: <Mini className="size-10 rounded-sm bg-surface">{a.icon}</Mini>,
+        }))}
+      />
     </div>
   );
 }

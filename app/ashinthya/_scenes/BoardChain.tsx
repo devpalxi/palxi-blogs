@@ -13,6 +13,7 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { ColumnLabels } from "./Key";
 
 /*
  * Where CPS 234 lands. APRA's letter goes to the chair of the board; the
@@ -259,7 +260,6 @@ const STATIONS = [
     ),
     title: "The board",
     chip: { text: "Accountable", cls: "bg-magenta-tint text-magenta-deep" },
-    detail: "Ultimately responsible for the information security of the entity.",
   },
   {
     mini: (
@@ -272,8 +272,6 @@ const STATIONS = [
     ),
     title: "The regulated entity",
     chip: { text: "Bound by CPS 234", cls: "bg-settled-tint text-settled" },
-    detail:
-      "Keeps security in line with the threats. Classifies its information assets, including those held by third parties.",
   },
   {
     mini: (
@@ -283,7 +281,6 @@ const STATIONS = [
     ),
     title: "The technology vendor",
     chip: { text: "Not bound directly", cls: "bg-wattle-tint text-wattle" },
-    detail: "Reached through the entity's contracts, assessments and audits.",
   },
 ];
 
@@ -291,27 +288,17 @@ export function BoardChain() {
   return (
     <div>
       <BoardChainScene />
-      <ul className="mt-6 grid gap-6 md:grid-cols-3 md:gap-8">
-        {STATIONS.map((s) => (
-          <li key={s.title} className="flex gap-4 md:block md:text-center">
-            <Mini box={124} className="size-14 md:hidden">{s.mini}</Mini>
-            <div>
-              <p className="text-[1.125rem] font-semibold text-ink">{s.title}</p>
-              <p className="mt-2">
-                <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${s.chip.cls}`}>
-                  {s.chip.text}
-                </span>
-              </p>
-              <p className="mt-2 text-label font-normal text-copy">{s.detail}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6 border-t border-hairline pt-4 text-label font-normal text-copy">
-        Solid arrow: the board answers for the entity. Dashed line: the entity
-        reaches its vendors through contracts and audits. The standard binds
-        the entity, which then has duties about its vendors.
-      </p>
+      <ColumnLabels
+        items={STATIONS.map((st) => ({
+          title: st.title,
+          chip: [st.chip.text, st.chip.cls] as [string, string],
+          mini: (
+            <Mini box={124} className="size-12">
+              {st.mini}
+            </Mini>
+          ),
+        }))}
+      />
     </div>
   );
 }

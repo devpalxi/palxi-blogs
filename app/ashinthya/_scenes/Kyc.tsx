@@ -16,20 +16,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Doc, Lens, Padlock, Person, Seal } from "./props";
-
-function Rows({ items }: { items: [string, string][] }) {
-  return (
-    <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-      {items.map(([title, detail]) => (
-        <li key={title} className="text-label font-normal text-copy">
-          <span className="block font-semibold text-ink">{title}</span>
-          {detail}
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 const st = {
   fill: "none",
@@ -209,11 +197,11 @@ export function Plugins() {
   return (
     <div>
       <PluginsScene />
-      <Rows
+      <KeyLine
         items={[
-          ["Decide risk before steps.", "Product, channel, geography and ownership set the score, and the score picks the verification path."],
-          ["Treat sources as plug-ins.", "Top to bottom: the Document Verification Service, a Digital ID, a face match with liveness, and a manual path for people without standard ID."],
-          ["Record what you did, not the document.", "Every source returns the same verification record. AUSTRAC doesn't require copies of ID documents."],
+          { label: "Risk first" },
+          { label: "Identity sources plug in" },
+          { label: "One record, no ID copy" },
         ]}
       />
     </div>
@@ -313,11 +301,11 @@ export function Rescreen() {
   return (
     <div>
       <RescreenScene />
-      <Rows
+      <KeyLine
         items={[
-          ["Every list update, every customer.", "Screening runs before service and again whenever DFAT's list, or a PEP list, changes."],
-          ["Fuzzy matching makes false alarms.", "A possible match goes to a review queue, not straight to a refusal."],
-          ["Each decision is recorded.", "The list entry, the match score, the analyst's decision and the reason."],
+          { label: "List updated", dot: "bg-wattle" },
+          { label: "Everyone rescreened", dot: "bg-magenta" },
+          { label: "Match reviewed", dot: "bg-settled" },
         ]}
       />
     </div>
@@ -431,11 +419,11 @@ export function Records() {
   return (
     <div>
       <RecordsScene />
-      <Rows
+      <KeyLine
         items={[
-          ["History, not overwrites.", "A changed address becomes a new version. The old one stays, with its date and cause."],
-          ["A log no one can edit.", "Append-only, so it can prove when an alert first appeared and when a suspicion formed."],
-          ["Retention as a scheduled job.", "Records are usually kept for 7 years, then deleted by a rule for each record type."],
+          { label: "History kept" },
+          { label: "Log can't be edited" },
+          { label: "Deleted after 7 years" },
         ]}
       />
     </div>

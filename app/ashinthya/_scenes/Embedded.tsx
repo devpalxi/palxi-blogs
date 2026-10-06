@@ -17,22 +17,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Bank, Coin, Handset, Lens, Letter, Person, Shop } from "./props";
-
-function Rows({ items }: { items: [string, string, string][] }) {
-  return (
-    <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-      {items.map(([dot, title, detail]) => (
-        <li key={title} className="flex items-start gap-3">
-          <span className={`mt-1.5 size-4 shrink-0 rounded-full ${dot}`} />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">{title}</span> {detail}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* ================================================================== */
 /* 1. What does the feature do with money?                              */
@@ -137,11 +123,11 @@ export function MoneyModes() {
   return (
     <div>
       <MoneyModesScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-surface ring-2 ring-hairline-strong", "Passes instructions on.", "The product tells a bank or payment provider to move money but never holds it. The lightest load."],
-          ["bg-wattle", "Holds money.", "Funds sit in a balance, wallet or escrow the product controls. Expect stored value and safeguarding questions."],
-          ["bg-magenta", "Lends or defers payment.", "Goods now, pay later. A credit licence question, and BNPL has needed one since 10 June 2025."],
+          { label: "Passes it on", dot: "bg-surface ring-2 ring-hairline-strong" },
+          { label: "Holds money", dot: "bg-wattle" },
+          { label: "Lends, pay later", dot: "bg-magenta" },
         ]}
       />
     </div>
@@ -269,11 +255,11 @@ export function Reconcile() {
   return (
     <div>
       <ReconcileScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-magenta-chart", "The sub-ledger.", "Your client's record of each customer's share of the money. Often kept in your client's product."],
-          ["bg-magenta", "The pooled account.", "The partner holds the money in one account. Its statement is what the sub-ledger must add up to."],
-          ["bg-wattle", "A break.", "When they differ, someone finds out why that day, and fixes the record before it grows."],
+          { label: "Your sub-ledger", dot: "bg-magenta-chart" },
+          { label: "Partner's pooled account", dot: "bg-magenta" },
+          { label: "A break", dot: "bg-wattle" },
         ]}
       />
     </div>
@@ -396,11 +382,10 @@ export function Relay() {
   return (
     <div>
       <RelayScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-wattle", "Your client's product detects.", "It runs the onboarding screens and sees the behaviour, so it spots what looks suspicious."],
-          ["bg-wattle", "It passes it on, fast.", "The contract says how, and how quickly, anything suspicious reaches the partner."],
-          ["bg-magenta", "The partner reports.", "Whoever provides the designated service is the reporting entity, and reports to AUSTRAC."],
+          { label: "Your product spots it", dot: "bg-wattle" },
+          { label: "Partner reports to AUSTRAC", dot: "bg-magenta" },
         ]}
       />
     </div>

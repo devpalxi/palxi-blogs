@@ -5,7 +5,6 @@ import {
   Draw,
   FadeIn,
   FadeOut,
-  HEX,
   Move,
   Pop,
   Pulse,
@@ -15,23 +14,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Bank, Cloud, Doc, Laptop, Lens, Person, Seal, Server } from "./props";
-
-function Rows({ items, cols = 3 }: { items: [string, string, string][]; cols?: number }) {
-  return (
-    <ul className={`mt-6 grid gap-4 md:gap-8 ${cols === 4 ? "md:grid-cols-4" : "md:grid-cols-3"}`}>
-      {items.map(([dot, title, detail]) => (
-        <li key={title} className="flex items-start gap-3">
-          <span className={`mt-1.5 size-4 shrink-0 rounded-full ${dot}`} />
-          <p className="text-label font-normal text-copy">
-            <span className="block font-semibold text-ink">{title}</span>
-            {detail}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* ================================================================== */
 /* 1. Type 1 is a snapshot, Type 2 is a film                            */
@@ -174,11 +158,11 @@ export function Types() {
   return (
     <div>
       <TypesScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-wattle", "Type 1: one date.", "Were the controls suitably designed on that day? A photo, not a record of how they ran."],
-          ["bg-magenta", "Type 2: a period.", "Did they operate effectively over months? The auditor samples evidence across the period and lists exceptions."],
-          ["bg-hairline-strong", "Bridge letter: the gap.", "From the vendor's management, not the auditor, with no independent testing behind it."],
+          { label: "Type 1: one date", dot: "bg-wattle" },
+          { label: "Type 2: a period", dot: "bg-magenta" },
+          { label: "Bridge letter: untested", dot: "bg-hairline-strong" },
         ]}
       />
     </div>
@@ -284,13 +268,12 @@ export function ScopeCheck() {
   return (
     <div>
       <ScopeScene />
-      <Rows
-        cols={4}
+      <KeyLine
         items={[
-          ["bg-magenta", "Scope.", "Is the product your client uses inside the boundary, for a recent period?"],
-          ["bg-wattle", "Exceptions.", "Which tests failed, how serious were they, and what's been fixed?"],
-          ["bg-hairline-strong", "Carve-outs.", "Hosting outside the boundary relies on its own report. Ask for it."],
-          ["bg-wattle", "Customer controls.", "What the report assumes your client does, like reviewing access or guarding API keys."],
+          { label: "In scope", dot: "bg-magenta" },
+          { label: "Exception", dot: "bg-wattle" },
+          { label: "Carved out", dot: "bg-hairline-strong" },
+          { label: "Your client's controls", dot: "bg-wattle-tint ring-2 ring-wattle" },
         ]}
       />
     </div>
@@ -373,19 +356,5 @@ export function MillScene() {
 }
 
 export function Mill() {
-  return (
-    <div>
-      <MillScene />
-      <ul className="mt-6 grid list-disc gap-2 pl-6 text-label font-normal text-copy md:grid-cols-2 md:gap-x-10">
-        <li>Control descriptions so generic they could apply to any company.</li>
-        <li>A first Type 2 with no exceptions.</li>
-        <li>Tests that mostly consist of asking management.</li>
-        <li>A signing firm you can&apos;t find, or can&apos;t confirm as a licensed CPA firm.</li>
-        <li>A system description that never names the product your client is buying.</li>
-      </ul>
-      <p className="mt-4 border-t border-hairline pt-4 text-label font-normal text-copy">
-        None of these proves a report is bad, but each one is worth a follow-up question to the vendor.
-      </p>
-    </div>
-  );
+  return <MillScene />;
 }

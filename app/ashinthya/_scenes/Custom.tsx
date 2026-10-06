@@ -17,6 +17,7 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Doc, Handset, Laptop, Server } from "./props";
 
 const ink = {
@@ -200,17 +201,12 @@ export function Sort() {
   return (
     <div>
       <SortScene />
-      <div className="mt-6 grid gap-6 md:grid-cols-3 md:gap-8">
-        {[
-          { label: "Buy", cls: "bg-shallows text-ink ring-1 ring-hairline-strong", note: "A commodity: every firm needs it, nobody wins customers with it.", tray: 0 },
-          { label: "Integrate", cls: "bg-wattle-tint text-wattle", note: "The joins between systems. Custom work whichever way you go.", tray: 1 },
-          { label: "Build", cls: "bg-magenta-tint text-magenta-deep", note: "How the firm competes. You own the roadmap.", tray: 2 },
-        ].map((col) => (
-          <div key={col.label}>
-            <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${col.cls}`}>{col.label}</span>
-            <p className="mt-2 text-label font-normal text-copy">{col.note}</p>
-            <ul className="mt-3 space-y-2">
-              {CARDS.filter((c) => c.tray === col.tray).map((c) => (
+      <div className="mt-5 grid gap-5 md:grid-cols-3 md:gap-8">
+        {TRAYS.map((tray, k) => (
+          <div key={tray.label}>
+            <p className="font-semibold text-ink md:text-center">{tray.label}</p>
+            <ul className="mt-2 space-y-2">
+              {CARDS.filter((c) => c.tray === k).map((c) => (
                 <li key={c.name} className="flex items-center gap-3 text-label font-normal text-copy">
                   <Mini className="size-9 shrink-0 rounded-sm bg-surface" box={60}>
                     {c.icon}
@@ -359,18 +355,13 @@ export function CoreEdgesSvg() {
   return (
     <div>
       <CoreEdgesScene />
-      <ol className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-        {[
-          ["The core stays close to standard.", "The grey middle is bought: ledgers, identity and sanctions. Configure it, don't rewrite it."],
-          ["The integration layer belongs to you.", "Apps, decisioning and reporting plug into the green ring, never straight into the core."],
-          ["Data can leave.", "Your own store holds a copy of what matters, in a format you define."],
-        ].map(([t, d]) => (
-          <li key={t} className="text-label font-normal text-copy">
-            <span className="block font-semibold text-ink">{t}</span>
-            {d}
-          </li>
-        ))}
-      </ol>
+      <KeyLine
+        items={[
+          { label: "Bought core", dot: "bg-shallows ring-2 ring-ink" },
+          { label: "Your integration layer", dot: "bg-magenta" },
+          { label: "Your copy of the data", dot: "bg-magenta-chart" },
+        ]}
+      />
     </div>
   );
 }
@@ -485,15 +476,12 @@ export function Exit() {
   return (
     <div>
       <ExitScene />
-      <ol className="mt-6 grid list-decimal gap-3 pl-6 text-label font-normal text-copy md:grid-cols-2 md:gap-x-10">
-        <li>Can you get all your data out, in a usable format, without the provider&apos;s help?</li>
-        <li>Could another team run and change the system within a quarter?</li>
-        <li>Are the source code, infrastructure setup and documentation held somewhere you control?</li>
-        <li>Has anyone tested the exit, even as a desk exercise?</li>
+      <ol className="mt-5 grid list-decimal gap-2 pl-6 text-label font-semibold text-ink sm:grid-cols-2 md:grid-cols-4 md:gap-x-8">
+        <li>Data comes out</li>
+        <li>Another team can run it</li>
+        <li>Code and docs held by you</li>
+        <li>Exit tested</li>
       </ol>
-      <p className="mt-4 border-t border-hairline pt-4 text-label font-normal text-copy">
-        One lock for each question, top to bottom. The test applies to a bought product and to custom software alike.
-      </p>
     </div>
   );
 }

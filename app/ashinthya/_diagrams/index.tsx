@@ -1,57 +1,15 @@
 import type { ReactNode } from "react";
-import {
-  BankIcon,
-  ClipboardIcon,
-  CodeIcon,
-  LayersIcon,
-} from "../../dineth/_components/icons";
-import { CertCheck } from "./CertCheck";
-import { Checklist, Compare } from "./Cards";
-import { CoreEdges } from "./CoreEdges";
-import { Dials } from "./Dials";
-import { FlipCards } from "./FlipCards";
-import { Hardship } from "./Hardship";
-import { Hub } from "./Hub";
-import { Iceberg } from "./Iceberg";
-import {
-  BellIcon,
-  CalendarIcon,
-  CashIcon,
-  DoorIcon,
-  RefreshIcon,
-  ScaleIcon,
-  SearchIcon,
-  SendIcon,
-  ServerIcon,
-  WrenchIcon,
-} from "./icons";
-import { Journey } from "./Journey";
-import { MoneyMoves } from "./MoneyMoves";
-import { PeriodsOfTime } from "./PeriodsOfTime";
-import { Ranges } from "./Ranges";
-import { Resilience } from "./Resilience";
-import {
-  DoorsScene,
-  FallbackScene,
-  IdempotencyScene,
-  QueueScene,
-  ReconcileScene,
-  ScanScene,
-  SceneGrid,
-  StatusScene,
-  StealthScene,
-} from "./Scenes";
-import { Sorter } from "./Sorter";
-import { Staircase } from "./Staircase";
 import { BoardChain } from "../_scenes/BoardChain";
 import { Hourglasses } from "../_scenes/Hourglasses";
 import { VaultDoor } from "../_scenes/VaultDoor";
+import { CertLookup, Keys, PitchTeam } from "../_scenes/DueDiligence";
 import { HardshipClock, Ledger, Rails } from "../_scenes/Lending";
 import { FourthParty, Monitoring, Tolerance } from "../_scenes/Cps230";
 import { CoreEdgesSvg, Exit, Sort } from "../_scenes/Custom";
 import { Cdr, CoreSwap, LicencePath } from "../_scenes/DigitalBanking";
 import { MoneyModes, Reconcile, Relay } from "../_scenes/Embedded";
 import { Plugins, Records, Rescreen } from "../_scenes/Kyc";
+import { Cycle, Receipt, RulesStamp } from "../_scenes/Iso27001";
 import { Cop, Idempotent, TwoLegs } from "../_scenes/PayTo";
 import { FixLoop, TestingYear, ThreeTests } from "../_scenes/PenTest";
 import { Mill, ScopeCheck, Types } from "../_scenes/Soc2";
@@ -190,6 +148,27 @@ export const diagrams: Record<string, Placement[]> = {
     },
   ],
 
+  "iso-27001-certification-australia-cost": [
+    {
+      before: "Why Australian fintechs get asked for it",
+      caption:
+        "The certificate is an outside auditor's stamp on the security rules your business already follows, and the auditor is checked too.",
+      node: <RulesStamp />,
+    },
+    {
+      before: "How long does it take to get ISO 27001 certified?",
+      caption:
+        "Outside fees are only part of the bill, because your own team's time never shows on an invoice.",
+      node: <Receipt />,
+    },
+    {
+      before: "Ways to keep the bill down",
+      caption:
+        "A certificate runs on a three-year cycle, with a check-up audit in each of the first two years and a full audit in the third.",
+      node: <Cycle />,
+    },
+  ],
+
   "kyc-aml-by-design": [
     {
       before: "Screening that keeps running",
@@ -275,62 +254,22 @@ export const diagrams: Record<string, Placement[]> = {
 
   "technical-due-diligence-build-team": [
     {
-      before: "How to check if a company is ISO 27001 certified",
+      before: "Evidence beyond the certificate",
       caption:
-        "What to request from a build team, and what should make you pause.",
-      node: (
-        <Checklist
-          items={[
-            {
-              title: "Company and people",
-              ask: "ABN, team structure, CVs of named leads, subcontractors",
-              worry: "senior people in the pitch, unnamed juniors on the project",
-            },
-            {
-              title: "Security certification",
-              ask: "ISO 27001 certificate and Statement of Applicability",
-              worry: "the scope leaves out the delivery team",
-            },
-            {
-              title: "Delivery practice",
-              ask: "A live walkthrough of review, testing and deployment",
-              worry: "nobody can show a deployment log",
-            },
-            {
-              title: "Code quality",
-              ask: "A sample repository and dependency scan output",
-              worry: "no automated tests or dependency scanning",
-            },
-            {
-              title: "Regulated evidence",
-              ask: "Redacted evidence produced for a past audit",
-              worry: "“The client handled compliance”",
-            },
-            {
-              title: "Ownership and exit",
-              ask: "IP assignment clause and who owns repositories",
-              worry: "code is held only in the vendor's accounts",
-            },
-            {
-              title: "Support and incidents",
-              ask: "On-call arrangements and incident history",
-              worry: "support on a “best effort” basis",
-            },
-            {
-              title: "Viability",
-              ask: "Financial statements, insurance certificates, a continuity plan",
-              worry: "one client provides most of the revenue",
-            },
-          ]}
-        />
-      ),
+        "A logo on a website proves little. Look the certificate up on a register of accredited certificates, and check its scope covers the team that will do the work.",
+      node: <CertLookup />,
     },
     {
-      before: "Evidence beyond the certificate",
-      caption: "Six checks to work through before trusting an ISO 27001 logo.",
-      node: (
-        <CertCheck />
-      ),
+      before: "Ownership, access and a way out",
+      caption:
+        "The people in the pitch meeting may not be the people who build. Get the names of the engineers written into the proposal.",
+      node: <PitchTeam />,
+    },
+    {
+      before: "Common questions",
+      caption:
+        "Source code, cloud accounts and domains belong to the client from the first commit, so another team can pick up the system if it ever needs to.",
+      node: <Keys />,
     },
   ],
 };

@@ -16,22 +16,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Bank, Cloud, Coin, Doc, Handset, Letter, Lens, Person, Server } from "./props";
-
-function Legend({ items }: { items: [string, string, string][] }) {
-  return (
-    <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-      {items.map(([dot, title, detail]) => (
-        <li key={title} className="flex items-start gap-3">
-          <span className={`mt-1.5 size-4 shrink-0 rounded-full ${dot}`} />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">{title}</span> {detail}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* ================================================================== */
 /* 1. Tolerance levels: an outage, measured three ways                 */
@@ -172,11 +158,11 @@ export function Tolerance() {
   return (
     <div>
       <ToleranceScene />
-      <Legend
+      <KeyLine
         items={[
-          ["bg-wattle", "Maximum period of disruption.", "The stopwatch. A recovery time per service, tested, that lands before the tolerance mark."],
-          ["bg-magenta-chart", "Maximum extent of data loss.", "The records. Replication and backups keep any loss inside the dashed line."],
-          ["bg-wattle", "Minimum service in degraded mode.", "The detour. A slower way that still works, such as manual processing."],
+          { label: "Time down", dot: "bg-wattle" },
+          { label: "Data lost", dot: "bg-magenta-chart" },
+          { label: "Degraded mode", dot: "bg-wattle-tint ring-2 ring-wattle" },
         ]}
       />
     </div>
@@ -317,11 +303,11 @@ export function Monitoring() {
   return (
     <div>
       <MonitoringScene />
-      <Legend
+      <KeyLine
         items={[
-          ["bg-settled", "Server checks:", "every machine is up, so every light stays green, even while customers can't pay."],
-          ["bg-magenta", "A journey check:", "a test payment asks \"can a customer make a payment?\" end to end, and finds the break."],
-          ["bg-stop", "The 24-hour notice:", "APRA must hear within 24 hours when a critical operation is outside tolerance."],
+          { label: "Server checks", dot: "bg-settled" },
+          { label: "Journey check", dot: "bg-magenta" },
+          { label: "24-hour notice", dot: "bg-stop" },
         ]}
       />
     </div>
@@ -461,20 +447,14 @@ export function FourthParty() {
   return (
     <div>
       <FourthPartyScene />
-      <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-        {[
-          ["Top: regulated entities.", "Three banks, sharing some of the same vendors."],
-          ["Middle: material service providers.", "The vendors each bank has a contract with."],
-          ["Bottom: fourth parties.", "An offshore support team, a shared cloud and a fraud engine. No bank signed anything with them."],
-        ].map(([t, d]) => (
-          <li key={t} className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">{t}</span> {d}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-4 border-t border-hairline pt-4 text-label font-normal text-copy">
-        The dashed outline is one bank&apos;s dependency map: every critical operation, traced down to fourth parties, and kept current.
-      </p>
+      <KeyLine
+        items={[
+          { label: "Banks" },
+          { label: "Vendors" },
+          { label: "Fourth parties" },
+          { label: "One bank's dependency map", dot: "bg-magenta-tint ring-2 ring-magenta" },
+        ]}
+      />
     </div>
   );
 }

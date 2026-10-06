@@ -16,25 +16,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { ColumnLabels, KeyLine } from "./Key";
 import { Bank, Coin, Doc, Handset, Laptop, Lens, Person, Server, Shop } from "./props";
-
-function Columns({ items }: { items: { title: string; chip?: [string, string]; detail: string }[] }) {
-  return (
-    <ul className={`mt-6 grid gap-5 md:gap-8 ${items.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-      {items.map((it) => (
-        <li key={it.title}>
-          <p className="font-semibold text-ink">{it.title}</p>
-          {it.chip && (
-            <p className="mt-1">
-              <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${it.chip[1]}`}>{it.chip[0]}</span>
-            </p>
-          )}
-          <p className="mt-2 text-label font-normal text-copy">{it.detail}</p>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* ================================================================== */
 /* 1. The licence decides: no deposits, capped deposits, or deposits    */
@@ -173,11 +156,11 @@ export function LicencePath() {
   return (
     <div>
       <LicencePathScene />
-      <Columns
+      <ColumnLabels
         items={[
-          { title: "Non-bank lender", chip: ["ASIC credit licence", "bg-shallows text-ink ring-1 ring-hairline-strong"], detail: "Can't take deposits. CPS 230 doesn't apply, but credit and conduct controls do." },
-          { title: "Restricted ADI", chip: ["APRA, up to two years", "bg-wattle-tint text-wattle"], detail: "Deposits capped at $2 million in total and $250,000 per account-holder. Then it moves to a full licence or exits." },
-          { title: "Full ADI", chip: ["APRA licence", "bg-magenta-tint text-magenta-deep"], detail: "Can take deposits. CPS 230 applies, with ongoing vendor oversight and data sharing." },
+          { title: "Non-bank lender", chip: ["No deposits", "bg-shallows text-ink ring-1 ring-hairline-strong"] },
+          { title: "Restricted ADI", chip: ["Capped at $2 million, up to 2 years", "bg-wattle-tint text-wattle"] },
+          { title: "Full ADI", chip: ["Takes deposits", "bg-magenta-tint text-magenta-deep"] },
         ]}
       />
     </div>
@@ -293,10 +276,11 @@ export function Cdr() {
   return (
     <div>
       <CdrScene />
-      <Columns
+      <KeyLine
         items={[
-          { title: "As a data holder", detail: "Product data such as rates, fees and eligibility goes out through the CDR standards, then consumer data with consent. Its accuracy is the lender's job, whichever vendor serves it." },
-          { title: "As a data recipient", detail: "With the customer's consent, transaction data from other institutions feeds a credit assessment. It becomes an input to the decisioning you build." },
+          { label: "Product data out", dot: "bg-magenta-chart" },
+          { label: "Customer consents", dot: "bg-settled" },
+          { label: "Transaction data in", dot: "bg-magenta" },
         ]}
       />
     </div>
@@ -417,12 +401,7 @@ export function CoreSwap() {
   return (
     <div>
       <CoreSwapScene />
-      <Columns
-        items={[
-          { title: "Calling the core directly", detail: "At renewal, a switch means rewiring the app, decisioning and reporting one by one. A negotiation you can't walk away from." },
-          { title: "Through your own API layer", detail: "A switch is still hard, but possible: one connection changes. That leverage shows up in the contract terms." },
-        ]}
-      />
+      <ColumnLabels items={[{ title: "Wired straight to the core" }, { title: "Through your own API layer" }]} />
     </div>
   );
 }

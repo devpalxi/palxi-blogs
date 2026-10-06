@@ -15,6 +15,7 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Bank, Bubble, Coin, Doc, Letter, Padlock, Person, Phone, Seal, WebForm } from "./props";
 
 /* ================================================================== */
@@ -149,18 +150,13 @@ export function Ledger() {
   return (
     <div>
       <LedgerScene />
-      <ol className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-        {[
-          ["Balanced entries", "A repayment, interest and a fee each write the same amount on both sides, so the books stay level."],
-          ["Reverse, never rub out", "A dishonoured repayment gets a new reversing entry. The original stays, and the log shows who did what."],
-          ["Reconcile every day", "Match the ledger to what the bank account received, clear the exceptions, keep the evidence."],
-        ].map(([t, d]) => (
-          <li key={t}>
-            <p className="font-semibold text-ink">{t}</p>
-            <p className="mt-1 text-label font-normal text-copy">{d}</p>
-          </li>
-        ))}
-      </ol>
+      <KeyLine
+        items={[
+          { label: "Balanced entries", dot: "bg-magenta" },
+          { label: "Reversal, never erased", dot: "bg-stop" },
+          { label: "Matched to the bank", dot: "bg-settled" },
+        ]}
+      />
     </div>
   );
 }
@@ -245,26 +241,13 @@ export function Rails() {
   return (
     <div>
       <RailsScene />
-      <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-        <li className="flex items-start gap-3">
-          <span className="mt-1.5 size-4 shrink-0 rounded-full bg-magenta" />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">Top track: PayTo.</span> Runs on the New Payments Platform. The customer approves the agreement in their banking app.
-          </p>
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="mt-1.5 size-4 shrink-0 rounded-full bg-wattle" />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">Bottom track: BECS direct debit.</span> The older rail, with no switch-off date any more.
-          </p>
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="mt-1.5 size-4 shrink-0 rounded-full bg-stop" />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">The lever.</span> Each loan holds its own mandate type, so moving it is a data change, not a rebuild.
-          </p>
-        </li>
-      </ul>
+      <KeyLine
+        items={[
+          { label: "PayTo", dot: "bg-magenta-chart" },
+          { label: "BECS direct debit", dot: "bg-wattle" },
+          { label: "Switch per loan", dot: "bg-stop" },
+        ]}
+      />
     </div>
   );
 }
@@ -398,18 +381,13 @@ export function HardshipClock() {
   return (
     <div>
       <HardshipClockScene />
-      <ol className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-        {[
-          ["One case, every channel", "Phone, email, web form or chat: each opens a hardship case with the date received."],
-          ["A visible 21-day clock", "The decision is due within 21 days. Alerts go off well before then."],
-          ["No silent closes", "A case can't close until the customer's notice is sent and a copy is stored."],
-        ].map(([t, d]) => (
-          <li key={t}>
-            <p className="font-semibold text-ink">{t}</p>
-            <p className="mt-1 text-label font-normal text-copy">{d}</p>
-          </li>
-        ))}
-      </ol>
+      <KeyLine
+        items={[
+          { label: "Every channel, one case", dot: "bg-wattle" },
+          { label: "21-day clock", dot: "bg-magenta-chart" },
+          { label: "Notice sent and kept", dot: "bg-settled" },
+        ]}
+      />
     </div>
   );
 }

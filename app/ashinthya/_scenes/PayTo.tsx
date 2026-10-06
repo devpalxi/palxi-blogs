@@ -6,7 +6,6 @@ import {
   Draw,
   FadeIn,
   FadeOut,
-  HEX,
   Move,
   Pop,
   Pulse,
@@ -17,22 +16,8 @@ import {
   drawable,
   ease,
 } from "./kit";
+import { KeyLine } from "./Key";
 import { Bank, Coin, Doc, Handset, Lens, Person, Server, Shop } from "./props";
-
-function Rows({ items }: { items: [string, string, string][] }) {
-  return (
-    <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-8">
-      {items.map(([dot, title, detail]) => (
-        <li key={title} className="flex items-start gap-3">
-          <span className={`mt-1.5 size-4 shrink-0 rounded-full ${dot}`} />
-          <p className="text-label font-normal text-copy">
-            <span className="font-semibold text-ink">{title}</span> {detail}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* ================================================================== */
 /* 1. Two legs: a PayTo pull to fund, NPP pushes to pay out             */
@@ -151,11 +136,11 @@ export function TwoLegs() {
   return (
     <div>
       <TwoLegsScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-wattle", "Funding: a PayTo pull.", "The payer authorises an agreement in online banking, then the platform debits within its terms."],
-          ["bg-magenta-chart", "Payouts: NPP credit transfers.", "Real time, 24/7, one payee at a time, to a BSB and account number or PayID."],
-          ["bg-wattle", "Fallback: BECS direct entry.", "Batched and slower, for the accounts the NPP can't reach."],
+          { label: "PayTo pull", dot: "bg-wattle" },
+          { label: "NPP payout", dot: "bg-magenta-chart" },
+          { label: "BECS fallback", dot: "bg-wattle-tint ring-2 ring-wattle" },
         ]}
       />
     </div>
@@ -309,11 +294,11 @@ export function Cop() {
   return (
     <div>
       <CopScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-settled", "Match:", "activate the payee for payouts, and keep the request, result and time."],
-          ["bg-wattle", "Close match:", "show the returned name and ask someone to confirm. Record who did, and when."],
-          ["bg-stop", "No match:", "hold the payee and ask for new details. Re-run the check whenever bank details change."],
+          { label: "Match: activate", dot: "bg-settled" },
+          { label: "Close match: confirm", dot: "bg-wattle" },
+          { label: "No match: hold", dot: "bg-stop" },
         ]}
       />
     </div>
@@ -469,11 +454,10 @@ export function Idempotent() {
   return (
     <div>
       <IdempotentScene />
-      <Rows
+      <KeyLine
         items={[
-          ["bg-wattle", "An idempotency key", "on every payout instruction, so a timeout never becomes a double payment."],
-          ["bg-magenta-chart", "A clear status model:", "submitted, settled, rejected and held are separate states."],
-          ["bg-wattle", "A BECS fallback", "for unreachable accounts, with the payee told about the delay."],
+          { label: "Same key, paid once", dot: "bg-wattle" },
+          { label: "Unreachable: BECS fallback", dot: "bg-wattle-tint ring-2 ring-wattle" },
         ]}
       />
     </div>

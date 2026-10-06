@@ -1,4 +1,4 @@
-import { Anim, C, FadeIn, Pop, Pulse, Scene, Turn, ease } from "./kit";
+import { Anim, C, Pop, Pulse, Scene, Turn, ease } from "./kit";
 
 /*
  * One incident, several clocks. A shock spreads out from the incident and
@@ -19,28 +19,28 @@ const CLOCKS: Clock[] = [
   {
     amount: "24 hours",
     tag: "CPS 230",
-    label: "A critical operation is disrupted beyond tolerance",
+    label: "Critical operation disrupted",
     sand: C.stop,
     run: 2.4,
   },
   {
     amount: "72 hours",
     tag: "CPS 234",
-    label: "A material information security incident",
+    label: "Security incident",
     sand: C.wattle,
     run: 4.6,
   },
   {
     amount: "72 hours",
     tag: "CPS 230",
-    label: "An operational risk incident with material impact",
+    label: "Operational risk incident",
     sand: C.wattle,
     run: 4.6,
   },
   {
     amount: "10 business days",
     tag: "CPS 234",
-    label: "A material control weakness that can't be fixed in time",
+    label: "Weakness not fixed in time",
     sand: C.chart,
     run: 7.6,
   },
@@ -146,7 +146,7 @@ export function Hourglasses() {
   return (
     <div>
       <IncidentScene />
-      <p className="mt-1 text-center font-semibold text-ink">An incident happens</p>
+      <p className="mt-1 text-center font-semibold text-ink">An incident</p>
       <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4">
         {CLOCKS.map((clock, i) => (
           <li key={`${clock.amount}-${clock.tag}`} className="text-center">
@@ -161,10 +161,6 @@ export function Hourglasses() {
           </li>
         ))}
       </ul>
-      <p className="mt-8 border-t border-hairline pt-4 text-label font-normal text-copy">
-        Not to scale. Privacy Act and ransomware payment reporting add further
-        clocks.
-      </p>
     </div>
   );
 }
