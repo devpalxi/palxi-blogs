@@ -20,6 +20,7 @@ export type Article = {
 const contentDir = path.join(process.cwd(), "content", "ashinthya");
 const imageBase = "/images/blog/ashinthya";
 const siteOrigin = "https://palxi.com.au";
+// Refreshed articles cache
 
 function parseFrontmatter(raw: string) {
   const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/.exec(raw);
@@ -112,3 +113,5 @@ export function formatDate(iso: string) {
     timeZone: "Australia/Darwin",
   }).format(new Date(`${iso}T12:00:00+09:30`));
 }
+
+// reloaded 1791321057.4454975

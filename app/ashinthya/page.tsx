@@ -49,10 +49,10 @@ export default function AshinthyaIndex() {
                   minute read
                 </p>
               </div>
-              <span className="inline-flex min-h-12 items-center gap-2 self-start rounded-sm bg-magenta px-5 text-label font-semibold text-surface transition-[background-color,transform] duration-200 ease-out-quart group-hover:bg-magenta-deep group-active:scale-[0.98] sm:self-end">
-                Read the article
+              <span className="inline-flex min-h-12 w-fit items-center gap-1.5 justify-self-start rounded-sm bg-magenta px-5 text-label font-semibold text-surface transition-[background-color,transform] duration-200 ease-out-quart group-hover:bg-magenta-deep group-active:scale-[0.98] sm:self-end">
+                <span>Read the article</span>
                 <ArrowRightIcon
-                  size={20}
+                  size={18}
                   className="transition-transform duration-200 ease-out-quart group-hover:translate-x-0.5"
                 />
               </span>

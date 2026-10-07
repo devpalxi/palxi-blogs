@@ -60,7 +60,7 @@ export default function BlogIndex() {
                 >
                   <ArrowRightIcon size={22} />
                 </span>
-                <span className="btn-primary self-start lg:hidden">
+                <span className="btn-primary w-fit justify-self-start self-start lg:hidden">
                   Read the story
                   <span className="btn-chip">
                     <ArrowRightIcon size={20} />

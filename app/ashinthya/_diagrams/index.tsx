@@ -13,6 +13,13 @@ import { Cycle, Receipt, RulesStamp } from "../_scenes/Iso27001";
 import { Cop, Idempotent, TwoLegs } from "../_scenes/PayTo";
 import { FixLoop, TestingYear, ThreeTests } from "../_scenes/PenTest";
 import { Mill, ScopeCheck, Types } from "../_scenes/Soc2";
+import { Failover, RailSwitch, SingleLedger } from "../_scenes/Orchestration";
+import { ApiBridge, DataVault, DualPipes } from "../_scenes/BankIntegration";
+import { CdrAccreditation, ConsentGate, DataConduit } from "../_scenes/ConsumerDataRight";
+import { AuditLiquidity, SegregatedAccounts, WatermarkFee } from "../_scenes/YieldPlatform";
+import { HedgeBalance, MintBurn, MpcKeys } from "../_scenes/DigitalAssets";
+import { ComplianceCubes, FraudFilter, GapChecklist } from "../_scenes/RiskCompliance";
+import { BypassBridge, CostTiers, PartnerVetting } from "../_scenes/ModernBuild";
 
 export type Placement = {
   // Text of the h2 the diagram sits directly above.
@@ -270,6 +277,171 @@ export const diagrams: Record<string, Placement[]> = {
       caption:
         "Source code, cloud accounts and domains belong to the client from the first commit, so another team can pick up the system if it ever needs to.",
       node: <Keys />,
+    },
+  ],
+
+  "payment-orchestration-card-a2a": [
+    {
+      before: "Payment processing software that sends each payment the right way",
+      caption:
+        "How the switch works: A customer payment coin enters the smart router. The lever flips downward, steering larger payments onto the low-cost PayTo bank rail directly to the vault to avoid card processing fees.",
+      node: <RailSwitch />,
+    },
+    {
+      before: "Keeping payments running when something breaks",
+      caption:
+        "How failover works: When the primary card processor times out behind a red barrier, the engine automatically catches the error and pivots the payment through the secondary green gateway, completing the checkout with zero customer disruption.",
+      node: <Failover />,
+    },
+    {
+      before: "One record of every payment",
+      caption:
+        "How the ledger balances: Card transactions and bank-to-bank payouts feed in from both sides into a central digital ledger. Each entry is stamped with matched references and fee breakdowns, producing a single reconciled financial record.",
+      node: <SingleLedger />,
+    },
+  ],
+
+  "bank-integration-platforms-australia": [
+    {
+      before: "Moving money: the overnight file and the instant payment",
+      caption:
+        "How payment rails compare: Above, a slow mechanical conveyor moves overnight ABA batch files that wait for overnight settlement. Below, a high-speed fiber tube flashes instant PayTo and Osko payments directly into the bank ledger in seconds.",
+      node: <DualPipes />,
+    },
+    {
+      before: "Reading bank data with the customer's permission",
+      caption:
+        "How data consent works: The customer confirms permission on their phone with a biometric check. This turns the digital vault dial, unlocking an encrypted stream of historical bank statements directly into the accounting dashboard.",
+      node: <DataVault />,
+    },
+    {
+      before: "Choosing API integration services for your product",
+      caption:
+        "How the adapter hub works: Three different Australian banks send data in unique, proprietary formats. The central translation hub turns the internal gears, converting every feed into one clean, standardized API stream for your platform.",
+      node: <ApiBridge />,
+    },
+  ],
+
+  "consumer-data-right-build": [
+    {
+      before: "Two jobs for every data holder",
+      caption:
+        "How customer control works: The user toggles permission for transaction data on their mobile screen while leaving contact data locked. The system unlocks only the permitted data gate, ensuring unconsented personal records stay private.",
+      node: <ConsentGate />,
+    },
+    {
+      before: "What CDR compliance looks like after launch",
+      caption:
+        "How the CDR pipeline works: Encrypted customer records pass through an automated conformance gate that validates data schemas and tracks latency against strict ACCC response standards before reaching the accredited dashboard.",
+      node: <DataConduit />,
+    },
+    {
+      before: "If your business wants to receive the data",
+      caption:
+        "How accreditation works: Independent compliance checks verify information security, insurance, and audit trails. Once all controls are ticked off, the official CDR accreditation seal stamps the entity as a verified data recipient.",
+      node: <CdrAccreditation />,
+    },
+  ],
+
+  "yield-platform-engineering": [
+    {
+      before: "Showing returns honestly on a yield platform",
+      caption:
+        "How high-water marks work: Return levels in the reservoir rise past the previous peak benchmark line. The overflow pipe directs performance fees only from the excess growth, ensuring managers are never rewarded for recovering previous losses.",
+      node: <WatermarkFee />,
+    },
+    {
+      before: "Keeping client money separate",
+      caption:
+        "How account segregation works: Client investment funds sit in an independent bank trust vault on the left, completely separated by an impassable statutory barrier from the company's daily operational expense account on the right.",
+      node: <SegregatedAccounts />,
+    },
+    {
+      before: "Questions to ask before you build or invest",
+      caption:
+        "How liquidity balancing works: The balance scale tilts as liquid cash reserves on the left tray offset productive loan assets on the right tray. Daily audits verify that sufficient cash is on hand to satisfy routine redemption requests.",
+      node: <AuditLiquidity />,
+    },
+  ],
+
+  "audd-stablecoin-minting-redemption": [
+    {
+      before: "How minting works: turning bank deposits into digital tokens",
+      caption:
+        "How minting works: Australian dollars are deposited into an independent bank reserve vault on the left. The automated coining press strikes a new digital AUDD token on the ledger, delivering it directly to the customer wallet.",
+      node: <MintBurn />,
+    },
+  ],
+
+  "fireblocks-integration-digital-asset-custody": [
+    {
+      before: "How a Fireblocks integration works: key shares and policy rules",
+      caption:
+        "How MPC key shares work: Private key shards are isolated across three separate secure locations. When any two of the three turn their keys in consensus, the transaction vault unlocks without ever exposing a complete private key in one place.",
+      node: <MpcKeys />,
+    },
+  ],
+
+  "crypto-hedging-treasury-tools": [
+    {
+      before: "Core tools for managing a digital asset treasury",
+      caption:
+        "How treasury hedging works: Market price swings in spot crypto tokens on the left pan are countered by an automated hedging contract on the right pan, holding the overall treasury value flat in Australian dollars.",
+      node: <HedgeBalance />,
+    },
+  ],
+
+  "fraud-detection-payments": [
+    {
+      before: "Rule engines versus AI fraud detection: finding the balance",
+      caption:
+        "How fraud filtering works: Incoming payments pass through a rapid two-stage filter. A rule sieve blocks obvious threshold breaches, while an AI engine scans behavioural patterns, diverting suspicious cards to quarantine while honest shoppers pass through.",
+      node: <FraudFilter />,
+    },
+  ],
+
+  "compliance-software-build-or-buy": [
+    {
+      before: "Where building custom compliance workflows wins",
+      caption:
+        "How the hybrid model works: Standard commoditised utilities like sanctions screening and PEP lists plug in as pre-built blocks, connecting seamlessly with custom risk logic tailored to your specific customer onboarding flow.",
+      node: <ComplianceCubes />,
+    },
+  ],
+
+  "iso-27001-gap-analysis-implementation": [
+    {
+      before: "The three biggest gaps Australian firms face",
+      caption:
+        "How a gap review works: An auditor's checklist systematically highlights missing records and access controls in red. The engineering team applies technical fixes, turning identified gaps into verified green audit seals.",
+      node: <GapChecklist />,
+    },
+  ],
+
+  "bespoke-software-cost-financial-services-australia": [
+    {
+      before: "The three main project price tiers",
+      caption:
+        "How project scopes scale: Project investment increases predictably from a lightweight Tier 1 pilot prototype to a Tier 2 production engine and a heavy-duty Tier 3 enterprise core, reflecting transaction scale and compliance rigor.",
+      node: <CostTiers />,
+    },
+  ],
+
+  "choosing-software-development-partner-regulated": [
+    {
+      before: "Five key questions to ask prospective partners",
+      caption:
+        "How partner due diligence works: A partner credentials folder is reviewed with a magnifying glass. Key standards including local senior engineers, full IP ownership, and independent security certifications are verified before contracts are signed.",
+      node: <PartnerVetting />,
+    },
+  ],
+
+  "legacy-core-banking-modernisation": [
+    {
+      before: "The four steps of progressive modernisation",
+      caption:
+        "How progressive modernisation works: Rather than demolishing an aging legacy core system, engineers build a modern cloud bypass bridge alongside it. Traffic is diverted lane by lane until the legacy mainframe can be retired safely without downtime.",
+      node: <BypassBridge />,
     },
   ],
 };
