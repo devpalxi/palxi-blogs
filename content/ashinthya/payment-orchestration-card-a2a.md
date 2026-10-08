@@ -17,156 +17,168 @@ lang: "en-AU"
 
 # Payment processing software for cards and bank transfers
 
-Since 1 October 2026, Australian businesses can no longer add a surcharge when a customer pays with an eftpos, Mastercard or Visa card ([Reserve Bank of Australia](https://www.rba.gov.au/media-releases/2026/mr-26-10.html), March 2026). The Reserve Bank estimates that consumers were paying about $1.6 billion of the $1.8 billion in card surcharges each year ([RBA](https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/impact-and-implementation.html), March 2026).
+Since 1 October 2026, Australian businesses can no longer add a surcharge when a customer pays using an eftpos, Mastercard, or Visa card ([Reserve Bank of Australia](https://www.rba.gov.au/media-releases/2026/mr-26-10.html), March 2026). The Reserve Bank of Australia (RBA) estimates that Australian consumers were previously paying approximately $1.6 billion AUD of the $1.8 billion AUD in annual card surcharges at retail checkouts, cafes, and online stores ([RBA](https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/impact-and-implementation.html), March 2026).
 
-That cost now sits with the business, inside its prices. So the way you take payments matters more than it did a month ago.
+With surcharges removed, payment processing fees must now be absorbed within a business's advertised prices. How an organisation accepts payments, routes transactions, and negotiates processing costs now directly affects everyday operating margins.
 
-Plenty of businesses now accept cards and direct bank transfers side by side. Each may come with its own provider, its own reports and its own login. Good payment processing software can bring them into one place. Below is what that looks like in plain words, and what to ask before you build or buy it.
+Today, many Australian organisations accept credit cards, debit cards, and direct bank transfers side by side. Yet each payment method often operates through a separate software provider, generating separate monthly statements, separate administration portals, and separate login details. 
+
+Modern payment processing software — often called payment orchestration — brings all of these payment methods into a single, unified system. 
+
+This guide explains how Palxi approaches payment processing across our products, how smart routing helps manage transaction costs, and what practical questions to consider before choosing a payment setup.
 
 ## What changed on 1 October 2026
 
-The decision came from the Reserve Bank's Payments System Board in March 2026. The three card networks it regulates, eftpos, Mastercard and Visa, each brought in "no-surcharge" rules from 1 October. American Express, UnionPay and PayPal decided to do the same, though the Reserve Bank does not formally regulate them ([RBA, questions and answers](https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/faqs/)).
+The national decision to remove card surcharges was established by the Reserve Bank's Payments System Board in March 2026. Under the new rules, the three domestic card networks regulated by the RBA — eftpos, Mastercard, and Visa — introduced mandatory "no-surcharge" terms effective 1 October 2026. While the Reserve Bank does not formally regulate international charge cards like American Express, UnionPay, or digital wallets like PayPal, those providers also adopted no-surcharge policies across the Australian retail market ([RBA questions and answers](https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/faqs/)).
 
-The Reserve Bank also lowered the caps on interchange fees. An interchange fee is a small charge paid to the bank that issued your customer's card, every time the card is used. It is built into the fees your own payment provider charges you. A cap on interchange for cards issued overseas starts on 1 April 2027.
+Alongside the surcharge changes, the Reserve Bank lowered the regulated caps on interchange fees. An interchange fee is a small wholesale fee paid between banks every time a card is tapped, which forms part of the fee your payment provider charges your business. A corresponding cap on cards issued by overseas banks comes into effect on 1 April 2027.
 
-One thing stayed the same. In the Reserve Bank's words, "Businesses can continue to offer discounts for particular payment methods." A business can still reward customers who pay in a way that costs it less.
+Importantly, one valuable commercial flexibility remains untouched: as the Reserve Bank confirmed, "Businesses can continue to offer discounts for particular payment methods." While a business can no longer penalise a customer for using a card, it is entirely free to reward customers who choose an alternative payment method — such as a direct bank transfer — that costs the business less to process.
 
 ## Two ways money moves: cards and bank-to-bank
 
-Cards are still the everyday choice. In the Reserve Bank's latest survey, "one in every two consumer payments" was made with a debit card. Cash made up around 15 per cent of payments, and online purchases around 20 per cent ([RBA Bulletin](https://www.rba.gov.au/publications/bulletin/2026/may/consumer-payment-behaviour-in-australia.html), May 2026).
+Payment cards remain the most common way Australians pay for everyday items. According to recent Reserve Bank research, "one in every two consumer payments" in Australia is made using a debit card. Cash accounts for roughly 15 per cent of everyday purchases, while online commerce represents approximately 20 per cent of consumer spending ([RBA Bulletin](https://www.rba.gov.au/publications/bulletin/2026/may/consumer-payment-behaviour-in-australia.html), May 2026).
 
-Bank-to-bank payments work differently. They are often called account-to-account, or A2A, payments. Money moves straight from the customer's bank account to yours, with no card network in the middle.
+Direct bank transfers operate on a different model. Frequently referred to as account-to-account (A2A) payments, these transactions move funds directly from the customer's bank account into the merchant's bank account without passing through an intermediary card network like Visa or Mastercard.
 
-In Australia these run on the New Payments Platform (NPP), the shared system that banks use for fast transfers. It launched in February 2018 and offers "near real-time funds availability to the recipient, on a 24/7 basis" ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/)).
+In Australia, modern bank transfers travel over the New Payments Platform (NPP) — the national payments network launched in February 2018 to provide "near real-time funds availability to the recipient, on a 24/7 basis" ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/)).
 
-Two NPP services matter most to a business:
+Two NPP services are particularly relevant to Australian businesses:
 
-- PayID lets a customer pay to an easy address, such as a mobile number, email or ABN, instead of a BSB and account number. Around half of the people surveyed had used PayID at least once in the past year.
-- PayTo lets a customer approve a payment agreement inside their own online banking. The business can then collect money from their account under those terms, a little like a modern direct debit. PayTo is still small, at 4 percentage points of account-to-account payments in 2025.
+- **PayID:** Allows a customer to send funds instantly using a simple identifier, such as a mobile phone number, email address, or Australian Business Number (ABN), instead of remembering a six-digit BSB and account number. Approximately half of Australian adults surveyed have used PayID.
+- **PayTo:** Enables a customer to pre-authorise an ongoing or ad-hoc payment agreement directly inside their own Australian banking app on their smartphone. Once approved, the business can initiate account debits automatically, functioning as a fast, digital upgrade to traditional direct debits. While PayTo represented roughly 4 percentage points of bank-to-bank transfers in 2025, adoption is growing steadily.
 
-Our guide to [building PayTo and account-to-account payouts](/blog/payto-a2a-payouts-australia) goes further into how PayTo works.
+For a deeper look at the underlying technology, explore our companion guide on [building PayTo and account-to-account payouts](/blog/payto-a2a-payouts-australia).
 
-| | Card payments | Bank-to-bank payments |
+| Payment characteristic | Card payments | Direct bank-to-bank payments |
 |---|---|---|
-| How the customer pays | Taps, inserts or types in a card | Uses a PayID, a BSB and account number, or a PayTo agreement |
-| Who sits in the middle | A card network, such as eftpos, Mastercard or Visa | The New Payments Platform, between the two banks |
-| How fast money arrives | Depends on your provider's payout schedule | Near real time, any hour of any day |
-| How common it is | Debit cards: one in two consumer payments | PayTo: 4 percentage points of bank-to-bank payments |
+| Customer experience | Taps a physical card, inserts a chip, or types card digits online | Uses a mobile PayID, confirms a PayTo mandate in their banking app, or enters a BSB |
+| Payment intermediary | Card scheme networks (eftpos, Mastercard, or Visa) | The New Payments Platform (NPP) connecting Australian banks directly |
+| Settlement speed | Depends on your payment provider's batch payout schedule (often next business day) | Near real time, settling 24 hours a day, including weekends and public holidays |
+| Market adoption | Debit cards represent roughly 50 per cent of all Australian consumer transactions | Rapidly expanding, with PayID used by over half of Australian consumers |
 
 ## Payment processing software that sends each payment the right way
 
-Picture a railway junction. Trains arrive on one line, and a set of points sends each train onto the right track. Payment orchestration does the same job for money.
+Think of a busy railway junction. Trains approach on an incoming track, and mechanical points switch each train onto the proper line to ensure safe, timely arrival. Payment orchestration performs that exact switching role for money.
 
 ![Several railway tracks curving and crossing at a busy junction, with sets of points between them](railway-junction.jpg)
 
-*At a junction, the points decide which track each train takes.*
+*At a railway junction, switching points steer each train along the most efficient track.*
 
-In plain terms, payment orchestration is a layer of payment processing software that sits between your checkout and all your payment providers. Every payment comes in through one front door. The software decides which provider should handle it, passes it on, and writes down what happened.
+In plain words, payment orchestration is a software layer that sits between your checkout screen and all your underlying payment providers. Every customer payment enters through one front door. The software evaluates the transaction, directs it to the most affordable or reliable provider, and records the outcome in a single ledger.
 
-Underneath sits payment integration, which is the plumbing. Each provider offers an API (a set, agreed way for two computer systems to pass information to each other). Integration means connecting your own systems to each provider's API. Payments, refunds and reports then flow across without anyone retyping them. Our piece on [bank integration platforms](/blog/bank-integration-platforms-australia) covers that plumbing in more detail.
+Beneath the surface sits payment integration — the technical plumbing. Each financial provider offers an Application Programming Interface (API), which is simply a secure, standardized way for two computer systems to talk to each other. Connecting these software bridges allows payments, automated refunds, and accounting statements to exchange information without staff ever having to retype numbers manually. Our guide on [bank integration platforms](/blog/bank-integration-platforms-australia) explores these technical connections in greater detail.
 
-A well-planned orchestration layer usually gives a business:
+A well-architected payment orchestration system provides:
 
-- one checkout offering both card and bank transfer options
-- rules about which provider handles which payment
-- a backup option when one provider is down
-- one record of every payment, refund and fee
-- the freedom to change providers later without rebuilding the checkout
+- A unified checkout offering both card payments and real-time bank transfers.
+- Automated routing rules that direct each payment through the lowest-cost provider.
+- Automatic fallback protection if a payment gateway experiences an outage.
+- A single master record of all customer transactions, refunds, and merchant fees.
+- The flexibility to introduce new payment providers in the future without redesigning your customer screens.
 
 ## Choosing the cheaper path for each payment
 
-A debit card can carry two networks: eftpos, plus either Debit Mastercard or Visa Debit. Least-cost routing, or LCR, lets the business send that payment through whichever network costs it less. The customer taps the same way either way.
+Most Australian debit cards are dual-network cards: they carry both the domestic eftpos network and an international scheme like Mastercard or Visa. Least-Cost Routing (LCR) allows an Australian business to automatically route a debit card tap through whichever network charges the merchant the lowest processing fee, while the customer's payment experience remains identical.
 
-As at the end of June 2026, 83 per cent of merchants had LCR switched on for in-person payments. For online payments, LCR was available to 98 per cent of merchants, and take-up was still growing ([RBA, LCR update](https://www.rba.gov.au/payments-and-infrastructure/debit-cards/least-cost-routing/updates/lcr-update-on-implementation-0826.html), September 2026). Available is not the same as switched on, so it is worth asking your provider which applies to you.
+By June 2026, 83 per cent of Australian retail merchants had Least-Cost Routing active on their in-person countertop terminals, while LCR availability for online checkouts reached 98 per cent ([RBA, LCR update](https://www.rba.gov.au/payments-and-infrastructure/debit-cards/least-cost-routing/updates/lcr-update-on-implementation-0826.html), September 2026). However, availability does not always mean it is switched on by default; businesses should verify with their bank or payment terminal provider that LCR is actively enabled.
 
-Orchestration takes the same idea further. With one layer in charge, a business can set its own rules. For example, it might:
+Payment orchestration takes this cost efficiency further by applying smart business rules across all payment types:
 
-1. send debit card payments through least-cost routing, in store and online
-2. offer PayTo for regular bills, such as monthly memberships
-3. show a discount at checkout for paying by bank transfer, if that costs the business less
-4. move payments to a second provider if the first one's fees rise
+1. Routing dual-network debit card payments through least-cost routing both in store and online.
+2. Offering instant PayTo bank transfers for recurring accounts or subscription billing to avoid ongoing card interchange fees.
+3. Providing checkout incentives or modest settlement discounts for customers choosing direct bank transfers.
+4. Diverting payment volume to an alternative provider if a vendor increases its processing fees.
 
-Whether any rule saves money depends on what your providers charge. Get each price in writing, per payment, before you set the rules.
+Whether these routing rules reduce operating expenses depends on the specific commercial pricing negotiated with your providers. Always obtain detailed fee schedules per transaction before configuring automated rules.
 
 ## Keeping payments running when something breaks
 
-Payment systems in Australia are reliable, but they do stop. A Reserve Bank study of outages found every retail payment service had "an average availability of 99.80 per cent or higher per quarter" ([RBA Bulletin](https://www.rba.gov.au/publications/bulletin/2024/oct/the-reliability-of-retail-payment-services.html), October 2024). That sounds close to perfect. Yet 0.2 per cent of a three-month quarter still allows up to about four hours offline.
+While Australia's retail payment infrastructure is highly reliable, technical outages do occur. An RBA review of payment reliability noted that major retail payment channels maintained "an average availability of 99.80 per cent or higher per quarter" ([RBA Bulletin](https://www.rba.gov.au/publications/bulletin/2024/oct/the-reliability-of-retail-payment-services.html), October 2024). 
 
-The same study found that card payments had the highest availability. Fast transfers and online banking had the most significant outages. And "the leading cause of outages are issues with third parties", meaning the outside companies that payment services rely on.
+While 99.80 per cent availability sounds impressive, an availability gap of 0.2 per cent still allows for up to four hours of service disruption over a three-month period — which can cause significant disruption if it strikes during a busy trading afternoon.
 
-This is where having two ways to pay helps. Card networks and bank transfers do not run on the same system, so a fault in one may leave the other working. With orchestration, the checkout can offer the other option when one fails. Without it, a customer simply sees an error and may give up.
+The Reserve Bank's analysis highlighted that card networks generally exhibited the highest availability, while internet banking and real-time transfer gateways suffered more frequent disruptions. Furthermore, "the leading cause of outages are issues with third parties", referring to external cloud and communications suppliers.
+
+This is where maintaining multiple payment channels protects a business. Card processing networks and direct bank rails run on completely separate technical infrastructure. If an external card processor experiences an outage, a payment orchestration system can automatically suggest a direct bank transfer or fail over to a backup card processor. Without orchestration, the checkout simply displays an error message, and the frustrated customer walks away.
 
 ## Safety checks on both kinds of payment
 
-Card details need special care. Any business that takes cards must follow PCI DSS, a security standard set by the card industry's own council. The lightest form of checking is a short self-assessment form called SAQ A. It is meant for businesses whose card handling is "completely outsourced to PCI DSS validated and compliant third parties" ([PCI Security Standards Council](https://blog.pcisecuritystandards.org/important-updates-announced-for-merchants-validating-to-self-assessment-questionnaire-a), January 2025).
+Protecting customer payment details requires strict cybersecurity controls. Any organisation that handles credit or debit card data must adhere to the Payment Card Industry Data Security Standard (PCI DSS), an international security benchmark established by the global card networks.
 
-Since 2025, those businesses must also "confirm their site is not susceptible to attacks from scripts". Scripts are small pieces of code that run on a web page. A harmful one could copy card details as a customer types them.
+The simplest and safest compliance approach for small-to-medium businesses is completing Self-Assessment Questionnaire A (SAQ A). This streamlined framework applies when an organisation ensures that customer card handling is "completely outsourced to PCI DSS validated and compliant third parties" ([PCI Security Standards Council](https://blog.pcisecuritystandards.org/important-updates-announced-for-merchants-validating-to-self-assessment-questionnaire-a), January 2025).
 
-The lesson for orchestration is simple. A sound design keeps card numbers on the provider's secure payment page, so they never touch your own systems. Your website still needs looking after, though.
+Under updated security rules, businesses must also confirm that their websites protect customer screens against malicious software scripts — unauthorized code that cybercriminals attempt to inject to harvest card digits as customers type them.
 
-Bank transfers need different checks. Once money lands in the wrong account, getting it back can be hard. We build account-to-account payout flows on PayTo with Confirmation of Payee checks. These compare the account name with the BSB and account number before money leaves. Scams and fraud are a wider topic, covered in our piece on [fraud detection in payments](/blog/fraud-detection-payments).
+The practical rule of thumb is clear: keep card numbers entirely on the licensed provider's encrypted checkout window so that sensitive 16-digit card numbers never touch your internal web servers.
+
+Direct bank transfers require different security precautions. Because bank-to-bank transfers settle in seconds, recovering funds sent to an incorrect account can be difficult. Palxi incorporates Confirmation of Payee verification checks into automated payment workflows, verifying the account holder's registered name against their BSB and account number before money is transferred. Broader security measures are detailed in our guide to [fraud detection for payments](/blog/fraud-detection-payments).
 
 ## One record of every payment
 
 ![Rows of typed dates and dollar amounts in an old bank passbook, some printed in red ink](bank-passbook.jpg)
 
-*Before computers, every deposit and withdrawal was typed into a passbook like this one.*
+*In earlier times, every bank deposit and withdrawal was typed into a physical passbook. Today, digital ledgers balance automatically.*
 
-Reconciliation means matching each payment to the right invoice or order. Think of ticking off a bank statement against your till receipts at the end of the month.
+Financial reconciliation is the process of matching every customer payment against the corresponding sales invoice, order number, or tax receipt. 
 
-Card payments and bank transfers usually arrive with different reports, at different times and in different formats. When they sit in two systems, someone has to match them by hand. That takes time, and it is where mistakes creep in.
+When card payments and bank transfers flow into separate portals, administrative staff must reconcile spreadsheets manually at the end of each month. This manual effort consumes hours and easily leads to accounting discrepancies.
 
-Bank transfers on the NPP help here. They can carry "much richer remittance information" than older bank transfers, which allowed only 18 characters for a reference ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/)). That leaves room for a full invoice number with each payment, so matching can happen automatically.
+Modern bank transfers on the New Payments Platform significantly ease this reconciliation burden. Because NPP transfers support rich ISO 20022 data standards, transactions can carry complete invoice numbers and customer references rather than the limited 18-character descriptions allowed by older bank systems ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/)). This allows accounting software to match incoming bank receipts to customer invoices automatically.
 
-The Reserve Bank's changes on payment cost transparency start on 1 April 2027. Even before then, your own records should show what each type of payment costs you. Systems we have built have processed more than $50M in revenue. At that volume, small gaps in the record soon add up to real money.
+Under upcoming Reserve Bank transparency rules taking effect on 1 April 2027, payment providers will also be required to provide clearer statements detailing processing costs. Maintaining a unified internal ledger ensures your organisation understands the exact net revenue generated across every payment channel.
 
 ## Building payment orchestration or buying it
 
-There are three broad paths. You can buy an orchestration service. You can use one provider that offers both cards and bank transfers. Or you can build a thin layer of your own over two or more providers.
+When implementing payment orchestration, Australian organisations typically select from three approaches:
 
-Each suits a different business. A single provider is simplest to start with. A bought service adds choice without much building. A layer of your own gives the most control, and the most work. Our article on [custom software versus off the shelf](/blog/custom-vs-off-the-shelf-financial-services) walks through that choice for regulated firms. If payments are part of a product you sell to others, read [adding payments and lending to a non-bank product](/blog/embedded-finance-payments-lending).
+1. **Licensing a dedicated orchestration platform:** Purchasing an off-the-shelf software service that connects to multiple Australian banks and payment gateways out of the box.
+2. **Consolidating with a multi-rail payment partner:** Selecting a single licensed provider that natively supports credit cards, debit cards, PayID, and PayTo within one package.
+3. **Building a custom routing layer:** Developing a proprietary software bridge that connects your checkout to selected payment partners, providing complete control over customer journeys and fallback logic.
 
-Whichever path you choose, put these questions to the provider or the build team:
+Each model suits different operational scales. Using a single multi-rail provider is simplest for emerging businesses. A licensed orchestration service offers multi-provider flexibility with minimal development. Building a custom routing layer offers the greatest operational control and data independence, as explored in our guide on [custom versus off-the-shelf financial software](/blog/custom-vs-off-the-shelf-financial-services). If you are designing a product that serves other business clients, see [adding payments and lending to a non-bank product](/blog/embedded-finance-payments-lending).
 
-| Question to ask | Why it matters |
+Whichever path you evaluate, review these practical questions with your technology team:
+
+| Evaluation question | Why it matters |
 |---|---|
-| Which payment types can it take: cards, PayID, PayTo? | Customers who cannot pay their preferred way may leave |
-| Is least-cost routing on, in store and online? | Debit card fees can differ between networks |
-| What happens when a provider goes down? | A backup option keeps sales coming in |
-| Do card numbers ever touch our systems? | It changes how much PCI DSS work you carry |
-| Can we export every payment, refund and fee in one report? | Matching payments to invoices depends on it |
-| How hard is it to change providers later? | Being locked in leaves you less say on price |
+| Which payment options are supported: cards, PayID, and PayTo? | Customers who cannot find their preferred payment method may abandon the purchase |
+| Is Least-Cost Routing active across in-person and online transactions? | Directing debit taps across the lowest-cost network reduces processing fees |
+| How does the system respond if an external payment provider experiences downtime? | Automated fallback maintains continuous business trading during network outages |
+| Do sensitive 16-digit card numbers touch internal servers? | Keeping card data on encrypted partner screens significantly reduces PCI DSS compliance overhead |
+| Can the system export all transactions, refunds, and merchant fees in a single unified report? | Clean financial data is essential for automated bookkeeping and tax reporting |
+| How easily can the organisation add or switch payment providers in the future? | Independent architecture prevents vendor lock-in and protects commercial pricing leverage |
 
 ## Common questions
 
-### Can I still add a surcharge for card payments?
+### Can our business still add a surcharge for card payments?
 
-Not for eftpos, Mastercard or Visa cards, from 1 October 2026. American Express, UnionPay and PayPal have also decided to remove surcharging. You can still offer a discount for a particular payment method. Check that your website, invoices and counter signs no longer mention card surcharges.
+No, not for transactions processed using eftpos, Mastercard, or Visa cards, following the 1 October 2026 Reserve Bank regulations. Major charge card networks and digital wallets have also eliminated surcharging. You may, however, offer a payment discount for lower-cost payment methods such as direct bank transfers. Ensure your website terms, checkout screens, and counter signs no longer display card surcharge notices.
 
-### Is a bank transfer always cheaper than a card?
+### Is an account-to-account bank transfer always cheaper than a credit card?
 
-Not always. It depends on what your providers charge for each, including monthly or set-up fees. Ask each provider for its full price list per payment. Then compare the cost of the payments you actually take, not the headline rate.
+Not necessarily in every scenario. Overall costs depend on the negotiated merchant fee per transaction, as well as any fixed monthly gateway charges. Review your full fee schedule per payment type with each provider, comparing the actual transaction sizes your business handles rather than just advertised headline percentages.
 
-### Do I need payment orchestration if I only take cards?
+### Does a business need payment orchestration if it only accepts credit cards?
 
-Possibly not. A single card provider with least-cost routing switched on may be enough. Orchestration earns its place when you add a second way to pay, a second provider, or a need for a backup.
+Probably not. If your organisation exclusively accepts payment cards, using an established payment gateway with Least-Cost Routing enabled is often sufficient. Payment orchestration becomes valuable when you introduce multiple payment types (such as PayTo or PayID), partner with multiple banks, or require automated backup routing to prevent lost sales during network outages.
 
 ## What to do next
 
-Start with a short review of how your business takes money today:
+Begin by reviewing how your business currently collects payments:
 
-- List every way customers pay you, and which provider handles each.
-- Ask your card provider whether least-cost routing is switched on, in store and online.
-- Time how long it takes to match last month's payments to invoices.
-- Note what happened the last time a payment system went down.
-- Ask what a PayTo or PayID option would cost to add.
+- Document every payment method your customers use today, alongside the specific provider handling each transaction.
+- Confirm with your payment terminal or gateway provider that Least-Cost Routing is actively switched on for debit card payments.
+- Measure the administrative time spent matching monthly bank deposits against accounting invoices.
+- Review your contingency procedures for handling transactions during an unexpected payment gateway outage.
+- Inquire with your financial institution about the operational costs of introducing PayTo or PayID at checkout.
 
-For a wider view of the platforms involved, see our page on [software for financial services](/industries/financial-services).
+To learn more about how we design resilient payment software, explore our overview of [software for financial services](/industries/financial-services).
 
-If you want card and bank transfer payments running through one well-built system, Palxi can design and build it with you. [Email us](mailto:hello@palxi.com.au).
+When your organisation needs experienced Australian software engineers to design, build, and integrate dependable payment systems, Palxi collaborates closely with your executive and technical teams. [Contact our team](mailto:hello@palxi.com.au).
 
-*Facts in this article were checked against Reserve Bank of Australia and PCI Security Standards Council sources on 7 October 2026. See [how we work](/#how-we-work).*
+*Facts in this article were verified against publications from the Reserve Bank of Australia and the PCI Security Standards Council on 7 October 2026. Learn more about [how we work](/#how-we-work).*
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*This article provides general factual information and does not constitute financial, legal, or taxation advice. Please consult your compliance professionals or legal counsel regarding your specific commercial arrangements.*
 
 *Photos: cover, ["Paying with a Credit Card"](https://commons.wikimedia.org/w/index.php?curid=67030803) by Hloom Templates, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Railway junction, ["The 'City' end"](https://www.flickr.com/photos/61132483@N00/15070600043) by Elsie esq., [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Passbook, ["Old Bank Statement"](https://www.flickr.com/photos/52195472@N00/16771229247) by lungstruck, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped.*

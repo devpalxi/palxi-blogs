@@ -17,144 +17,146 @@ lang: "en-AU"
 
 # PayTo and A2A payouts: payment automation in Australia
 
-In its first year, Confirmation of Payee was used more than 150 million times. One participating institution reported that more than 570,000 payments were abandoned after a "no match" result, including over 10,000 headed for accounts listed on the Australian Financial Crimes Exchange ([Australian Payments Plus](https://www.auspayplus.com.au/businesses-come-on-board-as-confirmation-of-payee-enters-its-second-year), July 2026).
+In its first full year of operation across Australian banking, Confirmation of Payee was used more than 150 million times. One major financial institution reported that over 570,000 customer payments were abandoned after the system returned a "no match" warning, including more than 10,000 transfers destined for suspect accounts flagged on the Australian Financial Crimes Exchange ([Australian Payments Plus](https://www.auspayplus.com.au/businesses-come-on-board-as-confirmation-of-payee-enters-its-second-year), July 2026).
 
-Those were bank customers typing in a BSB and account number. A platform that pays hundreds of contractors or sellers a week has the same problem at scale, and no person at the keyboard to pause and check. That is where payment automation for account-to-account (A2A) payouts gets hard.
+Those were everyday bank customers pausing when their banking app warned them that the name on the account did not match the person or business they intended to pay. 
 
-This article is for advisors and product owners scoping that build. It covers the rails, where PayTo and Confirmation of Payee fit, the failure modes and the scam rules now landing on banks.
+For an Australian business or marketplace that pays hundreds of suppliers, contractors, or sellers every week, the challenge is identical, but operates at scale. When payments are automated by software, there is no person sitting at a keyboard to double-check every BSB and account number. That is where automating account-to-account (A2A) payouts requires careful engineering.
+
+This guide explains how Palxi approaches automated bank-to-bank payouts, where modern tools like PayTo and Confirmation of Payee fit into the workflow, and how new Australian anti-scam regulations protect both businesses and consumers.
 
 ## Two rails, and where PayTo actually sits
 
-Australia runs A2A payments over two systems: BECS, the older batch system behind direct entry files and direct debits, and the NPP, which settles individual payments in real time. In 2024 the NPP carried 1.6 billion transactions worth $1.99 trillion, and it was processing more than 30 per cent of Australia's A2A payments ([AP+](https://www.auspayplus.com.au/move-to-npp), April 2025).
+In Australia, account-to-account payments travel across two primary networks:
 
-PayTo sits on the NPP, but it runs in one direction. A business creates an agreement, the payer authorises it in online banking, and the business can then debit the payer's account within those terms. That makes it a replacement for direct debit, and it doesn't send money out.
+1. **The Bulk Electronic Clearing System (BECS):** Australia's traditional batch-processing system, used for decades to process overnight direct debits, payroll files, and scheduled payments.
+2. **The New Payments Platform (NPP):** Australia's modern real-time payments infrastructure, enabling instant transfers 24 hours a day, 365 days a year. In 2024, the NPP processed 1.6 billion transactions worth $1.99 trillion AUD, accounting for more than 30 per cent of all account-to-account payments across the nation ([AP+](https://www.auspayplus.com.au/move-to-npp), April 2025).
 
-So a payout product usually has two legs. The first is funding: the business that owes the money tops up the platform, and PayTo is a good fit for that pull. The second is the payout itself, sent as an NPP credit transfer to each payee's BSB and account number or PayID.
+PayTo operates on the New Payments Platform, but it is designed specifically for "pull" transactions. A business creates a digital agreement with a customer, the customer authorises that agreement directly inside their own Australian banking app on their smartphone, and the business can then debit funds from the customer's account within the approved terms. Because PayTo pulls money in rather than pushing it out, it serves as a modern replacement for direct debit.
 
-The first leg looks less mature on paper than the second. The RBA's March 2026 update found PayTo "has yet to demonstrate its maturity as a direct debit replacement". It currently supports only single transfers, and the total value of PayTo agreements was 0.1 per cent of the value of BECS direct debits in 2025 ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/bulk-electronic-clearing-system/decommissioning-of-the-becs-rba-risk-assessment-03-2026/), March 2026).
+Consequently, an automated payout system typically involves two distinct legs:
 
-The same report records that AusPayNet removed the June 2030 end date for BECS in December 2025, until a clear roadmap exists for A2A payments. AusPayNet will review the outlook every six months. For a build team, that means BECS stays in the design as a fallback and for bulk files, and there is no fixed date for it to go.
+- **Leg 1: Funding the platform.** The company owing the funds deposits money into the payout pool. PayTo is well suited to this step, allowing the platform to pull the required funds instantly from the business's bank account with digital authorization.
+- **Leg 2: Distributing payouts.** The platform sends individual payments out to recipients as NPP instant credit transfers directly to each person's BSB and account number or PayID.
 
-| Rail | Direction | Speed | Good for in a payout product | Watch out for |
+The funding leg is still expanding across the market. The Reserve Bank of Australia (RBA) noted in March 2026 that PayTo "has yet to demonstrate its maturity as a direct debit replacement", with the total value of PayTo agreements representing 0.1 per cent of the volume of traditional BECS direct debits during 2025 ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/bulk-electronic-clearing-system/decommissioning-of-the-becs-rba-risk-assessment-03-2026/), March 2026).
+
+Furthermore, Australian Payments Network (AusPayNet) removed the proposed June 2030 retirement date for BECS in December 2025, confirming that traditional direct entry files will remain operational while real-time alternatives continue to mature. For software engineering teams, this means keeping BECS available as a dependable secondary fallback for bulk payment runs.
+
+| Payment network | Transfer direction | Processing speed | Role in an automated payout system | Operational consideration |
 |---|---|---|---|---|
-| NPP credit transfer | Push | Real time, 24/7 | Individual payouts to payees | Per-payment cost, unreachable accounts |
-| PayTo | Pull, under an authorised agreement | Real time once authorised | Funding the platform from the payer's account | Single transfers only, uneven bank support |
-| BECS direct entry | Push or pull | Batched, not real time | Large bulk runs, fallback | Late rejections, limited data fields |
+| NPP credit transfer | Push (outgoing) | Instant, 24/7/365 | Sending individual earnings directly to recipient bank accounts | Modest per-transaction network fees; some smaller institutions are not yet connected |
+| PayTo agreement | Pull (incoming), under pre-authorised digital consent | Instant once approved | Pulling float funds into the platform from the corporate account | Requires initial smartphone authorization by the payer; bank rollout is still expanding |
+| BECS direct entry | Push or pull | Overnight batch processing | Distributing large bulk files or acting as a secondary fallback | Slower settlement; notifications of invalid accounts return days later |
 
 ## Confirmation of Payee in a payout flow
 
-Confirmation of Payee (CoP) checks the account name, BSB and account number entered against the records held by the recipient's bank. Banks began rolling it out in July 2025 ([ABA](https://www.ausbanking.org.au/scam-safe-accord/confirmation-of-payee/)). The request goes to a central matching service run for the industry by AP+, but there is no central database. Account data stays with each bank.
+Confirmation of Payee (CoP) is Australia's name-checking service. When an account transfer is set up, the system automatically checks the recipient's name, BSB, and account number against the official records held by the receiving Australian bank. Major Australian retail banks began deploying the service in July 2025 as part of the Scam-Safe Accord ([ABA](https://www.ausbanking.org.au/scam-safe-accord/confirmation-of-payee/)). The verification request travels through Australian Payments Plus (AP+), while customer records remain safely protected inside each individual bank.
 
 ![Close-up of fine microprinted lettering on a banknote, repeating the words twenty dollars](banknote-microprint.jpg)
 
-*Microprint on a banknote: detail that is easy to miss at a glance.*
+*Microprint on an Australian banknote: fine security details that protect the integrity of everyday currency.*
 
-By July 2026 it was live at more than 100 institutions, and AP+ reports that businesses are using it "from onboarding to completing comprehensive back-book checks" ([AP+](https://www.auspayplus.com.au/businesses-come-on-board-as-confirmation-of-payee-enters-its-second-year), July 2026).
+By July 2026, Confirmation of Payee was active across more than 100 Australian financial institutions, with commercial enterprises using it during new supplier onboarding and regular data reviews ([AP+](https://www.auspayplus.com.au/businesses-come-on-board-as-confirmation-of-payee-enters-its-second-year), July 2026).
 
-The details that matter most to a payout engineer:
+For automated software systems, four practical characteristics are critical:
 
-- **The result set is wider than three values.** Besides match, close match and no match, AP+ lists "error", "this account is no longer active" and "no account found" ([AP+](https://www.auspayplus.com.au/solutions/confirmation-payee)), and each needs its own handling.
-- **Names are disclosed selectively.** For a personal account, the payer only sees the name on a match or close match. For business and government accounts, the name is shown whatever the result.
-- **It is advisory.** AP+ says CoP "will never stop you from completing a payment". The ABA calls it "an advisory checkpoint, not a hard block".
-- **It is domestic only**, at least at launch.
+- **Five possible verification results:** In addition to "exact match", "close match", and "no match", the system can return "service error", "account no longer active", or "no account found". The platform must handle each response gracefully.
+- **Selective name display:** For personal consumer bank accounts, the recipient's name is only revealed if there is a match or close match, protecting personal privacy. For commercial business and government accounts, the official registered entity name is displayed.
+- **Advisory in nature:** Confirmation of Payee is an advisory checkpoint designed to alert the user; it does not physically lock or freeze the banking transfer.
+- **Domestic accounts:** The service verifies domestic Australian bank accounts.
 
-Because the service never blocks, the platform owns the decision. The table below maps each outcome to an action for a payee register:
+Because the system is advisory, the payout software must decide what to do with each result:
 
-| CoP result | Suggested platform action | Evidence to keep |
+| Confirmation result | Recommended software action | Audit evidence to preserve |
 |---|---|---|
-| Match | Activate payee for payouts | Request, result, timestamp, name checked |
-| Close match | Show the returned name to the payee or operator and ask for confirmation | Who confirmed, and when |
-| No match | Hold the payee, ask for new details or proof of account | Hold reason, follow-up outcome |
-| Account no longer active or not found | Reject the details and request new ones | Rejection notice sent |
-| Error | Retry with backoff, then route to manual review | Retry log |
+| Exact Match | Activate the payee account for automated transfers | Verification request ID, timestamp, registered name verified |
+| Close Match | Display the matching name to staff or recipient for explicit confirmation | Name of the reviewer and timestamp of confirmation |
+| No Match | Temporarily hold automated payouts; request updated bank documentation | Reason for hold and record of subsequent customer communication |
+| Account inactive or not found | Reject the bank details; notify the recipient to supply active details | Formal notification record sent to the user |
+| Communication error | Automatically retry with backoff logic; escalate if unresolved | System error log and retry history |
 
-We build account-to-account payout flows that use PayTo and Confirmation of Payee checks. The evidence column is the part to get right early: once the bank scam rules apply, a logged CoP result for every payee change is something a sponsor bank can ask to see.
-
-The expensive mistake is treating CoP as a one-off at signup. Our view: the riskier moment is often a later change of bank details, which is what payment redirection scams exploit. One workable approach: re-run the check whenever a payee's BSB, account number or account name changes, and hold the next payout until it clears. AP+ notes CoP also removes the need for micro-deposits, which shortens onboarding.
+A common vulnerability in payment platforms is checking bank details only once during initial signup. In reality, payment redirection fraud frequently occurs when a cybercriminal compromises an email account and requests that future payments be redirected to a new bank account. Automated systems should re-run Confirmation of Payee whenever an existing recipient updates their BSB or account number, holding upcoming payouts until the new details are verified.
 
 ## Designing payment automation around PayTo agreements
 
-A PayTo agreement moves through several states, and the funding logic has to handle each of them. The AP+ FAQs describe agreements for "one-off, ad hoc or recurring payments", which the payer can pause, resume or cancel in online banking. Changing the amount or frequency needs a new agreement that the payer authorises again ([AP+ PayTo FAQs](https://www.auspayplus.com.au/solutions/payto-faqs)).
+A PayTo payment agreement progresses through multiple digital states, and automated software must handle each transition smoothly. According to Australian Payments Plus, agreements can be created for one-off, occasional, or recurring payments. Account holders retain the right to pause, resume, or cancel agreements at any time inside their mobile banking app ([AP+ PayTo FAQs](https://www.auspayplus.com.au/solutions/payto-faqs)). If a business wishes to increase the payment amount or change payment frequency, a revised agreement must be issued and re-approved by the customer.
 
-For the funding leg of a payout product, that means building for these events:
+When using PayTo to fund payout accounts, systems must anticipate these scenarios:
 
-1. Created and waiting for authorisation. The payer may never approve it, so the platform needs a timeout and a way to follow up or withdraw it.
-2. Active, with debits allowed only inside its terms.
-3. Paused by the payer. If that happens just before a funding pull, the float comes up short and the next payout run has to wait or shrink.
-4. Cancelled, which ends the debit right but not the commercial contract.
-5. Amended. That is really a new agreement, and the payer has to authorise it again.
+1. **Pending customer authorization:** The customer has not yet opened their banking app to approve the mandate. Systems need automated reminders and clear expiry windows.
+2. **Active:** Authorised debits occur seamlessly within the agreed limits and dates.
+3. **Paused by the account holder:** If a customer temporarily pauses an agreement just before a scheduled transfer, the platform must flag the shortfall immediately rather than failing silently.
+4. **Cancelled:** The customer terminates the payment right inside their banking app, ending automated pulls.
+5. **Amended:** Changes to terms generate a revised mandate requiring fresh customer authorization.
 
-Businesses receive notifications when a payment succeeds or fails, or when a customer pauses or cancels. AP+ also warns that "some payments may be held for additional security checks". Your float logic needs to know the difference between "failed" and "not yet settled".
-
-Migrating existing direct debits has its own rules. The payer gets 14 days' advance notice and can opt out. Once the agreement appears in online banking, the business allows five days before the first debit. To offer PayTo at all, a business needs to be sponsored as a PayTo User by a bank or payment service provider.
-
-In April 2025, AP+ scheduled enhanced PayTo messaging for the NPP's end-of-2026 release, identifying the "ultimate creditor" and merchant categories to help fraud screening ([AP+](https://www.auspayplus.com.au/move-to-npp), April 2025). Its December 2025 roadmap update still listed the PayTo message uplifts, and confirmed the NPP's ISO 20022 version upgrade for March 2027 ([AP+ roadmap](https://www.auspayplus.com.au/ap-roadmap), December 2025). If your client's integration maps message fields by hand, budget time for both.
+Financial institutions send real-time notifications when transfers clear or if a transaction is held for routine fraud review. Payout software must clearly differentiate between a temporary processing delay and an outright payment failure.
 
 ## The failures a payout ledger has to absorb
 
-Real-time rails fail differently from batch ones. With a batch file, rejections tend to come back later and in groups. An NPP payout gets its answer straight away, for one payee, and your system has to decide what happens next.
+Instant real-time payment rails fail very differently from traditional batch systems. In a legacy batch system, failures arrive hours or days later in a summary file. On the New Payments Platform, transfers are processed instantly, one by one, requiring immediate decision-making by software.
 
 ![A brass-edged payroll department sign on a black door, above a note asking visitors to push open the hatch](payroll-door.jpg)
 
-*A payroll office door with a hatch for enquiries.*
+*A traditional payroll department hatch: clear accountability and careful record keeping.*
 
-Reach is the first issue. As of August 2025, 89 per cent of accounts at NPP participants that are connected to BECS were also connected to the NPP. The RBA expects about 3 per cent of accounts to stay unconnected ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/bulk-electronic-clearing-system/decommissioning-of-the-becs-rba-risk-assessment-03-2026/), March 2026). Around 30 ADIs still use BECS without being connected to the NPP.
+The first practical factor is account connectivity. By late 2025, approximately 89 per cent of Australian bank accounts were connected to the New Payments Platform, with the Reserve Bank expecting roughly 3 per cent of accounts to remain on legacy rails indefinitely ([RBA](https://www.rba.gov.au/payments-and-infrastructure/new-payments-platform/bulk-electronic-clearing-system/decommissioning-of-the-becs-rba-risk-assessment-03-2026/), March 2026). Roughly 30 smaller mutual institutions still process payments exclusively through traditional direct entry.
 
-Stale BSBs are the second. When a BSB becomes obsolete after a branch closure or merger, the RBA says financial institutions typically reroute BECS payments to a new BSB automatically. Similar processes "have not been widely implemented for the NPP", so some payments that BECS would have delivered are rejected on the NPP.
+The second factor is BSB updates. Following bank branch consolidations or corporate mergers, traditional batch systems automatically redirect payments from retired BSBs to active ones. However, automated redirection is not universally implemented across real-time NPP rails, meaning payments using older branch numbers may be rejected.
 
-Then there is cost. The RBA reports that wholesale fees for NPP transactions "remain significantly higher than for BECS transactions", and it expects the wholesale cost of NPP payments to stay above current BECS costs. That changes the maths for platforms making many small payouts.
+The third consideration is operational cost. Wholesale fees for instant NPP transfers remain slightly higher than bulk BECS file fees, which influences the economics of platforms processing thousands of very small micro-payouts.
 
-Our view: a payout ledger for Australian A2A should have these from the first release.
+To maintain complete accounting reliability, Palxi incorporates these foundational controls into automated payout systems:
 
-- An idempotency key on every payout instruction, so a timeout never becomes a double payment.
-- A status model that separates submitted, settled, rejected and held.
-- A routing rule that falls back to BECS direct entry for unreachable accounts, with the payee told about the delay.
-- Daily reconciliation of the ledger against the bank statement, not against your own API logs.
-- An exceptions queue that a person works, with ageing alerts.
+- **Unique idempotency keys:** Every payment instruction carries a unique digital tracking number, guaranteeing that if an internet connection drops mid-transfer, the instruction cannot be executed twice.
+- **Distinct payment statuses:** The software separates payments into submitted, settled, rejected, and held states.
+- **Intelligent fallback routing:** If a recipient's bank does not support instant NPP payments, the software automatically routes the transfer via traditional BECS direct entry while notifying the recipient of standard processing times.
+- **Daily bank statement reconciliation:** Every internal ledger entry is matched every morning against official bank settlement statements.
+- **Staff exception queues:** Any disputed or rejected transfers are highlighted in an administrative queue for human review.
 
-Take a hypothetical marketplace that pays 2,000 sellers every Friday. If 10 per cent of its payees' accounts can't receive NPP payments, roughly today's gap, that is about 200 people a week who need another route.
+For example, consider a marketplace paying 2,000 sellers every Friday. If roughly 10 per cent of seller bank accounts cannot receive real-time NPP transfers, approximately 200 transfers require seamless routing through traditional bank rails without delaying payments or creating manual administration.
 
-Payments are a default critical operation for ADIs under APRA's CPS 230, so a bank sponsor will ask how your platform behaves in an outage. Read [what CPS 230 expects of technology vendors](/blog/cps-230-technology-vendors) before that conversation.
+Because payment processing is classified as a critical operational service under APRA's Prudential Standard CPS 230, banking partners will evaluate how your software behaves during an unexpected network disruption. We review these standards in [what CPS 230 expects of technology vendors](/blog/cps-230-technology-vendors).
 
 ## Scam rules: who they bind and how they reach you
 
-CoP began as an industry commitment under the banks' Scam-Safe Accord. The ABA says banks funded the $100 million build themselves, "well before any regulatory mandate".
+Confirmation of Payee began as an industry-funded safety initiative under the Australian Banking Association's Scam-Safe Accord, with banks investing over $100 million AUD to build the infrastructure ahead of government legislation.
 
-The Scams Prevention Framework is statutory. It sits in Part IVF of the Competition and Consumer Act 2010. In May 2026 the Assistant Treasurer designated banking as a regulated sector ([Federal Register of Legislation](https://www.legislation.gov.au/F2026L00627/asmade/text), May 2026). The designation covers services provided by an ADI in carrying on its banking business, and names ASIC as the sector regulator for banking.
+Today, anti-scam duties are formally enshrined in Australian law through the Scams Prevention Framework, established under Part IVF of the Competition and Consumer Act 2010. In May 2026, the Commonwealth Assistant Treasurer formally designated the banking sector as a regulated industry under this framework, with ASIC appointed as the primary regulatory authority ([Federal Register of Legislation](https://www.legislation.gov.au/F2026L00627/asmade/text), May 2026).
 
-Scope matters here, because the designation binds ADIs. A non-bank payout platform isn't designated in its own right, but its sponsor bank is. Under the instrument's transitional rules, banks had to be members of an SPF dispute resolution scheme from 1 September 2026. The rest of the framework applies to them from 31 March 2027. Expect sponsor banks to push scam controls down to platforms through contracts and onboarding reviews.
+While the Scams Prevention Framework directly binds licensed Authorised Deposit-taking Institutions (ADIs), its requirements reach software platforms through commercial banking agreements. Participating Australian banks were required to join the official dispute resolution scheme from 1 September 2026, with comprehensive operational rules applying from 31 March 2027. Consequently, sponsor banks require their business customers to maintain auditable scam controls, including Confirmation of Payee verification logs.
 
-Anti-money laundering sits in a separate law. If your client's payout product moves value for customers, it may carry AML/CTF obligations of its own. [Building KYC and AML controls in from the start](/blog/kyc-aml-by-design) is cheaper than retrofitting them. Fraud screening is a related but different layer, covered in [fraud detection for payments](/blog/fraud-detection-payments).
+Anti-money laundering requirements operate alongside these anti-scam rules. If an automated payout platform transfers customer funds, it must also satisfy AUSTRAC requirements, as outlined in our guide to [building KYC and AML controls in from the start](/blog/kyc-aml-by-design). Additional payment security measures are explored in our guide to [fraud detection for payments](/blog/fraud-detection-payments).
 
 ## Common questions
 
-### Can a payout platform call Confirmation of Payee directly?
+### Can our platform connect to Confirmation of Payee directly?
 
-The service is run by AP+ and reached through participating financial institutions and their channels. Ask the sponsor bank or payment provider how it exposes CoP to business clients: as an API, a file check or only inside online banking. Access shapes the whole onboarding design, so settle it early in [connecting your product to Australian banks](/blog/bank-integration-platforms-australia).
+Confirmation of Payee is managed by Australian Payments Plus and accessed through participating Australian banks and licensed payment institutions. Consult your corporate banking partner or payment provider to confirm how they deliver the service — whether via a direct API, bulk file validation, or commercial banking portals. We discuss these connections in our guide to [connecting your product to Australian banks](/blog/bank-integration-platforms-australia).
 
-### Does PayTo replace direct debit today?
+### Does PayTo completely replace direct debit today?
 
-Not yet. The RBA's March 2026 update says PayTo has yet to prove itself as a direct debit replacement, and most account-based pull payments still run on BECS. Offer PayTo for new funding agreements, and keep direct debit available until your client's bank and customers are ready.
+Not yet. The Reserve Bank's assessments confirm that most recurring consumer debits across Australia still rely on traditional BECS direct debit. It is best practice to offer PayTo for new customer agreements while keeping traditional direct debit available for customers whose financial institutions are still completing their rollout.
 
-### Does a "no match" result stop the payment?
+### Does a "no match" Confirmation of Payee result automatically stop a transfer?
 
-No. CoP is advisory, so the platform must decide. A sensible default is to hold the payee and ask for corrected details. The ABA notes that authorising a transfer to the wrong account "is usually at the customer's risk". Here the bank's customer may be the platform or its client, depending on how funds flow.
+No. Because the service is advisory, the transfer can technically proceed. However, the Australian Banking Association emphasizes that transferring money after receiving a mismatch warning is generally at the customer's risk. For an automated platform, the safest policy is to hold the transfer automatically and request that the payee verify their details before funds are released.
 
 ## What to do next
 
-Before the build is scoped, get answers from the client and its bank:
+Before finalising your payment automation architecture, confirm these key operational details:
 
-- Which rail carries each leg: PayTo for funding, NPP for payouts, BECS as fallback?
-- How is CoP exposed to the platform, and what happens on each result?
-- What does the sponsor bank expect under its scam obligations from March 2027?
-- Who works the exceptions queue, and how fast?
+- Which payment rail carries each leg: PayTo for float funding, NPP instant transfers for payouts, and BECS as a dependable fallback.
+- How your banking partner provides access to Confirmation of Payee, and how your software responds to mismatch alerts.
+- What compliance evidence your sponsor bank requires under the Scams Prevention Framework.
+- Who oversees the exception management queue when payments require human review.
 
-If the client runs cards as well as A2A, see [running card and A2A rails through one platform](/blog/payment-orchestration-card-a2a). For the product decision that comes before this one, read [adding payments and lending to a non-bank product](/blog/embedded-finance-payments-lending), or browse our wider work in [software for financial services](/industries/financial-services).
+If your platform processes card payments alongside direct bank transfers, explore our guide on [payment orchestration across card and PayTo rails](/blog/payment-orchestration-card-a2a). To understand the regulatory foundations of holding or transferring money, read our overview of [embedded finance for payments and lending](/blog/embedded-finance-payments-lending).
 
-When a client's payout product needs building rather than just scoping, Palxi joins advisors early and builds it with them. [Email us](mailto:hello@palxi.com.au).
+When your organisation needs experienced Australian engineers to design and build dependable, bank-grade payment automation, Palxi works alongside your leadership and advisory teams from initial planning through to operational deployment. [Speak with our engineering team](mailto:hello@palxi.com.au).
 
-*Facts in this article were checked against Australian Payments Plus, ABA, RBA and Federal Register of Legislation sources on 27 September 2026. See [how we work](/#how-we-work).*
+*Facts in this article were verified against publications from Australian Payments Plus, the Australian Banking Association, the Reserve Bank of Australia, and the Federal Register of Legislation on 27 September 2026. Learn more about [how we work](/#how-we-work).*
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*This article provides general factual information and does not constitute financial or legal advice. Please seek qualified guidance from compliance professionals or your legal advisor regarding your specific payment arrangements.*
 
 *Photos: cover, "[Sydney Harbour Bridge Afternoon](https://commons.wikimedia.org/w/index.php?curid=2240869)" by WikiWookie, [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/), cropped. Banknote microprint, "[_D7K3715](https://www.flickr.com/photos/41353201@N07/6148930087)" by DJ-Dwayne, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Payroll door, "[Payroll](https://www.flickr.com/photos/57868312@N00/16016747503)" by Matt From London, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped.*

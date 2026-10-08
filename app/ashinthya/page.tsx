@@ -11,13 +11,17 @@ export const metadata: Metadata = {
 
 export default function AshinthyaIndex() {
   return (
-    <main className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">
-      <section className="max-w-[40rem] pt-[clamp(56px,8vw,104px)] pb-12">
-        <h1 className="animate-rise font-heading text-display font-semibold text-ink">
+    <main className="mx-auto w-full max-w-[1100px] px-4 sm:px-8">
+      <section className="max-w-[44rem] pt-[clamp(44px,7vw,104px)] pb-8 sm:pb-12">
+        <div className="animate-rise inline-flex items-center gap-2 rounded-full bg-magenta-tint px-3 py-1 text-xs sm:text-label font-semibold text-magenta-deep mb-4 sm:mb-6">
+          <span className="size-2 rounded-full bg-magenta animate-pulse" />
+          <span>{articles.length} In-Depth Industry Guides</span>
+        </div>
+        <h1 className="animate-rise font-heading text-[2.25rem] sm:text-[3rem] lg:text-display font-semibold text-ink leading-[1.1] sm:leading-[1.08] tracking-tight">
           Guides for Australian financial services teams
         </h1>
         <p
-          className="animate-rise mt-6 text-standfirst text-copy"
+          className="animate-rise mt-4 sm:mt-6 text-base sm:text-standfirst text-copy leading-relaxed"
           style={{ animationDelay: "90ms" }}
         >
           Practical articles on regulation, security, payments and deciding
@@ -29,32 +33,40 @@ export default function AshinthyaIndex() {
         {articles.map((article, i) => (
           <li
             key={article.slug}
-            className="animate-rise border-b border-hairline"
-            style={{ animationDelay: `${180 + i * 60}ms` }}
+            className="animate-rise border-b border-hairline transition-colors duration-200"
+            style={{ animationDelay: `${Math.min(i, 8) * 45 + 120}ms` }}
           >
             <Link
               href={`/ashinthya/${article.slug}`}
-              className="group grid gap-4 py-10 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-10"
+              className="group grid gap-4 py-6 sm:py-8 md:py-10 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-8 lg:gap-10 rounded-xl sm:-mx-4 sm:px-4 transition-all duration-200 hover:bg-shallows/60 focus-visible:outline-2 focus-visible:outline-magenta"
             >
               <div className="max-w-[44rem]">
-                <span className="inline-block rounded-full bg-magenta-tint px-3 py-1 text-label font-semibold text-magenta-deep">
-                  {article.kicker}
-                </span>
-                <h2 className="mt-4 font-heading text-headline font-semibold text-ink transition-colors duration-200 ease-out-quart group-hover:text-magenta-deep">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-block rounded-full bg-magenta-tint px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-label font-semibold text-magenta-deep">
+                    {article.kicker}
+                  </span>
+                  <span className="text-xs sm:text-label text-muted">
+                    {article.readingMinutes} min read
+                  </span>
+                </div>
+                <h2 className="mt-3 font-heading text-lg sm:text-xl lg:text-headline font-semibold text-ink leading-snug transition-colors duration-200 ease-out-quart group-hover:text-magenta-deep">
                   {article.title}
                 </h2>
-                <p className="mt-3 text-body text-copy">{article.description}</p>
-                <p className="mt-4 text-label text-muted">
-                  {formatDate(article.publishedOn)} · {article.readingMinutes}{" "}
-                  minute read
+                <p className="mt-2 text-sm sm:text-body text-copy leading-relaxed line-clamp-3 sm:line-clamp-none">
+                  {article.description}
+                </p>
+                <p className="mt-3 text-xs sm:text-label text-muted">
+                  {formatDate(article.publishedOn)}
                 </p>
               </div>
-              <span className="inline-flex min-h-12 w-fit items-center gap-1.5 justify-self-start rounded-sm bg-magenta px-5 text-label font-semibold text-surface transition-[background-color,transform] duration-200 ease-out-quart group-hover:bg-magenta-deep group-active:scale-[0.98] sm:self-end">
-                <span>Read the article</span>
-                <ArrowRightIcon
-                  size={18}
-                  className="transition-transform duration-200 ease-out-quart group-hover:translate-x-0.5"
-                />
+              <span className="btn-primary w-fit min-h-10 sm:min-h-12 py-2 sm:py-2.5 px-4 sm:px-6 rounded-full text-xs sm:text-label font-semibold shadow-sm transition-all duration-200 ease-out-quart group-hover:bg-magenta-deep group-hover:shadow-md group-hover:translate-x-0.5 group-active:scale-95 sm:self-end">
+                <span>Read guide</span>
+                <span className="btn-chip size-7 sm:size-8">
+                  <ArrowRightIcon
+                    size={16}
+                    className="transition-transform duration-200 ease-out-quart group-hover:translate-x-0.5"
+                  />
+                </span>
               </span>
             </Link>
           </li>

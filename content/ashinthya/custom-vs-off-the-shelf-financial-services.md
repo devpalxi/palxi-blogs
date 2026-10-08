@@ -17,167 +17,175 @@ lang: "en-AU"
 
 # Custom software development or off the shelf: how to decide
 
-On 17 November 2022, ASX paused its CHESS replacement project and derecognised about $245 million to $255 million (pre-tax) of its own project costs. The original plan was a new system built on distributed ledger technology ([ASIC](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-205-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project), 2026).
+On 17 November 2022, the Australian Securities Exchange (ASX) announced a historic decision: it paused its multi-year project to replace Australia's national share settlement clearing system, known as CHESS, writing off an estimated $245 million to $255 million AUD in accumulated project development costs. The original ambitious plan was to build an entirely bespoke clearing architecture based on complex distributed ledger technology ([ASIC](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-205-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project), 2026).
 
-A year later ASX chose "a product based solution" from TCS, which it expected to "minimise the amount of customisation required to support the Australian market" ([ASX](https://www.asx.com.au/content/dam/asx/about/media-releases/2023/70-20-november-2023-chess-replacement-solution-announced-and-2024-consultation.pdf), 20 November 2023). Release 1, covering clearing services, went live on 20 April 2026 ([ASIC](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-205-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project), 2026).
+Exactly twelve months later, the ASX selected a commercial off-the-shelf software package provided by Tata Consultancy Services (TCS), explicitly noting that an established commercial product would "minimise the amount of customisation required to support the Australian market" ([ASX](https://www.asx.com.au/content/dam/asx/about/media-releases/2023/70-20-november-2023-chess-replacement-solution-announced-and-2024-consultation.pdf), November 2023). That revised solution successfully rolled out its initial phase in April 2026 ([ASIC](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-205-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project), 2026).
 
-That isn't proof that custom software development is a mistake. It does show that the choice is expensive to get wrong, in both directions. This guide is for advisors and BFSI decision-makers who have to make that call for a regulated firm, and then defend it to a board.
+That high-profile episode does not suggest that custom software development is a mistake. However, it demonstrates with painful clarity that making the wrong strategic software choice—in either direction—carries enormous financial and operational consequences.
+
+For company directors, corporate advisors, and leadership teams across Australian banking, lending, and financial services, making the "build versus buy" decision is one of the most critical governance choices you will ever face. Here is a clear, practical guide to navigating that decision—exploring where commercial software shines, where bespoke software delivers decisive competitive advantage, how to calculate genuine five-year operating costs, and the mandatory evidence Australian regulators expect your board to retain.
 
 ## The real question is which parts to build
 
-Build or buy sounds like one decision. In practice it's a dozen smaller ones, one per capability.
+Business leaders often speak of "build versus buy" as though it were a single all-or-nothing choice for an entire company. In practical reality, an Australian financial institution is built from dozens of interconnected digital components.
 
-A lender needs a ledger, an origination flow, credit decisioning, identity checks, payments, collections, reporting and a customer app. Some of those are the same at every lender. Some are the reason customers choose this one. Treating the platform as a single choice forces the same answer onto both.
+Consider an everyday Australian non-bank lender. That lender requires an accounting general ledger, a customer loan application portal, an automated credit scoring engine, digital identity checks, payment processing gateways, a customer mobile app, debt collection tools, and regulatory reporting systems. Some of those capabilities are completely identical across every lender in the country. Other capabilities—such as the speed of credit approval or a beautifully designed customer portal—are the exact reason borrowers choose that company over a big bank.
 
-So start with a capability map before any vendor shortlist. For each capability, ask: does it set us apart, how many systems does it touch, and does a product exist that fits our regulatory obligations without heavy change? The answers usually sort the map into buy, build and integrate.
+Treating your entire technology platform as a single decision forces you into painful compromises. Instead, begin with a capability map before requesting software sales pitches. For each operational capability, ask your executive team three straightforward questions:
 
-If you're weighing this for a bank or lender specifically, [digital banking solutions: build or buy](/blog/digital-banking-solutions-build-or-buy) works through the same logic for the core banking stack.
+- Does this specific software function differentiate our business and win us new customers?
+- How many internal databases and external payment rails does it need to connect to?
+- Does a commercial off-the-shelf product exist that satisfies our Australian regulatory obligations without massive customisation?
+
+Sorting your capabilities against these questions reveals a clear architecture: you buy standard utilities, build proprietary customer advantages, and engineer secure interfaces to connect them seamlessly. If you are evaluating core infrastructure for a retail bank or lender, our guide to [digital banking solutions: build or buy](/blog/digital-banking-solutions-build-or-buy) explores this exact capability breakdown.
 
 ## Where off the shelf wins
 
-Buy when the function is a commodity. That means every firm needs it, nobody wins customers with it, and the rules it follows are the same for everyone.
+Commercial software is the smartest choice whenever a capability is a standardized commodity. A capability is a commodity when every business in your sector needs it, no consumer chooses you because of it, and the underlying legal rules are identical for everyone:
 
-| Capability | Usually buy | Why |
+| Business capability | Standard recommendation | Practical operational rationale |
 |---|---|---|
-| General ledger and finance | Yes | Accounting rules are standard, and auditors know the major products |
-| HR, payroll, email, office tools | Yes | No customer ever sees them |
-| Card issuing and processing | Usually | Scheme certification is slow and costly to repeat |
-| Sanctions and PEP list data | Yes | Specialist providers maintain and update the lists |
-| Identity document verification | Usually | Specialist providers hold the data sources and liveness models |
-| Core deposit or loan ledger | Often | Mature products exist, but check fit and exit terms first |
+| **General ledger & corporate accounting** | Buy commercial software | Australian tax rules and double-entry accounting standards are universal; auditors expect proven commercial accounting systems. |
+| **HR, payroll & office administration** | Buy commercial software | Everyday staff administrative tools are entirely invisible to your retail banking customers. |
+| **Payment card issuing & scheme processing** | Buy specialized service | Meeting Visa and Mastercard compliance rules independently is prohibitively expensive and time-consuming. |
+| **Sanctions & PEP watchlist databases** | Buy external data feeds | Specialist global data providers maintain and update international sanctions and politician watchlists continuously. |
+| **Identity document verification** | Buy verified gateway access | Specialist providers maintain direct, approved electronic links to the Commonwealth Document Verification Service (DVS). |
+| **Core deposit or loan ledger** | Often buy commercial platform | Mature banking ledgers provide proven accounting logic, but check exit and data extraction terms carefully. |
 
-Products also bring things that are hard to build quickly: years of edge cases, an existing user base that finds bugs before you do, and often an assurance report you can hand to an auditor.
+Commercial software products also deliver hidden operational benefits: years of real-world bug fixes, an established community of users identifying software flaws before you do, and ready-made assurance certificates to share with external auditors.
 
-The trap is buying a product for a function that isn't a commodity for this firm. Then the customisation starts. Heavy changes to a vendor product can leave you with the costs of a custom build and less of the control, plus upgrades that break your changes. ASX said it expected its chosen product to minimise the customisation needed for the Australian market.
+The danger arises when an organisation purchases a commercial product for a function that is *not* a commodity for their specific business. When an off-the-shelf product does not fit your unique customer journey, expensive software modifications begin. Heavy customisation of an off-the-shelf package frequently results in the worst of both worlds: you endure the high capital costs of a custom build while losing direct control of the source code, and future vendor software updates frequently break your custom modifications.
 
 ## Where custom software development earns its cost
 
 ![A cloth tailor's tape and a retractable tape measure lying on a pale grey surface](measuring-tapes.jpg)
 
-*Custom work starts with measuring what the business actually does.*
+*Bespoke software development begins by measuring exactly how your business delivers distinctive value to its customers.*
 
-Developing custom software makes sense in the situations below. They overlap, and many regulated products sit in more than one.
+Engineering custom software provides an exceptional return on investment across three specific operational scenarios:
 
-### When it is how the firm competes
+### 1. When the capability is how your firm wins in the market
 
-If a feature is the reason a customer picks this lender, platform or insurer, a product the competitors can buy won't set it apart. A pricing engine, a broker portal with a faster decision, a payout flow that settles in seconds: these are where custom application development pays back. You own the roadmap, and nobody else gets the same feature on the next release.
+If a software feature is the primary reason an Australian customer chooses your financial service over a competing bank, buying software that your competitors can purchase off the same shelf will never set you apart. An automated commercial loan decisioning engine, a digital broker portal that issues conditional approvals in minutes, or an instant account-to-account payout system: these proprietary customer experiences are where bespoke engineering delivers outstanding commercial returns. Your business owns the software roadmap, and competitors cannot replicate your feature on their next software update.
 
-### When integration is the product
+### 2. When integration is the product itself
 
-Some products are mostly glue. A payments platform that routes between card and account-to-account rails, or a wealth platform pulling from custodians, registries and advisor platforms, spends most of its code on integration. A product built for one bank's world rarely fits those joins. The work is custom whichever way you go. The only question is whether it lives in your codebase or in a vendor's customisation layer.
+Many modern financial platforms are fundamentally integration engines. A payment platform routing transactions across cards and real-time bank rails, or a wealth platform synchronizing investment data across custodians, registries, and financial planners, spends 80 per cent of its software code connecting external systems. A generic off-the-shelf product designed for North American or European banking infrastructure rarely accommodates these local Australian connections cleanly. In these environments, integration work is required regardless of your approach; the only question is whether that logic lives cleanly inside your own software or in an expensive vendor customisation layer.
 
-### When no product fits the regulatory shape
+### 3. When no commercial package satisfies Australian regulatory mandates
 
-Australian obligations are specific. PayTo mandates, Confirmation of Payee, AUSTRAC reporting, Consumer Data Right consent flows and CPS 230 tolerance levels all have local detail. An offshore product may handle the concept but not the local rule. If the gap sits in the middle of the customer journey, filling it outside the product is often cleaner than bending the product.
+Australia's regulatory environment possesses unique, highly specific statutory mechanisms. Account-to-account PayTo mandates, Confirmation of Payee name-matching, AUSTRAC suspicious matter reporting deadlines, Consumer Data Right (CDR) consent flows, and APRA CPS 230 operational risk tolerances all require precise local handling. A generic overseas software package may understand the broad concept of a payment, but lack the technical capability to handle Australian statutory rules. When regulatory gaps sit directly inside your customer onboarding or checkout experience, engineering a custom workflow is vastly cleaner than attempting to twist an inflexible foreign software package.
 
-Our view: custom work is justified when you can name the advantage or the obligation it serves. A general wish for control is a weak business case on its own.
+Custom engineering is justified when it directly serves a clear competitive advantage or a statutory legal duty. A vague executive desire for "total control" is never a sufficient business case on its own.
 
 ## Buy the core, build the edges
 
-Most regulated firms land somewhere in between. They buy the systems of record and build what sits around them.
+The most successful Australian financial institutions adopt an intelligent hybrid architecture: **they buy standard systems of record, and build proprietary systems of engagement**.
 
-Take a hypothetical mid-sized non-bank lender. It licenses a loan management ledger and a general ledger, and buys identity verification and sanctions screening as services. It builds its own broker and customer apps, its credit decisioning rules, the integration layer that connects everything, and its reporting. The ledger vendor carries the accounting logic. The lender owns everything a customer or broker touches.
+Consider a mid-sized Australian non-bank lender. The company licences a reliable core loan management ledger to calculate interest rates and generate monthly statements, and purchases identity verification and sanctions screening via secure cloud APIs. However, the company builds its own broker portal, mobile customer application, credit decisioning engine, and management reporting dashboards. The external ledger handles basic accounting rules, while the lender retains total ownership over every digital screen touched by a customer or loan broker.
 
-That pattern holds up when:
+This proven architectural pattern succeeds when:
 
-1. **The core stays close to standard.** Configure it, don't rewrite it. Keep your own logic outside, behind an interface you control.
-2. **The integration layer belongs to you.** If every edge system talks to the core directly, the core vendor has quietly become your architecture.
-3. **Data can leave.** Your own data store holds a copy of what matters, in a format you define, so reporting and a future migration don't depend on the vendor's export tool.
+1. **The core ledger remains standard.** Configure the commercial core ledger without rewriting its internal code. House your unique business rules outside the ledger, connected through clean interfaces you control.
+2. **The integration layer belongs to your business.** If every customer portal and mobile app connects directly into the vendor's database, the software vendor has quietly become your master architect, making it nearly impossible to switch providers later.
+3. **Customer data remains easily portable.** Your organisation maintains an independent copy of all transaction records and customer history inside your own secure data warehouse, ensuring future reporting and regulatory compliance never depend on an external vendor's proprietary export tools.
 
-The same thinking applies to compliance tooling. [Compliance software: build or buy](/blog/compliance-software-build-or-buy) covers where rules engines and case management fit this split.
+Our companion analysis of [compliance software: whether to build or buy for regulated platforms](/blog/compliance-software-build-or-buy) explores how to apply this exact framework to regulatory case management.
 
 ## Total cost of ownership over five years
 
-A licence price and a build quote are not comparable numbers. Put both options on the same five-year view, with the same cost lines.
+Comparing an initial vendor software subscription quote directly against an upfront custom software build quote is comparing apples to oranges. To reach an honest governance decision, company boards must evaluate both options across a five-year total cost of ownership (TCO) model:
 
-| Cost line | Off the shelf | Custom build |
+| Cost dimension | Commercial off-the-shelf software | Bespoke custom software build |
 |---|---|---|
-| Upfront | Licence or setup fees, implementation partner, configuration | Discovery, design, build, testing |
-| Integration | Connectors to your systems, often priced separately | Built as part of the product |
-| Running | Subscription, often tied to volume or accounts | Hosting, monitoring, on-call support |
-| Change | Vendor change requests, or waiting for their roadmap | Your own team's time |
-| Compliance evidence | Vendor reports plus your own controls and testing | Your own controls, testing and audits |
-| Upgrades | Forced upgrades, retesting your customisations | Framework and dependency upgrades |
-| Exit | Data extraction, parallel running, migration | Handover and documentation, if the team changes |
+| **Upfront capital investment** | Initial software licence, implementation consulting fees, and vendor configuration charges | Discovery workshops, user experience design, engineering development, and security testing |
+| **System integration** | Custom connectors linking the vendor package to your existing internal ledgers (often priced separately) | Engineered natively as an integral part of the core software build |
+| **Ongoing operating fees** | Recurring monthly subscriptions, frequently escalating based on transaction volumes or staff seats | Cloud server hosting, real-time security monitoring, and on-call engineering support |
+| **Software modifications** | Paid vendor change requests, or waiting months for the vendor's global product roadmap | Prioritised and implemented directly by your own engineering team |
+| **Regulatory compliance** | Reviewing vendor audit reports, plus configuring customer-side controls and conducting annual audits | Documenting, testing, and auditing your own proprietary operational controls |
+| **System upgrades** | Mandatory vendor software updates, requiring retesting of all custom integrations | Deliberate, scheduled upgrades of software libraries and security patches |
+| **Exit & migration costs** | Expensive proprietary data extraction fees, parallel running costs, and data conversion | Handing over well-documented code repositories and technical runbooks to a successor team |
 
-Two lines get missed most often. Volume-based subscriptions grow with the business, so a product that is cheap at launch can be the dearest option at scale. Exit costs apply to both options. For a bought product, the vendor contract sets many of them.
+Two expenditure lines are frequently overlooked by corporate buyers. First, volume-based software subscriptions escalate rapidly as customer transactions grow. A commercial tool that appears affordable at 5,000 customers can easily become your single largest operating expense at 100,000 customers. Second, the cost of eventually exiting a software platform must be factored in on day one.
 
-For the build side, [what bespoke software development costs for financial services in Australia](/blog/bespoke-software-cost-financial-services-australia) sets out cost ranges and the assumptions behind them.
+To examine realistic development ranges for custom financial applications, our breakdown of [what bespoke software development costs in Australia](/blog/bespoke-software-cost-financial-services-australia) details current day rates and project tiers.
 
 ## Lock-in and the exit you have to plan
 
 ![A green emergency exit sign with a running figure and an arrow, mounted above a doorway in a modern building](exit-sign.jpg)
 
-*Every material arrangement needs a way out that someone has actually thought through.*
+*Every material technology arrangement requires a practical, documented exit strategy that executive management has tested.*
 
-For an APRA-regulated entity, exit isn't optional. CPS 230 says an entity "must not rely on a service provider unless it can ensure that in doing so it can continue to meet its prudential obligations in full". It must also "ensure it can conduct an orderly exit from the arrangement if needed" ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). Core technology services sit on APRA's default list of material service providers for every entity.
+For an APRA-regulated financial business, having an orderly exit plan is not a theoretical exercise—it is a mandatory legal obligation under Prudential Standard CPS 230 ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). The prudential standard states explicitly that an institution must not enter into a material service arrangement unless it can guarantee that it can conduct an orderly transition away from that provider if necessary.
 
-APRA's practice guide adds that, when choosing a material provider, an entity would typically consider "business services and capabilities which must be retained in-house" and "concentration risk" ([APRA, CPG 230](https://www.apra.gov.au/practice-guides/cpg-230)). Both points bear directly on what a firm builds and what it buys.
+APRA's prudential guidance note, CPG 230, reminds boards to consider which critical operational capabilities must be retained in-house, alongside evaluating "concentration risk"—the danger of the entire Australian financial sector relying on the same handful of technology providers ([APRA, CPG 230](https://www.apra.gov.au/practice-guides/cpg-230)).
 
-Concentration is on the regulators' minds. The Reserve Bank notes that "some of the largest regulated entities have around 150 service providers supporting critical operations" ([RBA](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026). In March 2026, APRA Member Therese McCarthy Hockey spoke to customer-owned banks about their shared technology providers, including core banking platforms. She warned that "pooling can unintentionally deepen concentration risk and reduce optionality in a crisis" ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), March 2026).
+The Reserve Bank of Australia highlighted that major Australian financial entities now rely on approximately 150 service providers to maintain critical daily operations ([RBA](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026). Addressing customer-owned banks in March 2026, APRA Member Therese McCarthy Hockey issued a clear warning regarding shared banking software: *"pooling can unintentionally deepen concentration risk and reduce optionality in a crisis"* ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), March 2026).
 
-Custom software can lock you in too, for example when only one contractor understands the system. So the exit test applies to both options:
+Custom software can also create lock-in if an organisation permits a single freelance contractor to hold all proprietary system knowledge. A robust exit strategy applies with equal force to both approaches:
 
-- Can you get all your data out, in a usable format, without the provider's help?
-- Could another team run and change the system within a quarter?
-- Is the source code, infrastructure setup and documentation held somewhere you control?
-- Has anyone tested the exit, even as a desk exercise?
+- Can your team extract all customer records, loan balances, and audit logs in a clean, standard format without vendor obstruction?
+- Could an independent software team assume management of the platform within three months using standard documentation?
+- Does your organisation own the software source code, cloud hosting accounts, and architectural runbooks?
+- Has your management team ever conducted a desktop simulation testing how services would continue if the software provider collapsed?
 
-The full contract checklist is in [what CPS 230 expects of your technology vendors](/blog/cps-230-technology-vendors).
+Review our comprehensive checklist on [what CPS 230 expects of technology vendors](/blog/cps-230-technology-vendors) before signing material supplier agreements.
 
 ## The evidence regulators and auditors expect either way
 
-Accountability stays with the regulated entity whichever way you go.
+A common corporate misconception is that purchasing commercial software outsources your regulatory risk.
 
-Under CPS 234, where information assets are managed by a third party, the regulated entity "must evaluate the design of that party's information security controls" ([APRA, CPS 234](https://www.apra.gov.au/standards/cps-234)). AUSTRAC is just as direct about outsourced AML/CTF functions: "you remain responsible for complying with your obligations under the Act and Rules" ([AUSTRAC](https://www.austrac.gov.au/industry-and-business/obligations-and-guidance/additional-guidance/using-outsourcing-help-meet-your-obligations), July 2026). Software you run in-house isn't outsourcing under that guidance, but the obligations stay with you there too.
+Under Australian law, statutory accountability remains squarely with the board of the regulated institution. Under APRA Prudential Standard CPS 234, if customer records are hosted by an external software vendor, the regulated institution must evaluate the design and effectiveness of that vendor's security controls ([APRA, CPS 234](https://www.apra.gov.au/standards/cps-234)). AUSTRAC enforces the exact same principle regarding anti-money laundering controls: you remain fully responsible for complying with your obligations, regardless of which software tool you deploy ([AUSTRAC](https://www.austrac.gov.au/industry-and-business/obligations-and-guidance/additional-guidance/using-outsourcing-help-meet-your-obligations), July 2026).
 
-| Evidence | If you buy | If you build |
+| Compliance dimension | Documentary evidence when buying off the shelf | Documentary evidence when building custom software |
 |---|---|---|
-| Security controls | Vendor SOC 2 or ISO 27001, your review of it, plus your own user-side controls | Your own controls, tested and documented |
-| Access and change | Who can configure the product, and how changes are approved | Code review, deployment logs, segregation of duties |
-| Testing | Your testing of configuration and integrations | Unit, integration, security and penetration testing |
-| Resilience | Vendor recovery tests mapped to your tolerance levels | Your own recovery and failover tests |
-| Exit | Tested data extraction and a transition plan | Documentation and knowledge that isn't held by one person |
+| **Security safeguards** | Vendor's independent SOC 2 Type 2 or ISO 27001 report, your internal assessment of it, and customer-side access controls | Documented internal controls, automated logging, and regular independent penetration testing |
+| **Access management & changes** | Staff access registers, multi-factor authentication enforcement, and vendor software release logs | Independent peer code review logs, automated build pipeline records, and separation of duties |
+| **Technical testing** | Verification testing of software configurations, payment gateways, and API connections | Comprehensive unit tests, end-to-end integration tests, and annual independent penetration tests |
+| **Operational resilience** | Vendor disaster recovery test reports mapped against your approved downtime tolerances | Practical recovery simulation reports proving systems can be rebuilt from backup vaults |
+| **Exit capability** | Verified data extraction scripts and a signed transition agreement with the vendor | Comprehensive software documentation, runbooks, and client-owned source code repositories |
 
-Assurance reports help, but they have limits. A SOC 2 report covers the vendor's chosen scope and usually lists controls the customer has to run itself. [What a SOC 2 report tells a buyer](/blog/soc-2-for-buyers) covers how to read one.
-
-Our view: whichever way you go, plan the evidence from the first week. It costs far less to produce as you go than to rebuild for an auditor.
+While an external vendor's SOC 2 report provides valuable assurance, it always lists complementary responsibilities that your internal team must maintain. Our guide on [how to read a SOC 2 report as a buyer](/blog/soc-2-for-buyers) explains how to verify these operational boundaries.
 
 ## A board-ready decision test
 
-A board doesn't need the architecture. It needs to see that the decision was made on purpose. For each major capability, record the answers to these questions:
+A company board does not need to debate technical programming languages; directors need to verify that a strategic technology decision was reached through deliberate, disciplined governance.
 
-- Does this capability set us apart from competitors?
-- How many internal and external systems does it connect to?
-- Does a product meet our Australian obligations without heavy customisation?
-- What is the five-year cost of each option, including exit?
-- If the provider or team failed tomorrow, how would we keep the critical operation running?
-- Who in the firm owns the decision and the ongoing risk?
+For every major software capability, record the answers to six practical questions in your board papers:
 
-Write the answer down with the reasoning, and keep it with the board papers. APRA and auditors may ask for it later.
+1. Does this specific software capability differentiate our brand and win us customers?
+2. How many internal systems, banking ledgers, and external payment rails does it need to connect to?
+3. Does a commercial package satisfy our Australian regulatory duties without costly custom modifications?
+4. What is the comprehensive five-year total cost of ownership, including future exit and data migration costs?
+5. If the software vendor or engineering partner failed unexpectedly tomorrow, how would our business keep critical customer operations running?
+6. Which senior executive within our organisation owns the ongoing operational risk?
+
+Document these responses clearly alongside management's formal business case. When APRA supervisors or independent financial auditors inspect your technology governance, having these documented answers on file provides immediate regulatory confidence.
 
 ## Common questions
 
-### Is custom application development riskier than buying?
+### Is custom software development inherently riskier than buying a commercial product?
 
-It carries different risks. A build carries delivery risk: scope, timeline and the team's skill. A product carries fit, customisation and concentration risk. Staged delivery with early working releases reduces delivery risk. ASX said it expected its two-release approach to "reduce overall delivery risk" ([ASX](https://www.asx.com.au/content/dam/asx/about/media-releases/2023/70-20-november-2023-chess-replacement-solution-announced-and-2024-consultation.pdf), November 2023).
+Both approaches carry distinct operational risks. Custom software development involves delivery risk: managing scope, project timelines, and engineering craftsmanship. Purchasing off-the-shelf software carries business-fit risk, vendor lock-in, and industry-wide concentration risk. Adopting a phased delivery approach with frequent, functional software releases significantly mitigates custom development risk. The ASX explicitly noted that adopting a multi-release deployment strategy was designed to reduce overall delivery risk ([ASX](https://www.asx.com.au/content/dam/asx/about/media-releases/2023/70-20-november-2023-chess-replacement-solution-announced-and-2024-consultation.pdf), November 2023).
 
-### Can we start with a product and build later?
+### Can an organisation launch with commercial software and replace it with custom tools later?
 
-Yes, and it's often sensible. Buy to launch, keep your data and integration layer under your control, then replace pieces as you learn where the product holds you back. Plan it that way from day one, or the product becomes too embedded to move. [Modernising a legacy platform without a big-bang rewrite](/blog/legacy-core-banking-modernisation) describes how to replace parts while the business keeps running.
+Yes, and this is frequently a very wise operational strategy. Many successful financial businesses launch their initial commercial pilot using an off-the-shelf core ledger, ensuring they maintain strict control over their integration layer and customer databases. As the business grows and identifies where the off-the-shelf product restricts customer conversion, specific capabilities can be replaced with custom-built modules. Our guide to [modernising core banking platforms without a big-bang rewrite](/blog/legacy-core-banking-modernisation) details how to replace legacy components progressively while keeping business operations running smoothly.
 
-### Does a vendor's certification cover our obligations?
+### Does purchasing certified software satisfy our organisation's regulatory obligations?
 
-No. It is evidence about the vendor's controls. You still have to assess the vendor, run your own controls and meet your own reporting duties.
+No. An external software certificate merely provides evidence regarding the vendor's internal safeguards. Under Australian prudential and financial services laws, your organisation must independently assess the vendor, manage user access permissions, and maintain direct regulatory compliance for customer records.
 
-## What to do next
+## Recommended next steps
 
-Pick one product or platform decision in front of your client now. Map its capabilities, sort each into buy, build or integrate, and write down the exit plan for every material piece. If the build pile is large, [how to choose a software development partner for a regulated platform](/blog/choosing-software-development-partner-regulated) covers what to look for, and [software for financial services](/industries/financial-services) shows the platforms involved.
+Select one pending technology or software decision currently facing your organisation. Map the underlying capabilities, categorise each into "buy", "build", or "integrate", and draft a practical exit strategy for every material system.
 
-When the answer is to build, Palxi joins advisors early and builds the parts that set their clients apart. [Email us](mailto:hello@palxi.com.au).
+If custom engineering represents a substantial part of your strategy, our guide on [how to choose a software development partner for regulated platforms](/blog/choosing-software-development-partner-regulated) outlines key criteria to evaluate, while our overview of [software for Australian financial services](/industries/financial-services) demonstrates how bank-grade platforms are architected.
 
-*Facts in this article were checked against APRA, AUSTRAC, RBA, ASIC and ASX sources on 27 September 2026. See [how we work](/#how-we-work).*
+When your organisation decides to build proprietary capabilities that set your business apart, Palxi works alongside leadership teams to engineer dependable, auditable financial platforms built to satisfy strict Australian regulatory standards. [Contact our Australian team](mailto:hello@palxi.com.au).
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*Regulatory standards, statutory citations, and financial market precedents were verified against APRA, AUSTRAC, RBA, ASIC, and ASX publications on 27 September 2026. See [how we work](/#how-we-work).*
+
+*This article provides general informational commentary and does not constitute formal legal, financial, or prudential advice. Please consult qualified legal counsel or your appointed compliance advisor for specific operational guidance.*
 
 *Photos: cover, ["Rialto building group on Collins St"](https://commons.wikimedia.org/w/index.php?curid=175834245) by Lytian100, [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Measuring tapes, ["Tailor's measuring tapes"](https://commons.wikimedia.org/w/index.php?curid=160473346) by Muszkietqa, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), cropped. Exit sign, ["Emergency exit sign"](https://commons.wikimedia.org/w/index.php?curid=76845719) by Eric Fischer, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped.*

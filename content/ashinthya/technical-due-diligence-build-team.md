@@ -17,146 +17,153 @@ lang: "en-AU"
 
 # Technical due diligence on a build team: an advisor's guide
 
-Your client has approved the build. The budget is in the board papers, and now the client wants a name. Who should build it?
+Your client's board has formally signed off on the project budget. The funding is approved in the board papers, and now the chief executive or committee chair looks across the table and asks you the pivotal question: *"Who should we hire to build this platform?"*
 
-Whichever team you suggest, your judgement goes with it. Technical due diligence is how you make sure that name holds up once the work starts.
+Whichever software development firm you recommend, your professional reputation and judgment go with that recommendation. Technical due diligence is the disciplined process of verifying that the proposed engineering team possesses genuine capability, trustworthy security habits, and solid financial viability before contracts are signed.
 
-For an APRA-regulated client, it's also part of a formal duty. Before entering into or materially modifying a material arrangement, the entity must "undertake appropriate due diligence, including an appropriate selection process and an assessment of the ability of the service provider to provide the service on an ongoing basis" ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)).
+For clients regulated by the Australian Prudential Regulation Authority (APRA)—such as banks, building societies, insurers, or superannuation trustees—conducting thorough vendor vetting is also a strict legal requirement. Under Prudential Standard CPS 230, financial institutions must complete comprehensive due diligence, including a formal selection process and an objective evaluation of the supplier's ability to maintain services on an ongoing basis ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)).
 
-Third parties now show up in about half of all breaches. Verizon's 2026 Data Breach Investigations Report found that breaches involving a third party now account for 48 per cent of all breaches, up 60 per cent on the year before ([Verizon](https://www.verizon.com/about/news/breach-industry-wide-dbir-finds), May 2026).
+The necessity for rigorous checks is clear from recent global cyber research. Verizon's 2026 Data Breach Investigations Report revealed that cyber breaches involving third-party suppliers now account for 48 per cent of all corporate security incidents—a staggering 60 per cent surge compared to the prior year ([Verizon](https://www.verizon.com/about/news/breach-industry-wide-dbir-finds), May 2026).
 
-This guide is written for advisors. Each check ends in something you can verify yourself, such as a register entry or a working session with the people who will write the code.
+This guide is written specifically for corporate advisors, board consultants, and business executives. Every check outlined here results in tangible, independently verifiable proof—such as an official register entry, an unalterable audit log, or a practical review with the actual software engineers who will write your code.
 
 ## Why the recommendation carries your risk
 
-When an advisor names a build team, the client hears an endorsement. If the team misses deadlines or walks away with the only copy of the system, the client remembers who suggested it.
+When an advisor names a software development team, client leadership hears an authoritative endorsement. If that external agency subsequently misses critical project deadlines, deploys bug-ridden code, or walks away holding the only administrative keys to your client's database, the board will remember exactly who recommended them.
 
-Regulation adds a formal layer. CPS 230 puts "core technology services" on the default list of material service providers for every APRA-regulated entity ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). A team that builds and then runs a lending platform or payments service may well fall into it. [What CPS 230 expects of technology vendors](/blog/cps-230-technology-vendors) sets out the contract terms that follow.
+In regulated Australian financial services, regulatory obligations amplify this commercial risk. APRA's operational resilience standard, CPS 230, classifies "core technology services" as material service providers by default ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). Any technology partner commissioned to build and support an Australian lending platform, customer onboarding portal, or payment facility will almost certainly fall under this statutory scrutiny. Our companion guide on [what CPS 230 expects of technology vendors](/blog/cps-230-technology-vendors) outlines the mandatory contractual protections required.
 
-CPS 234 adds a security layer. Where a third party manages the entity's information assets, the entity "must assess the information security capability of that party, commensurate with the potential consequences of an information security incident affecting those assets". It must also "evaluate the design of that party's information security controls" ([APRA, CPS 234](https://www.apra.gov.au/standards/cps-234)).
+APRA's information security standard, Prudential Standard CPS 234, adds further oversight duties. Whenever an external party manages customer data, the licensed institution must formally assess that supplier's information security capability and evaluate the design of its technical controls ([APRA, CPS 234](https://www.apra.gov.au/standards/cps-234)).
 
-Be precise about who these rules bind. They apply to the regulated entity, not to the build team and not to you. But the entity will rely on your recommendation when it records why it chose this team. The evidence you gather becomes part of its due diligence file, and the board may later test it with [the questions a board should ask under CPS 234](/blog/apra-cps-234-board-questions).
+While these prudential standards legally bind the financial institution rather than the external build team, your client's board must retain documentary proof justifying why this specific development partner was chosen. The evidence you gather forms a vital part of the client's official governance file, which company directors may evaluate using [the cyber security questions a board should ask under CPS 234](/blog/apra-cps-234-board-questions).
 
 ## What technical due diligence on a build team covers
 
-A useful review covers the areas below. For each, the table sets out what to request and the answers that should make you pause. The last row goes to CPS 230's test of whether a provider can deliver "on an ongoing basis".
+A comprehensive technical review evaluates eight distinct operational dimensions. For each category, the table below highlights the documentation to request alongside warning signs that should prompt immediate caution:
 
-| Area | What to ask for | What should worry you |
+| Due diligence area | What documentation to request | Warning signs that warrant caution |
 |---|---|---|
-| Company and people | ABN, the proposed team structure, CVs of the named leads, a subcontractor list | Senior people in the pitch, unnamed juniors on the project |
-| Security certification | ISO 27001 certificate and Statement of Applicability, SOC 2 Type 2 report if held | A scope that leaves out the delivery team |
-| Delivery practice | A live walkthrough of code review, testing, deployment and access control | Nobody can show a deployment log |
-| Code quality | A sample repository or read-only walkthrough, plus dependency and licence scan output | No automated tests, no dependency scanning |
-| Regulated evidence | Redacted examples of evidence produced for a past audit | "The client handled compliance" |
-| Ownership and exit | IP assignment clause, who owns repositories and cloud accounts, exit support terms | Code held only in the vendor's accounts |
-| Support and incidents | On-call arrangements, incident history, response times | Support on a "best effort" basis |
-| Viability and continuity | Recent financial statements or an accountant's letter, professional indemnity and cyber insurance certificates, the team's own business continuity plan | One client providing most of the revenue, or no insurance cover |
+| **Corporate entity & leadership** | Australian Business Number (ABN), company ownership structure, CVs of named technical leads, and a complete subcontractor register | Polished senior executives presenting the sales pitch, but unnamed junior contractors assigned to the actual project |
+| **Security certifications** | Accredited ISO 27001 certificate with Statement of Applicability, and recent SOC 2 Type 2 reports | An audit scope that covers only the vendor's administrative head office while excluding software developers |
+| **Engineering workflows** | A live, practical walkthrough of code review processes, automated testing routines, and deployment logs | Inability to demonstrate automated deployment logs or multi-factor administrative access |
+| **Code hygiene & testing** | Inspection of a sample codebase, automated dependency vulnerability reports, and open-source licence registers | Absence of automated software tests or unmonitored third-party open-source components |
+| **Regulatory experience** | Redacted examples of compliance evidence generated for previous Australian audits | Vague assurances that "the client always took care of compliance matters" |
+| **Ownership & exit terms** | Clear intellectual property assignment clauses, client-owned code repositories, and documented exit transition support | Software source code hosted exclusively inside the vendor's private cloud accounts |
+| **Ongoing support & incidents** | Documented on-call staffing arrangements, historical incident reports, and guaranteed response times | Support offered strictly on an informal, "best-efforts" commercial basis |
+| **Financial viability** | Recent audited financial statements, certificate of currency for professional indemnity and cyber insurance, and business continuity plans | Severe revenue concentration with a single customer, or inadequate cyber insurance cover |
 
-Software due diligence is the code-level part of this review. It matters most when the team will take over an existing codebase, or bring its own components into your client's product.
+Software due diligence represents the code-level component of this evaluation. It is particularly critical when an engineering team is taking over an existing legacy system or introducing pre-built software modules into your client's core platform.
 
 ## How to check if a company is ISO 27001 certified
 
 ![A round magnifying glass held up against closed grey window blinds, showing a magnified view through the lens](magnifying-glass.jpg)
 
-*Check the register entry as well as the PDF certificate.*
+*Always verify an external security certificate against official accreditation registries rather than relying on marketing claims.*
 
-Start with the basics. ISO "does not perform certification or issue certificates" ([ISO](https://www.iso.org/certification.html)). Independent certification bodies run the audits and issue certificates. Accreditation bodies, such as JAS-ANZ in Australia and New Zealand, assess those certification bodies.
+Verifying security claims begins with a fundamental fact: the International Organization for Standardization (ISO) does not audit businesses or issue certificates directly ([ISO](https://www.iso.org/certification.html)). Audits are performed by independent commercial certification bodies, which are in turn accredited by national oversight bodies—such as JAS-ANZ (the Joint Accreditation System of Australia and New Zealand).
 
-So a logo on a website proves little. Work through these checks instead:
+A security logo displayed on a vendor's website proves very little. Work methodically through these six practical verification checks:
 
-1. **Get the certificate.** Note the certificate number, the certification body, the standard version, the scope and the expiry date.
-2. **Look it up.** [IAF CertSearch](https://www.iafcertsearch.org/) is a global database of accredited management system certificates. [Its FAQ](https://support.iafcertsearch.org/iaf-certsearch-faq/iaf-certsearch-faq/general) says "the database only contains accredited certifications", and a few searches a day are free. For Australian certification bodies, the [JAS-ANZ register](https://register.jasanz.org/certified-organisations) lists certified organisations and accredited bodies.
-3. **Check the version.** The current edition is ISO/IEC 27001:2022. Under the IAF's transition rules (the IAF's roles have since passed to Global ACI), "All certifications based on ISO/IEC 27001:2013 shall expire or be withdrawn at the end of the transition period", and that period ended on 31 October 2025 ([IAF MD 26](https://iaf.nu/iaf_system/uploads/documents/IAF_MD26_Issue_2_15012023.pdf)). A 2013 certificate shown to you today is out of date, whatever expiry date it carries.
-4. **Read the scope.** It should name the legal entity, locations and services that will deliver your client's work. A certificate held by a parent company's hosting arm says little about a software team in another subsidiary.
-5. **Read the Statement of Applicability.** It lists the controls the organisation applies and why any are excluded. Look for secure development, supplier management, access control and logging.
-6. **Find out about the last audit.** When was the most recent surveillance audit, and did it raise any major nonconformities? You may not get the report, but you should get a straight answer.
+1. **Obtain the official certificate.** Inspect the legal business name, certificate registration number, issuing certification body, standard version, certified scope, and expiry date.
+2. **Search official accreditation databases.** Check the certificate on [IAF CertSearch](https://www.iafcertsearch.org/), the international database of accredited management certificates ([IAF CertSearch FAQ](https://support.iafcertsearch.org/iaf-certsearch-faq/iaf-certsearch-faq/general)). For Australian providers, search the official [JAS-ANZ Certified Register](https://register.jasanz.org/certified-organisations) to verify that the auditing firm is officially accredited.
+3. **Verify the version date.** The active international standard is ISO/IEC 27001:2022. Under mandatory global transition rules, all certificates issued under the older 2013 standard expired on 31 October 2025 ([IAF MD 26](https://iaf.nu/iaf_system/uploads/documents/IAF_MD26_Issue_2_15012023.pdf)). Any 2013 certificate presented today is legally obsolete, regardless of what printed expiry date appears on the page.
+4. **Scrutinize the audited scope.** The certificate must explicitly encompass the specific software development team, geographic locations, and digital platforms delivering your client's software. A certificate held by an offshore parent company's data hosting division provides zero assurance regarding a bespoke software development team in another subsidiary.
+5. **Request the Statement of Applicability.** This formal document lists which of the 93 ISO controls the company enforces. Look specifically for secure software development, vendor management, access controls, and activity logging.
+6. **Inquire about recent audit findings.** Ask when the most recent annual surveillance audit took place, and confirm whether the auditor identified any major non-conformities.
 
-If a certificate doesn't appear on either register, don't jump to conclusions. ISO notes that accreditation is not compulsory, and "non-accreditation does not necessarily mean the certification body is not reputable" ([ISO](https://www.iso.org/certification.html)). Our view: an unaccredited certificate is still harder to rely on, so ask the team why they chose that route.
-
-A team that isn't certified yet may be partway there. [What ISO 27001 costs an Australian fintech](/blog/iso-27001-certification-australia-cost) shows how long the path usually takes, which helps you judge whether a promised date is realistic.
+If a certificate does not appear on official registers, ask why. While unaccredited certificates exist, relying on an unaccredited audit provides little defensibility under APRA prudential reviews. If a firm is currently working toward certification, our guide on [ISO 27001 costs and timelines in Australia](/blog/iso-27001-certification-australia-cost) provides realistic benchmarks to judge their progress.
 
 ## Evidence beyond the certificate
 
-Take a hypothetical team with a current certificate, an accredited body and a clean scope. Its last penetration test still left two high findings open for six months. Only the documents behind the certificate would show that.
+Consider a hypothetical development firm that holds a current, accredited certificate with an appropriate scope. However, its most recent independent penetration test identified two critical security vulnerabilities that have remained unfixed for six months. Looking only at the certificate on the office wall would never reveal that operational failure.
 
-A SOC 2 Type 2 report, if the team has one, is the next document to request. Check the period it covers, whether the services you care about are in scope, any exceptions the auditor found, and the controls the report expects the customer to run. [How to read a SOC 2 report as a buyer](/blog/soc-2-for-buyers) walks through each part.
+A SOC 2 Type 2 report represents the next vital document to request. Examine the audit duration, confirm that the specific software tools you rely on were evaluated, and review any test exceptions identified by the auditor. Our guide on [how to evaluate a SOC 2 report as a buyer](/blog/soc-2-for-buyers) explains how to interpret these findings.
 
-The latest penetration test summary comes next, with the status of every finding. CPS 234 requires that testing is "conducted by appropriately skilled and functionally independent specialists". Where the entity relies on a third party's testing, it must assess whether "the nature and frequency of testing of controls" meets the standard's own requirements ([APRA, CPS 234](https://www.apra.gov.au/standards/cps-234)). Tests run by the engineers who wrote the code won't meet that bar. The [guide to penetration testing for financial platforms](/blog/penetration-testing-financial-platforms) covers scope and timing.
+Next, request the executive summary of the vendor's most recent independent penetration test, alongside a current register of all remediation actions. APRA CPS 234 requires that testing be conducted by functionally independent specialists. Security scans carried out by the same developers who wrote the software code do not satisfy this prudential standard. Our overview of [penetration testing for Australian financial platforms](/blog/penetration-testing-financial-platforms) details the required testing scope.
 
-We maintain ISO 27001 controls on a client platform under external audit, and we have taken client products through SOC 2. Our view, from the build side of those audits: the list of open findings, with owners and due dates, tells you more about a team than the certificate on the wall.
+At Palxi, we maintain continuous ISO 27001 and SOC 2 controls across our financial software platforms. In our experience, inspecting an engineering team's live register of open security findings—complete with assigned engineers and target resolution dates—tells you vastly more about their true engineering culture than an attractive certificate framed in reception.
 
 ## Software due diligence: see the code and the pipeline
 
-A questionnaire records what a team says it does. A walkthrough shows what it actually does.
+A written questionnaire documents what a development agency claims it does; a live technical walkthrough reveals how its team operates in reality.
 
-Request a working session, around 90 minutes, on a real repository and deployment pipeline. It might be an internal product, or a client system shown with that client's consent. Have an engineer you trust in the room if your own background is not in engineering. Look for:
+Request a 90-minute technical working session to inspect a live software repository and automated deployment pipeline. If you do not come from a computer programming background, ensure an independent senior engineer participates alongside you. Look for six concrete engineering practices:
 
-- Protected main branches and required review before merge
-- Tests on every change. Ask how long the suite takes: a team that runs it often should know the answer.
-- A software bill of materials the team can produce on request, backed by dependency scanning in the pipeline
-- Secrets in a vault, never in code, tickets or chat
-- Infrastructure as code, so a lost environment can be rebuilt from the repository rather than from memory
-- Deployment logs and access reviews that show who released what, and who can still reach production
+- **Protected code branches.** Core software code must be locked so that no individual developer can alter production code without an independent peer review and approval from a second engineer.
+- **Automated test suites.** Every software change must automatically trigger automated tests verifying that existing calculations, payment ledgers, and security permissions continue to function perfectly.
+- **Automated component scanning.** Modern software is assembled using third-party software packages. The build pipeline must automatically scan every package for known security bugs before allowing code to deploy.
+- **Dedicated secret vaults.** Passwords, database keys, and banking credentials must be housed inside dedicated security vaults—never hardcoded into software files, support tickets, or team chat messages.
+- **Infrastructure as code.** Cloud servers and databases must be defined using automated configuration scripts, ensuring an entire platform can be rebuilt cleanly in hours during a disaster.
+- **Detailed deployment audit logs.** Automated logs must record exactly who authorised every software update, what code was released, and who currently possesses administrative access.
 
-Exploited software flaws have overtaken stolen credentials. Verizon's 2026 report found that using software flaws, at 31 per cent of breaches, has surpassed stolen credentials as a way in for the first time ([Verizon](https://www.verizon.com/about/news/breach-industry-wide-dbir-finds), May 2026). How a team finds and patches vulnerable components matters as much as how it writes new code.
+Recent industry findings emphasize why software supply chain security is paramount. Verizon's 2026 data breach report revealed that exploited software flaws accounted for 31 per cent of corporate breaches, overtaking stolen passwords as the primary entry point for hackers ([Verizon](https://www.verizon.com/about/news/breach-industry-wide-dbir-finds), May 2026). How an engineering partner monitors and patches vulnerable software components is just as critical as how they write new features.
 
-Open-source licences deserve a question too. Some licences attach conditions to code that uses them, so the team should track licences alongside vulnerabilities. Code written with AI assistants needs a review process of its own. A clear answer, with a named reviewer, is a good sign.
+Verify how open-source software licences are managed, and confirm whether the agency uses automated artificial intelligence (AI) coding tools. If generative AI tools are used, verify that an experienced senior engineer personally reviews and tests every generated code block for security flaws.
 
 ## The people who will write the code
 
-Picture month three of the project. The people in the pitch meeting may have moved on to the next sale, so get the names of the engineers who will be working on your client's system written into the proposal.
+Picture your project three months after contract signing. The charismatic executives and principal consultants who led the sales pitch have transitioned to their next corporate prospect.
 
-Then work through the rest of the delivery picture:
+To prevent unwelcome surprises, ensure the formal proposal names the specific senior software engineers who will lead your client's project on a day-to-day basis.
 
-- **Subcontractors:** a list of every other party that touches the code or the environments, since your client may need to know about each one.
-- **Location.** Where will staff, data and support sit? For APRA-regulated clients, material offshoring arrangements carry their own notice rules under CPS 230.
-- **Key people:** the handover documentation that would let someone else pick up the system if the lead engineer left tomorrow.
-- **Security vetting** before anyone gets production access, and who signs it off.
+Clarify four additional operational factors:
 
-References are worth the time if you ask the right person. Speak to an engineer or product owner at a past client as well as the executive sponsor. Find out what went wrong, and how the team behaved when it did.
+- **Subcontractor transparency:** Require an exhaustive list of any third-party agencies or external contractors who will touch the codebase or hosting environments.
+- **Geographic location:** Clarify where developers, support engineers, and customer data will reside. For APRA-regulated entities, material offshore service arrangements require advance regulatory notification under CPS 230.
+- **Knowledge redundancy:** Inspect the architectural runbooks and documentation that would allow another engineer to manage the system seamlessly if a lead developer resigned tomorrow.
+- **Background screening:** Confirm that every team member granted access to banking infrastructure undergoes formal police background checks and identity verification.
+
+Always check references thoroughly. Speak directly with a lead engineer or product manager at a previous client organisation, rather than solely interviewing executive sponsors. Ask what unexpected challenges arose during the build, and how the development team handled unforeseen setbacks.
 
 ## Ownership, access and a way out
 
 ![A small bunch of three metal keys on a split ring with a black rubber tag, lying on a white surface](keys-on-ring.jpg)
 
-*Ask early who will hold the keys to the code and the cloud accounts.*
+*Establish from the very first week who holds legal ownership of software code and master administrator access to cloud accounts.*
 
-Ownership disputes are an avoidable way for a good project to end badly. IP Australia is blunt about the default: "In Australia, IP created by a contractor is the property of the contractor unless otherwise stated in the contract" ([IP Australia](https://www.ipaustralia.gov.au/understanding-ip/who-owns-ip)). Employers own the IP their employees create in relation to the business. So if a build team uses its own contractors, your client needs a chain of written assignments: from each contractor to the team, and from the team to the client.
+Intellectual property (IP) disputes represent one of the most painful ways for an ambitious software project to stumble. IP Australia establishes a clear default legal principle: *"In Australia, IP created by a contractor is the property of the contractor unless otherwise stated in the contract"* ([IP Australia](https://www.ipaustralia.gov.au/understanding-ip/who-owns-ip)). While companies own the intellectual property generated by their permanent employees, independent contractors retain ownership of their creations unless explicitly assigned in writing. If an external development agency uses freelance contractors, your client requires an unbroken chain of written assignments transferring intellectual property from the contractor to the agency, and from the agency to your client.
 
-Check these before anyone signs:
+Ensure your commercial agreement establishes five vital ownership terms before work begins:
 
-- The contract assigns IP in the delivered code and documentation to the client, with a clear licence for any reusable components the team keeps.
-- Source code lives in repositories the client owns, from the first commit.
-- Cloud accounts, domains and third-party services are registered to the client, with client-held admin access.
-- Runbooks and architecture notes are kept up to date during the build.
-- Exit support is priced and described: how long the team will help a successor, and at what rate.
+- The contract explicitly assigns full intellectual property ownership of all custom software code and documentation to the client upon creation, providing clear licences for any pre-existing reusable components.
+- Source code repositories are registered in the client's corporate name from the very first day of development.
+- Cloud hosting accounts, domain names, and third-party payment gateways are registered directly to the client, with master administrator passwords held by client executives.
+- Technical architecture diagrams and operational runbooks are updated continuously throughout the project lifecycle.
+- Exit transition assistance is clearly defined, detailing the hourly rates and duration the agency will provide to onboard successor teams.
 
-These points line up with the exit test that applies to any regulated platform. [Choosing between a custom build and off the shelf](/blog/custom-vs-off-the-shelf-financial-services) sets out the same questions from the build or buy angle.
+These ownership provisions align directly with the exit and transition planning required under [custom versus off-the-shelf software strategies](/blog/custom-vs-off-the-shelf-financial-services).
 
 ## Common questions
 
-### Is software due diligence the same as technical due diligence?
+### How does software due diligence differ from technical due diligence?
 
-Not quite. Software due diligence usually means reviewing a codebase, often before an acquisition or before taking over a platform. Technical due diligence on a build team is wider. It covers people, security evidence, delivery practice and contract terms, with a code review as one part of it.
+Software due diligence focuses narrowly on inspecting a specific codebase—often ahead of a company acquisition or when inheriting an existing application. Technical due diligence on a build team is a much broader operational evaluation: it assesses the agency's personnel, security credentials, development practices, financial stability, and commercial contract terms, with code inspection forming one component of the broader review.
 
-### Does a build team need its own ISO 27001 certificate?
+### Must an external software build team hold its own ISO 27001 certificate?
 
-No law requires it. For an APRA-regulated client, the question is whether the entity can assess the team's security capability and evaluate its controls, as CPS 234 requires. A current, accredited certificate with the right scope makes that much easier. Without one, expect a longer questionnaire and more evidence requests.
+No Australian law explicitly mandates that a software development firm must hold ISO 27001 certification. However, for an APRA-regulated financial institution, the board must independently verify that the build team maintains robust security safeguards under CPS 234. An accredited ISO 27001 certificate makes that regulatory sign-off significantly smoother. In the absence of an accredited certificate, expect to conduct extensive, manual security audits.
 
-### Should the advisor run the review, or bring in someone independent?
+### Should an advisor conduct the technical review personally, or engage an independent specialist?
 
-Our view: the advisor should own the review, because the recommendation is theirs. Bring in an independent engineer for the code and pipeline session if that isn't your field. Either way, write down what you checked and what you found. That record helps the client show its selection process later.
+The lead corporate advisor should own the overall due diligence review, because the formal recommendation to the client belongs to them. If you do not come from an engineering background, engage an independent senior software engineer to lead the code review and deployment walkthrough. Document all findings in a written report; this document serves as valuable evidence demonstrating your client's diligent vendor selection process.
 
-## What to do before you make the call
+## Essential steps before making your recommendation
 
-Request a due diligence pack: the certificate and Statement of Applicability, any SOC 2 report and the latest penetration test summary. Add a draft contract with the IP and exit clauses, and the names of the people who will do the work. Look the certificate up yourself. Book the code walkthrough. Then give your client a short written summary of what you checked.
+Request a comprehensive due diligence package from prospective software development partners:
 
-For the wider selection process, see [how to choose a software development partner for a regulated platform](/blog/choosing-software-development-partner-regulated), or browse [software for financial services](/industries/financial-services).
+- Accredited ISO 27001 certificate, official registration number, and Statement of Applicability
+- Unredacted SOC 2 Type 2 assurance report and the executive summary of their latest independent penetration test
+- Draft commercial agreement containing explicit intellectual property assignment and exit transition clauses
+- Written biographies and Australian financial services experience of the named software engineers assigned to the project
+- Confirmation of official registration on JAS-ANZ or IAF CertSearch registries
+- A 90-minute live code walkthrough inspecting automated deployment pipelines and branch protections
 
-When your client needs a team to put through these checks, Palxi joins advisors early and builds alongside them. [Email us](mailto:hello@palxi.com.au).
+For broader insights on selecting delivery partners, explore our guide to [choosing a software development partner for regulated platforms](/blog/choosing-software-development-partner-regulated), or review our overview of [software for Australian financial services](/industries/financial-services).
 
-*Facts in this article were checked against APRA, ISO, IAF, JAS-ANZ, IP Australia and Verizon sources on 27 September 2026. See [how we work](/#how-we-work).*
+When your client needs a dependable, battle-tested software engineering team capable of satisfying rigorous technical due diligence, Palxi collaborates with corporate advisors and executive teams to build secure, bank-grade platforms from day one. [Contact our Australian team](mailto:hello@palxi.com.au).
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*Industry breach statistics, accreditation standards, and intellectual property laws were verified against APRA, ISO, IAF, JAS-ANZ, IP Australia, and Verizon publications on 27 September 2026. See [how we work](/#how-we-work).*
+
+*This article provides general informational commentary and does not constitute formal legal, accounting, or prudential advice. Please consult qualified legal counsel or your appointed compliance advisor for specific operational guidance.*
 
 *Photos: cover, ["Perth"](https://www.flickr.com/photos/7380123@N04/2709732487) by Twodogz photography, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Magnifying glass, ["Magnifying glass"](https://www.flickr.com/photos/69102917@N06/10975838886) by Mauro Cateb, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Keys, ["Keys"](https://www.flickr.com/photos/60309882@N00/3041590472) by walknboston, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped.*

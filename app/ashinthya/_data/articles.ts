@@ -114,4 +114,12 @@ export function formatDate(iso: string) {
   }).format(new Date(`${iso}T12:00:00+09:30`));
 }
 
+export function getAdjacentArticles(slug: string) {
+  const index = articles.findIndex((a) => a.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  const prev = index > 0 ? articles[index - 1] : null;
+  const next = index < articles.length - 1 ? articles[index + 1] : null;
+  return { prev, next };
+}
+
 // reloaded 1791321057.4454975

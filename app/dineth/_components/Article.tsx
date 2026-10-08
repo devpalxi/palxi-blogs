@@ -15,13 +15,13 @@ export function PlainWords({
   return (
     <aside
       aria-label={`In plain words: ${term}`}
-      className="rounded-lg bg-shallows px-7 py-6 text-body"
+      className="my-8 sm:my-10 rounded-xl bg-shallows px-5 py-5 sm:px-7 sm:py-6 text-sm sm:text-body ring-1 ring-hairline/60"
     >
-      <p className="text-label font-semibold text-magenta-deep">
+      <p className="text-xs sm:text-label font-semibold text-magenta-deep">
         In plain words
       </p>
-      <p className="mt-2">
-        <strong className="text-ink">{term}</strong> {children}
+      <p className="mt-2 leading-relaxed">
+        <strong className="text-ink font-semibold">{term}</strong> {children}
       </p>
     </aside>
   );
@@ -56,7 +56,7 @@ export function Photo({
   const link = "underline decoration-1 underline-offset-2 hover:text-ink";
   return (
     <figure className={className}>
-      <div className={`overflow-hidden rounded-lg bg-shallows ${frameClassName}`}>
+      <div className={`overflow-hidden rounded-xl bg-shallows shadow-sm ring-1 ring-hairline/60 ${frameClassName}`}>
         <Image
           src={src}
           alt={alt}
@@ -64,10 +64,10 @@ export function Photo({
           placeholder="blur"
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : "auto"}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
         />
       </div>
-      <figcaption className="mt-3 text-label text-muted">
+      <figcaption className="mt-2.5 sm:mt-3 text-xs sm:text-label text-muted leading-relaxed">
         {caption && <span>{caption} </span>}
         <span>
           Photo: {credit.author},{" "}
@@ -97,28 +97,28 @@ export function Takeaways({
   return (
     <section
       aria-labelledby="takeaways-title"
-      className="mx-auto my-16 max-w-[44rem] rounded-lg bg-shallows px-7 py-8 sm:px-10"
+      className="mx-auto my-12 sm:my-16 max-w-[44rem] rounded-xl bg-shallows px-5 py-6 sm:px-10 sm:py-8 shadow-sm ring-1 ring-hairline/60"
     >
       <h2
         id="takeaways-title"
-        className="font-heading text-title font-semibold text-ink"
+        className="font-heading text-lg sm:text-title font-semibold text-ink"
       >
         {title}
       </h2>
-      <ol className="mt-6 space-y-5">
+      <ol className="mt-5 sm:mt-6 space-y-4 sm:space-y-5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-4">
+          <li key={i} className="flex gap-3 sm:gap-4 items-start">
             <span
               aria-hidden="true"
-              className="flex size-9 shrink-0 items-center justify-center rounded-full bg-magenta font-semibold text-surface"
+              className="flex size-7 sm:size-9 shrink-0 items-center justify-center rounded-full bg-magenta text-xs sm:text-label font-semibold text-surface"
             >
               {i + 1}
             </span>
-            <span className="pt-1">{item}</span>
+            <span className="pt-0.5 text-sm sm:text-body leading-relaxed">{item}</span>
           </li>
         ))}
       </ol>
-      {children && <div className="mt-7 text-body">{children}</div>}
+      {children && <div className="mt-6 text-sm sm:text-body leading-relaxed">{children}</div>}
     </section>
   );
 }
@@ -131,20 +131,20 @@ export function Sources({
   return (
     <section
       aria-labelledby="sources-title"
-      className="mx-auto mt-16 max-w-[44rem] border-t border-hairline pt-8"
+      className="mx-auto mt-12 sm:mt-16 max-w-[44rem] border-t border-hairline pt-6 sm:pt-8"
     >
       <h2
         id="sources-title"
-        className="font-heading text-title font-semibold text-ink"
+        className="font-heading text-lg sm:text-title font-semibold text-ink"
       >
         Where our facts come from
       </h2>
-      <ul className="mt-4 space-y-1 text-label leading-relaxed text-muted">
+      <ul className="mt-3 sm:mt-4 space-y-1 text-xs sm:text-label leading-relaxed text-muted">
         {items.map((item) => (
           <li key={item.href}>
             <a
               href={item.href}
-              className="inline-block py-2 text-copy underline decoration-1 underline-offset-2 hover:text-magenta"
+              className="inline-block py-1.5 sm:py-2 text-copy underline decoration-1 underline-offset-2 hover:text-magenta transition-colors break-words"
             >
               {item.label}
             </a>

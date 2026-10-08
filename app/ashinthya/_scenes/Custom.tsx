@@ -201,17 +201,17 @@ export function Sort() {
   return (
     <div>
       <SortScene />
-      <div className="mt-5 grid gap-5 md:grid-cols-3 md:gap-8">
+      <div className="mt-4 sm:mt-6 grid gap-3.5 sm:gap-5 sm:grid-cols-3 md:gap-8">
         {TRAYS.map((tray, k) => (
-          <div key={tray.label}>
-            <p className="font-semibold text-ink md:text-center">{tray.label}</p>
-            <ul className="mt-2 space-y-2">
+          <div key={tray.label} className="rounded-lg bg-surface/70 p-3 sm:p-0 sm:bg-transparent ring-1 ring-hairline/70 sm:ring-0">
+            <p className="font-semibold text-ink text-xs sm:text-sm md:text-base sm:text-center">{tray.label}</p>
+            <ul className="mt-2 space-y-1.5 sm:space-y-2">
               {CARDS.filter((c) => c.tray === k).map((c) => (
-                <li key={c.name} className="flex items-center gap-3 text-label font-normal text-copy">
-                  <Mini className="size-9 shrink-0 rounded-sm bg-surface" box={60}>
+                <li key={c.name} className="flex items-center gap-2.5 sm:gap-3 text-xs sm:text-label font-normal text-copy">
+                  <Mini className="size-7 sm:size-9 shrink-0 rounded-sm bg-surface ring-1 ring-hairline" box={60}>
                     {c.icon}
                   </Mini>
-                  {c.name}
+                  <span className="leading-snug">{c.name}</span>
                 </li>
               ))}
             </ul>
@@ -476,7 +476,7 @@ export function Exit() {
   return (
     <div>
       <ExitScene />
-      <ol className="mt-5 grid list-decimal gap-2 pl-6 text-label font-semibold text-ink sm:grid-cols-2 md:grid-cols-4 md:gap-x-8">
+      <ol className="mt-4 sm:mt-5 grid list-decimal gap-2 pl-5 sm:pl-6 text-xs sm:text-label font-semibold text-ink grid-cols-1 sm:grid-cols-2 md:grid-cols-4 sm:gap-x-6 md:gap-x-8">
         <li>Data comes out</li>
         <li>Another team can run it</li>
         <li>Code and docs held by you</li>

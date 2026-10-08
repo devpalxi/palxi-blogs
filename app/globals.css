@@ -57,18 +57,18 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-heading: var(--font-inter), system-ui, sans-serif;
 
-  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4rem);
-  --text-display--line-height: 1.08;
+  --text-display: clamp(2rem, 1.4rem + 2.8vw, 4rem);
+  --text-display--line-height: 1.1;
   --text-display--letter-spacing: -0.03em;
-  --text-headline: clamp(1.875rem, 1.5rem + 1.4vw, 2.5rem);
-  --text-headline--line-height: 1.15;
+  --text-headline: clamp(1.5rem, 1.25rem + 1.2vw, 2.5rem);
+  --text-headline--line-height: 1.18;
   --text-headline--letter-spacing: -0.025em;
-  --text-title: 1.5625rem;
+  --text-title: clamp(1.2rem, 1.1rem + 0.5vw, 1.5625rem);
   --text-title--line-height: 1.25;
   --text-title--letter-spacing: -0.015em;
-  --text-standfirst: clamp(1.3125rem, 1.2rem + 0.5vw, 1.5rem);
+  --text-standfirst: clamp(1.125rem, 1.05rem + 0.4vw, 1.5rem);
   --text-standfirst--line-height: 1.5;
-  --text-body: clamp(1.1875rem, 1.125rem + 0.25vw, 1.25rem);
+  --text-body: clamp(1.0625rem, 1rem + 0.2vw, 1.25rem);
   --text-body--line-height: 1.65;
   --text-label: 1rem;
   --text-label--line-height: 1.4;
@@ -101,6 +101,7 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -109,6 +110,7 @@
     font-family: var(--font-sans);
     font-size: var(--text-body);
     line-height: 1.65;
+    overflow-x: hidden;
   }
 
   h1,
@@ -204,6 +206,8 @@
     font-size: var(--text-body);
     line-height: 1.65;
     color: var(--body-ink);
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .prose-post > * + * {
     margin-top: 1.25em;
@@ -344,6 +348,11 @@
    * component arms a diagram (hides animated parts) only when motion is
    * allowed and the diagram is still off-screen, then plays it on entry.
    */
+  .diagram {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
   .diagram [data-anim="grow-x"] {
     transform-origin: left center;
   }

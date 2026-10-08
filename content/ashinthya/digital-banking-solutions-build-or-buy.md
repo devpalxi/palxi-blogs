@@ -17,146 +17,162 @@ lang: "en-AU"
 
 # Digital banking solutions in Australia: build or buy
 
-In March 2026, APRA's Therese McCarthy Hockey told the COBA forum that the mutual sector "already has a heavy reliance on a small group of technology providers" ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), 17 March 2026). She was citing APRA's own analysis of the sector.
+In March 2026, Therese McCarthy Hockey of the Australian Prudential Regulation Authority (APRA) — the national regulator responsible for supervising banks and protecting depositors' savings — spoke at the annual forum for the Customer Owned Banking Association (COBA), which represents Australia's mutual banks and credit unions. She noted that the mutual banking sector "already has a heavy reliance on a small group of technology providers" ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), 17 March 2026), citing APRA's own supervisory analysis.
 
-That line lands on every advisor scoping digital banking solutions for a lender. Buy too much and your client ends up on the same few platforms as everyone else. The regulator is already watching that concentration. Build too much and you spend the budget rebuilding a ledger you could have bought.
+That observation carries real weight for any organisation planning its digital banking systems. If a lender buys every piece of software off the shelf from established providers, it ends up depending on the exact same platforms as the rest of the industry. Regulators are already watching that concentration closely to ensure our financial system remains resilient. On the other hand, attempting to build every piece of software from scratch can easily exhaust budgets and years of effort just to recreate standard accounting ledgers that already exist.
 
-The right split depends first on what licence the lender holds.
+Across Palxi's work building modern financial technology, we have found that the right balance always begins with a single question: what type of licence does the organisation hold?
 
 ## Start with the licence, not the vendor list
 
-The licence decides which rules apply to the stack. Get it wrong and the whole build or buy analysis sits on sand.
+The regulatory licence determines exactly which legal obligations and technical standards apply to a business. Getting this distinction right at the beginning keeps the entire software strategy on solid ground.
 
-A non-bank lender offering consumer credit usually needs an Australian credit licence from ASIC. ASIC's guidance says anyone who engages in credit activities "will generally need an Australian credit licence or authorisation from a credit licensee before starting business" ([ASIC](https://www.asic.gov.au/for-finance-professionals/credit-licensees/do-you-need-a-credit-licence)). What it cannot do is take deposits. The RBA puts non-bank lenders at 6 per cent of financial system assets and describes them as "lenders that are restricted from offering deposits" ([RBA Financial Stability Review](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026).
+In Australia, a non-bank lender offering consumer loans or mortgages typically operates under an Australian credit licence issued by the Australian Securities and Investments Commission (ASIC), the corporate and consumer protection regulator. ASIC notes that any business engaging in consumer credit activities "will generally need an Australian credit licence or authorisation from a credit licensee before starting business" ([ASIC](https://www.asic.gov.au/for-finance-professionals/credit-licensees/do-you-need-a-credit-licence)). 
 
-Taking deposits requires becoming an authorised deposit-taking institution under APRA. New entrants can start with a restricted ADI licence. APRA caps that licence at "$2 million on the aggregate balance of all protected accounts", with each account-holder capped at $250,000. The restricted phase lasts up to two years ([APRA information paper](https://www.apra.gov.au/system/files/2021-03/Information%20paper%20-%20ADI%20New%20entrants%20-%20a%20pathway%20to%20sustainability_0.pdf), March 2021). After it, "the Restricted ADI will either progress to an ADI licence or exit the industry."
+What a non-bank credit licensee cannot do is accept deposit savings from the public. The Reserve Bank of Australia (RBA) notes that non-bank lenders represent roughly 6 per cent of Australia's financial system assets and explicitly defines them as "lenders that are restricted from offering deposits" ([RBA Financial Stability Review](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026).
 
-The same paper says a licensing decision "may take 9-18 months". Once the restricted licence is granted, the jobs of the restricted phase include developing, testing and implementing systems, and finalising outsourcing arrangements. So the core systems and their vendor contracts have to come together inside that two-year window.
+To hold everyday deposits, an organisation must become an Authorised Deposit-taking Institution (ADI) supervised by APRA. This category includes traditional commercial banks, building societies, and mutual credit unions. 
+
+For new financial institutions entering the market, APRA offers a pathway known as a Restricted ADI licence. This framework allows a new business to test its systems and business model under strict legal guardrails: total customer deposits across the entire business are capped at $2 million AUD, and no individual customer can hold more than $250,000 AUD (the same limit protected by the Australian Government's Financial Claims Scheme). The restricted phase lasts for up to two years ([APRA information paper](https://www.apra.gov.au/system/files/2021-03/Information%20paper%20-%20ADI%20New%20entrants%20-%20a%20pathway%20to%20sustainability_0.pdf), March 2021). At the end of that window, APRA explains that "the Restricted ADI will either progress to an ADI licence or exit the industry."
+
+APRA's guidance also makes clear that reviewing a licence application can take 9 to 18 months. Once granted, the restricted period requires the organisation to develop, test, and implement operational systems and establish formal contracts with third-party service providers. Consequently, core accounting systems and technology agreements must come together within that two-year period.
 
 | | Non-bank lender (ASIC credit licence, consumer credit) | Restricted ADI | Full ADI (bank, mutual, credit union) |
 |---|---|---|---|
 | Licensed by | ASIC | APRA | APRA |
-| Can take deposits | No | Yes, capped at $2 million in total | Yes |
+| Can take deposits | No | Yes, capped at $2 million AUD in total | Yes |
 | CPS 230 applies | No | Yes | Yes |
 | CDR data holder | If in scope: product data from 13 July 2026; consumer data phased in from 9 November 2026 | Check the CDR Rules for your status | Most ADIs since 1 July 2021 |
 | What the build plan must show | Credit and conduct controls, lending data, collections | A path to full ADI standards within two years, and a credible exit plan | Ongoing resilience, vendor oversight, data sharing |
 
-If a lender is planning to become an ADI in three years, it should buy and build as if it already is one. It's easier to sign CPS 230 terms into a contract at the start than to retrofit them onto a live one.
+If a growing lender intends to seek an ADI licence in the future, it is sensible to design and contract systems to banking standards from day one. It is far simpler to negotiate robust governance terms into supplier agreements upfront than to renegotiate them once systems are already live.
 
 ## Where digital banking solutions earn their licence fee
 
-Some components are expensive to build, heavily regulated and invisible to the customer. Those are the ones to buy.
+Certain technical components are heavily regulated, capital-intensive to build, and completely invisible to everyday customers. For these foundational utilities, licensing an established commercial solution is usually the sensible choice.
 
 ![Close-up of a stainless steel cash machine keypad with number keys and coloured function buttons](atm-keypad.jpg)
 
-*Customers see the keypad and the app. Everything behind them has to settle, reconcile and report correctly every day.*
+*Customers see the keypad and the mobile app. Behind the scenes, the ledger must balance and report accurately every single day.*
 
 ### Core banking or loan ledger
 
-The core is the system of record for balances, interest, fees and transactions. You can build one. It will take years of testing and reconciliation before it carries a single live balance.
+The core banking system is the master digital record book of a financial institution. It tracks account balances, calculates interest down to the cent, applies fees, and logs every transaction. While building a proprietary core ledger is technically possible, doing so requires years of rigorous financial testing, mathematical audits, and reconciliations before a single dollar of customer funds can safely be entrusted to it.
 
-For an ADI, there is a regulatory reason to treat this purchase carefully. CPS 230 puts "core technology services" on the default list of material service providers, alongside risk management and internal audit ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). That means a register entry, a formal agreement with set terms, and APRA's right of access. When APRA finalised its CPS 230 amendments in April 2026, some submissions asked to exempt IT and cloud providers from parts of those contract rules. APRA kept the exemptions "reserved for types of provider where there is a universal contract gap and inability to negotiate bespoke terms" ([APRA](https://www.apra.gov.au/news-and-publications/final-targeted-amendments-cps-230-operational-risk-management), 30 April 2026).
+For APRA-regulated institutions, there is also an important regulatory requirement. APRA's operational risk standard, known as CPS 230, places "core technology services" directly on its list of material service providers, alongside critical functions like risk management and internal auditing ([APRA, CPS 230](https://www.apra.gov.au/standards/cps-230)). This classification requires a formal supplier register, legally binding service agreements with guaranteed continuity protections, and full rights for APRA to inspect vendor operations. 
 
-Choose the core vendor on its contract as well as its demo. Our [guide to CPS 230 and your technology vendors](/blog/cps-230-technology-vendors) sets out the clauses one by one.
+When APRA finalised targeted amendments to CPS 230 in April 2026, some industry submissions requested blanket exemptions for major cloud and information technology suppliers. APRA maintained its firm position, stating that exemptions remain "reserved for types of provider where there is a universal contract gap and inability to negotiate bespoke terms" ([APRA](https://www.apra.gov.au/news-and-publications/final-targeted-amendments-cps-230-operational-risk-management), 30 April 2026).
+
+When choosing a core banking provider, examine the legal contract and operational safeguards just as carefully as the software demonstration. Our companion [guide to CPS 230 and your technology vendors](/blog/cps-230-technology-vendors) explains these essential contract protections step by step.
 
 ### Card issuing and processing
 
-Issuing a card involves scheme rules, certification, tokenisation and fraud monitoring. Almost no lender below the majors should build this from scratch. Buy an issuer processor. Then put your engineering into the controls and the customer journey around the card.
+Providing payment cards involves card scheme rules, strict security certifications, tokenisation (the process of replacing physical 16-digit card numbers with secure digital tokens on smartphones), and automated fraud monitoring. Very few institutions outside the major Australian retail banks choose to build this processing infrastructure in-house. Buying access through an established payment processor makes sound practical sense. The engineering team can then concentrate on creating clear security controls and a calm, reassuring experience for customers using their cards.
 
 ### Identity verification and screening
 
-Document checks, biometric matching, sanctions and PEP screening all run on specialist data sources. Buy them. What you do own is how those results flow into onboarding, case management and record keeping.
+Australian laws require financial institutions to verify the identity of every customer before providing financial services — an obligation known as Know Your Customer (KYC). This involves checking official documents against national registers, biometric face matching, and screening against international sanctions registers and lists of Politically Exposed Persons (PEPs — individuals holding prominent public offices who require additional diligence).
 
-Treat a KYC vendor as a tool, and plan on the lender staying answerable for its own customer due diligence. We cover the design side in [KYC and AML by design](/blog/kyc-aml-by-design).
+Commercial identity verification services specialise in connecting to these government and international databases. Licensing these screening tools is standard practice. The organisation's role is to ensure that identity checks flow smoothly into onboarding, customer records, and case management systems.
+
+Remember that using an automated verification provider does not transfer legal accountability away from the institution. The lender remains fully answerable to Australian regulators for its customer due diligence, as detailed in our guide to [KYC and AML by design](/blog/kyc-aml-by-design).
 
 ### Banking as a service
 
-A banking-as-a-service partner issues the deposit product under its own ADI licence, which saves the lender the licensing path. The trade-off is that your product sits inside someone else's risk framework. Their CPS 230 obligations flow down to you as contract terms and audit requests. For the wider picture of adding financial products to a non-bank, see [embedded finance for payments and lending](/blog/embedded-finance-payments-lending).
+Banking as a Service (BaaS) allows a non-bank business to offer deposit accounts or payment cards issued through an existing ADI partner's licence. This arrangement provides a practical way to offer banking features without undergoing the extensive multi-year process of obtaining an independent banking licence. 
+
+The practical trade-off is that your product operates inside another institution's risk and compliance framework. The partner bank's regulatory obligations under CPS 230 will flow directly down to you in the form of contractual restrictions, operational reviews, and regular audits. For a broader look at adding regulated features to customer platforms, see our guide on [embedded finance for payments and lending](/blog/embedded-finance-payments-lending).
 
 ## What to build: the parts customers and credit committees notice
 
-The components worth building are the ones that carry the lender's own judgement. Two lenders running on the same core should still look different and make different calls.
+The software worth building in-house is the software that carries the organisation's unique policies, customer care standards, and business judgement. Two community lenders running on the exact same core accounting ledger can — and should — feel entirely different to the Australians who use them.
 
 ![Laptop screen at an angle showing lines of source code in a text editor](code-on-laptop.jpg)
 
-*The code worth owning is the code that carries the lender's own policy and customer experience.*
+*The software worth customising is the software that embodies your customer care standards and lending decisions.*
 
 ### Customer experience
 
-The app, the web journey and the servicing screens are what the borrower actually meets. A vendor's standard front end goes to all of their clients. A custom layer built on the core's APIs lets the lender change a journey in a sprint, without waiting for the vendor's release cycle.
+The mobile application, online portals, and member service screens represent how borrowers interact with your organisation. Standard vendor interfaces tend to look identical across every client they supply. Building a custom interface connected via secure digital bridges — known as Application Programming Interfaces (APIs) — allows an organisation to update a customer journey or improve readability whenever needed, without waiting months for a software vendor's release cycle.
 
 ### Credit decisioning
 
-Credit policy is where a lender makes or loses money. The rules around affordability, serviceability buffers, pricing and exceptions change often. They need to be owned, versioned and testable by the lender itself. Buying a rules engine is fine. Handing the policy to a vendor's configuration team is where lenders lose control. We look at the full lending stack in [building a bank-grade lending platform](/blog/bank-grade-lending-platform-australia).
+Lending policies are where an Australian financial institution manages risk and safeguards depositors or investors. The mathematical rules governing household expense assessments, serviceability interest-rate buffers, pricing tiers, and hardship exceptions reflect your organisation's distinct values and credit appetite. 
+
+These decision rules should be owned, versioned, and easily audited by the lender itself. Licensing a flexible calculation engine is reasonable, but handing core credit policy over to an external vendor's support queue often leads to delays and lost control. We examine this end-to-end architecture in [building a bank-grade lending platform](/blog/bank-grade-lending-platform-australia).
 
 ### The integration layer
 
-Every bought component needs connecting: core to card processor, onboarding to identity checks, ledger to general ledger, everything to data and reporting. This layer holds the stack's resilience. Timeouts, retries, reconciliation, and a degraded mode for when a vendor goes down: all of it gets built here, or it doesn't get built.
+Every separate system in a modern digital banking environment must be connected: the core ledger to card processing, online identity checks to customer records, payment systems to general ledgers, and all transactions to regulatory reporting databases. 
 
-It's the easiest part of a digital banking program to under-scope, because none of it appears in a vendor demo. It is also what makes a future vendor change possible.
+The integration layer is the internal network of secure software bridges that holds everything together. It handles timeouts, payment retries, daily reconciliations, and automatic backup routines if an external provider experiences an outage. 
+
+Because this connecting layer is behind the scenes and does not feature in vendor sales presentations, it is frequently under-scoped in initial project plans. Yet it is precisely what ensures reliability and makes switching vendors possible in future years.
 
 ## The decision in one table
 
-| Component | Default for most lenders | Why | Check before signing or starting |
+| Component | Default recommendation | Why | Check before signing or starting |
 |---|---|---|---|
-| Core banking or loan ledger | Buy | Costly to build, invisible to customers, CPS 230 material for ADIs | Contract terms, data export, exit support |
-| Card issuing and processing | Buy | Scheme certification and fraud tooling | Who carries fraud liability, uptime commitments |
-| Identity and screening | Buy | Specialist data sources | Where data is stored, how results are recorded |
-| Deposit accounts for a non-bank | Buy (BaaS partner) or apply for an ADI licence | Deposits need an ADI | What the partner's risk framework will require of you |
-| Customer experience | Build | Main point of difference | Accessibility, API coverage of the core |
-| Credit decisioning | Build the policy, buy or build the engine | Policy is the lender's own judgement | Versioning, testing, audit trail |
-| Integration and data layer | Build | Holds the stack together and makes exits possible | Monitoring, reconciliation, degraded modes |
-| CDR data holder APIs | Buy or build, depending on the core | Standards-driven, but data quality is the lender's | Whether the core vendor's CDR module is certified and current |
+| Core banking or loan ledger | Buy | Capital-intensive to build, invisible to customers, classified as CPS 230 material for ADIs | Contract terms, data export rights, vendor exit assistance |
+| Card issuing and processing | Buy | Requires card scheme certifications and dedicated fraud infrastructure | Who carries fraud liability, uptime guarantees |
+| Identity verification and screening | Buy | Relies on specialised national document databases | Where Australian customer data is hosted, how records are archived |
+| Deposit accounts for a non-bank | Buy (BaaS partner) or apply for an ADI licence | Accepting retail deposits requires an ADI licence | What the partner bank's risk framework will require of your team |
+| Customer experience | Build | Primary point of difference for customer trust and accessibility | Screen accessibility, complete API coverage of the core |
+| Credit decisioning | Build the policy, buy or build the engine | Credit policy represents the lender's own lending judgement | Rule versioning, testing tools, clear audit trails |
+| Integration and data layer | Build | Holds the architecture together and prevents vendor lock-in | System monitoring, daily reconciliations, offline fallback modes |
+| CDR data holder APIs | Buy or build, depending on the core ledger | Governed by technical standards, but data accuracy remains the lender's responsibility | Whether the vendor's Open Banking module is formally certified and maintained |
 
 ## Open banking solutions and CDR data holder duties
 
-For most ADIs the Consumer Data Right is not optional. Open banking started with the four major banks as data holders, and from 1 July 2021 it expanded to cover most other ADIs ([OAIC](https://www.oaic.gov.au/consumer-data-right/consumer-data-right-legislation,-regulation-and-definitions/consumer-data-right-participants)).
+For most Australian ADIs, participating in the Consumer Data Right (CDR) is a mandatory legal obligation. Often referred to as Open Banking, the CDR was introduced with Australia's four major banks as data holders before expanding to include all Australian ADIs from 1 July 2021 ([OAIC](https://www.oaic.gov.au/consumer-data-right/consumer-data-right-legislation,-regulation-and-definitions/consumer-data-right-participants)).
 
-In-scope non-bank lenders joined this year. On 13 July 2026 they had to start sharing product data such as interest rates, fees, charges and eligibility criteria. Consumer data sharing follows from 9 November 2026, phased in by provider size ([ACCC](https://www.accc.gov.au/media-release/non-bank-lenders-join-consumer-data-right-as-next-stage-commences), 13 July 2026). The ACCC expects at least 35 new data holders, and more than 1.3 million Australians already use the CDR. Check whether your client meets the CDR designation before any of this work gets scoped.
+In 2026, designated non-bank lenders also joined the system. From 13 July 2026, eligible non-bank lenders were required to share public product data, such as interest rates, fee schedules, and lending criteria. Customer-authorised data sharing begins from 9 November 2026, phased in according to lender size ([ACCC](https://www.accc.gov.au/media-release/non-bank-lenders-join-consumer-data-right-as-next-stage-commences), 13 July 2026). The Australian Competition and Consumer Commission (ACCC) expects at least 35 new non-bank data holders to join the system, joining more than 1.3 million Australians who already use CDR-powered services.
 
-This shifts the buy or build question for open banking solutions. A lender whose core vendor has a CDR module can buy the API layer. But the data quality is still on the lender. Product data that doesn't match the website, or consumer data with gaps, is a compliance problem regardless of which vendor serves it.
+This framework influences software choices. If an organisation's core banking provider offers a certified CDR module, licensing that technical interface can save substantial engineering time. However, the legal responsibility for data quality remains entirely with the lender. If published product rates do not match what is advertised, or if customer data contains omissions, the regulatory consequences rest with the institution, not the software provider.
 
-The CDR can also work in the lender's favour. If the lender is accredited to receive CDR data, or works through an accredited provider, transaction data from other institutions can feed a credit assessment with the customer's consent. That makes it an input to the decisioning engine you build. We go into both sides in [what it takes to build for the Consumer Data Right](/blog/consumer-data-right-build).
+The CDR also provides useful tools for lenders. If an institution is accredited to receive Open Banking data, borrowers can securely share their bank statements and transaction histories with their consent. This eliminates the need for manual paperwork and feeds verified income and expense figures directly into automated credit assessments. We explore both data sharing and data receipt in [what it takes to build for the Consumer Data Right](/blog/consumer-data-right-build).
 
 ## Concentration is a supervisory question now
 
-Buying isn't risk-free. The RBA's March 2026 review put numbers to it. Some of the largest regulated entities rely on around 150 service providers for critical operations, and many of those providers serve several entities or the whole industry ([RBA](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026).
+Relying entirely on external software vendors carries practical operational risks. In its March 2026 Financial Stability Review, the Reserve Bank of Australia highlighted that some of Australia's largest financial entities depend on roughly 150 different service providers for critical operations. Many of these third-party suppliers service multiple institutions simultaneously across the Australian market ([RBA](https://www.rba.gov.au/publications/fsr/2026/mar/resilience-of-the-australian-financial-system.html), March 2026).
 
-For mutuals the concern is sharper. McCarthy Hockey said that reliance "creates sector-wide vulnerabilities that need to be understood and managed proactively" ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), 17 March 2026).
+For mutual banks and community credit unions, supervisory scrutiny is particularly acute. APRA's Therese McCarthy Hockey cautioned that this shared dependency "creates sector-wide vulnerabilities that need to be understood and managed proactively" ([APRA](https://www.apra.gov.au/news-and-publications/apra-member-therese-mccarthy-hockeys-remarks-2026-coba-ceo-and-director-forum), 17 March 2026).
 
-Every buy decision needs an exit plan attached. APRA already requires it of new entrants: a restricted ADI's application needs "a credible exit plan that can be executed if needed" ([APRA information paper](https://www.apra.gov.au/system/files/2021-03/Information%20paper%20-%20ADI%20New%20entrants%20-%20a%20pathway%20to%20sustainability_0.pdf), March 2021). The same thinking applies at component level. Can the lender get its data out of the core in a usable form? Does the integration layer isolate the vendor enough that a replacement is actually feasible?
+Consequently, every software procurement decision should include an exit strategy. APRA already enforces this discipline for new market entrants: any applicant for a Restricted ADI licence must submit "a credible exit plan that can be executed if needed" ([APRA information paper](https://www.apra.gov.au/system/files/2021-03/Information%20paper%20-%20ADI%20New%20entrants%20-%20a%20pathway%20to%20sustainability_0.pdf), March 2021). 
 
-Take a credit union renewing its core contract. If the app, decisioning and reporting all call the core directly, that renewal is a negotiation it cannot walk away from. If they call an internal API layer instead, a switch is still hard, but possible. The leverage shows up in the contract terms. For lenders already on an ageing platform, [modernising a legacy core without a big-bang rewrite](/blog/legacy-core-banking-modernisation) covers the staged route.
+The same principle applies to individual technology systems. Can your business export its complete historical data in an open, standard format? Does your software architecture isolate third-party software so that replacing a vendor in future years remains achievable?
+
+Consider a credit union negotiating a contract renewal with its core technology provider. If the member app, credit assessment rules, and compliance reporting tools are all tightly intertwined with the vendor's proprietary system, the credit union has very little negotiating leverage. But if the organisation communicates through an independent internal API bridge, changing systems remains a realistic option. That architectural independence directly improves contract terms and pricing leverage. For institutions managing older systems, our guide on [modernising a legacy core without a big-bang rewrite](/blog/legacy-core-banking-modernisation) outlines a practical, staged approach.
 
 ## Common questions
 
 ### Can a non-bank lender use a banking-as-a-service provider to take deposits?
 
-The deposits sit with the partner ADI under its licence. The lender's product has to fit the partner's risk and compliance framework, and the lender itself still cannot take deposits without becoming an ADI. Take legal advice on how the arrangement is structured and described to customers.
+Customer deposits always sit legally with the partner bank under that bank's ADI licence. The non-bank's customer product must adhere strictly to the partner bank's risk policies, and the non-bank cannot present itself as a bank or hold deposits directly without its own ADI licence. Always seek qualified legal advice on how deposit relationships are structured and communicated clearly to consumers.
 
 ### Does CPS 230 apply to a non-bank lender?
 
-Not directly. CPS 230 applies to APRA-regulated entities such as ADIs and insurers. A non-bank lender that partners with an ADI, or plans to become one, will still feel it through contracts and due diligence requests.
+CPS 230 applies directly to APRA-regulated entities, including licensed banks, credit unions, and insurance companies. However, any non-bank lender that partners with a bank, uses bank payment rails, or plans to seek an ADI licence in the future will encounter these requirements through partnership agreements and institutional due diligence reviews.
 
 ### Is buying a core platform always cheaper than building one?
 
-Not necessarily. Licence fees are often priced per account or transaction, and vendor lock-in then raises the price at renewal. Compare total cost over the expected life of the platform, including what an exit would cost, then weigh it against the broader [custom or off-the-shelf decision for regulated firms](/blog/custom-vs-off-the-shelf-financial-services).
+Not necessarily. Software licence fees are frequently billed on a per-account or per-transaction basis, and annual costs can escalate significantly once your business becomes dependent on the platform. It is wise to calculate the total cost of ownership over a five-to-seven-year timeframe, including data export and exit costs, as discussed in our analysis of [custom versus off-the-shelf financial software](/blog/custom-vs-off-the-shelf-financial-services).
 
 ## What to do next
 
-Before any vendor demo, write down:
+Before attending software vendor demonstrations, document these practical decisions:
 
-- The licence the lender holds today, and the one it expects to hold in three years.
-- Each component in the table above, marked buy, build or undecided, with a one-line reason.
-- For every buy, who owns the data, how you'd leave, and whether the contract would pass a CPS 230 review.
-- The CDR obligations that apply now and those arriving in the next 12 months.
+- Note the regulatory licence your organisation holds today, and any licence you plan to seek over the next three years.
+- Review each component in the decision table above, categorising it as buy, build, or under review, along with a concise plain-English rationale.
+- For every software licence, verify who legally owns your customer data, how easily you could transition to another provider, and whether the contract complies with CPS 230 standards.
+- Clarify which Consumer Data Right obligations apply to your business today and which come into force over the coming year.
 
-That page becomes the brief for both the vendor shortlist and the build team. For more on the platforms involved, see [software for financial services](/industries/financial-services).
+This single document provides a clear foundation for both software procurement and engineering plans. To learn more about how we design financial technology, visit our guide to [software for financial services](/industries/financial-services).
 
-When the build part of that plan needs a team, Palxi joins advisors early and builds alongside them. [Email us](mailto:hello@palxi.com.au).
+When your organisation needs experienced Australian engineers to design and build dependable financial platforms, Palxi works alongside your leadership and advisory teams from the initial architecture through to launch. [Get in touch with our team](mailto:hello@palxi.com.au).
 
-*Facts in this article were checked against APRA, ASIC, RBA, ACCC and OAIC sources on 27 and 28 September 2026. See [how we work](/#how-we-work).*
+*Facts in this article were verified against publications from APRA, ASIC, the RBA, the ACCC, and the OAIC on 27 and 28 September 2026. Learn more about [how we work](/#how-we-work).*
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*This article provides general factual information and does not constitute financial or legal advice. Please consult your compliance professionals or legal advisor regarding your specific regulatory requirements.*
 
 *Photos: cover, ["333 Collins Street Melbourne"](https://commons.wikimedia.org/w/index.php?curid=94908252) by a.canvas.of.light, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Cash machine keypad, ["Free ATM keypad"](https://www.rawpixel.com/image/5912776/free-atm-keypad-public-domain-cc0-photo), rawpixel, CC0, cropped. Code on a laptop, ["Code on laptop screen"](https://www.flickr.com/photos/35850894@N08/49977353057) by markus119, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped.*

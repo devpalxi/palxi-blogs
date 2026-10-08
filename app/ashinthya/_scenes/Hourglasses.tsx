@@ -146,18 +146,22 @@ export function Hourglasses() {
   return (
     <div>
       <IncidentScene />
-      <p className="mt-1 text-center font-semibold text-ink">An incident</p>
-      <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4">
+      <p className="mt-1 text-center text-xs sm:text-base font-semibold text-ink">An incident</p>
+      <ul className="mt-6 sm:mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 md:grid-cols-4">
         {CLOCKS.map((clock, i) => (
           <li key={`${clock.amount}-${clock.tag}`} className="text-center">
             <HourglassScene clock={clock} index={i} />
-            <p className="mt-3 font-heading text-title font-semibold text-ink">{clock.amount}</p>
+            <p className="mt-2.5 sm:mt-3 font-heading text-sm sm:text-base md:text-title font-semibold text-ink leading-tight">
+              {clock.amount}
+            </p>
             <p className="mt-1">
-              <span className={`inline-block rounded-full px-3 py-0.5 text-label font-semibold ${TAG_TONE[clock.amount]}`}>
+              <span className={`inline-block rounded-full px-2.5 py-0.5 text-[0.7rem] sm:text-xs md:text-label font-semibold ${TAG_TONE[clock.amount]}`}>
                 {clock.tag}
               </span>
             </p>
-            <p className="mt-2 text-label font-normal text-copy">{clock.label}</p>
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-label font-normal text-copy leading-snug">
+              {clock.label}
+            </p>
           </li>
         ))}
       </ul>

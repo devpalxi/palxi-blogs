@@ -42,6 +42,7 @@ export function Diagram({ caption, children }: DiagramProps) {
     // Never hide something the reader can already see.
     const { top } = stage.getBoundingClientRect();
     if (top < window.innerHeight * 0.9) {
+      stage.dataset.state = "play";
       restartScenes(stage);
       return;
     }
@@ -59,7 +60,7 @@ export function Diagram({ caption, children }: DiagramProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 },
+      { threshold: 0.15 },
     );
     observer.observe(stage);
     return () => observer.disconnect();
@@ -69,32 +70,36 @@ export function Diagram({ caption, children }: DiagramProps) {
     const stage = stageRef.current;
     if (!stage) return;
     stage.dataset.state = "armed";
-    // Reading the animations makes the browser apply the "armed" styles, which
-    // cancels every running animation. Cancelling them explicitly too means the
-    // restart never depends on a layout read that a build step could drop.
+    void stage.offsetWidth;
     stage.getAnimations({ subtree: true }).forEach((a) => a.cancel());
-    stage.dataset.state = "play";
-    restartScenes(stage);
+    requestAnimationFrame(() => {
+      if (!stage) return;
+      stage.dataset.state = "play";
+      restartScenes(stage);
+    });
   }
 
   return (
-    <figure className="mx-auto my-14 w-full max-w-[1000px]">
+    <figure className="mx-auto my-10 sm:my-14 w-full max-w-[1000px]">
       <div
         ref={stageRef}
         data-state="static"
-        className="diagram rounded-lg bg-shallows p-[clamp(16px,3.2vw,44px)]"
+        className="diagram overflow-hidden rounded-xl bg-shallows p-3.5 sm:p-6 md:p-8 lg:p-10 shadow-sm ring-1 ring-hairline/60 transition-shadow duration-300 hover:shadow-md"
       >
         {children}
       </div>
-      <figcaption className="mt-4 flex flex-col gap-3 text-label text-muted sm:flex-row sm:items-start sm:justify-between sm:gap-8">
-        <span className="max-w-[44rem]">{caption}</span>
+      <figcaption className="mt-3.5 sm:mt-4 flex flex-col gap-3 text-xs sm:text-label text-muted sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <span className="max-w-[44rem] leading-relaxed">{caption}</span>
         {motionAllowed && (
           <button
             type="button"
             onClick={replay}
-            className="btn-secondary shrink-0 self-start"
+            className="btn-secondary group shrink-0 self-start text-xs sm:text-label min-h-10 sm:min-h-11 px-3.5 sm:px-4 rounded-full transition-all duration-200 hover:bg-paper hover:shadow-sm active:scale-95"
           >
-            <ReplayIcon size={20} />
+            <ReplayIcon
+              size={18}
+              className="transition-transform duration-300 ease-out-quart group-hover:-rotate-90 group-active:-rotate-180"
+            />
             Play again
           </button>
         )}

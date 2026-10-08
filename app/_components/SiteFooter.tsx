@@ -76,8 +76,8 @@ const linkClass =
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-shallows">
-      <div className="mx-auto grid w-full max-w-[1100px] gap-12 px-5 pt-16 pb-10 sm:px-8 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
+    <footer className="mt-16 sm:mt-24 bg-shallows border-t border-hairline">
+      <div className="mx-auto grid w-full max-w-[1100px] gap-8 sm:gap-12 px-4 pt-12 pb-8 sm:px-8 sm:pt-16 sm:pb-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
         <div className="max-w-[22rem]">
           <PalxiLogo height={26} />
           <p className="mt-5 text-label text-muted">

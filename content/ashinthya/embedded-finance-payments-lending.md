@@ -17,166 +17,172 @@ lang: "en-AU"
 
 # Embedded finance: adding payments and lending in Australia
 
-Around 20 per cent of Australian consumer payments now happen online, and payments made through mobile apps are almost half of those ([RBA](https://www.rba.gov.au/publications/bulletin/2026/may/consumer-payment-behaviour-in-australia.html), May 2026). When a marketplace or SaaS client says "we want to take payments and offer finance inside our own app", the idea isn't exotic. Their customers already pay that way.
+Around 20 per cent of all Australian consumer purchases now take place online, and payments completed through mobile smartphone apps account for nearly half of that total ([RBA](https://www.rba.gov.au/publications/bulletin/2026/may/consumer-payment-behaviour-in-australia.html), May 2026). When an Australian online marketplace, booking service, or software business decides to introduce in-app payments or lending, the concept is familiar to everyday Australians. People already tap their phones and manage transactions inside apps every day.
 
-The hard part is the question the board asks next. Do we need a licence? The answer for embedded finance in Australia depends on what the product actually does with money and credit, and some of the rules are moving in 2026. This is the decision in the terms an advisor and a build team can work with.
+The challenging question comes when company directors and business operators ask: what licences are required, and who is legally responsible for safeguarding customer funds?
+
+In Australia, the answer depends entirely on what the software does with money. Moving money, holding customer funds in a digital balance, and lending credit are each governed by distinct Australian laws and regulators. 
+
+This guide explains how Palxi approaches embedded finance across our software products, how to navigate Australia's evolving payment licensing reforms, and how to build systems that protect everyday customers.
 
 ## What embedded finance changes for a non-bank product
 
-Embedded finance means a financial product delivered inside a non-financial one. A trade marketplace pays out to suppliers. Some practice management platforms offer working capital loans to their clinics. Booking apps hold deposits until the job is done.
+In plain terms, "embedded finance" simply means offering financial services — such as card checkouts, digital wallets, or instalment loans — directly inside a non-banking app or website. For instance, a trade services marketplace might pay contractors automatically once a job is finished, an online booking platform might hold a deposit until an appointment occurs, or practice management software might help small clinics access working capital finance.
 
-Each one is a regulated activity for somebody, whatever it looks like on the roadmap. Payments, credit and stored value each run under their own regime: the Corporations Act and AFS licensing for payment products, the National Credit Act for lending, and the AML/CTF Act for identity and reporting.
+Regardless of how simple a feature appears on a smartphone screen, moving or holding money is a regulated financial activity under Australian law:
 
-The product question comes first. What does the feature do with money?
+- **Payments and digital money** are governed by the Corporations Act 2001 and Australian Financial Services (AFS) licensing, overseen by the Australian Securities and Investments Commission (ASIC).
+- **Consumer lending and deferred credit** are regulated by the National Consumer Credit Protection Act 2009.
+- **Identity verification and transaction monitoring** are supervised by the Australian Transaction Reports and Analysis Centre (AUSTRAC) under Anti-Money Laundering and Counter-Terrorism Financing (AML/CTF) legislation.
 
-- **Passes instructions on.** The product tells a bank or payment provider to move money but never holds it.
-- **Holds money.** Funds sit in a balance, wallet or escrow-like account the product controls.
-- **Lends or defers payment.** The customer gets goods or cash now and pays later.
+When planning any financial feature, start with a simple practical test: what does the software actually do with customer funds?
 
-The answer changes the licence, the partner and the architecture. Advisors save their clients months by settling this answer before any vendor demos.
+- **Does it simply pass payment instructions along?** The app directs a licensed bank or payment provider to transfer money, but never holds the money itself.
+- **Does it hold customer funds?** Money sits in an account balance, digital wallet, or escrow-style holding account controlled by the platform.
+- **Does it extend credit or defer payment?** A customer receives goods, services, or funds upfront and repays the balance over time.
+
+The answer determines which regulatory licences apply, what kind of banking partner is needed, and how the underlying software must be engineered.
 
 ## Your client's licence or someone else's
 
-The realistic routes are below. A platform can mix them, for example referral for lending and a partner-issued product for payments.
+Australian businesses adding financial features generally choose one of four practical licensing pathways:
 
-| Route | What it means | Who carries the regulatory load | When it fits |
+| Licensing pathway | Practical arrangement | Who carries regulatory accountability | When this model fits best |
 |---|---|---|---|
-| Own licence (AFSL, Australian credit licence) | Your client holds the licence and issues the product | Your client, in full: compliance staff, AFCA membership, capital where required | Finance is core to the business model and volume justifies the overhead |
-| Authorised or credit representative | Your client acts under a licensee's authority | The licensee supervises; your client follows its rules | Your client wants the customer relationship but not the licence |
-| Partner as provider of record (BaaS, sponsor bank, lender) | The partner issues the account, card or loan; your client distributes it | Mostly the partner, set by contract | Speed matters more than margin or control |
-| Referral only | Your client points customers to a licensed provider | The provider | Lending is a side feature with little revenue attached |
+| Direct licence (AFSL or credit licence) | The organisation holds its own licence from ASIC and issues the financial product | The business carries full responsibility: compliance staff, external dispute resolution (AFCA), and statutory capital reserves | Financial services are core to the company's business model and transaction volume justifies the ongoing overhead |
+| Authorised or credit representative | The business operates under the authority and supervision of an existing licensee | The licensed partner supervises; the business must follow all partner rules and procedures | The business wants to own the customer relationship without managing a primary licence application |
+| Banking partner of record (BaaS / sponsor bank) | A licensed partner bank issues the account, card, or loan behind the scenes; the app distributes it | Primarily the licensed partner bank, defined through formal service agreements | Speed to market and low regulatory friction matter more than owning every margin |
+| Referral model | The app simply refers users to an independent licensed finance provider | The licensed third-party provider | Lending or finance is a minor convenience feature with modest revenue attached |
 
-Referral is a thin route. ASIC calls it "a narrow exemption from licensing requirements for doing referrals". It applies if you "only inform the consumer" that a licensee can help, tell them how to make contact, and disclose any commission ([ASIC](https://www.asic.gov.au/for-finance-professionals/credit-licensees/do-you-need-a-credit-licence/faqs-does-the-credit-legislation-apply)). Pre-filling a loan application or recommending an amount may take a platform outside it.
+The referral route requires strict care. ASIC treats referral as "a narrow exemption from licensing requirements for doing referrals". To remain compliant, a business may "only inform the consumer" that an independent licensee can assist, explain how to contact them, and clearly disclose any referral commission received ([ASIC](https://www.asic.gov.au/for-finance-professionals/credit-licensees/do-you-need-a-credit-licence/faqs-does-the-credit-legislation-apply)). If an app pre-fills loan applications, suggests borrowing amounts, or endorses specific loan products, it risks crossing into unlicensed financial conduct.
 
-The representative route needs care too. A licensee stays responsible for supervising its representatives, so expect the licensee to audit your client's flows, scripts and complaints handling.
+Similarly, operating as an authorised representative requires rigorous compliance. The primary licence holder remains legally liable for its representatives, meaning they will inspect customer screens, onboarding workflows, marketing messages, and complaints registers.
 
-Choosing a route is also a build or buy decision. The same trade-offs appear in [choosing between custom and off-the-shelf platforms for regulated firms](/blog/custom-vs-off-the-shelf-financial-services).
+Deciding between these routes also shapes whether you purchase existing tools or build proprietary software, as detailed in our guide on [custom versus off-the-shelf financial software](/blog/custom-vs-off-the-shelf-financial-services).
 
 ## Embedded payments and the licensing reforms
 
 ![Close-up of a card payment terminal keypad with numbered keys lit in blue](payment-terminal-keypad.jpg)
 
-*The licensing questions sit behind the terminal: who holds the money, and for how long.*
+*The key regulatory questions sit behind the payment screen: who holds the money, and for how long.*
 
-Australia's payments rules are being rebuilt. Treasury's Tranche 1 framework would set "graduated obligations", starting with "requiring PSPs that perform certain functions to get an Australian Financial Service Licence". It would also give APRA powers over major stored value facility (SVF) providers and create a rule-making power for a mandatory, revised ePayments Code ([Treasury](https://treasury.gov.au/policy-topics/banking-and-finance/payments-licensing-reforms), March 2026).
+Australia's national payments framework is undergoing major modernisation. The Commonwealth Treasury's payments licensing reforms introduce a graduated regulatory structure for Payment Service Providers (PSPs). Under the proposed legislation, entities performing designated payment functions will be required to hold an Australian Financial Services Licence (AFSL). The reforms also grant the Australian Prudential Regulation Authority (APRA) supervisory powers over major Stored Value Facilities (SVFs) and create a framework for a revised, mandatory ePayments Code to protect consumers from unauthorised or mistaken payments ([Treasury](https://treasury.gov.au/policy-topics/banking-and-finance/payments-licensing-reforms), March 2026).
 
-The Tranche 1 draft legislation was open for consultation from 12 March to 9 April 2026. It covers definitions of regulated payment functions, licensing obligations "including how certain providers must safeguard payment-related money", exemptions and exclusions, unclaimed monies and a new prudential framework ([Treasury consultation](https://consult.treasury.gov.au/c2026-746108), March 2026). Treasury has said a second tranche, including common access requirements, comes later.
+Draft legislation was released for public consultation through April 2026, setting out how payment providers must safeguard customer money, handle unclaimed balances, and manage operational resilience ([Treasury consultation](https://consult.treasury.gov.au/c2026-746108), March 2026).
 
-As at 27 September 2026, we could confirm the exposure drafts but not a final Act. Check the bill's status on the Parliament website before you advise on dates.
+The fundamental distinction emphasised by federal policymakers is straightforward: "a digital wallet that simply passes through payment instructions to your bank will face different regulations than a digital wallet that holds your funds" ([Treasury Ministers](https://ministers.treasury.gov.au/ministers/daniel-mulino-2025/media-releases/new-legislation-modernise-regulation-payment-service), October 2025).
 
-The distinction that matters most for product design is already clear. The Assistant Treasurer's release put it this way: "a digital wallet that simply passes through payment instructions to your bank will face different regulations than a digital wallet that holds your funds" ([Treasury Ministers](https://ministers.treasury.gov.au/ministers/daniel-mulino-2025/media-releases/new-legislation-modernise-regulation-payment-service), October 2025).
+For everyday apps, this means examining any feature that stores customer value. Holding balances inside an app, offering pre-loaded platform credits, or operating a buyer escrow holding account all involve holding customer money. Under the updated framework, these features attract strict safeguarding obligations. Designing an application that settles funds directly to sellers or recipients through an Australian licensed bank significantly simplifies regulatory compliance.
 
-So look hard at any feature that keeps a balance. Marketplace escrow, platform credits and "wallet" top-ups all hold customer money for a period. Under the draft framework they are likely to raise stored value and safeguarding questions. A design that settles funds straight to the payee through a licensed provider carries a lighter load.
+From an engineering perspective, safeguarding funds requires clear accounting foundations:
 
-For engineering, that means the reforms reach into the data model:
+- Can the software prove, down to the exact cent at any given second, whose money is held and where it is deposited?
+- Are customer funds held in an independent statutory trust account completely separated from the company's daily operational funds?
+- Can the system generate an official unclaimed monies register if a customer account remains inactive over extended periods?
+- Do your refund and dispute procedures comply with the standards set out in the ePayments Code?
 
-- Can the system show, at any moment, whose money is where?
-- Are client funds kept apart from operating funds, in the ledger and at the bank?
-- Can you produce an unclaimed monies report if a user disappears with a balance?
-- Would a mandatory ePayments Code change your disputes and mistaken payment flows?
-
-Account-to-account rails add their own choices. PayTo was still small in 2025, at 4 percentage points of account-to-account payments in the RBA survey (RBA, May 2026). See [building PayTo and A2A payouts with Confirmation of Payee](/blog/payto-a2a-payouts-australia). A client running both cards and A2A should also read up on [running card and A2A rails through one platform](/blog/payment-orchestration-card-a2a).
+Modern payment methods also extend beyond payment cards. While real-time PayTo bank payments are growing across Australia (accounting for roughly 4 percentage points of account-to-account payments in recent Reserve Bank surveys), platforms handling high volumes increasingly combine card processing with PayTo, as covered in our guide on [payment orchestration across card and PayTo rails](/blog/payment-orchestration-card-a2a).
 
 ## Lending inside the product, including BNPL
 
-Credit is the more settled regime, and the stricter one. Lending to consumers, or helping them get credit, generally needs an Australian credit licence or a credit representative appointment. Business lending can sit outside the consumer credit rules, but check how the product is actually used.
+Providing credit inside an application is subject to strict consumer protection laws. Anyone lending money to Australian consumers, or assisting them in obtaining finance, must hold an Australian credit licence or act as an appointed credit representative.
 
-Buy now pay later lost its old gap in 2025. ASIC states that "From 10 June 2025, anyone engaging in credit activities involving buy now later contracts must hold an Australian credit licence" ([ASIC](https://www.asic.gov.au/regulatory-resources/credit/buy-now-pay-later-credit-contracts-credit-licensing)). BNPL contracts that meet the "low cost credit contract" test have modified responsible lending obligations, which ASIC explains in Regulatory Guide 281.
+Buy Now, Pay Later (BNPL) instalment arrangements no longer operate outside standard credit rules. Following national legislative updates, ASIC confirmed that "From 10 June 2025, anyone engaging in credit activities involving buy now pay later contracts must hold an Australian credit licence" ([ASIC](https://www.asic.gov.au/regulatory-resources/credit/buy-now-pay-later-credit-contracts-credit-licensing)). BNPL arrangements that qualify as "low cost credit contracts" operate under tailored responsible lending guidelines outlined in ASIC Regulatory Guide 281.
 
-For a platform that wants to offer "pay in four" at checkout, that leaves a short list:
+For an Australian online business wanting to offer instalment options at checkout, three paths exist:
 
-1. Partner with a licensed BNPL provider and act as a merchant or referrer.
-2. Become the provider's credit representative, with its supervision.
-3. Get a credit licence and run the credit book, with responsible lending, hardship and AFCA obligations.
+1. Partner with an established, licensed BNPL provider and act simply as a retail merchant.
+2. Become an appointed credit representative of that provider, subject to their compliance supervision.
+3. Apply for an independent Australian credit licence to manage a proprietary loan book, taking on complete responsible lending, financial hardship, and dispute resolution duties.
 
-Each option changes what the engineering team must build. A referrer needs a clean handoff and a commission disclosure. For a credit representative, the licensee's scripts and records have to live in its flows. A licensee builds credit decisioning, serviceability checks, hardship workflows and a complete audit trail. For that last case, read [what a bank-grade lending platform involves](/blog/bank-grade-lending-platform-australia).
+Each model requires different engineering capabilities. Acting as a merchant requires a secure technical integration and clear pricing disclosures. Operating as a credit representative requires displaying approved licensee scripts and preserving customer records. Managing an independent credit book requires building robust credit assessment calculators, hardship timers, and auditable accounting ledgers, as explained in our guide to [building bank-grade lending platforms](/blog/bank-grade-lending-platform-australia).
 
 ## Partner models: BaaS and sponsor banks
 
 ![A smartphone lying on a wooden desk beside a closed notebook, a pen and a laptop](phone-on-desk.jpg)
 
-*The customer sees one app. Behind it, the account can sit on a partner's licence.*
+*The customer interacts with a single friendly app. Behind the scenes, accounts sit securely on a partner bank's licence.*
 
-Banking-as-a-service lets a non-bank offer accounts, cards or payments issued by a licensed partner. In a sponsor bank model, a bank or licensed payments provider holds the licence and scheme membership, and your client's product sits on top. Among fintech solutions for platforms looking to avoid holding their own licence, it is the fastest route.
+Banking as a Service (BaaS) enables an Australian business to offer branded debit cards, deposit accounts, or instant payment services powered by a licensed partner bank. Because the partner bank holds the banking charter, regulatory capital, and payment network memberships, it provides the quickest route for a growing company to launch financial features.
 
-It isn't a way to hand off every problem. The partner holds the licence. Your client still runs the product customers touch, and often the ledger that says who owns what.
+However, partnering with an established bank does not remove all operational responsibility. While the partner bank holds the regulatory licence, your application provides the screen the customer uses and frequently manages the sub-ledger that records who owns each balance.
 
-The United States showed what happens when that ledger is wrong. Synapse was middleware that "acted as a bridge between nonbank fintech platforms that offered banking services to consumers and traditional partnering banks". When the partner banks reconciled their records against Synapse's, $60 million to $90 million of consumer funds could not be accounted for. The regulator alleged Synapse failed "to maintain adequate records of the location of consumers' funds", and consumers lost access to their money "for weeks or months" ([CFPB](https://www.consumerfinance.gov/enforcement/actions/synapse-financial-technologies-inc/), 2025).
+The importance of accurate record keeping was highlighted dramatically in the United States in 2025. Synapse, a major technology intermediary that connected non-bank fintech applications to partner banks, experienced severe record-keeping discrepancies. When partner banks attempted to reconcile their accounts against Synapse's records, between $60 million and $90 million USD in customer funds could not be accounted for. United States regulatory authorities found that the intermediary failed "to maintain adequate records of the location of consumers' funds", leaving thousands of everyday consumers locked out of their money for weeks or months ([CFPB](https://www.consumerfinance.gov/enforcement/actions/synapse-financial-technologies-inc/), 2025).
 
-That was a US failure under US law. The engineering lesson travels. If your client's platform keeps sub-ledgers over a pooled partner account, daily reconciliation belongs in the product scope from day one.
+While that collapse occurred under American jurisdiction, the technical lesson applies universally: whenever an organisation manages individual customer balances inside a pooled bank account, automated daily bank reconciliation must be built into the system from the very first day.
 
-Questions worth asking a prospective partner:
+Key questions to review with any prospective banking partner include:
 
-- Whose ledger is the source of truth, and how often is it reconciled against the bank?
-- What happens to customer funds if the partner, or your client, fails?
-- Which compliance controls does the partner run, and which does it require your client to run?
-- What notice does the partner give before changing its API, pricing or risk appetite?
-- How does your client exit, and how do customer accounts move?
+- Which system serves as the legal source of truth, and how frequently is it reconciled against the bank's accounts?
+- How are customer funds protected if either your business or the partner bank experiences financial difficulty?
+- What compliance checks does the partner bank perform, and what checks must your internal team carry out?
+- What formal notice period must the bank provide before changing its technical systems, pricing tiers, or risk guidelines?
+- What is the transition process if your business decides to move customer accounts to a different financial institution?
 
-Due diligence on the partner's technology matters as much as its licence. The checks in [technical due diligence on a build team](/blog/technical-due-diligence-build-team) apply to a BaaS provider too.
+Conducting careful reviews of a partner's software reliability is just as vital as reviewing their banking credentials, as discussed in [technical due diligence on software development partners](/blog/technical-due-diligence-build-team).
 
 ## AML/CTF obligations: who is the reporting entity
 
-Opening an account, making a loan and many payment services are designated services under the AML/CTF Act. Whoever provides the service is the reporting entity, with the program, customer due diligence and reporting duties that go with it.
+Under Australia's Anti-Money Laundering and Counter-Terrorism Financing Act 2006, opening deposit accounts, issuing payment cards, making loans, and facilitating international remittances are classified as "designated services". The organisation that provides a designated service is legally termed the "reporting entity" and must maintain a formal AML/CTF compliance program, verify customer identities, and report suspicious transactions to AUSTRAC.
 
-Those rules changed this year. Royal Assent for the AML/CTF Amendment Act 2024 came on 10 December 2024. Its schedules on customer due diligence and on transfers of value and international value transfer services commenced on 31 March 2026 ([Federal Register of Legislation](https://www.legislation.gov.au/C2024A00110/asmade/text)). The same Act brings additional high-risk services into the regime.
+Australia's anti-money laundering legislation was updated through the Anti-Money Laundering and Counter-Terrorism Financing Amendment Act 2024, which received Royal Assent on 10 December 2024. Key provisions strengthening customer identity verification and cross-border money transfers took effect on 31 March 2026 ([Federal Register of Legislation](https://www.legislation.gov.au/C2024A00110/asmade/text)), broadening oversight across modern payment services.
 
-In a partner model, the partner that provides the designated service is the reporting entity for it. Your client's product still collects the identity data, runs the onboarding screens and sees the behaviour that might be suspicious. So the contract has to say, precisely:
+In a banking partnership model, the partner bank providing the designated service is usually the reporting entity. However, your application collects the customer's personal information, presents the onboarding screens, and witnesses unusual payment behaviours first-hand. Commercial agreements must therefore clearly define:
 
-- identity verification: who does it, and under whose rules
-- sanctions and politically exposed person screening, and how often it reruns
-- how your client passes on anything that looks suspicious, and how fast
-- record keeping: by whom, in what form, and for how long
+- How customer identities are verified, and which national identity databases are queried.
+- How frequently automated screening is performed against international sanctions registers and Politically Exposed Persons (PEPs) lists.
+- How staff escalate unusual or suspicious transactions to the partner bank's compliance team.
+- How long customer identification documents and transaction logs are securely archived.
 
-In payout products we build, ID verification, sanctions and PEP screening, record keeping and AUSTRAC reporting sit inside the product's own flows. The design detail is in [KYC and AML by design, not bolted on afterwards](/blog/kyc-aml-by-design).
+In Palxi's software architectures, identity checks, sanctions monitoring, and audit trails are built directly into customer journeys, as detailed in our guide to [KYC and AML by design](/blog/kyc-aml-by-design).
 
 ## Who owns what: build team and partner
 
-Even with a licensed partner, much of the regulated surface lives in your client's code. The split below is a common arrangement, though the contract decides the details.
+When partnering with a licensed financial institution, technical and regulatory responsibilities are shared across both organisations:
 
-| Area | Usually the partner | Usually your client's product |
+| Operational area | Typically the partner bank | Typically your application team |
 |---|---|---|
-| Licence, scheme membership, prudential capital | Yes | No |
-| Customer onboarding screens and data capture | Sets the rules | Builds and runs them |
-| Identity verification and screening | Often provides the service | Integrates it, handles failures and retries |
-| Ledger of customer balances | Holds the pooled account | Often keeps the sub-ledger |
-| Reconciliation | Supplies statements | Matches them daily and chases breaks |
-| Disclosures and terms | Drafts or approves | Displays them at the right step, keeps proof |
-| Complaints and hardship | Owns the outcome | Captures, routes and records |
-| Monitoring and suspicious matters | Reports to AUSTRAC | Detects and escalates |
-| Security of customer data | Sets minimum standards | Builds and evidences the controls |
+| Banking licence, payment scheme access, regulatory capital | Yes | No |
+| Customer onboarding screens and user experience | Sets compliance rules | Builds and maintains accessible screens |
+| Identity verification and document checking | Provides verification tools | Integrates the service and manages user retries |
+| Ledger of individual customer balances | Holds the master pooled account | Maintains the internal customer sub-ledger |
+| Daily financial reconciliation | Supplies official bank statements | Matches daily transactions and investigates exceptions |
+| Disclosures, privacy policies, and terms of service | Drafts or formally approves text | Presents notices clearly and logs customer consent |
+| Customer complaints and hardship management | Resolves formal disputes | Captures, logs, and routes requests promptly |
+| Suspicious activity reporting | Submits official reports to AUSTRAC | Monitors platform behaviours and flags anomalies |
+| Information security and customer privacy | Establishes minimum security bars | Builds and proves strong technical controls |
 
-The rows on the right are where embedded finance projects slip. Teams plan for the partner's API and forget the daily reconciliation and the audit evidence the partner will demand.
+Projects often encounter delays on the right-hand column. Teams frequently focus on software user interfaces while neglecting daily bank reconciliations, audit trails, and reporting tools that banking partners require before launch.
 
 ## Common questions
 
-### Do we need an AFSL to take card payments on a marketplace?
+### Does our marketplace need an AFSL to accept credit card payments?
 
-Not usually for taking payments through a licensed payment provider under current rules. The reforms may change that for some payment functions, especially where the platform holds funds or facilitates payments for others. Check the final law against the product's exact money flow.
+Not typically, provided you are processing payments through an established, licensed payment gateway under current Australian regulations. However, if your marketplace holds customer balances in an internal wallet, manages escrow funds, or facilitates financial transfers between third parties, you must review the incoming payments licensing reforms to determine your specific obligations.
 
-### Can a SaaS platform offer business loans without a credit licence?
+### Can a business software platform offer loans to commercial clients without a credit licence?
 
-It may, if the platform only refers, or if the credit is not provided wholly or predominantly for personal, domestic or household purposes. Consumer credit is different. If sole traders might use the credit that way, get advice before launch.
+In Australia, the National Credit Code applies specifically to loans provided wholly or predominantly for personal, domestic, or household purposes. Loans provided exclusively to businesses for commercial purposes fall outside these consumer credit rules. However, if your users include sole traders or partnerships where business and personal finances overlap, seek expert legal guidance before launching credit products.
 
-### Is banking-as-a-service cheaper than getting our own licence?
+### Is partnering with a bank cheaper than obtaining an independent licence?
 
-At the start it tends to cost less, because the partner already carries the licence, capital and compliance team. Over time, the partner's margin and limits on product design can cost more than a licence would. Many platforms start with a partner and revisit the question once transaction volume and team maturity justify it.
+Initially, partnering with an established bank or payments provider is far more cost-effective because the partner already maintains the banking charter, regulatory capital, and legal compliance teams. Over time, as transaction volumes grow, the partner's transaction fees and product restrictions may make seeking an independent licence worthwhile. Many Australian organisations start with a trusted partner and re-evaluate once their business scales.
 
 ## What to do before the first sprint
 
-Map one customer journey end to end. Mark every point where money is held or credit is extended. Then:
+Before writing code or scheduling vendor demonstrations, map out a single customer transaction from start to finish:
 
-- name the licence each point relies on
-- name the reporting entity for AML/CTF
-- decide who owns the ledger and the daily reconciliation
-- check the design against the draft payments licensing rules, not only today's law
+- Identify the specific Australian licence covering every step where money is transferred, held, or borrowed.
+- Confirm which organisation acts as the official AML/CTF reporting entity to AUSTRAC.
+- Establish which system serves as the master ledger and who is responsible for daily bank reconciliation.
+- Review your planned features against Australia's updated payments licensing laws, ensuring customer funds are properly safeguarded.
 
-That map becomes the scope for the partner contract and the build. For the wider picture, see [software for financial services](/industries/financial-services).
+This foundational blueprint guides both legal contracts and technical development. To explore how we engineer secure financial software, view our guide to [software for financial services](/industries/financial-services).
 
-When the plan is clear and your client needs it built, Palxi joins advisors early and builds alongside them. [Email us](mailto:hello@palxi.com.au).
+When your organisation needs experienced Australian engineers to build dependable, compliant financial technology, Palxi collaborates with management and advisory teams from initial architecture through to launch. [Get in touch with our team](mailto:hello@palxi.com.au).
 
-*Facts in this article were checked against Treasury, ASIC, RBA, the Federal Register of Legislation and CFPB sources on 27 September 2026. See [how we work](/#how-we-work).*
+*Facts in this article were verified against publications from Treasury, ASIC, the RBA, the Federal Register of Legislation, and the CFPB on 27 September 2026. Learn more about [how we work](/#how-we-work).*
 
-*This article is general information, not legal advice. Check your obligations with your compliance team or legal advisor.*
+*This article provides general factual information and does not constitute financial or legal advice. Please consult your compliance professionals or legal counsel regarding your specific operational requirements.*
 
 *Photos: cover, ["Sydney CBD from the top (gun) deck of the south east pylon of the Sydney Harbour Bridge"](https://commons.wikimedia.org/w/index.php?curid=107115627) by David Minty, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Terminal keypad, ["Payment terminal"](https://www.flickr.com/photos/46563758@N04/49509274828) by Henry Söderlund, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), cropped. Phone on desk, ["apple-iphone-smartphone-desk"](https://www.flickr.com/photos/137643065@N06/24243796611) by pixellaphoto, CC0.*

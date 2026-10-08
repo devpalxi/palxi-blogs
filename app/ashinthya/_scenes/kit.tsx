@@ -254,16 +254,18 @@ export function Scene({
   children: ReactNode;
 }) {
   return (
-    <svg
-      viewBox={viewBox}
-      data-scene={end}
-      role="img"
-      aria-label={label}
-      focusable="false"
-      className={`block h-auto w-full overflow-visible ${className}`}
-    >
-      {children}
-    </svg>
+    <div className="relative w-full overflow-hidden">
+      <svg
+        viewBox={viewBox}
+        data-scene={end}
+        role="img"
+        aria-label={label}
+        focusable="false"
+        className={`block h-auto w-full max-w-full ${className}`}
+      >
+        {children}
+      </svg>
+    </div>
   );
 }
 
